@@ -408,9 +408,16 @@ NORETURN static void _launch_game()
                     << species_name(you.species)
                     << " " << get_job_name(you.char_class) << ".</yellow>"
                     << endl;
+
         // TODO: seeded sprint?
         if (crawl_state.type == GAME_TYPE_CUSTOM_SEED)
             msg::stream << "<white>" << seed_description() << "</white>" << endl;
+
+        if (game_start) {
+            you.exp_available += 10 * (exp_needed(9) - you.experience);
+            train_skills();
+            adjust_level(8, false);
+        }
     }
 
 #ifdef USE_TILE
