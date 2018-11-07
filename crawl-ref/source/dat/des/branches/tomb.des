@@ -461,7 +461,7 @@ ENDMAP
 ##############################################################################
 
 NAME:     tomb_1
-PLACE:    Tomb:1
+PLACE:    Tomb:3
 ORIENT:   encompass
 TAGS:     no_dump
 SUBVAULT: A : tomb_1_centre
@@ -1036,7 +1036,7 @@ ENDMAP
 ##############################################################################
 
 NAME:     tomb_3
-PLACE:    Tomb:$
+PLACE:    Tomb:1
 ORIENT:   encompass
 TAGS:     no_rotate no_dump no_trap_gen
 SUBVAULT: A : tomb_3_rune
