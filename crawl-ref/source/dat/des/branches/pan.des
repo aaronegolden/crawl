@@ -164,9 +164,7 @@ colour.add_colour("disco", function(rand, x, y)
 end)
 
 function pan_demonic_rune(e, glyph, place_lord)
-    e.subst(glyph .. ' = ' .. (place_lord and glyph or '.') .. ':6 O:1 N:2')
-    e.kitem('O = demonic rune of Zot')
-    e.kfeat('N = exit_pandemonium')
+    e.kitem(glyph .. ' = demonic rune of zot')
     if place_lord then
         e.kmons(glyph .. 'ON = pandemonium lord')
     end
@@ -178,7 +176,7 @@ function pan_lord_vault_contents(e, anyglyph, commonglyph, greaterglyph)
     e.kmons(anyglyph .. " = any demon w:17 / base demonspawn w:2 / \
                             nonbase demonspawn w:1")
     e.kmons(commonglyph .. " = common demon / base demonspawn w:2")
-    e.kmons(greaterglyph .. " = greater demon / nonbase demonspawn w:1")
+    e.kfeat(greaterglyph .. " = exit_pandemonium")
     e.kfeat('< = {')
 end
 
@@ -2532,13 +2530,10 @@ ORIENT: float
 MONS:   pandemonium lord, eye of draining
 MONS:   black sun, lorocyproca, any demon
 KMONS:  6O = ghost moth
-: if demonic_rune_vault_is_decoy() then
-KITEM:  O = superb_item / demonic rune of zot mimic
-: else
 KITEM:  O = demonic rune of zot
-: end
 KFEAT:  m = iron_grate
 KFEAT:  { = {
+KFEAT:  P = exit_pandemonium
 SUBST:  n : m.
 KMASK:  2O = opaque
 MAP
@@ -2555,8 +2550,8 @@ MAP
 ..v....5............v..
 ..v.........mmm.....v..
 ..v.........m2m....vv..
-.mmm........mmm....v...
-.m2m...................
+.mm.........mmm....v...
+.mPm...................
 .mmm...................
 ..v*..............nnn..
 ..vv**mmm.....vv..n2n..
@@ -2760,11 +2755,14 @@ MONS:   blizzard demon, nonbase gelid demonspawn
 MONS:   juggernaut simulacrum, ice devil
 KMONS:  56 = ice statue
 KMONS:  P = pandemonium lord
+<<<<<<< HEAD
 : if demonic_rune_vault_is_decoy() then
 KITEM:  O = superb_item / demonic rune of zot mimic
 : else
+=======
+>>>>>>> Guarantee the demonic rune and exit non unique Pan floors.
 KITEM:  O = demonic rune of zot
-: end
+KFEAT:  Q = exit_pandemonium
 KFEAT: 5 = W
 KFEAT: 6 = w
 KFEAT: { = {
@@ -2773,7 +2771,7 @@ MAP
 ccccccccccccccccccc
 .AwcwA1*1O1*1AwcwA.
 4AwcwB%12P21%BwcwA4
-.AwccwB%1.1%BwccwA.
+.AwccwB%1Q1%BwccwA.
  .BwccwA%1%AwccwB.
  .Bwwcc65556ccwwB.
   3CCwDDwwwDDwCC3
@@ -3934,6 +3932,7 @@ NSUBST: . = > / .
 KFEAT:  O = exit_pandemonium
 : else
 KITEM:  O = demonic rune of Zot
+KFEAT:  Q = exit_pandemonium
 : end
 ITEM:   w:5 any / potion of curing
 ITEM:   any / potion of heal wounds
@@ -4034,7 +4033,7 @@ xxxx..xx...vvv----v-----iv.v................................x..........xxxxxxxxx
 xxxx...x..vvv-Bv-----vvBiv.vv...............H.......H......xxx........xxxxxxxxxx
 xxxxx.....vvi-----v-----iv........v........................xxx.........xxxxxxxxx
 xxxxx.....vv------vvvvvvvvvvvvvv......xx....H.......H.....xxx.....xx..x..xxxxxxx
-xxxxx.....vv---------vBv-v-v-v-v.v...xxxx.......................xxxxx....xxxxxxx
+xxxxx.....vv---------vBv-v-v-v-v.v...xxxx.......Q...............xxxxx....xxxxxxx
 xxxxx.....vg-Z---vvv-&---------&......xxxx..................xxxxxxxxxxxx...x.Axx
 xxxxxx....vv---------vBv-v-v-v-v.v.....xxx.............xxxxxxxxxxxxxxxx........x
 xxxxxx....vv------vvvvvvvvvvvvvv...............xxxxxxxxxxxxxxx$$$xxxxx..xxxx...x
