@@ -305,6 +305,7 @@ static monsterentry mondata[] =
 	AXED_MON(MONS_DRACONIAN_STORMCALLER)
 	AXED_MON(MONS_TIAMAT)
     AXED_MON(MONS_IJYB)
+    AXED_MON(MONS_DANCING_WEAPON)
 #endif
 
 // Used for genus monsters (which are used for grouping monsters by how they
@@ -4922,21 +4923,6 @@ DUMMY(MONS_PLAYER, '@', LIGHTGREY, "player", TILEP_MONS_PLAYER_GHOST)
     I_HUMAN, HT_LAND, 10, DEFAULT_ENERGY,
     MONUSE_OPEN_DOORS, SIZE_MEDIUM, MON_SHAPE_HUMANOID,
     {TILEP_MONS_PROGRAM_BUG}, TILE_ERROR
-},
-// dancing weapon
-// These are named more explicitly when they attack, also when you use 'x'
-// to examine them.
-{
-    MONS_DANCING_WEAPON, '(', COLOUR_UNDEF, "dancing weapon",
-    M_FIGHTER | M_FLIES | M_GHOST_DEMON,
-    mrd(MR_RES_FIRE | MR_RES_COLD, 2) | mrd(MR_RES_ELEC, 3),
-    10, MONS_DANCING_WEAPON, MONS_DANCING_WEAPON, MH_NONLIVING, MAG_IMMUNE,
-    { {AT_HIT, AF_PLAIN, 30}, AT_NO_ATK, AT_NO_ATK, AT_NO_ATK },
-    15, 150,
-    10, 20, MST_NO_SPELLS, CE_NOCORPSE, S_SILENT,
-    I_BRAINLESS, HT_LAND, 15, DEFAULT_ENERGY,
-    MONUSE_NOTHING, SIZE_SMALL, MON_SHAPE_MISC,
-    {TILE_UNSEEN_WEAPON}
 },
 
 // spectral weapon, for skalds!

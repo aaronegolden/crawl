@@ -35,7 +35,7 @@
         e.mons("ball lightning")
         e.mons("nothing")
         e.mons("crystal guardian")
-        e.kmons("8 = dancing weapon")
+        e.kmons("8 = war gargoyle")
         e.kmons("9 = war gargoyle")
         e.kmons("0 = glowing shapeshifter hd:15")
         e.kmons("EW = water elemental")
@@ -82,7 +82,7 @@
         e.set_random_mon_list(
             "glowing shapeshifter w:100 / air elemental / water elemental / " ..
             "earth elemental / crystal guardian / molten gargoyle / " ..
-            "war gargoyle / dancing weapon / very ugly thing band")
+            "war gargoyle / very ugly thing band")
     end
 }}
 
@@ -104,7 +104,7 @@ MONS:    plant / fungus w:2
 MONS:    wolf / warg / hell hound / raiju w:4
 MONS:    shadow w:20 / wraith w:20 / shadow wraith / phantasmal warrior / \
          skeletal warrior
-MONS:    dancing weapon / war gargoyle w:2
+MONS:    war gargoyle
 MONS:    spectral spriggan / spectral centaur / spectral naga / \
          spectral merfolk / spectral ogre / spectral troll / \
          spectral minotaur w:1 / spriggan simulacrum w:2 / centaur simulacrum w:1 / \
@@ -681,7 +681,7 @@ KPROP:    l = no_cloud_gen
 :  end
 MARKER:   T = lua:props_marker { portal=1 }
 : _G.set_random_mon_list("place:" .. you.where() .. " w:210 / " ..
-:   "rakshasa / dancing weapon / glowing shapeshifter / very ugly thing band")
+:   "rakshasa / glowing shapeshifter / very ugly thing band")
 TILE:     b = wall_emerald
 TILE:     c = wall_crystal_squares
 TILE:     v = dngn_metal_wall_darkgray

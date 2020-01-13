@@ -2108,6 +2108,7 @@ static spret_type _do_cast(spell_type spell, int powc,
     case SPELL_PHASE_SHIFT:
     case SPELL_MASS_CONFUSION:
     case SPELL_CURE_POISON:
+    case SPELL_TUKIMAS_DANCE:
         mpr("Sorry, this spell is gone!");
         return SPRET_ABORT;
 #endif

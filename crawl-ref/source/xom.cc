@@ -1091,46 +1091,6 @@ static monster* _find_monster_with_animateable_weapon()
     return mons_wpn[random2(mons_wpn.size())];
 }
 
-static void _xom_animate_monster_weapon(int sever)
-{
-    // Pick a random monster...
-    monster* mon = _find_monster_with_animateable_weapon();
-    if (!mon)
-        return;
-
-    god_speaks(GOD_XOM, _get_xom_speech("animate monster weapon").c_str());
-
-    // ...and get its weapon.
-    const int wpn = mon->inv[MSLOT_WEAPON];
-    ASSERT(wpn != NON_ITEM);
-
-    const int dur = min(2 + (random2(sever) / 5), 6);
-
-    mgen_data mg(MONS_DANCING_WEAPON, BEH_FRIENDLY, mon->pos(), mon->mindex());
-    mg.set_summoned(&you, dur, SPELL_TUKIMAS_DANCE, GOD_XOM);
-
-    mg.non_actor_summoner = "Xom";
-
-    monster *dancing = create_monster(mg);
-
-    if (!dancing)
-        return;
-
-    // Make the monster unwield its weapon.
-    mon->unequip(*(mon->mslot_item(MSLOT_WEAPON)), false, true);
-    mon->inv[MSLOT_WEAPON] = NON_ITEM;
-
-    mprf("%s %s dances into the air!",
-         apostrophise(mon->name(DESC_THE)).c_str(),
-         mitm[wpn].name(DESC_PLAIN).c_str());
-
-    destroy_item(dancing->inv[MSLOT_WEAPON]);
-
-    dancing->inv[MSLOT_WEAPON] = wpn;
-    mitm[wpn].set_holding_monster(*dancing);
-    dancing->colour = mitm[wpn].get_colour();
-}
-
 static void _xom_shuffle_mutations(bool penance)
 {
     if (!you.can_safely_mutate())
@@ -1968,8 +1928,6 @@ static xom_event_type _xom_choose_random_action(int sever)
         200, XOM_GOOD_POTION,
         _choose_random_spell(sever) != SPELL_NO_SPELL ? 100 : 0, XOM_GOOD_SPELL,
         !you.get_mutation_level(MUT_NO_LOVE) ? 100 : 0, XOM_GOOD_SINGLE_ALLY,
-        _find_monster_with_animateable_weapon()
-        && !you.get_mutation_level(MUT_NO_LOVE) ? 50 : 0, XOM_GOOD_ANIMATE_MON_WPN,
 		!you.duration[DUR_CLOUD_TRAIL] ? 50 : 0, XOM_GOOD_CLOUD_TRAIL,
         mon_nearby(_choose_enchantable_monster) ? 50 + sever / 4 : 0, XOM_GOOD_ENCHANT_MONSTER,
         mon_nearby([](monster& mon){ return !mon.wont_attack(); }) ? 30 : 0, XOM_GOOD_CONFUSION,
@@ -2319,8 +2277,6 @@ static const map<xom_event_type, xom_event> xom_events = {
     { XOM_GOOD_SPELL, { "tension spell", _xom_random_spell }},
     { XOM_GOOD_CONFUSION, { "confuse monsters", _xom_confuse_monsters }},
     { XOM_GOOD_SINGLE_ALLY, { "single ally", _xom_send_one_ally }},
-    { XOM_GOOD_ANIMATE_MON_WPN, { "animate monster weapon",
-                                  _xom_animate_monster_weapon }},
     { XOM_GOOD_RANDOM_ITEM, { "nothing" }},
     { XOM_GOOD_ACQUIREMENT, { "nothing" }},
     { XOM_GOOD_ALLIES, { "summon allies", _xom_send_allies }},

@@ -170,7 +170,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_CORONA,
     SPELL_HIBERNATION,
     SPELL_CONFUSE,
-    SPELL_TUKIMAS_DANCE,
     SPELL_DAZZLING_SPRAY,
 },
 
@@ -277,7 +276,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SUMMON_BUTTERFLIES,
     SPELL_APPORTATION,
     SPELL_BECKONING,
-    SPELL_TUKIMAS_DANCE,
     SPELL_INTOXICATE,
     SPELL_INVISIBILITY
 },

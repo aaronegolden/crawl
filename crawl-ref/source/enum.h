@@ -2767,8 +2767,9 @@ enum monster_type                      // menv[].type
 #if TAG_MAJOR_VERSION > 34
 	MONS_MUTATATOTOT,
 #endif
-
+#if TAG_MAJOR_VERSION == 34
     MONS_DANCING_WEAPON,
+#endif
 #if TAG_MAJOR_VERSION > 34
     MONS_SPECTRAL_WEAPON,
 #endif
@@ -4554,7 +4555,9 @@ enum spell_type : int
 #endif
     SPELL_STING,
     SPELL_SUBLIMATION_OF_BLOOD,
+#if TAG_MAJOR_VERSION == 34
     SPELL_TUKIMAS_DANCE,
+#endif
     SPELL_HURL_DAMNATION,
     SPELL_SUMMON_DEMON,
 #if TAG_MAJOR_VERSION == 34

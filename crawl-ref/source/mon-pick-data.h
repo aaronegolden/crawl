@@ -133,7 +133,6 @@ static const pop_entry pop_d[] =
   { 24, 27,   22, RISE, MONS_DEEP_ELF_HIGH_PRIEST },
   { 24, 27,   22, RISE, MONS_VAMPIRE_KNIGHT },
   { 24, 27,  136, RISE, MONS_TENGU_REAVER },
-  { 24, 27,    8, RISE, MONS_DANCING_WEAPON },
   { 24, 27,   25, FLAT, MONS_WAR_GARGOYLE },
   { 25, 27,   12, RISE, MONS_CRYSTAL_GUARDIAN },
   { 27, 27,   18, FLAT, MONS_SHADOW_DRAGON },
@@ -173,7 +172,6 @@ static const pop_entry pop_elf[] =
   {  1,  1,   50, FLAT, MONS_ORC_SORCERER },
   {  1,  1,  775, FLAT, MONS_DEEP_ELF_MAGE },
   {  1,  1, 2000, FLAT, MONS_NO_MONSTER }, //formerly deep elf mage
-  {  1,  1, 1385, FLAT, MONS_DANCING_WEAPON },
   {  1,  1,  925, FLAT, MONS_DEEP_ELF_KNIGHT },
   {  1,  1,  925, FLAT, MONS_DEEP_ELF_ARCHER },
   {  1,  1,  345, FLAT, MONS_FIRE_ELEMENTAL },
@@ -210,7 +208,7 @@ static const pop_entry pop_dwarf[] =
 
 static const pop_entry pop_blade[] =
 { // Hall of Blades
-  {  1,  1, 1000, FLAT, MONS_DANCING_WEAPON },
+  {  1,  1, 1000, FLAT, MONS_NO_MONSTER },
   { 0,0,0,FLAT,MONS_0 }
 };
 #endif
@@ -417,7 +415,6 @@ static const pop_entry pop_vaults[] =
   {  4, 12,  155, PEAK, MONS_TENGU_REAVER },
   {  4, 12,   89, PEAK, MONS_STORM_DRAGON },
   {  4, 12,   89, PEAK, MONS_PHANTASMAL_WARRIOR },
-  {  5, 12,   25, PEAK, MONS_DANCING_WEAPON },
   {  5, 13,  193, FALL, MONS_GLOWING_SHAPESHIFTER },
   {  5, 13,   66, PEAK, MONS_TENTACLED_MONSTROSITY },
   {  7, 12,   50, FLAT, MONS_SHADOW_DRAGON },
@@ -534,7 +531,6 @@ static const pop_entry pop_dis[] =
   {  1,  7,   16, PEAK, MONS_HELL_SENTINEL },
   {  2,  8,   50, PEAK, MONS_IRON_DRAGON },
   {  1, 12,   60, FALL, MONS_NO_MONSTER },
-  {  1,  7,  125, PEAK, MONS_DANCING_WEAPON },
   {  1,  7,  270, RISE, MONS_IRON_GIANT },
   {  1,  7,   90, RISE, MONS_GIANT_GIANT },
   { 0,0,0,FLAT,MONS_0 }
@@ -780,7 +776,6 @@ static const pop_entry pop_abyss[] =
   {  1,  5,   17, FLAT, MONS_EIDOLON },
   {  1, 10,   18, SEMI, MONS_FLAYED_GHOST },
   {  1,  5,   12, FLAT, MONS_VAMPIRE_MAGE },
-  {  1,  5,    3, FLAT, MONS_DANCING_WEAPON },
   {  1,  5,   21, FALL, MONS_JELLY },
   {  1,  5,   46, FLAT, MONS_EYE_OF_DRAINING },
   {  1,  5,    8, FLAT, MONS_SHINING_EYE },
@@ -885,8 +880,7 @@ static const pop_entry pop_trove[] =
 
 static const pop_entry pop_desolation[] =
 { // Desolation
-  {  1,  1, 1200, FLAT, MONS_SALTLING },
-  {  1,  1,   50, FLAT, MONS_DANCING_WEAPON },
+  {  1,  1, 1250, FLAT, MONS_SALTLING },
   {  1,  1,   50, FLAT, MONS_MOLTEN_GARGOYLE },
   {  1,  1,   50, FLAT, MONS_CRYSTAL_GUARDIAN },
   {  1,  1,   50, FLAT, MONS_IMPERIAL_MYRMIDON },
