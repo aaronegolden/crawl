@@ -149,6 +149,10 @@ Sticky Flame cast
 
 @The_monster@ sprays @target@ with burning goo.
 %%%%
+Shoot Arrow cast
+
+@The_monster@ shoots an arrow at @target@.
+%%%%
 Holy Flames cast
 
 @The_monster@ calls forth blessed flames!

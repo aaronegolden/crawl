@@ -1268,4 +1268,22 @@ _mon_hex_zap(ZAP_DRAIN_MAGIC, BEAM_DRAIN_MAGIC),
     0 // handled by explosion
 },
 
+{
+    ZAP_SHOOT_ARROW,
+    "arrow",
+    50,
+    nullptr,
+    nullptr,
+    new calcdice_calculator<1, 7, 3, 12>,
+    new tohit_calculator<18, 3, 24>,
+    BROWN,
+    false,
+    BEAM_MMISSILE,
+    DCHAR_FIRED_MISSILE,
+    true,
+    false,
+    false,
+    3
+},
+
 };

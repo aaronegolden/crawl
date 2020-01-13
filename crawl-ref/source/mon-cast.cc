@@ -1310,6 +1310,7 @@ bolt mons_spell_beam(const monster* mons, spell_type spell_cast, int power,
     case SPELL_BLINKBOLT:
     case SPELL_STEAM_BALL:
     case SPELL_TELEPORT_OTHER:
+    case SPELL_SHOOT_ARROW:
         zappy(spell_to_zap(real_spell), power, true, beam);
         break;
 
@@ -8072,8 +8073,12 @@ static bool _ms_waste_of_time(monster* mon, mon_spell_slot slot)
         return true;
 
     case SPELL_THROW_BARBS:
-        // Don't fire barbs in melee range.
-        return !foe || adjacent(mon->pos(), foe->pos());
+    case SPELL_SHOOT_ARROW:
+    {
+        bool master_archer = mons_class_flag(mon->type, M_ARCHER) && mons_class_flag(mon->type, M_DONT_MELEE);
+        // Don't fire in melee range, unless we are a master archer.
+        return !foe || (!master_archer && adjacent(mon->pos(), foe->pos()));
+    }
 
     case SPELL_BATTLECRY:
         return !_battle_cry(*mon, true);

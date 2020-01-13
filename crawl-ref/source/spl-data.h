@@ -3922,6 +3922,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_SHOOT_ARROW, "Shoot Arrow",
+    SPTYP_EARTH,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MONSTER,
+    4,
+    200,
+    LOS_RADIUS, LOS_RADIUS,
+    3, 0,
+    TILEG_ERROR,
+},
+
+{
     SPELL_NO_SPELL, "nonexistent spell",
     SPTYP_NONE,
     SPFLAG_TESTING,

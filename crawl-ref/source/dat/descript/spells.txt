@@ -1617,3 +1617,8 @@ Yara's Violent Unravelling spell
 
 Tears apart the bonds that bind enchantments to the target creature,
 transforming the magic into a spray of deadly, mutagenic radiation.
+%%%%
+Shoot Arrow spell
+
+Fires an arrow. The damage dealt by the arrow depends significantly 
+on the strength of the monster firing it.

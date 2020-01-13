@@ -198,6 +198,7 @@ static const mon_spellbook mspell_list[] =
        { SPELL_CONFUSE, 12, MON_SPELL_WIZARD },
        { SPELL_REPEL_MISSILES, 12, MON_SPELL_WIZARD },
        { SPELL_BLINK_AWAY, 36, MON_SPELL_WIZARD | MON_SPELL_SHORT_RANGE },
+       { SPELL_SHOOT_ARROW, 120, MON_SPELL_NATURAL },
       }
     },
 
@@ -2234,6 +2235,13 @@ static const mon_spellbook mspell_list[] =
        { SPELL_SYMBOL_OF_TORMENT, 20, MON_SPELL_MAGICAL },
        { SPELL_DISPEL_UNDEAD, 20, MON_SPELL_MAGICAL },
        { SPELL_SUMMON_EXECUTIONERS, 40, MON_SPELL_MAGICAL },
+      }
+    },
+    
+    // spellbook for monsters that shoot arrows at things
+    {  MST_ARCHER,
+      {
+       { SPELL_SHOOT_ARROW, 190, MON_SPELL_NATURAL },
       }
     },
 
