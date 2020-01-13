@@ -397,49 +397,6 @@ static void _gold_pile(item_def &corpse, monster_type corpse_class)
     you.redraw_title = true;
 }
 
-static void _create_monster_hide(const item_def &corpse, bool silent)
-{
-    const monster_type mtyp = corpse.mon_type;
-    const armour_type type = hide_for_monster(mons_species(mtyp));
-    ASSERT(type != NUM_ARMOURS);
-
-    int o = items(false, OBJ_ARMOUR, type, 0);
-    squash_plusses(o);
-
-    if (o == NON_ITEM)
-        return;
-    item_def& item = mitm[o];
-
-    do_uncurse_item(item);
-
-    const coord_def pos = item_pos(corpse);
-    if (pos.origin())
-    {
-        set_ident_flags(item, ISFLAG_IDENT_MASK);
-        return;
-    }
-
-    move_item_to_grid(&o, pos);
-    if (you.see_cell(pos)  && !silent)
-    {
-        mprf("%s %s intact enough to wear.",
-             item.name(DESC_THE).c_str(),
-             mons_genus(mtyp) == MONS_DRAGON ? "are"  // scales are
-                                             : "is"); // hide is
-                                                      // XXX: refactor
-    }
-	
-	// after messaging, for better results
-    set_ident_flags(item, ISFLAG_IDENT_MASK);
-}
-
-static void _maybe_drop_monster_hide(const item_def &corpse, bool silent)
-{
-    if (mons_class_leaves_hide(corpse.mon_type) && !one_chance_in(3))
-        _create_monster_hide(corpse, silent);
-}
-
-
 /**
  * Create this monster's corpse in mitm at its position.
  *
@@ -2778,9 +2735,6 @@ item_def* monster_die(monster* mons, killer_type killer,
     {
         if (!silent && !wizard)
             _special_corpse_messaging(*mons);
-        // message ordering... :(
-        if (corpse->base_type == OBJ_CORPSES) // not gold
-            _maybe_drop_monster_hide(*corpse, silent);
     }
 
     if (mons->is_divine_companion()
