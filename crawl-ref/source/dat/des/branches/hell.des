@@ -75,10 +75,6 @@ ORIENT: float
 TAGS:   no_rotate
 MONS:   crimson imp / hellwing / hell hound
 MONS:   hellion / balrug / soul eater / smoke demon
-ITEM:   good_item demon blade / good_item demon whip / \
-        good_item demon trident
-ITEM:   ring of fire ident:type / Necronomicon / \
-        grand grimoire / scroll of torment ident:type
 SUBST:  d=de, ?:?.l, ?=l.
 : hell_entry_feature(_G, 'A')
 : hell_entry_tier(_G, "mid")
@@ -111,12 +107,6 @@ ORIENT: float
 TAGS:   no_monster_gen transparent
 MONS:   crimson imp / hellwing / hell hound
 MONS:   hellion / balrug / soul eater w:20 / smoke demon w:20
-ITEM:   good_item demon blade / good_item demon whip /\
-        good_item demon trident
-ITEM:   ring of fire ident:type / Necronomicon / \
-        grand grimoire / scroll of torment ident:type
-ITEM:   good_item demon blade / good_item demon whip /\
-        good_item demon trident / w:30 nothing
 SUBST:  d=de, ?:?.l, ?=l.
 SUBST:  b : b:30 c v .
 : hell_entry_feature(_G, 'A')
@@ -150,7 +140,6 @@ NAME:   hellmouth_3
 ORIENT: float
 MONS:   crimson imp / hellwing / hell hound
 MONS:   hellion / balrug / soul eater / smoke demon
-ITEM:   demon blade / demon whip / demon trident / nothing
 KMASK:  12Ad = opaque
 SUBST:  ? : . l ?:40, ?=l.
 : hell_entry_feature(_G, 'A')
@@ -186,7 +175,6 @@ MONS:   ice devil / orange demon / w:5 rust devil / \
         w:35 nothing
 MONS:   sun demon / soul eater / w:20 nothing
 MONS:   shadow demon / blizzard demon / hell beast
-ITEM:   skeleton
 KFEAT:  b = .
 KMONS:  A = obsidian statue
 MARKER: A = lua:fog_machine { cloud_type = "grey smoke", \
@@ -195,7 +183,6 @@ MARKER: A = lua:fog_machine { cloud_type = "grey smoke", \
 KMONS:  b = w:100 nothing / w:5 crimson imp / w:2 white imp / w:2 iron imp \
             / w:1 shadow imp
 KPROP:  b = nothing / w:5 bloody
-KITEM:  b = nothing / w:1 gold
 MARKER: H = lua:props_marker { stop_explore = "statue" }
 KFEAT:  HI = G
 : hell_entry_feature(_G, 'A')
@@ -232,9 +219,6 @@ MONS: sun demon
 : hell_entry_feature(_G, 'H')
 SUBST: y = x..
 SUBST: ; = %A.....l
-: dgn.delayed_decay(_G, '%', 'dwarf skeleton')
-KITEM: A = any weapon w:20 / chain mail w:60 / plate armour w:19 / \
-           crystal plate armour w:1
 : hell_entry_tier(_G, "mid")
 MAP
 xxxxxxxxxxxxxxx
@@ -405,7 +389,7 @@ ENDMAP
 NAME:   pf_dread_powers_of_hell
 TAGS:   transparent uniq_hell_entry_geh
 WEIGHT: 2
-KMONS:  i = crimson imp ; wand of flame ident:type
+KMONS:  i = crimson imp
 TILE:   c = dngn_stone_wall_red
 COLOUR: c = red
 FTILE:  'iO = floor_infernal_blank

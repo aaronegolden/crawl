@@ -38,7 +38,7 @@ ITEM:    randbook numspells:2 spells:magic_dart&mephitic_cloud title:Introductio
 ITEM:    ring of wizardry not_cursed
 ITEM:    staff of wizardry not_cursed
 ITEM:    large rock
-MONS:    training dummy ; large rock q:20
+MONS:    training dummy
 MONS:    bat skeleton, goblin skeleton
 MONS:    rat, goblin
 KMONS:   8 = training dummy hd:3 hp:7
@@ -103,14 +103,14 @@ COLOUR:  dABCDEe = lightblue
 FTILE:   dABCDEe = tutorial_pad
 ITEM:    scroll of amnesia ident:type
 ITEM:    randbook numspells:1 spells:pain title:Necromancy_for_Newbies owner:player
-ITEM:    never_decay bat skeleton / never_decay goblin; nothing skeleton
+ITEM:    never_decay bat skeleton / never_decay goblin skeleton
 ITEM:    never_decay ball python skeleton / never_decay jackal skeleton
 ITEM:    shield not_cursed
 ITEM:    ring mail not_cursed
 MONS:    hobgoblin
 MONS:    rat
 MONS:    goblin
-MONS:    gnoll; nothing
+MONS:    gnoll
 MARKER:  d = lua:tutorial4.msg("forget_spell")
 MARKER:  e = lua:tutorial4.msg("memorise2")
 MARKER:  B = lua:tutorial4.msg("displace_allies")

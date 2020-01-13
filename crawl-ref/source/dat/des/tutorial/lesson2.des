@@ -34,7 +34,7 @@ RTILE:   c = wall_vines
 FTILE:   dBCDFG = tutorial_pad
 ITEM:    quarterstaff mundane not_cursed
 SHUFFLE: 34
-MONS:    training dummy hp:10 ; whip mundane not_cursed
+MONS:    training dummy hp:10
 MONS:    rat always_corpse
 MONS:    wyvern
 MONS:    ooze hp:10
@@ -95,7 +95,7 @@ FTILE:   .123f = floor_swamp, t = floor_grass
 KFEAT:   ,ABCDEF = .
 COLOUR:  deABCDEF = lightblue
 FTILE:   deABCDEF = tutorial_pad
-MONS:    training dummy hp:2 ; large rock q:10
+MONS:    training dummy hp:2
 MONS:    rat always_corpse
 MONS:    dart slug
 ITEM:    tomahawk mundane q:10

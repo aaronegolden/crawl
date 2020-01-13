@@ -70,7 +70,6 @@ ENDMAP
 
 NAME:    grunt_enter_depths_hoard
 MONS:    fire dragon, ice dragon
-ITEM:    $ no_pickup
 SHUFFLE: 12 / 12 / 11 / 22
 : depths_entry(_G)
 MAP

@@ -117,7 +117,7 @@ function species_mock(e)
   elseif you.race() == "Deep Elf" then
     e.kmons("1 = crimson imp")
   elseif you.race() == "Hill Orc" then
-    e.kmons("1 = goblin ; mundane hand axe . mundane ring mail")
+    e.kmons("1 = goblin")
   elseif you.race() == "Human" then
     e.kmons("1 = killer klown")
   elseif you.race() == "Formicid" then
@@ -246,11 +246,11 @@ TAGS:   patrolling
 DEPTH:  D:3-9
 WEIGHT: 5
 KFEAT:  _ = altar_cheibriados
-MONS:   goblin; potion of ambrosia ident:type / \
-        hobgoblin; potion of ambrosia ident:type / \
-        gnoll; potion of ambrosia ident:type / \
-        orc; potion of ambrosia ident:type / \
-        kobold; potion of ambrosia ident:type
+MONS:   goblin / \
+        hobgoblin / \
+        gnoll / \
+        orc / \
+        kobold
 MONS:   goblin / hobgoblin / gnoll / orc / kobold
 NSUBST: 2 = 1:1 / *:2
 MAP
@@ -587,8 +587,6 @@ DEPTH:  D:2-
 TAGS:   transparent no_item_gen no_monster_gen no_trap_gen temple_overflow_1
 TAGS:   temple_overflow_gozag uniq_altar_gozag
 KFEAT:  _ = altar_gozag
-ITEM:   gold q:1
-KITEM:  e = gold q:1
 TILE:   G = dngn_golden_statue
 FTILE:  _-Ge = floor_limestone
 RTILE:  x = wall_sandstone
@@ -598,7 +596,7 @@ COLOUR: xG = yellow
 MAP
         xxxxx
 .@......x-eGx
-@d.d.d.d-e-_x
+@d.d.d.d-.-_x
 .@......x-eGx
         xxxxx
 ENDMAP
@@ -623,7 +621,6 @@ NAME:  nicolae_gozag_seed_capital
 TAGS:  temple_overflow_gozag temple_overflow_1 uniq_altar_gozag decor
 TAGS:  transparent no_item_gen
 DEPTH: D:2-
-ITEM:  gold q:1 / gold q:2
 KFEAT: _ = altar_gozag
 : interest_check(_G)
 MAP
@@ -801,7 +798,6 @@ TAGS:  transparent decor
 DEPTH: D:2-12, Orc, Vaults
 KPROP: . = bloody / nothing
 KFEAT: _ = altar_makhleb
-KITEM: _ = robe, whip
 : interest_check(_G)
 MAP
 ...
@@ -956,9 +952,9 @@ TAGS:    overflow_altar_nemelex_xobeh transparent
 TAGS:    no_rotate no_vmirror no_monster_gen no_item_gen
 DEPTH:   D:2-9
 : if you.depth() <= 4 then
-MONS:    orc ; mace
+MONS:    orc
 : else
-MONS:    ogre ; giant club
+MONS:    ogre
 : end
 MONS:    ooze
 KFEAT:   _ = altar_nemelex_xobeh
@@ -1125,7 +1121,6 @@ ENDMAP
 NAME:  okawaru_ov_weapons_minmay
 TAGS:  temple_overflow_1 temple_overflow_okawaru uniq_altar_okawaru
 TAGS:  transparent decor
-ITEM:  hand axe, rapier, mace, spear
 KFEAT: _ = altar_okawaru
 : interest_check(_G)
 MAP
@@ -1164,7 +1159,7 @@ TAGS:    uniq_altar_okawaru temple_overflow_1 temple_overflow_okawaru
 TAGS:    no_monster_gen no_wall_fixup transparent
 DEPTH:   D:7-12
 COLOUR:  1 = yellow, ' = yellow, x = white
-MONS:    human ; long sword . ring mail
+MONS:    human
 FTILE:   1'xO = floor_sandstone
 RTILE:   x = wall_tomb
 KFEAT:   _ = altar_okawaru
@@ -1185,7 +1180,7 @@ TAGS:   temple_overflow_1 temple_overflow_okawaru uniq_altar_okawaru
 TAGS:   no_pool_fixup
 DEPTH:  D:2-9
 KFEAT:  _ = altar_okawaru
-KMONS:  1 = goblin ; spear
+KMONS:  1 = goblin
 KPROP:  1 = no_tele_into
 MAP
       vvvvvvv
@@ -1244,8 +1239,6 @@ KFEAT:  _ = altar_qazlal
 KPROP:  c = no_tele_into
 SUBST:  c = cccl^.
 SUBST:  - = ..l^
-KFEAT:  ^ = known shaft trap
-KITEM:  . = nothing w:189 / gold q:1 / large rock q:1 w:1
 KFEAT:  . = .
 : interest_check(_G)
 MAP
@@ -1570,7 +1563,6 @@ TAGS:  transparent decor
 DEPTH: D:2-12, Orc, Vaults
 KPROP: . = bloody / nothing
 KFEAT: _ = altar_trog
-KITEM: _ = animal skin, dagger
 : interest_check(_G)
 MAP
 ...
@@ -1631,20 +1623,9 @@ DEPTH:  D:3-9
 WEIGHT: 4
 MONS:   eye of draining
 : if you.absdepth() > 5 and crawl.coinflip() then
-KMONS:  2 = ogre god:trog ; giant club ego:antimagic ident:type | w:3 giant club / \
-        ogre god:trog ; giant club ego:antimagic ident:type | w:5 giant club / \
-        orc warrior god:trog ; halberd ego:antimagic ident:type | war axe ego:antimagic ident:type | \
-        flail ego:antimagic ident:type | great mace ego:antimagic ident:type | any weapon / \
-        big kobold god:trog ; dagger ego:antimagic ident:type | dagger ego:antimagic ident:type | \
-        rapier ego:antimagic ident:type | rapier
+KMONS:  2 = ogre
 : else
-KMONS:  2 = orc god:trog ; spear ego:antimagic ident:type | hand axe ego:antimagic ident:type | \
-        war axe ego:antimagic ident:type | any weapon / \
-        kobold god:trog ; dagger ego:antimagic ident:type | hand axe ego:antimagic ident:type | \
-        whip ego:antimagic ident:type | any weapon / \
-        goblin god:trog ; dagger ego:antimagic ident:type | dagger ego:antimagic ident:type / \
-        gnoll god:trog ; spear ego:antimagic ident:type | trident ego:antimagic ident:type | \
-        halberd ego:antimagic ident:type | whip ego:antimagic ident:type | halberd | any weapon
+KMONS:  2 = orc
 : end
 KFEAT:  _ = altar_trog
 NSUBST: 1 = 1:1 / 1 = 1. / 1 = 1.. / *:.
@@ -1663,7 +1644,7 @@ NAME:   trog_butcher_becter
 TAGS:   overflow_altar_trog
 DEPTH:  D:2-9, Orc, !Orc:$
 : if you.absdepth() < 6 then
-MONS:   orc ; hand axe . animal skin
+MONS:   orc
 MONS:   rat / frilled lizard / quokka
 {{
   dgn.delayed_decay(_G, 'd',
@@ -1671,7 +1652,7 @@ MONS:   rat / frilled lizard / quokka
                     'frilled lizard chunk q:1 / quokka chunk q:1')
 }}
 : else
-MONS:   orc warrior ; war axe . animal skin
+MONS:   orc warrior
 MONS:   iguana / worker ant
 {{
   dgn.delayed_decay(_G, 'd',
@@ -1701,10 +1682,9 @@ ENDMAP
 NAME:   trog_hazing_becter
 TAGS:   overflow_altar_trog no_monster_gen no_item_gen no_pool_fixup
 DEPTH:  D:2-9, Orc, !Orc:$
-MONS:   goblin ; trident . animal skin / \
-        hobgoblin ; trident . animal skin / \
-        kobold ; trident | animal skin
-ITEM:   gold q:1
+MONS:   goblin  / \
+        hobgoblin  / \
+        kobold
 NSUBST: T = 6:1 / *:.
 SUBST:  . = d....
 KFEAT:  _ = altar_trog
@@ -1747,7 +1727,6 @@ ENDMAP
 NAME:   dancing_weapons_uskayaw
 DEPTH:  D:2-9
 TAGS:   temple_overflow_1 temple_overflow_uskayaw
-MONS:   generate_awake dancing weapon ; dagger | hand axe
 KFEAT:  _ = altar_uskayaw
 NSUBST: ' = 2:1 / *:'
 KMASK:  1' = no_monster_gen
@@ -1810,9 +1789,7 @@ TAGS:  uniq_altar_vehumet temple_overflow_1 temple_overflow_vehumet
 TAGS:  transparent patrolling
 DEPTH: D:4-9
 KFEAT: _ = altar_vehumet
-MONS:  goblin; wand of flame /\
-       hobgoblin; wand of flame /\
-       kobold; wand of flame
+MONS:  goblin
 MAP
 .......
 ...x...
@@ -1831,10 +1808,10 @@ TAGS:   no_item_gen no_monster_gen temple_overflow_1 temple_overflow_xom
 TAGS:   uniq_altar_xom
 KFEAT:  _ = altar_xom
 MONS:   place:D:1
-MONS:   orc ; dagger ego:chaos | spear ego:chaos
-MONS:   gnoll ; dagger ego:chaos | spear ego:chaos
-MONS:   boggart ; flail ego:chaos | long sword ego:chaos | trident ego:chaos
-MONS:   rakshasa ; flail ego:chaos | long sword ego:chaos | trident ego:chaos
+MONS:   orc
+MONS:   gnoll 
+MONS:   boggart 
+MONS:   rakshasa 
 :  if you.depth() == dgn.br_depth(you.branch()) then
 KFEAT:  ~ = known teleport trap w:20 / known alarm trap w:3
 :  else
@@ -1883,7 +1860,6 @@ ENDMAP
 NAME:    xom_butterflies
 TAGS:    temple_overflow_1 temple_overflow_xom transparent patrolling
 KFEAT:   _ = altar_xom
-KITEM:   _ = any wand
 COLOUR:  . = random
 NSUBST:  . = 2: 1/ *: .
 MONS:    butterfly
@@ -1968,7 +1944,7 @@ TAGS:   temple_overflow_1 temple_overflow_xom uniq_altar_xom
 KFEAT:  _ = altar_xom
 KFEAT:  T = known teleport trap
 NSUBST: I = 1:1 / 3:2
-MONS: crimson imp ; dagger ego:chaos ident:type, crimson imp ; nothing
+MONS: crimson imp
 MAP
 xxxx+xxxx
 xIT...TIx
@@ -2111,9 +2087,9 @@ COLOUR: c = white
 TILE:   c = wall_church
 FTILE: _.G1m+ = floor_limestone
 MONS:   angel god:zin dbname:zin_angel / \
-        angel god:zin dbname:zin_angel ; any weapon level:20 ego:holy_wrath ident:type / \
-        angel god:zin dbname:zin_angel ; long sword ego:holy_wrath ident:type / \
-        angel god:zin dbname:zin_angel ; mace ego:holy_wrath ident:type
+        angel god:zin dbname:zin_angel / \
+        angel god:zin dbname:zin_angel / \
+        angel god:zin dbname:zin_angel
 : interest_check(_G)
 MAP
 xxxxxxxxx
@@ -2152,7 +2128,6 @@ ENDMAP
 NAME:   zin_scriptorium
 TAGS:   no_item_gen no_monster_gen temple_overflow_1 temple_overflow_zin
 DEPTH:  D:2-9
-ITEM:   any scroll
 KFEAT:  _ = altar_zin
 KFEAT:  m = iron_grate
 KPROP:  ? = no_tele_into
@@ -2419,7 +2394,7 @@ NAME:  grunt_temple_overflow_champion_of_chaos
 DEPTH: D:3-9
 TAGS:  temple_overflow_2 temple_overflow_makhleb temple_overflow_xom
 TAGS:  no_monster_gen
-MONS:  crimson imp ; dagger ego:chaos ident:type
+MONS:  crimson imp
 KFEAT: A = altar_makhleb
 KFEAT: B = altar_xom
 MAP
@@ -2472,7 +2447,7 @@ TAGS:  temple_overflow_2 temple_overflow_makhleb temple_overflow_vehumet
 DEPTH: D:3-9
 KFEAT: A = altar_makhleb
 KFEAT: B = altar_vehumet
-MONS:  crimson imp ; wand of flame charges:1
+MONS:  crimson imp
 MAP
  xxxxx
 xxA.Bxx
@@ -2549,13 +2524,9 @@ KFEAT:  A = altar_okawaru
 KFEAT:  B = altar_trog
 KPROP:  . = bloody / nothing
 : if you.absdepth() < 8 then
-MONS:   gnoll ; spear | nothing . potion of berserk rage / \
-        orc ; whip | hand axe | dagger . \
-              leather armour | nothing . potion of berserk rage
+MONS:   gnoll
 : else
-MONS:   orc warrior ; whip | hand axe | rapier . \
-                      leather armour | ring mail . \
-                      potion of berserk rage
+MONS:   orc warrior
 : end
 MAP
 xxxxxxx
@@ -2578,15 +2549,6 @@ TAGS:    no_item_gen
 KFEAT:   A = altar_kikubaaqudgha
 KFEAT:   B = altar_sif_muna
 KFEAT:   C = altar_vehumet
-ITEM:    randbook owner:Kikubaaqudgha disc:necromancy spells:pain \
-         numspells:1
-# You already got a direct damage spell by looting the other gods' altars.
-ITEM:    randbook owner:Sif_Muna disc:hexes numspells:1 slevels:1 / \
-         randbook owner:Sif_Muna disc:charms numspells:1 slevels:1 / \
-         randbook owner:Sif_Muna disc:transmutation numspells:1 slevels:1 / \
-         randbook owner:Sif_Muna disc:summoning numspells:1 slevels:1 / \
-         randbook owner:Sif_Muna disc:translocation numspells:1 slevels:1
-ITEM:    randbook owner:Vehumet disc:conjuration spells:magic_dart numspells:1
 SHUFFLE: AdB"C` / A'BeC` / A'B"Cf
 MAP
      xxxxx
@@ -2668,7 +2630,6 @@ NAME:   grunt_temple_overflow_gold_and_silver
 DEPTH:  D:2-9
 TAGS:   temple_overflow_2 temple_overflow_gozag temple_overflow_zin
 TAGS:   transparent
-KITEM:  $ = gold q:1 / gold q:2
 KFEAT:  _ = altar_gozag
 KFEAT:  O = altar_zin
 TILE:   G = dngn_golden_statue
@@ -2735,9 +2696,6 @@ KMONS:   xyzXYZ~ = orc wizard
 KFEAT:   xX = altar_sif_muna
 KFEAT:   yY = altar_kikubaaqudgha
 KFEAT:   zZ = altar_vehumet
-KITEM:   X = randbook owner:Sif_Muna disc:summoning numspells:1 slevels:1
-KITEM:   Y = randbook owner:Kikubaaqudgha disc:necromancy numspells:1 slevels:1
-KITEM:   Z = randbook owner:Vehumet disc:conjuration numspells:1 slevels:1
 SHUFFLE: x'y"z` / x'y"z` / X~y"z` / x'Y~z` / x'y"Z~
 SUBST:   '"` = ., ~ = ~.
 MAP

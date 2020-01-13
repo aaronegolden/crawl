@@ -25,14 +25,14 @@ KMONS:   0 = centaur warrior / manticore w:5 / yaktaur captain w:5 / \
              tengu warrior band / tengu conjurer band / deep elf knight / \
              boggart band / rakshasa / ogre mage / cyclops / \
              two-headed ogre w:5 / shapeshifter w:5 / death yak band
-KMONS:   9 = ettin ; giant club randart . giant club randart / \
+KMONS:   9 = ettin / \
              glowing shapeshifter hd:13 w:5 / stone giant / \
              sphinx / tengu reaver w:5 / deep elf high priest w:5
 KMONS:   J = acid robin skeleton
 KMONS:   K = spriggan rider
-KMONS:   L = spriggan ; robe . dagger
+KMONS:   L = spriggan
 KMONS:   M = yak
-KMONS:   N = spriggan ; robe . quarterstaff
+KMONS:   N = spriggan
 KMONS:   O = dire elephant / death yak / emperor scorpion / anaconda w:5
 KMONS:   Q = bush
 KMONS:   R = plant
@@ -133,7 +133,7 @@ MONS:   tengu warrior / deep elf knight w:5 / \
         deep elf archer w:5 / shapeshifter w:5
 MONS:   tengu conjurer w:20 / ogre mage w:15 / boggart band / rakshasa / \
         cyclops w:5
-KMONS:  8 = ettin ; giant club randart . giant club randart / \
+KMONS:  8 = ettin / \
             glowing shapeshifter hd:13 w:5 / stone giant / \
             sphinx / tengu reaver w:5 / deep elf high priest w:5
 NSUBST: 3 = 6:3 / 4:6 / * = 36., 7 = 4:7 / * = 77., 1 = 1:8 / 2 = 118 / *:1
@@ -199,10 +199,9 @@ ORIENT: northeast
 MONS:   the Enchantress patrolling, thorn hunter / spriggan defender
 MONS:   tengu reaver / glowing shapeshifter hd:13
 MONS:   satyr w:15 / spriggan berserker w:15 / spriggan air mage, faun
-MONS:   tengu conjurer ; quarterstaff . robe . longbow / \
-        tengu conjurer ; quarterstaff . robe . arbalest / \
-        centaur warrior / rakshasa / ogre mage ; giant club . \
-        robe . potion of berserk rage q:1 ident:type
+MONS:   tengu conjurer / \
+        tengu conjurer / \
+        centaur warrior / rakshasa / ogre mage
 KMONS:  L = water nymph
 KMONS:  P = plant
 ITEM:   quarterstaff / nothing w:180
@@ -258,7 +257,7 @@ ORIENT: float
 MONS:   the Enchantress patrolling
 MONS:   spriggan defender w:14 / thorn hunter
 MONS:   sphinx w:20 / tengu reaver w:15 / deep elf high priest / \
-        ettin w:5 ; giant club randart . giant club randart
+        ettin w:5
 MONS:   spriggan air mage w:15 / spriggan druid / spriggan berserker / \
         dire elephant w:5 / shambling mangrove w:3 / anaconda w:2
 MONS:   manticore / deep elf knight w:5 / deep elf archer w:5 / \

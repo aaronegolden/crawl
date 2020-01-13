@@ -53,10 +53,6 @@
         e.shuffle("JH")
         e.shuffle("34")
         e.shuffle("m6")
-        e.kitem("p = potion of mutation")
-        e.kitem("P = any jewellery good_item")
-        e.kitem("Q = potion of mutation")
-        e.kitem("R = potion of mutation / nothing")
         e.nsubst("u = 2:Q / 1:P / 1:R / *:u")
         e.nsubst("G = 1:G / *:2")
         e.nsubst("H = 2:8 / 2:3")
@@ -125,11 +121,6 @@ KMONS:   W = patrolling water elemental w:40 / \
              patrolling hydra simulacrum / patrolling hydra spectre / \
              patrolling anaconda simulacrum / patrolling anaconda spectre / \
              patrolling snapping turtle zombie
-ITEM:    any scroll
-KITEM:   e = any / any good_item w:4
-KITEM:   8B = potion of mutation ident:type q:3 / any good_item
-KITEM:   9 = |
-KITEM:   0 = potion of augmentation ident:type
 KFEAT:   8e = >
 KFEAT:   W = w
 NSUBST:  h = 1:+ / *:x, H = 1:+ / *:x
@@ -222,9 +213,6 @@ KMONS:   L = fire dragon
 KMONS:   ~ = ice dragon
 KMONS:   z = killer bee
 KMONS:   Z = queen bee
-ITEM:    scroll of teleportation
-ITEM:    amulet of reflection
-KITEM:   gzZ = large rock w:10 / nothing w:40
 KFEAT:   L = l
 KFEAT:   ~ = w
 KFEAT:   ^ = known teleport trap / known Zot trap
@@ -240,7 +228,6 @@ NSUBST:  * = 1:f / *:*
 SUBST:   * = * % % $ $ e
 SUBST:   ; = 9 0
 SUBST:   ! = %$, & = *%
-KITEM:   V = *
 COLOUR:  a = yellow
 TILE:    a = wall_wax
 SUBST:   a = x
@@ -590,8 +577,6 @@ KMONS: K = storm dragon
 KMONS: L = shadow dragon
 KMONS: M = quicksilver dragon
 KMONS: N = golden dragon
-KITEM: KLMN> = acquire any
-KITEM: 12 = any
 MAP
   cc+cc
  cc1%1cc
@@ -640,37 +625,23 @@ NAME:     hangedman_crystal_crosses_colossus
 TAGS:     no_monster_gen no_item_gen no_pool_fixup uniq_d_encompass
 ORIENT:   encompass
 MONS:     deep elf mage w:12 / naga mage / hell knight / efreet w:5 / \
-          rakshasa w:5 ; robe . wand of iceblast | wand of lightning . \
-                         trident ego:freezing | trident ego:flaming / \
-          centaur warrior w:8 ; shortbow ego:flaming | shortbow ego:freezing . \
-                                long sword good_item
+          rakshasa w:5 / \
+          centaur warrior
 MONS:     fire dragon w:5 / fire dragon perm_ench:shapeshifter w:5 / \
           ice dragon w:5 / ice dragon perm_ench:shapeshifter w:5 / \
           mana viper w:5 / mana viper perm_ench:shapeshifter w:5 / \
           very ugly thing w:20 / shock serpent / \
-          hydra simulacrum w:4 / anaconda simulacrum w:4 / harpy simulacrum w:4 / \
-          dancing weapon w:8 ; trident ego:flaming | trident ego:freezing | \
-                               war axe ego:flaming | war axe ego:freezing | \
-                               long sword ego:flaming | long sword ego:freezing | \
-                               flail ego:flaming | flail ego:freezing
-MONS:     fire giant ; battleaxe ego:freezing / spriggan air mage / sphinx w:5 / \
-          frost giant ; great mace ego:flaming / deep troll earth mage / \
-          tengu reaver / ettin ; great mace ego:flaming . great mace ego:freezing / \
-          deep elf annihilator ; ice dragon scales | fire dragon scales . \
-                                 scimitar ego:flaming | scimitar ego:freezing
+          hydra simulacrum w:4 / anaconda simulacrum w:4 / harpy simulacrum w:4
+MONS:     fire giant / spriggan air mage / sphinx w:5 / \
+          frost giant / deep troll earth mage / \
+          tengu reaver / ettin  / \
+          deep elf annihilator
 MONS:     iron dragon w:5 / iron dragon perm_ench:shapeshifter w:5 / \
           storm dragon w:5 / storm dragon perm_ench:shapeshifter w:5 / \
           war gargoyle / juggernaut simulacrum w:5 / lorocyproca w:5 / \
-          ghost moth w:5 / glowing shapeshifter w:15 / spark wasp / \
-          dancing weapon ; glaive ego:flaming | glaive ego:freezing | \
-                           battleaxe ego:flaming | battleaxe ego:freezing | \
-                           double sword ego:flaming | double sword ego:freezing | \
-                           great mace ego:flaming | great mace ego:freezing
-KMONS:    5 = deep elf blademaster ; mundane crystal plate armour . \
-                                     rapier ego:flaming . rapier ego:freezing
-KMONS:    6 = deep elf master archer ; fire dragon scales | ice dragon scales . \
-                                       longbow ego:flaming | longbow ego:freezing . \
-                                       potion of haste | potion of resistance
+          ghost moth w:5 / glowing shapeshifter w:15 / spark wasp
+KMONS:    5 = deep elf blademaster
+KMONS:    6 = deep elf master archer
 KMONS:    7 = lich / ancient lich w:5
 KMONS:    8 = titan / giant giant
 KMONS:    A = golden dragon w:19 / golden dragon perm_ench:shapeshifter w:1 / \

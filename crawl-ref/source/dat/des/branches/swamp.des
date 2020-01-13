@@ -556,43 +556,6 @@ tttt...tttt
    ttttt
 ENDMAP
 
-NAME: nicolae_swamp_orc_logging_accident
-TAGS: decor extra no_monster_gen no_trap_gen
-SUBST: F = 't, T = _t
-NSUBST: p = 4:p / *:., ' = o / '
-SUBST: . = ...b
-KPROP: bp = bloody
-SUBST: b = .
-{{
-dgn.delayed_decay_extra(_G, 'o', 'orc corpse', 'hand axe / broad axe, ' ..
-   'leather armour / pair of gloves, mundane quarterstaff')
-dgn.delayed_decay_extra(_G, 'p', 'orc corpse', 'hand axe / broad axe, ' ..
-   'leather armour / pair of gloves')
-}}
-KITEM: w = mundane quarterstaff
-KITEM: s = large rock
-KFEAT: 'o = W
-CLEAR:  _
-MAP
-       TTTTT
-     TTtttttTTT
-    TttttFFttttTT
-   TttttFF'FtttttT
-  TtttttF'''FtttttT
- TtttttttF''FttttttT
- Ttt.p........p.ttttT
-TTt..xxxx........tptT
-Tttp.xwwx...xxmx...tT
-Tt...xww+...xpsx...tT
-Tt.p.xwwxp..+.sm.p.tT
-Tt...xxxx...x.sx..ttT
-Tt..p.......xxmx..tTT
-Ttt.....p......p.ttT
-TTtttt..........ttTT
- TTTTtttt@@ttttttTT
-    TTTT     TTTTT
-ENDMAP
-
 NAME:    hangedman_swamp_cone
 TAGS:    transparent extra no_pool_fixup decor
 SHUFFLE: ABCDEF
@@ -1159,7 +1122,6 @@ MONS: hydra
 NSUBST: : = 5:W / *:.
 SUBST: w = w:10 t:10
 KFEAT: K = shallow_water
-KITEM: K = potion of mutation w:20 / potion of mutation
 KPROP: w = no_tele_into
 MARKER: K = lua:fog_machine { cloud_type="black smoke", \
                               pow_min = 10, pow_max = 30, delay = 50, \
@@ -1189,8 +1151,6 @@ ENDMAP
 NAME: grunt_lady_of_the_lake
 SUBST: w = w:50 t:10
 SUBST: W = w
-KITEM: O = double sword good_item w:2 / \
-           triple sword good_item w:1
 KFEAT: K = deep_water
 KPROP: wK = no_tele_into
 {{
@@ -1226,7 +1186,6 @@ SUBST: - = .W
 SUBST: C = c:20 . W
 SUBST: + = +.
 SUBST: G = Gg
-KITEM: g = large rock q:1
 KFEAT: g = floor
 KFEAT: _ = altar_yredelemnul / altar_kikubaaqudgha
 MAP
@@ -1380,8 +1339,6 @@ SUBST: b = ., . = ..W
 KFEAT: T = tree
 KMONS: p = plant
 : kmons( "h = " .. heads .. "-headed hydra patrolling" )
-KITEM: g = any weapon good_item / any armour good_item / any jewellery good_item
-: dgn.delayed_decay(_G, 'c', 'human corpse')
 CLEAR: _
 MAP
    ZZZZZZ
@@ -1405,7 +1362,6 @@ DEPTH:   Swamp:2-, !Swamp:$
 MONS:    fire dragon, lindwurm
 MONS:    ice dragon, bog body / hydra simulacrum w:8
 MONS:    swamp dragon, alligator / hydra w:8
-ITEM:    any good_item
 SUBST:   $ = $%%*, * = **d, T = tww
 SHUFFLE: 12 / 12 / 34 / 34 / 56 / 56 / 56
 NSUBST:  2 = 1 : 2:9 .:1 / *:2, 4 = 1 : 4:9 .:1 / *:4, 6 = 1 : 6:9 .:1 / *:6
@@ -1482,7 +1438,6 @@ NAME:  cheibrodos_swamp_kobolds
 TAGS:  no_item_gen no_monster_gen
 DEPTH: Swamp, !Swamp:$
 MONS:  kobold demonologist
-ITEM:  book of callings, book of summonings
 SUBST: ' = %:20 d:1 e:1
 MAP
         WWW
@@ -1502,7 +1457,7 @@ ENDMAP
 NAME:  cheibrodos_swamp_pet_leeches
 TAGS:  no_item_gen no_monster_gen
 DEPTH: Swamp, !Swamp:$
-MONS:  vampire ; long sword . robe, tyrant leech
+MONS:  vampire, tyrant leech
 KPROP: e' = no_tele_into
 KPROP: .21 = bloody / w:30 nothing
 KPROP: e = bloody
@@ -1522,7 +1477,6 @@ NAME:  cheibrodos_swamp_minitomb
 TAGS:  no_item_gen no_monster_gen
 DEPTH: Swamp, !Swamp:$
 KMONS: - = bog body w:20 / troll zombie / troll skeleton / shadow w:5
-KITEM: - = w:5 gold / w:2 any jewellery / w:20 nothing
 SUBST: ' = .W
 MAP
   W@WWtW
@@ -1558,7 +1512,6 @@ SUBST: ghi = .
 KMONS: D = patrolling spriggan rider
 KMONS: SGHI = spriggan / nothing
 KMONS: F = spriggan druid
-KITEM: f = large rock
 MAP
        ttttt
   ttttttgggt
@@ -1758,10 +1711,6 @@ KMONS: Oo = oklob plant / oklob sapling w:2
 KMONS: F = fungus
 KMONS: . = plant w:5 / fungus w:5 / nothing w:100
 KMONS: - = plant / fungus / nothing w:80
-KITEM: h^m = % / * w:5
-KITEM: o = * / | w:5
-KITEM: f = wand of acid
-KITEM: b = Fen Folio ident:type
 KFEAT: ^, = .
 CLEAR: _
 MAP
@@ -2050,7 +1999,6 @@ KMONS:   ? = swamp worm zombie / alligator zombie
 KMONS:   O = bone dragon
 KITEM:   O = decaying rune of Zot
 KFEAT:   O = enter_vaults
-KITEM:   * = *
 KFEAT:   ?Y = deep_water
 KFEAT:   * = shallow_water
 SHUFFLE: O*
@@ -2159,8 +2107,6 @@ KMONS:   d = patrolling the lernaean hydra / hydra w:1, hydra
 KMONS:   ef = patrolling hydra
 KITEM:   d = decaying rune of Zot
 KFEAT:   d = enter_vaults
-KITEM:   ef = any good_item
-KITEM:   g = large rock q:1
 NSUBST:  @ = 1:@ / *:.
 SUBST:   C = cc., = = +.
 SHUFFLE: def, 123
@@ -2211,7 +2157,6 @@ NSUBST:  O = 1:O / *:*
      KMONS: O = the lernaean hydra
 : else
      KMONS: O* = thorn hunter / shambling mangrove / spriggan berserker
-     KITEM: * = *
 : end
 MAP
    tt  tt

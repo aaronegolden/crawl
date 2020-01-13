@@ -167,26 +167,6 @@ xxxxxxxxxxxxx@
 ENDMAP
 
 ############################################################
-# The Guard of Blades
-#
-NAME:   erik_vaults_1
-TAGS:   vaults_entry
-MONS:   dancing weapon ; long sword good_item
-SUBST:  v : vcxxx
-KFEAT:  O = enter_vaults
-MAP
-.............
-.............
-.....v%v.....
-....vvvvv....
-.....1O1.....
-....vvvvv....
-.....v%v.....
-.............
-.............
-ENDMAP
-
-############################################################
 # Above As Below
 #
 NAME:    erik_vaults_2
@@ -281,10 +261,7 @@ ENDMAP
 NAME: grunt_vaults_entry_fortified
 TAGS: vaults_entry no_pool_fixup no_monster_gen patrolling
 ORIENT: north
-MONS: human ; arbalest . rapier | dagger . \
-              leather armour w:5 | ring mail | scale mail / \
-      orc warrior ; arbalest . rapier | dagger . \
-                    leather armour w:5 | ring mail | scale mail / \
+MONS: human / orc warrior / \
       deep elf knight w:5 / deep elf archer w:5 / gargoyle / yaktaur
 MONS: vault guard / orc knight w:2
 MONS: wizard / tengu conjurer / orc sorcerer / ogre mage

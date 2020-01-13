@@ -1212,8 +1212,8 @@ ENDMAP
 NAME: nicolae_vaults_holding_cells
 TAGS: vaults_hard
 WEIGHT: 5
-KMONS: P = human ; nothing / orc ; nothing / elf ; nothing / troll ; nothing / \
-       centaur ; nothing / kobold ; nothing
+KMONS: P = human  / orc  / elf  / troll  / \
+       centaur  / kobold 
 KFEAT: g = iron_grate
 KFEAT: ^ = known alarm trap
 KMONS: 1 = vault guard

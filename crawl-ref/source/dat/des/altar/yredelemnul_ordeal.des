@@ -41,7 +41,6 @@ MARKER: h = lua:MonPropsMarker:new{yslave="yslave"}
 KFEAT:  h = .
 KFEAT:  _ = altar_yredelemnul
 KFEAT:  d = .
-KITEM:  d = human skeleton / goblin skeleton / gnoll skeleton / troll skeleton
 SUBST:  1 = ....12
 FTILE:  _-M = floor_tomb
 SUBST:  G : G.

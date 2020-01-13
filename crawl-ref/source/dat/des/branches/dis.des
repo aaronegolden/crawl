@@ -10,7 +10,6 @@
 function dis_setup(e)
    e.place("Dis:7")
    e.tags("dis", "no_rotate")
-   e.kitem("$ = $ no_pickup")
 -- turn granite statues into iron statues
 -- you still have to colour the statues, if desired
    e.set_feature_name("granite_statue", "iron statue")
@@ -188,8 +187,7 @@ KMONS:   23 = reaper
 KMONS:   45 = hellion
 KMONS:   67 = quicksilver dragon
 KMONS:   89 = iron troll
-KMONS:   AB = dancing weapon ; double sword good_item | battleaxe good_item | \
-                               glaive good_item | great mace good_item
+KMONS:   AB = hell knight
 KMONS:   CD = war gargoyle
 KMONS:   E = lich
 KMONS:   F = executioner
@@ -209,7 +207,6 @@ KMONS:   E = orb of fire
 KMONS:   F = ancient lich
 KMONS:   ! = fire dragon / ice dragon / storm dragon / bone dragon w:5
 KMONS:   ? = moth of wrath / death cob w:2 / guardian mummy w:2
-KITEM:   % = % / * w:2
 : end
 KMONS:   H = iron dragon
 : if you.in_branch("Dis") then
@@ -251,9 +248,7 @@ MONS:    patrolling hell sentinel
 MONS:    rust devil w:15 / skeletal warrior / iron dragon skeleton w:5 / \
          iron dragon zombie w:5 / iron troll skeleton w:5 / \
          iron troll zombie w:5 / hell knight w:15
-MONS:    hellion / tormentor / reaper / ancient champion / \
-         dancing weapon w:20 ; double sword good_item | battleaxe good_item | \
-                               glaive good_item | great mace good_item
+MONS:    hellion / tormentor / reaper / ancient champion
 SHUFFLE: ABa / CDb / EFc
 NSUBST:  F = 1:112 / 1:1 / 1 : }:6 >:3 .:1
 SUBST:   ABCDE = 3:19 4:1, a = +, bc = v, V : v.
@@ -585,9 +580,6 @@ MONS:    reaper / hellion / tormentor / executioner w:2      / \
          iron dragon w:2 / quicksilver dragon w:2
 KFEAT:   Z = floor
 # Standard floor spawn equipment drops, not real loot.
-KITEM:   d = battleaxe no_pickup / great mace no_pickup      / \
-             double sword no_pickup / glaive no_pickup        / \
-             trident good_item no_pickup w:5
 NSUBST:  > = 1 = ((<d / 1 = ))>e / 2 = >:1 .:49 / * = ...de
 # Always place at least one door per room, possibly wider or multiplied.
 # Variation provided across either half of the vault and per-room.
@@ -746,7 +738,6 @@ MARKER:  o = lua:monster_on_death { \
             veto_fragmentation="veto", veto_disintegrate="veto", \
             veto_shatter="veto" \
          }
-KITEM:   | = superb_item no_pickup
 : dis_castle(_G)
 : dis_statues(_G)
 MAP
@@ -792,12 +783,8 @@ COLOUR: G = cyan
 KMONS:  8 = iron troll
 KMONS:  9 = war gargoyle
 KFEAT:  P = exit_dungeon
-ITEM:   plate armour good_item / crystal plate armour good_item w:3
-ITEM:   acquire weapon
 KMONS:  F = Hell Sentinel
-KITEM:  F = |
 KMONS:  E = Hell Sentinel
-KITEM:  E = $
 : serpent_of_hell_setup(_G)
 : dis_castle(_G)
 : dis_statues(_G)
@@ -1061,9 +1048,7 @@ MONS:    patrolling iron dragon / patrolling quicksilver dragon / \
          patrolling iron giant w:5
 MONS:    patrolling Dispater
 KMONS:   8 = vampire knight w:8 / hell knight band w:8 / ancient champion w:18 / \
-         reaper w:6 / cacodemon w:2 / executioner w:6 / balrug w:4 / \
-         dancing weapon w:12 ; great mace good_item | glaive good_item | \
-                               battleaxe good_item | double sword w:15 good_item
+         reaper w:6 / cacodemon w:2 / executioner w:6 / balrug w:4
 NSUBST:  - = 1:+ / 1 : v:14 +:1 / *:v, = = 1:+ / 1 : v:14 +:1 / *:v
 NSUBST:  0 = 2:8 / 5 = 0:29 8:1 / 2:. / * = 0:49 .:1
 NSUBST:  9 = 3:8 / 3 = 9:4 8:1 / *:9

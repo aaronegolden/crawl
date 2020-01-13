@@ -45,9 +45,9 @@ TAGS:    no_rotate
 ORIENT:  north
 DEPTH:   D:3-6
 MONS:    goblin / hobgoblin w:2
-MONS:    goblin; whip / hobgoblin; whip / gnoll w:3; whip | spear / nothing
+MONS:    goblin / hobgoblin / gnoll w:3
 MONS:    kobold / nothing
-MONS:    kobold; whip / big kobold w:1; whip | rapier w:2 / nothing
+MONS:    kobold/ big kobold w:1
 SUBST:   y : y:48 w:1 W:1, Y : Y:48 W:1 .:1, y = wWW, Y = WW.
 SUBST:   5 = 2 1:2 .:24
 SHUFFLE: ABCD
@@ -671,7 +671,7 @@ MARKER: z = lua:fog_machine { \
                 size_buildup_time = 25, cloud_type = "freezing vapour" \
             }
 MONS:   gargoyle, earth elemental, air elemental
-MONS:   dancing weapon ; long sword good_item, crystal guardian, war gargoyle
+MONS:   crystal guardian, war gargoyle
 KFEAT:  o = granite_statue
 KFEAT:  m = .
 KFEAT:  z = .

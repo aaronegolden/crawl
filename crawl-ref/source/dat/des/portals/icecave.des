@@ -184,7 +184,7 @@ function ice_cave_caverns_natural_giant_monster_set(e)
   e.mons("polar bear w:8 / death yak w:4 / rime drake w:2")
   e.mons("polar bear / yak")
   e.mons("wolf / nothing w:3")
-  e.mons("patrolling frost giant ; battleaxe ego:freezing")
+  e.mons("patrolling frost giant")
 end
 
 function ice_cave_item_attributes(e)
@@ -536,7 +536,7 @@ MONS:    yak / wolf / polar bear w:4
 MONS:    polar bear w:3 generate_awake / wolf generate_awake / \
          yak generate_awake
 MONS:    polar bear, rime drake
-MONS:    frost giant ; battleaxe ego:freezing
+MONS:    frost giant
 MONS:    ice statue
 ITEM:    giant club / great mace w:9 / \
          battleaxe w:7 / glaive w:8 / halberd w:8 / double sword w:6 / \
@@ -679,8 +679,7 @@ MONS:    white imp
 MONS:    freezing wraith
 : mocking_simulacrum(_G)
 : mons(mocking_ice)
-: mons("necromancer / necromancer w:30 ; robe " .. coldres ..
-:   " . wand of lightning | wand of iceblast | nothing")
+: mons("necromancer / necromancer w:30")
 : savage_simulacrum(_G)
 : mons(savage_ice)
 MONS:    ice statue

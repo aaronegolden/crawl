@@ -86,32 +86,32 @@ SHUFFLE: ABCDEFGHIJKLMNOPQRSTUVWXYZ
 KFEAT:   ABCDEFGHIJKLMNOPQRSTUVWXYZ = floor
 KPROP:   ABCDEFGHIJKLMNOPQRSTUVWXYZ = no_tele_into
 KMASK:   ABCDEFGHIJKLMNOPQRSTUVWXYZ = no_item_gen
-KMONS:   A = human ; nothing
-KMONS:   B = elf ; nothing
-KMONS:   C = dwarf ; nothing
-KMONS:   D = orc ; nothing
-KMONS:   E = merfolk ; nothing
+KMONS:   A = human 
+KMONS:   B = elf 
+KMONS:   C = dwarf 
+KMONS:   D = orc 
+KMONS:   E = merfolk 
 KMONS:   F = nothing
-KMONS:   G = kobold ; nothing
-KMONS:   H = spriggan ; nothing
-KMONS:   I = naga ; nothing
-KMONS:   J = centaur ; nothing
-KMONS:   K = ogre ; nothing
+KMONS:   G = kobold 
+KMONS:   H = spriggan 
+KMONS:   I = naga 
+KMONS:   J = centaur 
+KMONS:   K = ogre 
 KMONS:   L = troll
-KMONS:   M = minotaur ; nothing
-KMONS:   N = tengu ; nothing
-KMONS:   O = draconian ; nothing
-KMONS:   P = demonspawn ; nothing
+KMONS:   M = minotaur 
+KMONS:   N = tengu 
+KMONS:   O = draconian 
+KMONS:   P = demonspawn 
 KMONS:   Q = mummy
 KMONS:   R = nothing
 KMONS:   S = ghoul
 KMONS:   T = jiangshi
-KMONS:   U = demigod ; nothing
-KMONS:   V = octopode ; nothing
-KMONS:   W = formicid ; nothing
-KMONS:   X = gargoyle ; nothing
-KMONS:   Y = vine stalker ; nothing
-KMONS:   Z = skeletal warrior ; nothing
+KMONS:   U = demigod 
+KMONS:   V = octopode 
+KMONS:   W = formicid 
+KMONS:   X = gargoyle 
+KMONS:   Y = vine stalker
+KMONS:   Z = skeletal warrior
 MAP
  ccccc
  c.{.c
@@ -163,11 +163,11 @@ SUBST:   P = MNO
 KMASK:   EMNOQ = no_item_gen
 #
 # Player monsters:
-KMONS: M = human / elf / orc; nothing / naga; nothing / centaur; nothing / \
-           draconian; nothing / ogre; nothing / minotaur / troll / kobold / \
-           mummy / ghoul / spriggan; nothing / dwarf; nothing / \
-           octopode; nothing / jiangshi/ formicid; nothing / \
-           gargoyle; nothing / vine stalker; nothing
+KMONS: M = human / elf / orc / naga / centaur / \
+           draconian / ogre / minotaur / troll / kobold / \
+           mummy / ghoul / spriggan / dwarf / \
+           octopode / jiangshi/ formicid / \
+           gargoyle / vine stalker
 # Player monsters, zombie versions (ghouls drop out because they need sustenance
 # and can't be reanimated once starved; gargoyles don't leave corpses):
 KMONS: N = human zombie / elf zombie / orc zombie / naga zombie / ogre zombie / \
@@ -277,7 +277,6 @@ SUBST:   C=., !=@
 SHUFFLE: B(' / zzz, V[" / yyy
 SUBST:   z=x, y=x, B=., '=+, V=., "=+
 NSUBST:  . = 1:d / *:.
-ITEM:    gold q:1
 MAP
 xxxxxxxxxxxxxxxxxxx....@
 xxxxxxxCCCCCCCxxxxx.....
@@ -416,7 +415,6 @@ SUBST:   t : U...., 23 = 0
 : else
 SUBST:   D = C
 SHUFFLE: VCd
-KITEM:   d = any scroll
 KMONS:   1 : gnoll / orc / 0 w:20
 KMONS:   2 : big kobold / ogre / 0 w:60
 KMONS:   3 : troll / 0 w:70
@@ -760,7 +758,6 @@ NAME:    nagdon_arrival_zigzag_paths
 TAGS:    arrival no_trap_gen no_monster_gen
 ORIENT:  float
 MONS:    plant, toadstool
-ITEM:    orc skeleton / kobold skeleton / goblin skeleton / place:D:1 skeleton
 : if crawl.one_chance_in(3) then
   SUBST:   GHIJ = x
   SUBST:   " = .

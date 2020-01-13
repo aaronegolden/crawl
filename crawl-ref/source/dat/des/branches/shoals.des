@@ -49,15 +49,6 @@ function shoals_atoll_kraken_death(data, triggerable, triggerer, marker, ev)
     dgn.apply_tide()
 end
 
-function shoals_atoll_place_items(data, triggerable, triggerer, marker, ev)
-    local points = dgn.find_marker_positions_by_prop("tide_seed", 1)
-    for _, point in ipairs(points) do
-        for i = 1, 5 do
-            dgn.create_item(point.x, point.y, "star_item")
-        end
-    end
-end
-
 function shoals_ice_setup(e)
   e.subst("- = xxxW.")
   e.rtile("x = wall_zot_cyan")
@@ -316,17 +307,11 @@ ENDMAP
 NAME:    hangedman_shoal_volcano
 TAGS:    no_monster_gen no_item_gen patrolling
 DEPTH:   Shoals
-KMONS:   12 = merfolk ; trident ego:flaming | spear ego:flaming . \
-             robe ego:fire_resistance | robe w:5 . \
-             buckler ego:fire_resistance | buckler | nothing w:30
-KMONS:   3 = siren ; trident ego:flaming | spear ego:flaming . \
-             robe ego:fire_resistance | robe w:5 . \
-             buckler ego:fire_resistance w:20 | buckler | nothing w:70
+KMONS:   12 = merfolk 
+KMONS:   3 = siren
 KMONS:   4 = merfolk aquamancer
 KMONS:   67 = fire bat
 KMONS:   8 = fire crab
-KITEM:   67 = % w:15 / *
-KITEM:   8 = * w:15 / |
 KPROP:   l = no_cloud_gen
 KPROP:   .1234"x = no_tide
 : if crawl.random2(you.depth()+4) <= you.depth() then
@@ -451,8 +436,6 @@ KMONS:   7 = stone giant
 KMONS:   8 = frost giant
 KMONS:   9 = titan
 KFEAT:   123456789 = deep_water
-KITEM:   | = |
-KITEM:   * = *
 KFEAT:   |* = shallow_water
 SHUFFLE: 12345 / 86769
 NSUBST:  Z = 1:w / *:c
@@ -580,9 +563,6 @@ KPROP: YycfZ. = no_tide
 KPROP: ZYcf. = no_tele_into
 KMONS: c = patrolling angry ghost
 NSUBST: f = 1:g / 2:f / *:.
-KITEM: g = large rock
-KITEM: f = large rock w: 20 / nothing
-: dgn.delayed_decay(_G, 'c', 'human skeleton')
 SUBST: Z = yY
 KFEAT: y = w
 KFEAT: Y = W
@@ -635,7 +615,6 @@ KMONS: Ps = plant
 KPROP: .WwpPsd = no_tide
 KFEAT: y = w
 KFEAT: s = W
-KITEM: d = any scroll w:30 / nothing w:20 / any randbook w:1
 MAP
  xxxxx
 xxxxdxxxx
@@ -927,9 +906,8 @@ TAGS: water_ok no_item_gen no_monster_gen
 ORIENT: float
 SHUFFLE: 1Ww / 2DD
 MONS: merfolk, faun
-MONS: merfolk impaler ; demon trident good_item | trident good_item . gold
-MONS: satyr ; shortbow good_item . gold / \
-      satyr ; longbow good_item . gold
+MONS: merfolk impaler
+MONS: satyr
 COLOUR:   c = white
 COLOUR:   1234'D = cyan
 FTILE:    1234'D+WwG = floor_pebble_cyan
@@ -1048,7 +1026,6 @@ NSUBST: % = 1:d / *:%%%%%*
 KMONS: 1 = oklob plant
 KMONS: 2 = siren
 KMONS: p = plant
-KITEM: d = any ring w:24 / any ring good_item w:5
 MAP
  xxxxxx
 xx1WW.xx
@@ -1119,7 +1096,6 @@ MONS:    faun, satyr, meliai, minotaur
 KMONS:   _ = merfolk javelineer
 KMONS:   b = bush
 KMONS:   p = plant
-ITEM:    any potion, longbow good_item, shortbow good_item
 # Bacchus-approved.
 KFEAT:   _ = altar_uskayaw
 SHUFFLE: 35, ABC, FGHI
@@ -1151,7 +1127,6 @@ ORIENT: northwest
 KMONS:  1 = patrolling generate_awake fire dragon / \
             patrolling generate_awake ice dragon
 KMONS:  BF = bush
-KITEM:  F = animal skin randart good_item, gold, gold
 KFEAT:  F = >
 KFEAT:  X = open_sea
 MAP
@@ -1220,7 +1195,6 @@ SUBST:     0 = 0.
 SUBST:     e = e.
 KMONS:     ge = merfolk impaler / merfolk javelineer / merfolk aquamancer
 : if shoals_vault_is_mimic() then
-KITEM:     O = barnacled rune of Zot mimic
 KFEAT:     O = .
 : else
 KITEM:     O = barnacled rune of Zot
@@ -1284,7 +1258,6 @@ KMONS:   12 = merfolk impaler / merfolk javelineer / merfolk aquamancer
 KMONS:   3 = harpy band
 KMONS:   d = merfolk aquamancer / water nymph w:5
 : if shoals_vault_is_mimic() then
-KITEM:   d = barnacled rune of zot mimic
 KFEAT:   d = .
 : else
 KITEM:   d = barnacled rune of zot
@@ -1365,12 +1338,9 @@ ENDMAP
 NAME:   shoals_iceberg_rune
 TAGS:   shoal_rune_grunt_ice shoal_mimic_grunt_ice water_ok no_dump
 TAGS:   transparent allow_dup
-MONS:   merfolk impaler ; trident ego:freezing good_item . robe w:7 / \
-        merfolk impaler ; demon trident ego:freezing good_item . robe w:1 / \
-        merfolk impaler w:2 / merfolk javelineer / merfolk aquamancer
+MONS:   merfolk impaler / merfolk javelineer / merfolk aquamancer
 KMONS:  K = frost giant
 : if shoals_vault_is_mimic() then
-KITEM:  O = barnacled rune of Zot mimic
 KFEAT:  O = .
 : else
 KITEM:  O = barnacled rune of Zot
@@ -1457,7 +1427,6 @@ MONS:    satyr w:18 / merfolk impaler / merfolk javelineer / merfolk aquamancer
 MONS:    faun w:6 / 0
 KMONS:   P = plant
 : if shoals_vault_is_mimic() then
-KITEM:   O = barnacled rune of Zot mimic
 KFEAT:   O = .
 : else
 KITEM:   O = barnacled rune of Zot

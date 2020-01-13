@@ -73,8 +73,6 @@ ENDMAP
 NAME: david_orc_1_choice
 TAGS: orc_entry
 MONS: orc, warg / orc priest / orc warrior, orc warrior / orc
-ITEM: % / scroll of teleportation / scroll of noise / scroll of immolation
-ITEM: % / w:2 * / scroll of blinking / scroll of fear
 SHUFFLE: %1
 ORIENT: float
 KFEAT: O = enter_orcish_mines
@@ -210,11 +208,7 @@ ORIENT:  float
 MONS:    orc, orc priest / orc wizard
 MONS:    w:50 orc warrior / ogre, swamp drake
 # The drake's name is Bobby. Since you did ask.
-KITEM:   1 = nothing / animal skin / potion of mutation w:20 /\
-             w:2 potion of haste / w:2 potion of augmentation
 KFEAT:   1 = 1
-ITEM:    whip, potion of mutation ident:type
-ITEM:    large rock / weight:40 nothing, potion of mutation ident:type
 SHUFFLE: defO
 KFEAT:   O = enter_orcish_mines
 MAP
@@ -311,7 +305,6 @@ SUBST: Z : c:60 .
 SUBST: X : c:60 .
 SUBST: v : c:60 .
 SUBST: b : c:60 .
-KITEM: 2 = dagger
 KFEAT: 2 = 2
 KFEAT: O = enter_orcish_mines
 #
@@ -583,7 +576,6 @@ SUBST:   d = $d
 SUBST:   I = IG
 SHUFFLE: 112/334
 MONS:    orc sorcerer, orc / orc wizard, ogre mage, ogre / nothing
-ITEM:    any book
 MAP
   xxxx@xxxx
  xx2.....2xx
@@ -697,7 +689,6 @@ MONS:    patrolling orc high priest
 MONS:    deep elf knight / deep elf archer
 MONS:    deep elf mage / nothing
 MONS:    deep elf mage / nothing w:20
-ITEM:    good_item scimitar / good_item chain mail
 SUBST:   = : +x
 MAP
  xxxxx=xxx
@@ -881,7 +872,7 @@ TAGS:    no_item_gen no_monster_gen
 DEPTH:   Orc
 KMONS:   1 = orc high priest / orc sorcerer
 KMONS:   2 = orc knight
-KMONS:   3 = orc warrior / orc ; arbalest . spear | hand axe | mace
+KMONS:   3 = orc warrior / orc
 KMONS:   4 = orc priest / orc / nothing
 KMONS:   5 = orc wizard / nothing
 KMONS:   6 = ogre / two-headed ogre / troll / deep troll / ogre mage / nothing
@@ -911,10 +902,9 @@ NAME:   mines_bat_river
 TAGS:   no_item_gen no_monster_gen no_pool_fixup
 DEPTH:  Orc
 MONS:   bat
-MONS:   generate_awake orc ; shortbow ego:flaming | shortbow ego:freezing
+MONS:   generate_awake orc
 NSUBST: . = 2:2 / 2:c
 NSUBST: c = *: 2 .
-KITEM:  d = gold q:1
 NSUBST: b = 3:1 / 10:d / 4:e / *: .:20 1:1 d:2 e:2
 : dgn.delayed_decay(_G, 'e', 'bat corpse')
 SHUFFLE: ABC
@@ -952,7 +942,6 @@ TAGS:   uniq_orcaccident
 DEPTH:  Orc
 ORIENT: southeast
 MONS:   patrolling orc warrior / patrolling orc knight w:2
-KITEM:  W = gold q:1 / gold q:2 / gold q:3 / nothing w:100
 KFEAT:  W = shallow_water
 KFEAT:  X = x
 SUBST:  e = xx..., f = xx"""
@@ -1065,7 +1054,6 @@ TAGS: no_item_gen no_trap_gen luniq_orc_cave
 DEPTH: Orc
 WEIGHT: 3
 SUBST: X = $xxx, $ = $$$..
-KITEM: S = nothing / gold q:1 / gold q:2 / gold q:3
 MAP
     xxxx
  xxxxXXxx
@@ -1085,7 +1073,6 @@ SUBST: X = 'xx, ' = .:5 d:4 ^:1
 : if you.depth() == dgn.br_depth(you.branch()) then
 SUBST: ^ = .:5 d:4
 : end
-KITEM: d = large rock q:1 w:3 / gold q:1
 KFEAT: ^ = known shaft trap
 MAP
    xxx.
@@ -1104,7 +1091,6 @@ TAGS: no_item_gen no_trap_gen luniq_orc_cave
 DEPTH: Orc
 SUBST: B = b'
 NSUBST: ' = d / '
-KITEM: d = nothing w:48 / crystal ball of energy w:1 / crystal plate armour w:1
 MAP
  xxxxxxxx
 xx....xxxx
@@ -1283,9 +1269,6 @@ DEPTH: Orc
 NSUBST: r = 1:H / 1:C / *:r
 SUBST: G = GGGI
 # Makeshift hammer and chisel
-KITEM: H = whip
-KITEM: C = dagger
-KITEM: r = large rock q:1 w:5 / nothing
 MAP
 ...xxxxxx
 .G.x..rrx
@@ -1344,7 +1327,6 @@ MONS:    orc warrior, orc knight
 #
 MONS:    warg / nothing
 KFEAT:   s = stone_arch
-KITEM:   s = $
 SUBST:   5 = 32, A:+, C:+, B:c, D:c
 SUBST:   T : TIII
 NSUBST:  s = 1:O / *:s
@@ -1377,7 +1359,6 @@ ORIENT:  float
 MONS:    ogre / nothing w:5, two-headed ogre / nothing w:5, ogre mage
 KMONS:   s = ogre / nothing w:5
 KFEAT:   s = stone_arch
-KITEM:   s = $
 NSUBST:  s = 1:O / *:s
 : place_bazaar_portal(_G)
 MAP
@@ -1402,15 +1383,13 @@ NAME:    st_orc_rangers
 TAGS:    no_rotate no_item_gen no_monster_gen no_pool_fixup
 PLACE:   Orc:$
 ORIENT:  float
-MONS:    orc warrior w:1 ; arbalest . halberd | war axe | morningstar /\
-         orc w:10 ; arbalest . trident | hand axe | mace
-MONS:    orc warrior ; arbalest . glaive | broad axe | battleaxe | great mace
-MONS:    orc knight ; arbalest . glaive | broad axe | great mace
+MONS:    orc warrior w:1 / orc w:10 
+MONS:    orc warrior 
+MONS:    orc knight
 MONS:    orc warrior
 MONS:    centaur w:20 / centaur warrior w:1 / nothing w:21
 SUBST:   3 = 23
 KFEAT:   s = stone_arch
-KITEM:   s = $
 NSUBST:  s = 1:O / *:s
 : place_bazaar_portal(_G)
 MAP
@@ -1442,7 +1421,6 @@ ORIENT:  float
 MONS:    orc / nothing, orc wizard / nothing, orc sorcerer
 MONS:    orc priest / nothing, orc high priest, orc warrior
 KFEAT:   s = stone_arch
-KITEM:   s = $
 NSUBST:  s = 1:O / *:s
 SHUFFLE: 23/45
 : place_bazaar_portal(_G)
@@ -1478,7 +1456,6 @@ ORIENT:  float
 MONS:    orc / nothing, orc warrior / nothing, orc knight / nothing
 MONS:    orc priest / nothing, orc high priest
 KFEAT:   s = stone_arch
-KITEM:   s = $
 NSUBST:  s = 1:O / *:s
 : place_bazaar_portal(_G)
 MAP
@@ -1511,7 +1488,6 @@ MONS:    orc wizard / nothing, orc knight, orc high priest, orc sorcerer
 KMONS:   V = orc warlord
 KFEAT:   V = T
 KFEAT:   s = stone_arch
-KITEM:   s = $
 NSUBST:  s = 1:O / *:s
 SHUFFLE: 74/63
 : place_bazaar_portal(_G)
@@ -1552,7 +1528,6 @@ ORIENT:  float
 MONS:    ogre, two-headed ogre, troll, deep troll w:19 / iron troll w:1
 MONS:    ogre mage, two-headed ogre w:14 / ettin w:1, cyclops w:29 / stone giant w:1
 KFEAT:   s = stone_arch
-KITEM:   s = $
 NSUBST:  s = 1:O / *:s
 : place_bazaar_portal(_G)
 MAP
@@ -1576,7 +1551,6 @@ ORIENT:  float
 MONS:    orc high priest, orc sorcerer, orc knight
 MONS:    orc warrior, orc priest, orc wizard
 KFEAT:   s = stone_arch
-KITEM:   s = $
 NSUBST:  s = 1:O / *:s
 : place_bazaar_portal(_G)
 MAP
@@ -1616,7 +1590,6 @@ KMONS:  B = Nergalle w:3 / orc sorcerer, orc sorcerer
 KMONS:  C = Urug w:3 / orc knight, orc knight
 KMONS:  D = Blork the orc w:3 / orc wizard, orc wizard
 KFEAT:   s = stone_arch
-KITEM:   s = $
 NSUBST:  s = 1:O / *:s
 : place_bazaar_portal(_G)
 MAP
@@ -1657,9 +1630,7 @@ MONS: gelid demonspawn / infernal demonspawn / putrid demonspawn /\
       torturous demonspawn / nothing w:20
 MONS: orc high priest / orc sorcerer
 KFEAT:   A = stone_arch
-KITEM:   A = $
 KFEAT:   s = stone_arch
-KITEM:   s = $
 NSUBST:  s = 1:O / *:s
 KFEAT: P = enter_pandemonium
 TILE:  c = wall_stone_dark
@@ -1711,7 +1682,6 @@ KMONS:  E = Saint Roka band w:1 / orc warlord band, orc warlord band
 KMONS:  P = plant / nothing
 NSUBST: u = 2:s / I
 KFEAT:   s = stone_arch
-KITEM:   s = $
 NSUBST:  s = 1:O / *:s
 : if you.where() == dgn.level_name(dgn.br_entrance("Elf")) then
 KFEAT:  p = enter_elven_halls

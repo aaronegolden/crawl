@@ -255,7 +255,7 @@ TAGS:    generate_awake no_monster_gen no_trap_gen no_item_gen no_pool_fixup
 DEPTH:   D:2-
 WEIGHT:  0
 KFEAT:   _ = altar_pakellas
-MONS:    angry ghost / ugly thing / hydra / rakshasa spells:none ; nothing \
+MONS:    angry ghost / ugly thing / hydra / rakshasa spells:none \
          / fire dragon / wolf spider / ice dragon
 KFEAT:   p = clear_stone_wall
 TILE:    p = dngn_transparent_stone_green
@@ -323,10 +323,10 @@ DEPTH:  D:2-
 WEIGHT: 0
 KFEAT:  g = iron_grate
 KFEAT:  _ = altar_pakellas
-MONS:   gargoyle ; nothing / deep elf knight ; nothing / manticore / cyclops \
-        / hydra / deep elf annihilator ; nothing / very ugly thing \
+MONS:   gargoyle / deep elf knight / manticore / cyclops \
+        / hydra / deep elf annihilator / very ugly thing \
         / fire dragon / ice dragon / sphinx \
-        / tengu reaver ; nothing
+        / tengu reaver 
 MONS:   lightning spire att:neutral
 KMONS:  P = bush
 KPROP:  -wgP12 = no_tele_into
@@ -360,7 +360,7 @@ KFEAT:  g = iron_grate
 KFEAT:  h = iron_grate
 KFEAT:  _ = altar_pakellas
 KMONS:  P = bush
-MONS:   human never_corpse ; nothing / elf never_corpse ; nothing \
+MONS:   human never_corpse  / elf never_corpse  \
         / troll never_corpse / warg never_corpse / yak never_corpse \
         / wolf spider never_corpse
 MONS:   lightning spire att:neutral

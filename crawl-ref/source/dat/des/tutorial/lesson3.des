@@ -48,8 +48,8 @@ ITEM:    pair of boots mundane not_cursed useful
 ITEM:    scroll of fog q:1
 ITEM:    scroll of fear q:1
 ITEM:    scimitar ego:freezing not_cursed
-MONS:    goblin ; nothing
-MONS:    rat, giant cockroach, hobgoblin ; nothing
+MONS:    goblin
+MONS:    rat, giant cockroach, hobgoblin
 MARKER:  d = lua:tutorial3.msg("armour")
 MARKER:  A = lua:tutorial3.msg("autopickup")
 MARKER:  e = lua:tutorial3.msg("scroll")
@@ -120,9 +120,8 @@ ITEM:    potion of ambrosia q:1
 ITEM:    wand of flame charges:9 ident:all
 ITEM:    wand of digging charges:15 ident:all
 ITEM:    scroll of noise q:1 ident:all
-MONS:    goblin ; dagger \
-         ego:none not_cursed
-MONS:    gnoll ; spear mundane
+MONS:    goblin
+MONS:    gnoll
 MARKER:  A = lua:tutorial3.msg("trap")
 MARKER:  d = lua:tutorial3.msg("potion")
 MARKER:  e = lua:tutorial3.msg("artefact_armour")
@@ -183,11 +182,9 @@ KFEAT:   S = general shop use_all ; \
              buckler ego:none | ring of slaying | scroll of enchant weapon
 ITEM:    gold q:40
 ITEM:    gold q:220
-MONS:    gnoll ; flail ego:none | morningstar ego:none | spear ego:none . \
-         leather armour | ring mail
+MONS:    gnoll
 MONS:    crimson imp
-MONS:    orc ; scimitar ego:none | battleaxe ego:none | trident ego:none . \
-         ring mail | chain mail
+MONS:    orc 
 MARKER:  d = lua:tutorial3.msg("gold");
 MARKER:  A = lua:tutorial3.msg("shop");
 MARKER:  S = lua:tutorial3.msg("enter_shop");

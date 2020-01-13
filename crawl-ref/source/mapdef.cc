@@ -13,6 +13,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
+#include <string>       
 
 #include "abyss.h"
 #include "artefact.h"
@@ -119,6 +120,7 @@ static bool _map_tag_is_selectable(const string &tag)
 string mapdef_split_key_item(const string &s, string *key, int *separator,
                              string *arg, int key_max_len)
 {
+    
     string::size_type
         norm = s.find("=", 1),
         fixe = s.find(":", 1);
@@ -1738,6 +1740,10 @@ string map_lines::add_key_field(
 
 string map_lines::add_key_item(const string &s)
 {
+    std::string str ("rune");
+    if (s.find(str) < 0)
+        return "nothing";
+    
     return add_key_field(s, &keyed_mapspec::set_item,
                          &keyed_mapspec::copy_item);
 }
@@ -4712,6 +4718,9 @@ item_spec item_list::get_item(int index)
 
 string item_list::add_item(const string &spec, bool fix)
 {
+    std::string str ("rune");
+    if (spec.find(str) < 0)
+        return "nothing";
     error.clear();
 
     item_spec_slot sp = parse_item_spec(spec);
@@ -4731,6 +4740,9 @@ string item_list::add_item(const string &spec, bool fix)
 
 string item_list::set_item(int index, const string &spec)
 {
+    std::string str ("rune");
+    if (spec.find(str) < 0)
+        return "nothing";
     error.clear();
     if (index < 0)
         return error = make_stringf("Index %d out of range", index);

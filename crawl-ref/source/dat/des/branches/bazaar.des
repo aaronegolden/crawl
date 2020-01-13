@@ -177,7 +177,6 @@ ENDMAP
 
 NAME: bzr_entry_wishing
 KFEAT: C = altar_gozag
-KITEM: T = nothing / q:1 gold
 : place_bazaar_portal(_G)
 MAP
    T

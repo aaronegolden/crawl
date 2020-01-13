@@ -568,8 +568,7 @@ NAME:  weyrava_ghost_lake
 DEPTH: Crypt
 TAGS:  no_monster_gen no_item_gen
 MONS:  flying skull
-MONS:  skeletal warrior ; long sword . shield . w:6 wand of lightning | nothing /\
-       skeletal warrior ; battleaxe | halberd . w:7 wand of lightning | nothing
+MONS:  skeletal warrior
 SUBST: y = .:8 c
 SUBST: v = z .
 SUBST: w = w z:6
@@ -935,12 +934,8 @@ TAGS:    no_monster_gen no_item_gen
 DEPTH:   Crypt:2-
 ORIENT:  float
 MONS:    wight band, phantasmal warrior
-MONS:    skeletal warrior ; long sword | war axe | trident | flail . \
-                            chain mail | ring mail | scale mail
+MONS:    skeletal warrior
 MONS:    patrolling vampire knight, patrolling ancient champion
-ITEM:    any weapon no_pickup / any armour no_pickup w:8 / \
-         gold no_pickup w:3 / any weapon good_item no_pickup w:3
-ITEM:    $ no_pickup, | no_pickup
 SHUFFLE: -_
 SUBST:   z : cvvv, G : GGv, - = ++++., _ = +.
 NSUBST:  C = 3 = ':19 c:1 / 2 = 'cc / *:c
@@ -1296,8 +1291,7 @@ MONS:   w:20 skeletal warrior / w:50 skeleton / nothing
 : elseif brnd > 4 then
 KMONS:  1 = vampire knight / Jory w:5, vampire knight
 KMONS:  2 = phantasmal warrior
-KMONS:  3 = vampire knight w:15 / \
-            dancing weapon ; long sword ego:vampirism ident:type
+KMONS:  3 = vampire knight
 KMONS:  4 = vampire mage
 KMONS:  5 = skeletal warrior / phantasmal warrior
 KMONS:  6 = vampire knight w:15 / jiangshi
@@ -1547,8 +1541,7 @@ SUBST:  f = p:1 .:1
 KFEAT:  p = .
 KMONS:  p = withered plant
 ####### hidden skeleton; sometimes good pain weapon, or draining short sword
-KMONS:  ! = skeletal warrior ; w:2 dagger ego:pain | rapier ego:draining |\
-                               w:2 rapier ego:pain | w:1 quick blade ego:pain
+KMONS:  ! = skeletal warrior
 KFEAT:  o = granite_statue
 SUBST:  B = b %
 KITEM:  b = any book
@@ -1855,7 +1848,7 @@ MONS:   generate_awake bone dragon / generate_awake curse toe
 MONS:   patrolling vampire knight / patrolling vampire mage / \
         patrolling vampire w:25
 KMONS:  2 = vampire knight / Jory w:15, vampire knight
-KMONS:  3 = dancing weapon ; long sword ego:vampirism / vampire knight
+KMONS:  3 = vampire knight
 KMONS:  4 = phantasmal warrior / jiangshi
 KMONS:  5 = vampire / zombie / golden dragon zombie w:3 / storm dragon zombie w:3
 KMONS:  6 = generate_awake vampire mage
@@ -1873,8 +1866,7 @@ SUBST:  2 = ., ' = 2, " = 4
 MONS:   patrolling guardian mummy w:7 / patrolling ushabti w:3
 MONS:   greater mummy
 MONS:   mummy priest / ushabti w:6
-MONS:   guardian mummy ; long sword | double sword | \
-        battleaxe | war axe | broad axe . chain mail w:15 | plate armour w:1
+MONS:   guardian mummy
 MONS:   bog body / mummy / guardian mummy
 MONS:   generate_awake sphinx
 : end
@@ -2059,7 +2051,7 @@ ORIENT:  north
 MONS:    ancient champion, lich / revenant, jiangshi / ghoul w:2
 MONS:    profane servitor / bone dragon / curse toe / \
          greater mummy w:2 / ancient lich w:2
-MONS:    skeletal warrior ; halberd | glaive | bardiche w:5
+MONS:    skeletal warrior
 MONS:    freezing wraith w:20 / shadow wraith w:20 / flayed ghost
 MONS:    zombie w:20 / skeleton w:20 / simulacrum / nothing w:25
 KMONS:   8 = vampire knight

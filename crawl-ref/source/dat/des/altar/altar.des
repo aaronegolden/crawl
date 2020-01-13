@@ -256,51 +256,6 @@ LLll33_33llLL..
    ..LLLLLL.
 ENDMAP
 
-# Distorted/chaotic kobolds, to Lugonu or Xom (Jude)
-# Note: This altar is too deep to be of use as a Xom overflow altar.
-#
-NAME:       due_chaos_kobolds
-DEPTH:      Depths, Vaults, Elf, Crypt
-TAGS:       no_rotate
-ORIENT:     float
-SUBST:      y  = c.
-COLOUR:     1. = random
-MARKER:     P  = lua:fog_machine { cloud_type="blue smoke", walk_dist=1, \
-            size=9, pow_max=20, delay=10, buildup_amnt=14, buildup_time=7, \
-            spread_rate=3, start_clouds=1, colour="blue" }
-: if crawl.coinflip() then
-KFEAT:      _ = altar_lugonu
-KFEAT:      P = stone_arch
-: kmons("1 = kobold w:" .. you.absdepth() .. " ; quick blade ego:distortion " ..
-:       "w:6 | rapier ego:distortion | dagger ego:distortion / kobold "   ..
-:       "w:80 ; dagger | rapier | quick blade w:3")
-: else
-KFEAT:      _ = altar_xom
-:   if crawl.one_chance_in(4) then
-KMONS:      P = obsidian statue
-:   else
-KFEAT:      P = enter_pandemonium / fountain_sparkling / stone_arch
-:   end
-: kmons("1 = kobold w:" .. you.absdepth() .. " ; quick blade ego:chaos " ..
-:       "w:6 | rapier ego:chaos | dagger ego:chaos / kobold w:80 ;"  ..
-:       "dagger | rapier | quick blade w:3")
-: end
-MAP
-  ccccc
- cc...cc
-cc..P..cc
- cc...cc
- ccc.cccc
-ccyy.yyyccc
-cy..111.yyc
-cc..1_1..cc
-cyy.111..yc
-cccyy..yycc
-  ccc..ccc
-    c++c
-     @@
-ENDMAP
-
 ### Altars to Jiyva ##########################################################
 
 NAME:   jiyva_altar_1
@@ -475,7 +430,6 @@ MARKER: F = lua:fog_machine { cloud_type = "translocational energy", \
             pow_max = 10, delay_min = 10, delay_max = 40, walk_dist = 2, \
             size = 1, spread_rate=3, start_clouds=2 }
 COLOUR: F = lightmagenta
-ITEM:     = % / w:30 dagger ego:chaos / shortbow ego:chaos / mace ego:chaos
 MAP
     .
   .._

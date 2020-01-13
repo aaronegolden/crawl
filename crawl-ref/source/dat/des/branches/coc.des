@@ -10,7 +10,6 @@
 function coc_setup(e)
    e.place("Coc:7")
    e.tags("no_rotate")
-   e.kitem("$ = $ no_pickup")
    e.kmask('O = no_item_gen')
    e.kitem('O = icy rune of Zot')
    e.lrockcol("lightcyan")
@@ -199,7 +198,6 @@ MONS:    patrolling Antaeus, Ice Fiend, ice dragon, blizzard demon
 KMONS:   E = elemental wellspring
 : serpent_of_hell_setup(_G)
 KMONS:   defg = ice devil w:5 / Ice Fiend / nothing w:5
-KITEM:   defg = any misc
 KFEAT:   E = w
 KFEAT:   P = exit_dungeon
 SHUFFLE: O1dD / e4%H / f9*I / g8|J
@@ -458,8 +456,6 @@ KMONS:   8 = ice statue
 KMONS:   9 = elemental wellspring
 KMONS:   de = Ice Fiend
 KMONS:   fg = blizzard demon
-KITEM:   df = superb_item
-KITEM:   egh = gold
 : serpent_of_hell_setup(_G)
 KFEAT:   D = floor
 KFEAT:   X = open_sea
@@ -561,7 +557,6 @@ KMONS:   7 = patrolling iron troll simulacrum / \
 KMONS:   89 = ice dragon / frost giant w:4
 KMONS:   & = patrolling ice fiend
 : serpent_of_hell_setup(_G)
-KITEM:   d = $ no_pickup
 KFEAT:   d67& = W
 KFEAT:   8 = w
 KFEAT:   P = exit_dungeon
@@ -743,7 +738,6 @@ ENDMAP
 NAME:  coc_grunt_cove_antaeus
 TAGS:  coc_grunt_cove_antaeus
 MONS:  patrolling Antaeus, patrolling Ice Fiend
-KITEM: $ = $ no_pickup
 KITEM: O = icy rune of Zot
 MAP
  $|
@@ -755,7 +749,6 @@ ENDMAP
 NAME:  coc_grunt_cove_fiend
 TAGS:  coc_grunt_cove_fiend allow_dup
 MONS:  patrolling Ice Fiend
-KITEM: $ = $ no_pickup
 MAP
  $*
 *1*$

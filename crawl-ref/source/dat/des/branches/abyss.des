@@ -13,8 +13,6 @@ function init_abyss_exit(e, glyph)
   if you.depth() == dgn.br_depth(you.branch()) then
     if crawl.random2(10) > 3 then
       e.kfeat(glyph .. " = exit_abyss")
-    else
-      e.kitem(glyph .. " = any no_pickup")
     end
   else
     e.kfeat(glyph .. " = exit_abyss w:6 / abyssal_stair w:4")
@@ -67,7 +65,7 @@ ENDMAP
 NAME:  marbit_kobold_abyss_entry
 TAGS:  no_monster_gen nolayout_encompass
 WEIGHT: 5
-MONS:  big kobold ; tomahawk ego:dispersal, kobold demonologist
+MONS:  big kobold, kobold demonologist
 : abyss_entry(_G, '_')
 MAP
 xxxxxxxxxxxxxxx
@@ -159,34 +157,6 @@ x.x.x.F.xxx
      ..xx
      .A.x
      ..xx
-ENDMAP
-
-NAME: nicolae_abyss_entry_one_way_or_another
-TAGS: nolayout_encompass patrolling
-: abyss_entry(_G, 'O')
-NSUBST: 1 = 1111111112 / .
-# All of these are guaranteed to have banishment in their spell sets.
-# One in ten chance they get a distortion weapon too.
-: local elfweapon = "long sword ego:distortion w:20 | quick blade " ..
-:  "ego:distortion | rapier ego:distortion | dagger ego:distortion"
-: local louiseweapon = "long sword ego:distortion | quick blade " ..
-:  "ego:distortion | battleaxe ego:distortion | hand axe ego:distortion | " ..
-:  "mace ego:distortion | flail ego:distortion | glaive ego:distortion w:2"
-KMONS: 1 = Louise, deep elf demonologist / deep elf sorcerer w:5
-: kmons( "2 = Louise ; " .. louiseweapon .. " , deep elf demonologist ; " ..
-: elfweapon .. " / deep elf sorcerer w:5 ; " .. elfweapon)
-MAP
-   ......
-  ..bbbb..
- ..b....b..
-..b......b..
-.b..bb1..b...
-...b.1O1.b...
-...b..1bb..b.
- ..b......b..
-  ..b....b..
-   ..bbbb..
-    ......
 ENDMAP
 
 ###############################################################################

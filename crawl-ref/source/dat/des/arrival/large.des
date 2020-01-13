@@ -102,7 +102,6 @@ ENDMAP
 # 29 x 22
 NAME:    dpeg_arrival_castle
 TAGS:    arrival no_monster_gen no_rotate
-ITEM:    gold q:1, nothing, nothing
 ORIENT:  float
 SHUFFLE: ]def
 SUBST:   c : cx
@@ -219,7 +218,6 @@ ENDMAP
 NAME:   erik_arrival_gehennom
 TAGS:   arrival no_monster_gen no_rotate
 ORIENT: float
-ITEM:   gold q:1
 MONS:   rat, goblin, kobold, ooze
 MAP
 xxxxxxxxxxx@xxxxxxxxxxxxxxxxxx
@@ -255,7 +253,7 @@ TAGS:    arrival no_rotate no_monster_gen
 ORIENT:  float
 MONS:    goblin
 MONS:    hobgoblin
-MONS:    kobold ; mace
+MONS:    kobold
 SHUFFLE: ABCD
 NSUBST:  X = 1:+ / *:x
 NSUBST:  Y = 1:+ / *:x
@@ -367,7 +365,6 @@ WEIGHT: 3
 ORIENT: float
 NSUBST: . = 1:d / *:.
 NSUBST: = = 3:+ / *:x
-ITEM:   gold q:1
 MAP
           xxxxxxxx.@.xx
        xxxx......=....xxxx
@@ -399,7 +396,6 @@ TAGS:   arrival no_monster_gen no_rotate
 WEIGHT: 1
 ORIENT: float
 NSUBST: . = 1:d / *:.
-ITEM:   gold q:1
 MAP
           xxxxxxxxxxxxx
        xxxx......x....xxxx
@@ -435,7 +431,6 @@ SHUFFLE: ab, cd, ef, gh, ij, kl, mn
 SUBST:   a=., c=., e=., g=., i=., k=., m=.
 SUBST:   b=x, d=x, f=x, h=x, j=x, l=x, n=x
 NSUBST:  . = 1:d / *:.
-ITEM:    gold q:1
 MAP
           xxxxxxxxxxxxx
        xxxx.....h.....xxxx
@@ -470,7 +465,6 @@ TAGS:    arrival
 ORIENT:  float
 SHUFFLE: ([{>
 SUBST:   ([ = d
-ITEM:    skeleton
 SUBST:   ?:???!,  ?=?., ?=!, !:cx, ===cc+
 MAP
 .................@.................

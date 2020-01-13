@@ -1742,7 +1742,6 @@ ENDMAP
 ###################################
 
 NAME:   evilmike_mini_pan_thingy
-KITEM:  | = |
 KFEAT:  | = (
 : pan_demonic_rune(_G, 'P', true)
 : pan_lord_vault_contents(_G, 'A', 'B', 'C')
@@ -1767,7 +1766,6 @@ ENDMAP
 ###################################
 
 NAME:   evilmike_mini_pan_other_thingy
-KITEM:  | = |
 KFEAT:  | = (
 SUBST:  d : +x, X : c., Y : ccx
 : pan_demonic_rune(_G, 'P', true)
@@ -1794,7 +1792,6 @@ ENDMAP
 ###################################
 
 NAME:    evilmike_mini_pan_3x3
-KITEM:   | = |
 KFEAT:   | = (
 NSUBST:  1 = 1:P / 3:C / 2:B / 2:A / 1:(
 SHUFFLE: =X
@@ -1840,7 +1837,6 @@ ENDMAP
 NAME:   evilmike_mini_pan_pillars
 SUBST:  X : x.., Y : x+, Z : cx
 NSUBST: | = 1:( / *:|
-KITEM:  ( = |
 KFEAT:  ( = (
 : pan_demonic_rune(_G, 'P')
 : pan_lord_vault_contents(_G, 'A', 'B', 'C<')
@@ -1866,7 +1862,6 @@ ENDMAP
 NAME:   evilmike_mini_pan_murderfest
 WEIGHT: 2
 MONS:   pandemonium lord
-KITEM:  ( = |
 KFEAT:  ( = (
 NSUBST: | = 1:P / 1:( / *:|
 SUBST:  + : +., X : =c, c : cccx
@@ -1900,7 +1895,6 @@ NAME:    evilmike_mini_pan_rooms
 WEIGHT:  3
 SUBST:   + : +.
 SHUFFLE: 123(P
-KITEM:   | = |
 KFEAT:   | = (
 SUBST:   123 = A, 4 = BC, 5 = B
 : pan_demonic_rune(_G, 'P', true)
@@ -1924,7 +1918,6 @@ ENDMAP
 ###################################
 
 NAME:   evilmike_mini_pan_layers
-KITEM:  ( = |
 KFEAT:  ( = (
 SUBST:  x = x:9 +:1
 : pan_demonic_rune(_G, 'P', true)
@@ -1978,7 +1971,6 @@ ENDMAP
 ###################################
 
 NAME:    evilmike_mini_pan_branches
-KITEM:   | = |
 KFEAT:   | = (
 SHUFFLE: P|
 SUBST:   D = C
@@ -2010,7 +2002,6 @@ ENDMAP
 ###################################
 
 NAME:   evilmike_mini_pan_T
-KITEM:  | = |
 KFEAT:  | = (
 SUBST:  + : +..
 MONS:   pandemonium lord
@@ -2065,7 +2056,6 @@ NAME:   evilmike_mini_pan_pillars_b
 SUBST:  X : x., Y : mmxxl
 MONS:   pandemonium lord
 NSUBST: D = 1:P / 3:C / 3:B / 3:A / 1:( / 3:|
-KITEM:  ( = |
 KFEAT:  ( = (
 : pan_demonic_rune(_G, 'P')
 : pan_lord_vault_contents(_G, 'A', 'B', 'C')
@@ -2088,7 +2078,6 @@ ENDMAP
 ###################################
 
 NAME:   evilmike_mini_pan_doors
-KITEM:  | = |
 KFEAT:  | = (
 : pan_demonic_rune(_G, 'P', true)
 : pan_lord_vault_contents(_G, 'A', 'B', 'C')
@@ -2114,7 +2103,6 @@ NAME:   evilmike_mini_pan_doors_b
 MARKER: X = lua: props_marker { connected_exclude="true" }
 SUBST:  X = +
 NSUBST: D = 2:C / 2:B / 2:A / 1:P / 1:|
-KITEM:  | = |
 KFEAT:  | = (
 : pan_demonic_rune(_G, 'P', true)
 : pan_lord_vault_contents(_G, 'A', 'B', 'C')
@@ -2133,7 +2121,6 @@ ENDMAP
 ###################################
 
 NAME:   evilmike_mini_pan_V
-KITEM:  ( = |
 KFEAT:  ( = (
 : pan_demonic_rune(_G, 'P', true)
 : pan_lord_vault_contents(_G, 'A', 'B', 'C')
@@ -2499,7 +2486,7 @@ MONS:   pandemonium lord, eye of draining
 MONS:   black sun, lorocyproca, any demon
 KMONS:  6O = ghost moth
 : if demonic_rune_vault_is_decoy() then
-KITEM:  O = acquire any / demonic rune of zot mimic
+KITEM:  O = nothing / demonic rune of zot mimic
 : else
 KITEM:  O = demonic rune of zot
 : end
@@ -2588,7 +2575,7 @@ ORIENT:  float
 MONS:    fire bat, hellion, hellephant
 KMONS:   O = pandemonium lord
 : if demonic_rune_vault_is_decoy() then
-KITEM:   O = acquire any / demonic rune of zot mimic
+KITEM:   O = demonic rune of zot mimic
 : else
 KITEM:   O = demonic rune of zot
 : end
@@ -2661,7 +2648,7 @@ ORIENT:  float
 MONS:    pandemonium lord, brimstone fiend
 MONS:    tormentor, smoke demon, any demon
 : if demonic_rune_vault_is_decoy() then
-KITEM:   O = acquire any / demonic rune of zot mimic
+KITEM:   O = nothing
 : else
 KITEM:   O = demonic rune of zot
 : end
@@ -2727,7 +2714,7 @@ MONS:   juggernaut simulacrum, ice devil
 KMONS:  56 = ice statue
 KMONS:  P = pandemonium lord
 : if demonic_rune_vault_is_decoy() then
-KITEM:  O = acquire any / demonic rune of zot mimic
+KITEM:  O = nothing
 : else
 KITEM:  O = demonic rune of zot
 : end
@@ -2808,15 +2795,11 @@ NAME:    pan_disco_hall
 TAGS:    pan_fixed_rune_disco pan_fixed_lure_disco no_rotate
 ORIENT:  southeast
 MONS:    rakshasa, corrupter, chaos champion
-MONS:    dancing weapon ; demon trident good_item ego:distortion
-MONS:    dancing weapon ; demon whip good_item ego:distortion
-MONS:    dancing weapon ; demon blade good_item ego:distortion
 MONS:    brimstone fiend / ice fiend / shadow fiend / hell sentinel
 KMONS:   p = demonic plant
 KMONS:   P = pandemonium lord
-ITEM:    any potion
 : if demonic_rune_vault_is_decoy() then
-KITEM:   O = acquire any / demonic rune of zot mimic
+KITEM:   O = nothing
 : else
 KITEM:   O = demonic rune of zot
 : end
@@ -3900,12 +3883,6 @@ KFEAT:  O = exit_pandemonium
 : pan_declare_demonic_rune(_G)
 KITEM:  O = demonic rune of Zot
 : end
-ITEM:   w:5 any / potion of ambrosia
-ITEM:   any / potion of heal wounds
-ITEM:   acquire any
-ITEM:   potion of cancellation
-ITEM:   potion of augmentation
-ITEM:   any
 NSUBST: i = 2=ghh / 3=ghhiii / *:i
 MONS:   angel
 MONS:   cherub

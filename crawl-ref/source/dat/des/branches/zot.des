@@ -836,7 +836,7 @@ ORIENT: float
 TAGS:   no_rotate no_hmirror no_monster_gen
 MONS:   killer klown
 MONS:   dire elephant / w:5 hellephant
-MONS:   human ; whip
+MONS:   human
 SUBST:  1 = 1 2:5 3:20
 SUBST:  2 = 2 2 .
 SUBST:  % = !:20 ?:5 .:20
@@ -1014,21 +1014,10 @@ TAGS:    no_monster_gen no_trap_gen no_pool_fixup patrolling transparent
 DEPTH:   Zot, !Zot:$
 WEIGHT:  3
 # Gifts, too.
-KMONS:   1 = guardian mummy ; randart quarterstaff ego:chaos | \
-             randart great mace ego:chaos | randart battleaxe ego:chaos| \
-             randart double sword ego:chaos | randart glaive ego:chaos | \
-             randart trident ego:chaos | randart morningstar | \
-             randart great mace | randart battleaxe | randart double sword | \
-             randart glaive | randart trident
-KMONS:   3 = guardian mummy ; randart shortbow ego:chaos / \
-             guardian mummy ; randart longbow ego:chaos / \
-             guardian mummy ; randart triple crossbow / \
-             guardian mummy ; randart shortbow / \
-             guardian mummy ; randart longbow / \
-             guardian mummy ; randart arbalest
-KMONS:   5 = guardian mummy ; wand of lightning | scroll of summoning
-KMONS:   7 = guardian mummy ; randart ring mail | randart scale mail | \
-             randart chain mail | randart robe . scroll of summoning
+KMONS:   1 = guardian mummy
+KMONS:   3 = guardian mummy
+KMONS:   5 = guardian mummy
+KMONS:   7 = guardian mummy
 KMONS:   2468 = killer klown
 KMONS:   _ = ghost moth
 KMONS:   90 = moth of wrath / butterfly w:30
@@ -2119,7 +2108,7 @@ TAGS:   no_pool_fixup no_item_gen no_monster_gen no_trap_gen
 DEPTH:  Zot, !Zot:$
 ORIENT: south
 MONS:   shock serpent w:12 / raiju / sixfirhy, sixfirhy
-MONS:   war gargoyle / dancing weapon ; scimitar good_item / spark wasp w:5
+MONS:   war gargoyle / spark wasp w:5
 MONS:   electric golem / titan / storm dragon
 MONS:   ghost moth / moth of wrath / death cob / \
         tentacled monstrosity / killer klown w:5

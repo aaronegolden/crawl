@@ -271,7 +271,6 @@ ENDMAP
 
 NAME:   nicolae_snake_horde_hoard
 DEPTH:  Snake
-KITEM:  s = $ / nothing w:25 / * w:1
 KMONS:  s = adder w:5 / ball python w:5 / black mamba / anaconda / \
            water moccasin / sea snake w:1 / nothing w:20
 MAP
@@ -837,7 +836,6 @@ TAGS: no_item_gen no_monster_gen no_pool_fixup patrolling
 ORIENT: float
 MONS: naga mage / mana viper
 KMONS: - = naga ritualist
-KITEM: - = any good_item / any amulet
 MAP
 ...........
 .wwwwwwwww.
@@ -1208,7 +1206,6 @@ MONS:   greater naga w:20 / naga warrior w:5 / naga mage w:5 / \
 NSUBST: O = 1:A / 1:B
 KITEM:  A = serpentine rune of Zot
 KFEAT:  A = enter_vaults
-KITEM:  B = acquire any
 MAP
         cccccccc     c.@..c       cccccccc
      cccc..1...ccc   c....c    cccc..2...ccc

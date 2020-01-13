@@ -142,7 +142,6 @@ TAGS:    arrival no_rotate
 ORIENT:  northwest
 # the exit will be placed elsewhere 25% of the time
 SUBST:   { = {:30 .
-ITEM:    q:1 chunk, skeleton, corpse
 SUBST:   Y = A.
 KFEAT:   A = known shaft trap
 SUBST:   ` = df `:60
@@ -207,7 +206,6 @@ ORIENT: float
 NSUBST: s = 1:+ / *:x, p = 1:+ / *:x, q = 1:+ / *:x, r = 1:+ / *:x
 NSUBST: _ = 1:w / *:., ' = 1:w / *:., ` = 1:w / 1:d / *:.
 SUBST:  w:wlxm, x:xccv, +=+++.
-ITEM:   gold q:1
 MAP
    ...........
   ..rrrrrrrrr..
@@ -597,7 +595,6 @@ ENDMAP
 NAME:    erik_arrival_orb_chamber
 TAGS:    arrival no_rotate
 ORIENT:  float
-ITEM:    gold q:1
 MONS:    rat
 NSUBST:  { = 1:{ / *:.
 MAP
@@ -741,7 +738,6 @@ ENDMAP
 NAME:   dpeg_arrival_chase
 TAGS:   arrival no_monster_gen no_pool_fixup no_rotate
 MONS:   kobold, hobgoblin / goblin / bat
-ITEM:   gold q:1
 ORIENT: float
 SUBST:  w : w l:1
 MAP
@@ -766,7 +762,6 @@ TAGS:    arrival no_monster_gen
 ORIENT:  float
 SHUFFLE: cvb
 NSUBST:  . = 1:d / *:.
-ITEM:    gold q:1
 MAP
 xxxxxxxxxxxxxxx
 xcccccccx.....x
@@ -831,7 +826,6 @@ ORIENT:  float
 SHUFFLE: cxxx
 NSUBST:  . = 1:d / *:.
 SUBST:   T = TVVVV
-ITEM:    gold q:1
 MAP
         ccccccc@ccccccc
     ccccc.............ccccc
@@ -854,7 +848,6 @@ TAGS:    arrival no_monster_gen no_rotate
 ORIENT:  float
 SHUFFLE: cxxx
 NSUBST:  . = 1:d / *:.
-ITEM:    gold q:1
 SUBST:   T = TVVVV
 MAP
      ccccccccccc
@@ -880,7 +873,6 @@ TAGS:    arrival no_monster_gen no_rotate
 ORIENT:  float
 SHUFFLE: cxxx
 NSUBST:  . = 1:d / *:.
-ITEM:    gold q:1
 SUBST:   T = TVVVV
 MAP
          ccccc
@@ -934,7 +926,6 @@ TAGS:    arrival no_monster_gen no_rotate
 ORIENT:  float
 SHUFFLE: cxxx
 NSUBST:  . = 1:d / *:.
-ITEM:    gold q:1
 SUBST:   T = TVVVV
 MAP
    ccccccccccccccccc
@@ -962,7 +953,6 @@ ORIENT: float
 SUBST:  ' = .x
 SUBST:  G : GTVt
 NSUBST: d = 1:d / *:'
-ITEM:   gold q:1
 MAP
                xxxxx
              xxx...xxx
@@ -1172,7 +1162,6 @@ NAME:   dpeg_arrival_simpleton_a
 TAGS:   arrival  no_monster_gen
 ORIENT: float
 NSUBST: . = 1:d / *:.
-ITEM:   gold q:1
 MAP
 @xx           xx@
 x.xxxx     xxxx.x
@@ -1317,7 +1306,6 @@ NAME:   zaba_arrival_water
 TAGS:   arrival no_monster_gen no_rotate
 ORIENT: float
 SUBST:  T = TV, ? = wW, > = >d
-ITEM:   gold q:1
 MAP
 xxx@xxx@xxx@xxx
 x.............x
@@ -1500,7 +1488,6 @@ SUBST:  0 = 0 .
 SUBST:  ' = w'
 NSUBST: . = 1:d / *:.
 NSUBST: " = 1:@ / *:.
-ITEM:   gold q:1
 MAP
 ".0.0....0."
 xxwwwwwwwxxx
@@ -1522,7 +1509,6 @@ SUBST:   {=., [=.
 SUBST:   Z=x, Y=x, W=@, C=+x
 SUBST:   z=@, y=+, w=x
 NSUBST:  . = 1:d / *:.
-ITEM:    gold q:1
 ORIENT:  float
 MAP
   xZxxx
@@ -1582,7 +1568,6 @@ ORIENT:  float
 SUBST:   ' : . x ':40, '=.x
 NSUBST:  . = 1:d / *:.
 NSUBST:  { = 1:{ / *:.
-ITEM:    gold q:1
 MAP
     xxxxxxxxxxxxxxxxx
    xx''xx''''''xx''xx
@@ -1883,7 +1868,6 @@ SHUFFLE: DX'/CY"
 SUBST:   D = c, XC" = x, 'Y = .
 SHUFFLE: cvb
 NSUBST:  . = 1:d / *:.
-ITEM:    gold q:1
 MAP
           xxxxxxxxxxx
      xxxxxx...xxxx..xx
@@ -2701,7 +2685,6 @@ TAGS:   arrival no_monster_gen
 ORIENT: float
 COLOUR: W# = lightgreen
 NSUBST: W = 6:% / 7:#
-KITEM:  % = nothing / w:5 rat skeleton
 MARKER: # = lua:fog_machine { cloud_type = "foul pestilence", pow_max = 10, \
                               delay = 5, size = 5, excl_rad = 0 }
 KFEAT:  %# = W

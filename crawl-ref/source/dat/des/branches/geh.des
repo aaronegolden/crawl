@@ -107,7 +107,6 @@ DEPTH:   Geh, !Geh:$, Zot:1-4
 MONS:    zotbot
 MONS:    zotbot
 MONS:    hellion
-ITEM:    any potion good_item
 KMONS:   L = patrolling efreet w:12 / patrolling fire elemental w:8
 KFEAT:   L = l
 KPROP:   l = no_cloud_gen
@@ -143,8 +142,7 @@ DEPTH:   Geh, Coc, Zot:1-4
 KMONS:   1 = brimstone fiend w:9 / hell sentinel w:1
 KMONS:   2 = hellion / balrug
 KMONS:   34 = smoke demon
-KMONS:   56 = skeletal warrior ; broad axe ego:flaming ident:type | \
-         halberd ego:flaming ident:type w:7 | morningstar ego:flaming ident:type
+KMONS:   56 = skeletal warrior
 KMONS:   7 = hell knight
 SUBST:   w = l, W = .
 KPROP:   l = no_cloud_gen
@@ -155,15 +153,15 @@ KMONS:   34 = ice devil
 KMONS:   56 = reaper / cool robin w:5
 KMONS:   7 = alligator snapping turtle skeleton / anaconda simulacrum / \
          golden dragon simulacrum w:5 / iron troll simulacrum w:5 / hydra simulacrum
-KMONS:   0 = skeletal warrior ; arbalest ego:freezing ident:type
+KMONS:   0 = skeletal warrior
 SUBST:   l = w, W = .
 :  else
 KMONS:   1 = cool robin
 KMONS:   2 = seven-headed hydra simulacrum / eight-headed hydra simulacrum
 KMONS:   3 = orb of fire / hellephant w:5
 KMONS:   4 = zotbot
-KMONS:   5 = antimatter elf ;  double sword ego:freezing ident:type
-KMONS:   6 = antimatter elf ; double sword ego:flaming ident:type
+KMONS:   5 = antimatter elf 
+KMONS:   6 = antimatter elf 
 KFEAT:   1 = w
 KFEAT:   3 = l
 NSUBST:  0 = 1:5 / 1:6
@@ -768,7 +766,6 @@ KMONS:   y = fire elemental / salamander
 KMONS:   Y = molten gargoyle
 KMONS:   zZ = sun demon / efreet / smoke demon w:5 / \
               fire dragon skeleton w:5
-KITEM:   $ = $ no_pickup
 KFEAT:   yYZ = lava
 KFEAT:   L = endless_lava
 KFEAT:   W = exit_dungeon
