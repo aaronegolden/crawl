@@ -1708,6 +1708,11 @@ An ugly subterranean creature combining the worst features of humans, pigs and
 several other unpleasant creatures. It tends to run in packs or mobs, and
 delights in outbursts of insane violence.
 %%%%
+orc lancer
+
+An orc warrior who specializes in the use of a long spear. They can make reaching
+attacks from behind their allies with great force and precision.
+%%%%
 orc high priest
 
 An exalted servant of the orc god Beogh and a master of many black rites, to
