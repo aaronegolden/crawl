@@ -2378,9 +2378,6 @@ static void _build_dungeon_level(dungeon_feature_type dest_stairs_type)
 
         _builder_monsters();
 
-        // Place items.
-        _builder_items();
-
         _fixup_walls();
     }
     else
@@ -3768,37 +3765,6 @@ static void _randomly_place_item(int item)
     }
     else
         move_item_to_grid(&item, itempos);
-}
-
-/**
- * Randomly place items on a level. Does not place items in vaults,
- * on monsters, etc. Only normal floor generated items.
- */
-static void _builder_items()
-{
-    int i = 0;
-    object_class_type specif_type = OBJ_RANDOM;
-    int items_levels = env.absdepth0;
-    int items_wanted = _num_items_wanted(items_levels);
-
-    if (player_in_branch(BRANCH_VAULTS))
-    {
-        items_levels *= 15;
-        items_levels /= 10;
-    }
-    else if (player_in_branch(BRANCH_ORC))
-    {
-        specif_type = OBJ_GOLD;  // Lots of gold in the orcish mines.
-        items_levels *= 2;       // Four levels' worth, in fact.
-    }
-
-    for (i = 0; i < items_wanted; i++)
-    {
-        int item = items(true, specif_type, OBJ_RANDOM, items_levels);
-
-        _randomly_place_item(item);
-    }
-
 }
 
 static bool _connect_vault_exit(const coord_def& exit)
