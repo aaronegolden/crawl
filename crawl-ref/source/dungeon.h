@@ -234,7 +234,7 @@ monster *dgn_place_monster(mons_spec &mspec, coord_def where,
                            bool patrolling = false);
 int dgn_place_item(const item_spec &spec,
                    const coord_def &where,
-                   int level = INVALID_ABSDEPTH);
+                   int level = INVALID_ABSDEPTH, bool rune_only = true);
 
 class item_list;
 void dgn_place_multiple_items(item_list &list,

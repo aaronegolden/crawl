@@ -4415,10 +4415,13 @@ static object_class_type _superb_object_class()
 
 int dgn_place_item(const item_spec &spec,
                    const coord_def &where,
-                   int level)
+                   int level, bool rune_only)
 {
     // Dummy object?
     if (spec.base_type == OBJ_UNASSIGNED)
+        return NON_ITEM;
+    
+    if (rune_only && spec.base_type != OBJ_RUNES)
         return NON_ITEM;
 
     if (level == INVALID_ABSDEPTH)
@@ -5546,14 +5549,14 @@ static void _stock_shop_item(int j, shop_type shop_type_,
         {
             // shop spec lists a random set of items; choose one
             item_index = dgn_place_item(spec.items.random_item_weighted(),
-                                        coord_def(), item_level);
+                                        coord_def(), item_level, false);
         }
         else if (!spec.items.empty() && spec.use_all
                  && j < (int)spec.items.size())
         {
             // shop lists ordered items; take the one at the right index
             item_index = dgn_place_item(spec.items.get_item(j), coord_def(),
-                                        item_level);
+                                        item_level, false);
         }
 
         else
