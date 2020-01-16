@@ -4926,6 +4926,7 @@ enum spell_type : int
     SPELL_PIERCING_SHOT,
     SPELL_CURSE,
     SPELL_SHOOT_ARROW,
+    SPELL_THROW_BOULDER,
     NUM_SPELLS
 };
 
@@ -5106,6 +5107,7 @@ enum zap_type
     ZAP_BECKONING,
     ZAP_FIRE_STORM,
     ZAP_SHOOT_ARROW,
+    ZAP_THROW_BOULDER,
     NUM_ZAPS
 };
 

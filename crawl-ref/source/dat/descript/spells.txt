@@ -1622,3 +1622,8 @@ Shoot Arrow spell
 
 Fires an arrow. The damage dealt by the arrow depends significantly 
 on the strength of the monster firing it.
+%%%%
+Throw Large Rock spell
+
+Throws a giant rock. This feat requires giant strength, and the projectile
+typically impacts for giant damage.

@@ -1103,6 +1103,7 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_SPIT_POISON, 55, MON_SPELL_NATURAL | MON_SPELL_BREATH },
        { SPELL_PORTAL_PROJECTILE, 59, MON_SPELL_WIZARD },
+       { SPELL_SHOOT_ARROW, 90, MON_SPELL_NATURAL },
       }
     },
 
@@ -1800,7 +1801,8 @@ static const mon_spellbook mspell_list[] =
     // ('C') Giants.
     {  MST_POLYPHEMUS,
       {
-        { SPELL_THROW_ALLY, 50, MON_SPELL_NATURAL }
+        { SPELL_THROW_ALLY, 50, MON_SPELL_NATURAL },
+        { SPELL_THROW_BOULDER, 100, MON_SPELL_NATURAL },
       }
     },
 
@@ -1934,6 +1936,7 @@ static const mon_spellbook mspell_list[] =
        { SPELL_BLINK_OTHER, 11, MON_SPELL_WIZARD | MON_SPELL_EMERGENCY },
        { SPELL_BLINK_ALLIES_AWAY, 22, MON_SPELL_WIZARD },
        { SPELL_BLINK_AWAY, 11, MON_SPELL_WIZARD },
+       { SPELL_SHOOT_ARROW, 75, MON_SPELL_NATURAL },
       }
     },
 
@@ -2242,6 +2245,13 @@ static const mon_spellbook mspell_list[] =
     {  MST_ARCHER,
       {
        { SPELL_SHOOT_ARROW, 190, MON_SPELL_NATURAL },
+      }
+    },
+    
+    // spellbook for monsters that throw big rocks
+    {  MST_ROCKS,
+      {
+       { SPELL_THROW_BOULDER, 175, MON_SPELL_NATURAL },
       }
     },
 

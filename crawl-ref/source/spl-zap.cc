@@ -82,6 +82,7 @@ static pair<spell_type, zap_type> _spl_zaps[] =
     { SPELL_ICEBLAST, ZAP_ICEBLAST },
     { SPELL_ACID_SPLASH, ZAP_BREATHE_ACID },
     { SPELL_SHOOT_ARROW, ZAP_SHOOT_ARROW },
+    { SPELL_THROW_BOULDER, ZAP_THROW_BOULDER },
 };
 
 zap_type spell_to_zap(spell_type spell)

@@ -1286,4 +1286,22 @@ _mon_hex_zap(ZAP_DRAIN_MAGIC, BEAM_DRAIN_MAGIC),
     3
 },
 
+{
+    ZAP_THROW_BOULDER,
+    "large rock",
+    50,
+    nullptr,
+    nullptr,
+    new calcdice_calculator<1, 13, 3, 12>,
+    new tohit_calculator<18, 4, 24>,
+    BROWN,
+    false,
+    BEAM_MMISSILE,
+    DCHAR_FIRED_MISSILE,
+    true,
+    false,
+    false,
+    3
+},
+
 };
