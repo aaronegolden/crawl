@@ -1710,8 +1710,8 @@ delights in outbursts of insane violence.
 %%%%
 orc lancer
 
-An orc warrior who specializes in the use of a long spear. They can make reaching
-attacks from behind their allies with great force and precision.
+An orc warrior who specializes in the use of a long spear. It can make reaching
+attacks from behind its allies with great force and precision.
 %%%%
 orc high priest
 
@@ -1723,6 +1723,11 @@ orc knight
 A heavily armoured orc, covered in scars from many past battles. It commands
 its brethren in battle, rousing them to greater, more violent efforts with
 bloodcurdling shouts.
+%%%%
+orc sniper
+
+A heavily armoured, crossbow wielding orc. It excels at ranged combat, but is
+quite capable in melee range as well.
 %%%%
 orc priest
 

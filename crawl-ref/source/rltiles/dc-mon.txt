@@ -1036,6 +1036,7 @@ orc_warlord MONS_ORC_WARLORD
 orc_sorcerer MONS_ORC_SORCERER
 orc_high_priest MONS_ORC_HIGH_PRIEST
 orc_lancer MONS_ORC_LANCER
+orc_sniper MONS_ORC_SNIPER
 %rim 1
 vault/deformed_orc MONS_DEFORMED_ORC
 
