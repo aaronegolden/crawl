@@ -882,7 +882,6 @@ static int _count_identical(const vector<item_def>& stock, const item_def& item)
 static bool _purchase(shop_struct& shop, const level_pos& pos, int index)
 {
     item_def item = shop.stock[index]; // intentional copy
-    const int cost = item_price(item, shop);
     shop.stock.erase(shop.stock.begin() + index);
 
     // Remove from shopping list if it's unique
@@ -897,7 +896,7 @@ static bool _purchase(shop_struct& shop, const level_pos& pos, int index)
     }
 
     // Take a note of the purchase.
-    take_note(Note(NOTE_BUY_ITEM, cost, 0,
+    take_note(Note(NOTE_BUY_ITEM, 0, 0,
                    item.name(DESC_A).c_str()));
 
     // But take no further similar notes.
@@ -905,10 +904,6 @@ static bool _purchase(shop_struct& shop, const level_pos& pos, int index)
 
     if (fully_identified(item))
         item.flags |= ISFLAG_NOTED_ID;
-
-    you.del_gold(cost);
-
-    you.attribute[ATTR_PURCHASES] += cost;
 
     origin_purchased(item);
 
@@ -976,8 +971,6 @@ class ShopMenu : public InvMenu
     level_pos pos;
     bool can_purchase;
 
-    int selected_cost() const;
-
     void init_entries();
     void update_help();
     void resort();
@@ -998,8 +991,6 @@ class ShopEntry : public InvEntry
     string get_text(bool need_cursor = false) const override
     {
         need_cursor = need_cursor && show_cursor;
-        const int cost = item_price(*item, menu.shop);
-        const int total_cost = menu.selected_cost();
         const bool on_list = shopping_list.is_on_list(*item, &menu.pos);
         // Colour stock as follows:
         //  * lightcyan, if on the shopping list and not selected.
@@ -1012,14 +1003,11 @@ class ShopEntry : public InvEntry
         // Is this too complicated? (jpeg)
         const colour_t keycol =
             !selected() && on_list              ? LIGHTCYAN :
-            selected() && total_cost > you.gold ? LIGHTRED  :
-            cost <= you.gold - total_cost       ? LIGHTGREEN :
-            cost > you.gold                     ? RED :
                                                   YELLOW;
         const string keystr = colour_to_str(keycol);
         const string itemstr =
             colour_to_str(menu_colour(text, item_prefix(*item), tag));
-        return make_stringf(" <%s>%c%c%c%c</%s><%s>%4d gold   %s%s</%s>",
+        return make_stringf(" <%s>%c%c%c%c</%s><%s>   %s%s</%s>",
                             keystr.c_str(),
                             hotkeys[0],
                             need_cursor ? '[' : ' ',
@@ -1027,7 +1015,6 @@ class ShopEntry : public InvEntry
                             need_cursor ? ']' : ' ',
                             keystr.c_str(),
                             itemstr.c_str(),
-                            cost,
                             text.c_str(),
                             "",
                             itemstr.c_str());
@@ -1050,15 +1037,12 @@ public:
 };
 
 ShopMenu::ShopMenu(shop_struct& _shop, const level_pos& _pos, bool _can_purchase)
-    : InvMenu(MF_MULTISELECT | MF_NO_SELECT_QTY | MF_QUIET_SELECT
+    : InvMenu(MF_SINGLESELECT | MF_NO_SELECT_QTY | MF_QUIET_SELECT
                | MF_ALWAYS_SHOW_MORE | MF_ALLOW_FORMATTING),
       shop(_shop),
       pos(_pos),
       can_purchase(_can_purchase)
 {
-    if (!can_purchase)
-        looking = true;
-
     set_tag("shop");
 
     init_entries();
@@ -1081,40 +1065,9 @@ void ShopMenu::init_entries()
     }
 }
 
-int ShopMenu::selected_cost() const
-{
-    int cost = 0;
-    for (auto item : selected_entries())
-        cost += item_price(*dynamic_cast<ShopEntry*>(item)->item, shop);
-    return cost;
-}
-
 void ShopMenu::update_help()
 {
-    string top_line = make_stringf("<yellow>You have %d gold piece%s.",
-                                   you.gold,
-                                   you.gold != 1 ? "s" : "");
-    const int total_cost = selected_cost();
-    if (total_cost > you.gold)
-    {
-        top_line += "<lightred>";
-        top_line +=
-            make_stringf(" You are short %d gold piece%s for the purchase.",
-                         total_cost - you.gold,
-                         (total_cost - you.gold != 1) ? "s" : "");
-        top_line += "</lightred>";
-    }
-    else if (total_cost)
-    {
-        top_line +=
-            make_stringf(" After the purchase, you will have %d gold piece%s.",
-                         you.gold - total_cost,
-                         (you.gold - total_cost != 1) ? "s" : "");
-    }
-    top_line += "</yellow>\n";
-
-    set_more(formatted_string::parse_string(top_line + make_stringf(
-        //You have 0 gold pieces.
+    set_more(formatted_string::parse_string(make_stringf(
         //[Esc/R-Click] exit  [!] buy|examine items  [a-i] select item for purchase
         //[/] sort (default)  [Enter] make purchase  [A-I] put item on shopping list
 #if defined(USE_TILE) && !defined(TOUCH_UI)
@@ -1125,7 +1078,6 @@ void ShopMenu::update_help()
 #endif
         "%s  [%s] %s\n"
         "[<w>/</w>] sort (%s)%s  %s",
-        !can_purchase ? " " " "  "  " "       "  "          " :
         looking       ? "[<w>!</w>] buy|<w>examine</w> items" :
                         "[<w>!</w>] <w>buy</w>|examine items",
         _hyphenated_letters(item_count(), 'a').c_str(),
@@ -1133,26 +1085,23 @@ void ShopMenu::update_help()
         shopping_order_names[order],
         // strwidth("default")
         string(7 - strwidth(shopping_order_names[order]), ' ').c_str(),
-        !can_purchase ? " " "     "  "               " :
-                        "[<w>Enter</w>] make purchase")));
+        "[<w>Enter</w>] make purchase")));
 }
 
 void ShopMenu::purchase_selected()
 {
+    mprf("attempting to purchase");
     bool buying_from_list = false;
     vector<MenuEntry*> selected = selected_entries();
-    int cost = selected_cost();
     if (selected.empty())
     {
-        ASSERT(cost == 0);
-        buying_from_list = true;
+        mprf("not reading item selection");
         for (auto item : items)
         {
             const item_def& it = *dynamic_cast<ShopEntry*>(item)->item;
             if (shopping_list.is_on_list(it, &pos))
             {
                 selected.push_back(item);
-                cost += item_price(it, shop);
             }
         }
     }
@@ -1161,21 +1110,11 @@ void ShopMenu::purchase_selected()
     const string col = colour_to_str(channel_to_colour(MSGCH_PROMPT));
     update_help();
     const formatted_string old_more = more;
-    if (cost > you.gold)
-    {
-        more = formatted_string::parse_string(make_stringf(
-                   "<%s>You don't have enough money.</%s>\n",
-                   col.c_str(),
-                   col.c_str()));
-        more += old_more;
-        draw_menu();
-        return;
-    }
+
     more = formatted_string::parse_string(make_stringf(
-               "<%s>Purchase items%s for %d gold? (y/N)</%s>\n",
+               "<%s>Purchase item%s? (y/N)</%s>\n",
                col.c_str(),
                buying_from_list ? " in shopping list" : "",
-               cost,
                col.c_str()));
     more += old_more;
     draw_menu();
@@ -1205,9 +1144,6 @@ void ShopMenu::purchase_selected()
     {
         const int i = static_cast<item_def*>(entry->data) - shop.stock.data();
         item_def& item(shop.stock[i]);
-        // Can happen if the price changes due to id status
-        if (item_price(item, shop) > you.gold)
-            continue;
         const int quant = item.quantity;
 
         if (!_purchase(shop, pos, i))
@@ -1323,29 +1259,36 @@ bool ShopMenu::process_key(int keyin)
     default:
         break;
     }
-
-    if (keyin - 'a' >= 0 && keyin - 'a' < (int)items.size() && looking)
+    if (keyin - 'a' >= 0 && keyin - 'a' < (int)items.size())
     {
-        item_def& item(*const_cast<item_def*>(dynamic_cast<ShopEntry*>(
-            items[letter_to_index(keyin)])->item));
-        // A hack to make the description more useful.
-        // In theory, the user could kill the process at this
-        // point and end up with valid ID for the item.
-        // That's not very useful, though, because it doesn't set
-        // type-ID and once you can access the item (by buying it)
-        // you have its full ID anyway. Worst case, it won't get
-        // noted when you buy it.
+        if (looking)
         {
-            unwind_var<iflags_t> old_flags(item.flags);
-            if (shoptype_identifies_stock(shop.type))
+            item_def& item(*const_cast<item_def*>(dynamic_cast<ShopEntry*>(
+                items[letter_to_index(keyin)])->item));
+            // A hack to make the description more useful.
+            // In theory, the user could kill the process at this
+            // point and end up with valid ID for the item.
+            // That's not very useful, though, because it doesn't set
+            // type-ID and once you can access the item (by buying it)
+            // you have its full ID anyway. Worst case, it won't get
+            // noted when you buy it.
             {
-                item.flags |= (ISFLAG_IDENT_MASK | ISFLAG_NOTED_ID
-                               | ISFLAG_NOTED_GET);
+                unwind_var<iflags_t> old_flags(item.flags);
+                if (shoptype_identifies_stock(shop.type))
+                {
+                    item.flags |= (ISFLAG_IDENT_MASK | ISFLAG_NOTED_ID
+                                | ISFLAG_NOTED_GET);
+                }
+                describe_item(item);
             }
-            describe_item(item);
+            draw_menu();
+            return true;
         }
-        draw_menu();
-        return true;
+        else
+        {
+            select_items(keyin);
+            purchase_selected();
+        }
     }
 	else if (keyin - 'A' >= 0 && keyin - 'A' < (int)items.size())
     {
@@ -1410,8 +1353,8 @@ void shop()
                                   return shopping_list.is_on_list(item);
                               });
 
-    // If the shop is now empty, erase it from the overview.
-    if (shop.stock.empty())
+    // Destroy after purchase
+    if (menu.bought_something)
         destroy_shop_at(you.pos());
     redraw_screen();
     if (menu.bought_something)
@@ -1640,7 +1583,6 @@ bool ShoppingList::add_thing(const item_def &item, int cost,
                              const level_pos* _pos)
 {
     ASSERT(item.defined());
-    ASSERT(cost > 0);
 
     SETUP_POS();
 
@@ -1664,7 +1606,6 @@ bool ShoppingList::add_thing(string desc, string buy_verb, int cost,
 {
     ASSERT(!desc.empty());
     ASSERT(!buy_verb.empty());
-    ASSERT(cost > 0);
 
     SETUP_POS();
 
@@ -1775,7 +1716,7 @@ bool ShoppingList::cull_identical_items(const item_def& item, int cost)
     // Can't put items in Bazaar shops in the shopping list, so
     // don't bother transferring shopping list items to Bazaar shops.
     // TODO: temporary shoplists
-    if (cost != -1 && !is_connected_branch(you.where_are_you))
+    if (!is_connected_branch(you.where_are_you))
         return 0;
 
     switch (item.base_type)
@@ -1869,33 +1810,6 @@ bool ShoppingList::cull_identical_items(const item_def& item, int cost)
 
         list_pair listed(list_item, thing_pos(thing));
 
-        // cost = -1, we just found a shop item which is cheaper than
-        // one on the shopping list.
-        if (cost != -1)
-        {
-            int list_cost = thing_cost(thing);
-
-            if (cost >= list_cost)
-                continue;
-
-            // Only prompt once.
-            if (thing.exists(REPLACE_PROMPTED_KEY))
-                continue;
-            thing[REPLACE_PROMPTED_KEY] = (bool) true;
-
-            string prompt =
-                make_stringf("Shopping list: replace %dgp %s with cheaper "
-                             "one? (Y/n)", list_cost,
-                             describe_thing(thing).c_str());
-
-            if (yesno(prompt.c_str(), true, 'y', false))
-            {
-                add_item = true;
-                to_del.push_back(listed);
-            }
-            continue;
-        }
-
         // cost == -1, we just got an item which is on the shopping list.
         if (do_prompt)
         {
@@ -1928,7 +1842,7 @@ bool ShoppingList::cull_identical_items(const item_def& item, int cost)
         del_thing(entry.first, &entry.second);
 
     if (add_item && !on_list)
-        add_thing(item, cost);
+        add_thing(item, 0);
 
     return to_del.size();
 }
@@ -1970,9 +1884,6 @@ void ShoppingList::item_type_identified(object_class_type base_type,
         ASSERT(shop);
         if (shoptype_identifies_stock(shop->type))
             continue;
-
-        thing[SHOPPING_THING_COST_KEY] =
-            _shop_get_item_value(item, shop->greed, false);
     }
 
     // Prices could have changed.
@@ -2011,7 +1922,7 @@ vector<shoplist_entry> ShoppingList::entries()
     for (const CrawlHashTable &entry : *list)
     {
         list_entries.push_back(
-            make_pair(name_thing(entry), thing_cost(entry))
+            make_pair(name_thing(entry), 0)
         );
     }
 
@@ -2071,49 +1982,8 @@ void ShoppingList::forget_pos(const level_pos &pos)
 void ShoppingList::gold_changed(int old_amount, int new_amount)
 {
     ASSERT(list);
-
-    if (new_amount > old_amount && new_amount >= min_unbuyable_cost)
-    {
-        ASSERT(min_unbuyable_idx < list->size());
-
-        vector<string> descs;
-        for (unsigned int i = min_unbuyable_idx; i < list->size(); i++)
-        {
-            const CrawlHashTable &thing = (*list)[i];
-            const int            cost   = thing_cost(thing);
-
-            if (cost > new_amount)
-            {
-                ASSERT(i > (unsigned int) min_unbuyable_idx);
-                break;
-            }
-
-            string desc;
-
-            if (thing.exists(SHOPPING_THING_VERB_KEY))
-                desc += thing[SHOPPING_THING_VERB_KEY].get_string();
-            else
-                desc = "buy";
-            desc += " ";
-
-            desc += describe_thing(thing, DESC_A);
-
-            descs.push_back(desc);
-        }
-        ASSERT(!descs.empty());
-
-        mpr_comma_separated_list("You now have enough gold to ", descs,
-                                 ", or ");
-        mpr("You can access your shopping list by pressing '$'.");
-
-        // Our gold has changed, maybe we can buy different things now.
-        refresh();
-    }
-    else if (new_amount < old_amount && new_amount < max_buyable_cost)
-    {
-        // As above.
-        refresh();
-    }
+    
+    return;
 }
 
 class ShoppingListMenu : public Menu
@@ -2128,13 +1998,11 @@ virtual formatted_string calc_title() override;
 formatted_string ShoppingListMenu::calc_title()
 {
     formatted_string fs;
-    const int total_cost = you.props[SHOPPING_LIST_COST_KEY];
 
     fs.textcolour(title->colour);
-    fs.cprintf("%d %s%s, total %d gold",
+    fs.cprintf("%d %s%s, total",
                 title->quantity, title->text.c_str(),
-                title->quantity > 1? "s" : "",
-                total_cost);
+                title->quantity > 1? "s" : "");
 
     string s = "<lightgrey>  [<w>a-z</w>] ";
 
@@ -2177,16 +2045,14 @@ void ShoppingList::fill_out_menu(Menu& shopmenu)
 
     for (CrawlHashTable &thing : *list)
     {
-        const int cost = thing_cost(thing);
         const bool unknown = thing_is_item(thing)
                              && shop_item_unknown(get_thing_item(thing));
 
         const string etitle =
             make_stringf(
-                "%*s%5d gold  %s%s",
+                "%*s  %s%s",
                 longest,
                 describe_thing_pos(thing).c_str(),
-                cost,
                 name_thing(thing, DESC_A).c_str(),
                 unknown ? " (unknown)" : "");
 
@@ -2212,8 +2078,6 @@ void ShoppingList::fill_out_menu(Menu& shopmenu)
             if (col != -1)
                 me->colour = col;
         }
-        if (cost > you.gold)
-            me->colour = DARKGREY;
 
         shopmenu.add_entry(me);
         ++hotkey;
@@ -2261,19 +2125,6 @@ void ShoppingList::display()
 
         if (shopmenu.menu_action == Menu::ACT_EXECUTE)
         {
-            int cost = thing_cost(*thing);
-
-            if (cost > you.gold)
-            {
-                string prompt =
-                   make_stringf("You cannot afford %s; travel there "
-                                "anyway? (y/N)",
-                                describe_thing(*thing, DESC_A).c_str());
-                clrscr();
-                if (!yesno(prompt.c_str(), true, 'n'))
-                    continue;
-            }
-
             const level_pos lp(thing_pos(*thing));
             start_translevel_travel(lp);
             break;
@@ -2285,15 +2136,6 @@ void ShoppingList::display()
             {
                 const item_def &item = get_thing_item(*thing);
                 describe_item(const_cast<item_def&>(item));
-            }
-            else // not an item, so we only stored a description.
-            {
-                // HACK: Assume it's some kind of portal vault.
-                const string info = make_stringf(
-                             "%s with an entry fee of %d gold pieces.",
-                             describe_thing(*thing, DESC_A).c_str(),
-                             (int) thing_cost(*thing));
-                show_description(info.c_str());
             }
         }
         else if (shopmenu.menu_action == Menu::ACT_MISC)
@@ -2322,18 +2164,6 @@ void ShoppingList::display()
     redraw_screen();
 }
 
-static bool _compare_shopping_things(const CrawlStoreValue& a,
-                                     const CrawlStoreValue& b)
-{
-    const CrawlHashTable& hash_a = a.get_table();
-    const CrawlHashTable& hash_b = b.get_table();
-
-    const int a_cost = hash_a[SHOPPING_THING_COST_KEY];
-    const int b_cost = hash_b[SHOPPING_THING_COST_KEY];
-
-    return a_cost < b_cost;
-}
-
 // Reset max_buyable and min_unbuyable info. Call this anytime any of the
 // player's gold, the shopping list, and the prices of the items on it
 // change.
@@ -2342,35 +2172,6 @@ void ShoppingList::refresh()
     if (!you.props.exists(SHOPPING_LIST_KEY))
         you.props[SHOPPING_LIST_KEY].new_vector(SV_HASH, SFLAG_CONST_TYPE);
     list = &you.props[SHOPPING_LIST_KEY].get_vector();
-
-    stable_sort(list->begin(), list->end(), _compare_shopping_things);
-
-    min_unbuyable_cost = INT_MAX;
-    min_unbuyable_idx  = -1;
-    max_buyable_cost   = -1;
-    max_buyable_idx    = -1;
-
-    int total_cost = 0;
-
-    for (unsigned int i = 0; i < list->size(); i++)
-    {
-        const CrawlHashTable &thing = (*list)[i];
-
-        const int cost = thing_cost(thing);
-
-        if (cost <= you.gold)
-        {
-            max_buyable_cost = cost;
-            max_buyable_idx  = i;
-        }
-        else if (min_unbuyable_idx == -1)
-        {
-            min_unbuyable_cost = cost;
-            min_unbuyable_idx  = i;
-        }
-        total_cost += cost;
-    }
-    you.props[SHOPPING_LIST_COST_KEY].get_int() = total_cost;
 }
 
 int ShoppingList::find_thing(const item_def &item,
@@ -2441,8 +2242,7 @@ string ShoppingList::get_thing_desc(const CrawlHashTable& thing)
 
 int ShoppingList::thing_cost(const CrawlHashTable& thing)
 {
-    ASSERT(thing.exists(SHOPPING_THING_COST_KEY));
-    return thing[SHOPPING_THING_COST_KEY].get_int();
+    return 0;
 }
 
 level_pos ShoppingList::thing_pos(const CrawlHashTable& thing)
