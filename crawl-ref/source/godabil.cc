@@ -4153,14 +4153,6 @@ bool gozag_setup_call_merchant(bool quiet)
         }
         return false;
     }
-    if (level_id::current().branch != BRANCH_BAZAAR)
-    {
-        if (!quiet)
-        {
-            mprf("You must be in the bazaar to call a merchant.");
-            return false;
-        }
-    }
     if (grd(you.pos()) != DNGN_FLOOR)
     {
         if (!quiet)

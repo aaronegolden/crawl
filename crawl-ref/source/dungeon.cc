@@ -474,44 +474,6 @@ void upstairs_removal()
 	}      
 }
 
-void bazaar_postlevel_shops()
-{
-	int added_shop_count = one_chance_in(6) ? 2 + random2(4) : 1;
-    vector<coord_def> locations;
-    int tries = 50;
-    for (rectangle_iterator ri(0); ri; ++ri)
-    {
-        if (in_bounds(*ri))
-        {
-            dungeon_feature_type feat = grd(*ri);
-            if (feat == DNGN_FLOOR)
-                locations.push_back(*ri);
-        }
-    }
-    while (tries > 0 && added_shop_count > 0)
-    {
-        tries--;
-        coord_def c = locations[random2(locations.size())];
-        if(grd(c) == DNGN_FLOOR) //need this in case another shop was already placed here
-        {
-			shop_type type = static_cast<shop_type>(random2(NUM_SHOPS));
-            while(type == SHOP_FOOD)
-            {
-                 type = static_cast<shop_type>(random2(NUM_SHOPS));
-            }
-            place_spec_shop(c, type);
-			added_shop_count--;
-            map_cell& cell = env.map_knowledge(c);
-            cell.clear_cloud();
-            cell.clear_item();
-            cell.clear_monster();
-#ifdef USE_TILE
-            tile_reset_fg(c);
-#endif            
-        }
-    }
-}
-
 void map_stairs_down()
 {
     int mapped = 0;
