@@ -87,7 +87,6 @@ static bool _valid_dungeon_level();
 
 static bool _builder_by_type();
 static bool _builder_normal();
-static void _builder_items();
 static void _builder_monsters();
 static coord_def _place_specific_feature(dungeon_feature_type feat);
 static void _place_specific_trap(const coord_def& where, trap_spec* spec,
@@ -1275,16 +1274,6 @@ void dgn_reset_level(bool enable_random_maps)
     tile_init_default_flavour();
     tile_clear_flavour();
     env.tile_names.clear();
-}
-
-static int _num_items_wanted(int absdepth0)
-{
-    if (branches[you.where_are_you].branch_flags & BFLAG_NO_ITEMS)
-        return 0;
-    else if (absdepth0 > 5 && one_chance_in(500 - 5 * absdepth0))
-        return 10 + random2avg(90, 2); // rich level!
-    else
-        return 3 + roll_dice(3, 11);
 }
 
 static int _num_mons_wanted()
@@ -3700,33 +3689,6 @@ static void _builder_monsters()
         _place_aquatic_monsters();
     else
         _place_assorted_zombies();
-}
-
-/**
- * Randomly place a single item
- *
- * @param item   The item slot of the item being randomly placed
- */
-static void _randomly_place_item(int item)
-{
-    coord_def itempos;
-    bool found = false;
-    for (int i = 0; i < 500 && !found; ++i)
-    {
-        itempos = random_in_bounds();
-        const monster* mon = monster_at(itempos);
-        found = grd(itempos) == DNGN_FLOOR
-                && !map_masked(itempos, MMT_NO_ITEM)
-                // oklobs or statues are ok
-                && (!mon || !mons_is_firewood(*mon));
-    }
-    if (!found)
-    {
-        // Couldn't find a single good spot!
-        destroy_item(item);
-    }
-    else
-        move_item_to_grid(&item, itempos);
 }
 
 static bool _connect_vault_exit(const coord_def& exit)
