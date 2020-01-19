@@ -798,6 +798,7 @@ const set<pair<object_class_type, int> > removed_items =
 	{ OBJ_SCROLLS,   SCR_REMOVE_CURSE },
 	{ OBJ_SCROLLS,   SCR_RANDOM_USELESSNESS },
     { OBJ_SCROLLS,   SCR_RECHARGING },
+    { OBJ_SCROLLS,   SCR_ACQUIREMENT },
 	{ OBJ_MISSILES,   MI_NEEDLE },
 #endif
     // Outside the #if because we probably won't remove these.

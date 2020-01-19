@@ -250,7 +250,7 @@ SHUFFLE: DF/EG
 SUBST:   D : d, E = 1.., F : 2, G : .
 NSUBST:  d = 3:d / *:$
 ITEM:    scroll of enchant armour q:2 / scroll of enchant weapon q:3 /\
-         scroll of acquirement q:1 w:5 / scroll of silence q:3 /\
+         scroll of silence q:3 /\
          scroll of fog q:3 / scroll of vulnerability q:3 /\
          scroll of summoning q:3 / scroll of immolation q:3 /\
          any good_item book w:30 /\

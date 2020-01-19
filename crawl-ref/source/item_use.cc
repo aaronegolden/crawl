@@ -2898,7 +2898,6 @@ void read_scroll(item_def& scroll)
         else
             cancel_scroll = !remove_curse(true, pre_succ_msg);
         break;
-#endif
 
     case SCR_ACQUIREMENT:
         mpr("This is a scroll of acquirement!");
@@ -2907,6 +2906,7 @@ void read_scroll(item_def& scroll)
         set_ident_type(scroll, true);
         run_uncancel(UNC_ACQUIREMENT, AQ_SCROLL);
         break;
+#endif
 
     case SCR_FEAR:
         mpr("You assume a fearsome visage.");

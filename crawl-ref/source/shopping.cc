@@ -556,9 +556,11 @@ unsigned int item_value(item_def item, bool ident)
         {
             switch (item.sub_type)
             {
+#if TAG_MAJOR_VERSION == 34
             case SCR_ACQUIREMENT:
                 valued += 520;
                 break;
+#endif
 
             case SCR_BRAND_WEAPON:
                 valued += 200;
