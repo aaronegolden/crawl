@@ -14,16 +14,12 @@
 lua {{
 require('dlua/vault.lua')
 
-MAX_RANDOM_SHOPS = 5
+MAX_RANDOM_SHOPS = 1
 
 -- If a level gets shops, how many there are.
 -- Just one most of the time; expected value is 1.42.
 function num_shops()
-    if crawl.x_chance_in_y(5, 6) then
-        return 1
-    else
-        return crawl.random_range(2, MAX_RANDOM_SHOPS)
-    end
+    return 1
 end
 
 function ks_shop_vault(e, glyphs)
@@ -62,18 +58,15 @@ end
 # Gozag code uses it to find out where shops can normally place.
 NAME: serial_shops
 TAGS: allow_dup extra luniq
-DEPTH:  D:11-, Depths, Orc:1, Shoals, Snake, Vaults
-CHANCE: 100% (D:11)
-CHANCE: 10% (D:12-)
-CHANCE: 20% (Depths:1)
-CHANCE: 100% (Depths:2)
-CHANCE: 20% (Depths:3)
-CHANCE: 20% (Orc)
-CHANCE: 60% (Vaults)
-CHANCE: 30% (Shoals, Snake)
+DEPTH:  D:4-, Depths, Orc, Shoals, Snake, Vaults
+CHANCE: 100% (D:4-)
+CHANCE: 100% (Depths)
+CHANCE: 100% (Orc)
+CHANCE: 100% (Vaults)
+CHANCE: 20% (Shoals, Snake)
 {{
 hook("post_place", function()
-    dgn.place_maps { tag = "bzr_entry", count = 1 }
+    dgn.place_maps { tag = "shop", count = 1 }
 end)
 }}
 MAP
