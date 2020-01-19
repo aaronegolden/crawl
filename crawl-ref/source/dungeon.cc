@@ -5382,7 +5382,7 @@ static int _shop_num_items(shop_type type, const shop_spec &spec)
         return (int) spec.items.size();
     }
 
-    return 5 + random2avg(12, 3);
+    return 4 + random2(3);
 }
 
 /**
