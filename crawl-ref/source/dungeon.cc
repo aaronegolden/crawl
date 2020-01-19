@@ -5451,11 +5451,9 @@ static void _stock_shop_item(int j, shop_type shop_type_,
 
         else
         {
-            // make an item randomly
-            // gozag shop items are better
-            const bool good_item = spec.gozag || one_chance_in(4);
-            const int level = good_item ? ISPEC_GOOD_ITEM : item_level;
-            item_index = items(true, basetype, subtype, level);
+            item_index = acquirement_create_item(basetype,
+                            IT_SRC_SHOP, true,
+                            coord_def(), false);
         }
 
         // Try for a better selection for bookshops.
@@ -5562,7 +5560,17 @@ object_class_type item_in_shop(shop_type shop_type)
 
     case SHOP_GENERAL:
     case SHOP_GENERAL_ANTIQUE:
-        return OBJ_RANDOM;
+    {
+        return random_choose_weighted(2, OBJ_WEAPONS,
+                                      2, OBJ_ARMOUR,
+                                      1, OBJ_BOOKS,
+                                      2, OBJ_JEWELLERY,
+                                      1, OBJ_MISSILES,
+                                      1, OBJ_POTIONS,
+                                      1, OBJ_SCROLLS,
+                                      1, OBJ_WANDS,
+                                      1, OBJ_MISCELLANY);
+    }
 
     case SHOP_JEWELLERY:
         return OBJ_JEWELLERY;
@@ -5576,7 +5584,7 @@ object_class_type item_in_shop(shop_type shop_type)
 #if TAG_MAJOR_VERSION == 34
 	//food shops shouldn't generate, but make extra sure to not generate food just in case
 	case SHOP_FOOD:
-        return OBJ_RANDOM; 
+        return OBJ_MISSILES; 
 #endif
 
     case SHOP_DISTILLERY:
@@ -5589,7 +5597,7 @@ object_class_type item_in_shop(shop_type shop_type)
         die("unknown shop type %d", shop_type);
     }
 
-    return OBJ_RANDOM;
+    return OBJ_WEAPONS;
 }
 
 // Keep seeds away from the borders so we don't end up with a

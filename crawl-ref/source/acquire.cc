@@ -1350,8 +1350,6 @@ int acquirement_create_item(object_class_type class_wanted,
         return _failed_acquirement(quiet);
     }
 
-    move_item_to_grid(&thing_created, pos);
-
     if (thing_created != NON_ITEM)
     {
         ASSERT(mitm[thing_created].is_valid());
