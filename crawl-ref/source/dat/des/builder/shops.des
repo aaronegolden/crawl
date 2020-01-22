@@ -59,15 +59,95 @@ end
 NAME: serial_shops
 TAGS: allow_dup extra luniq
 DEPTH:  D:4-, Depths, Orc, Shoals, Snake, Vaults
-CHANCE: 100% (D:4-)
+CHANCE: 100% (D)
 CHANCE: 100% (Depths)
 CHANCE: 100% (Orc)
 CHANCE: 100% (Vaults)
 CHANCE: 20% (Shoals, Snake)
 {{
 hook("post_place", function()
-    dgn.place_maps { tag = "shop", count = 1 }
+local num = num_shops()
+    dgn.place_maps { tag = "shop", count = num }
 end)
 }}
 MAP
+ENDMAP
+
+###############################################################################
+# <<1>> Generic.
+#       Tagged shop, may only contain a single shop. No threats.
+#
+NAME:   shop
+TAGS:   allow_dup extra shop transparent
+WEIGHT: 100
+KFEAT:  O = any shop
+MAP
+O
+ENDMAP
+
+NAME:   shop_fountains
+TAGS:   allow_dup extra shop transparent
+KFEAT:  O = any shop
+MAP
+T.T
+.O.
+T.T
+ENDMAP
+
+NAME:   shop_statue
+TAGS:   allow_dup extra shop no_tele_into
+KFEAT:  O = any shop
+MAP
+@G..O..G@
+ENDMAP
+
+NAME: nicolae_shop_behind_doors
+TAGS: allow_dup extra shop transparent
+KFEAT: O = any shop
+MAP
+x+x
++O+
+x+x
+ENDMAP
+
+NAME: nicolae_shop_crystal
+TAGS: allow_dup extra shop transparent
+KFEAT: O = any shop
+MAP
+b.b
+.O.
+b.b
+ENDMAP
+
+NAME: nicolae_shop_statue_plus
+TAGS: allow_dup extra shop no_tele_into
+KFEAT: O = any shop
+MAP
+   @
+   G
+   .
+@G.O.G@
+   .
+   G
+   @
+ENDMAP
+
+NAME: nicolae_shop_stone
+TAGS: allow_dup extra shop transparent
+KFEAT: O = any shop
+MAP
+  c
+ ...
+c.O.c
+ ...
+  c
+ENDMAP
+
+NAME: nicolae_shop_trees
+TAGS: allow_dup extra shop transparent
+KFEAT: O = any shop
+MAP
+  t
+t.O.t
+  t
 ENDMAP
