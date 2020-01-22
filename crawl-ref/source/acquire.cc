@@ -314,36 +314,6 @@ static armour_type _pick_unseen_armour()
     return picked;
 }
 
-static int _acquirement_food_subtype(bool /*divine*/, int& quantity)
-{
-    int type_wanted;
-    // Food is a little less predictable now. - bwr
-    if (you.species == SP_GHOUL)
-        type_wanted = FOOD_CHUNK;
-    else if (you_worship(GOD_FEDHAS))
-    {
-        // Fedhas worshippers get fruit to use for growth and evolution
-        type_wanted = FOOD_FRUIT;
-    }
-    else
-    {
-        type_wanted = coinflip()
-            ? FOOD_ROYAL_JELLY
-            : you.get_mutation_level(MUT_HERBIVOROUS) ? FOOD_BREAD_RATION
-                                                      : FOOD_MEAT_RATION;
-    }
-
-    quantity = 3 + random2(5);
-
-    // giving more of the lower food value items
-    if (type_wanted == FOOD_FRUIT)
-        quantity = 8 + random2avg(15, 2);
-    else if (type_wanted == FOOD_ROYAL_JELLY || type_wanted == FOOD_CHUNK)
-        quantity += 2 + random2avg(10, 2);
-
-    return type_wanted;
-}
-
 /**
  * Randomly choose a class of weapons (those using a specific weapon skill)
  * for acquirement to give the player. Weight toward the player's skills.
@@ -635,6 +605,39 @@ static int _acquirement_book_subtype(bool /*divine*/, int & /*quantity*/)
     //or asserts will get set off
 }
 
+static int _acquirement_scroll_subtype(bool /*divine*/, int & /*quantity*/)
+{
+    //copied from makeitem, preemptively removing item types that are going to be removed
+    return random_choose_weighted(
+                 80, SCR_TELEPORTATION,
+                 45, SCR_MAGIC_MAPPING,
+                 32, SCR_FEAR,
+                 32, SCR_FOG,
+                 32, SCR_BLINKING,
+                 32, SCR_IMMOLATION,
+                 27, SCR_VULNERABILITY,
+                 17, SCR_SUMMONING,
+                 15, SCR_SILENCE,
+                 15, SCR_TORMENT,
+                 15, SCR_HOLY_WORD);
+}
+
+static int _acquirement_potion_subtype(bool /*divine*/, int & /*quantity*/)
+{
+    return random_choose_weighted( 95, POT_HEAL_WOUNDS,
+                                            70, POT_MUTATION,
+                                            70, POT_LIGNIFY,
+                                            70, POT_FLIGHT,
+                                            60, POT_MIGHT,
+                                            60, POT_HASTE,  
+											50, POT_CANCELLATION,
+                                            50, POT_AMBROSIA,
+                                            35, POT_INVISIBILITY,
+                                            35, POT_RESISTANCE,
+                                            35, POT_MAGIC,
+                                            35, POT_BERSERK_RAGE);
+}
+
 typedef int (*acquirement_subtype_finder)(bool divine, int &quantity);
 static const acquirement_subtype_finder _subtype_finders[] =
 {
@@ -642,10 +645,10 @@ static const acquirement_subtype_finder _subtype_finders[] =
     _acquirement_missile_subtype,
     _acquirement_armour_subtype,
     _acquirement_wand_subtype,
-    _acquirement_food_subtype,
-    0, // no scrolls
+    0, // remove food
+    _acquirement_scroll_subtype,
     _acquirement_jewellery_subtype,
-    _acquirement_food_subtype, // potion acquirement = food for vampires
+    _acquirement_potion_subtype,
     _acquirement_book_subtype,
     _acquirement_staff_subtype,
     0, // no, you can't acquire the orb
@@ -1245,12 +1248,6 @@ int acquirement_create_item(object_class_type class_wanted,
             acq_item.quantity *= 5;
         else if (quant > 1)
             acq_item.quantity = quant;
-
-        // Remove curse flag from item, unless worshipping Ashenzari.
-        if (have_passive(passive_t::want_curses))
-            do_curse_item(acq_item, true);
-        else
-            do_uncurse_item(acq_item);
 
         if (acq_item.base_type == OBJ_BOOKS)
         {
