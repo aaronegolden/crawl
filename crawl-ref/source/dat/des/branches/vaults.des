@@ -5,13 +5,6 @@
 ###############################################################################
 
 {{
-  -- Vaults:$ common loot substitutions
-  function vaults_end_loot(e)
-    e.subst("? = | * .:43")
-    e.subst("| = | *:2")
-    e.subst("* = * |:2")
-  end
-
   -- Vaults:$ cross-vault rune substitution
   -- Turn 'O' into a rune (if it doesn't exist yet) or a good item
   --
@@ -475,7 +468,6 @@ TAGS: vaults_end_quadrant unrand
 NSUBST:  U = 1:. / *:xxxx.
 NSUBST:  V = 1:. / *:xxxx.
 SUBST:   - = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   ..xxxxxxxxxxxxxxxxxxx..
@@ -511,7 +503,6 @@ SHUFFLE: !_
 SUBST:   ! = | * .:20
 SUBST:   _ = 8 9 .:20
 SUBST:   a : x .
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   a.xxxxxxxxxxxxxxxxxxx.a
@@ -546,7 +537,6 @@ TAGS:    vaults_end_quadrant unrand
 NSUBST:  Y = 4 = 9:30 8 / 8 = 9:30 8 .:40 / *:.
 NSUBST:  Z = 5 = 8:30 9 / 7 = 8:30 9 .:40 / *:.
 SUBST:   a : x ., b : x ., c : x .
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   axaxxaaxaxxxxxxxxxxxxbx
@@ -581,7 +571,6 @@ TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: ? = 1:O / *:*
 NSUBST: " = 1:. / *:x
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -614,7 +603,6 @@ ENDMAP
 NAME:   vaults_end_mu_not_diamond
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 *:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -660,7 +648,6 @@ SUBST:   E = |
 SUBST:   F = *
 NSUBST:  G = 1:O / *:9
 SUBST:   9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -696,7 +683,6 @@ SUBST:  9 = 8 9 .:10
 NSUBST: $ = 1:O / *:$
 SUBST:  $ = |**$
 SUBST:  a = x.
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   axxxxxxxxxxxxxxxxxxxxxa
@@ -731,7 +717,6 @@ TAGS:   vaults_end_quadrant unrand
 NSUBST: a = 1:+ / *:x, b = 1:+ / *:x, c = 1:+ / *:x, d = 1:+ / *:x
 NSUBST: O = 1:O / *:*
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -764,7 +749,6 @@ ENDMAP
 NAME:   vaults_end_minmay_hexagonal
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -797,7 +781,6 @@ ENDMAP
 NAME:  vaults_end_minmay_subdivision
 TAGS:  vaults_end_quadrant unrand
 SUBST: 9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -831,7 +814,6 @@ NAME:   vaults_end_minmay_triangle_fans
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:*
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   ...xxxxxxxxxxxxxxxxxxxx
@@ -864,7 +846,6 @@ ENDMAP
 NAME:   vaults_end_minmay_pillar_box
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -897,7 +878,6 @@ ENDMAP
 NAME:   vaults_end_minmay_partial_spiral
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -931,7 +911,6 @@ NAME:   vaults_end_minmay_grid2
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / 1:* / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   .xxxxxxxxxxxxxxxxxxxxxx
@@ -965,7 +944,6 @@ NAME:   vaults_end_minmay_pluses
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -999,7 +977,6 @@ NAME:   vaults_end_minmay_broken_diamonds
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: * = 1:O / 14:* / *:.
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1033,7 +1010,6 @@ NAME:   vaults_end_minmay_smooth_crossroads
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:.
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1066,7 +1042,6 @@ ENDMAP
 NAME:   vaults_end_minmay_diagonal_split
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1101,7 +1076,6 @@ TAGS:    vaults_end_quadrant vaults_end_quadrant_mall unrand
 SHUFFLE: ae / bf / cg / dh
 SUBST:   a = +, e = ., bcdfgh = x
 SUBST:   9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1132,7 +1106,7 @@ ENDMAP
 ############################################################
 NAME:    vaults_end_dpeg_shops1
 TAGS:    vaults_end_quadrant vaults_end_quadrant_mall unrand
-KFEAT:   S = abandoned_shop
+KFEAT:   S = any shop
 : if crawl.one_chance_in(4) then
 SUBST:   A = +, a = ., CD = x
 : else
@@ -1140,7 +1114,6 @@ SHUFFLE: CD
 SUBST:   C = ., DAa = x
 : end
 SUBST:   9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1174,7 +1147,6 @@ NAME:   vaults_end_minmay_plus_grid
 TAGS:   vaults_end_quadrant unrand
 NSUBST: * = 1:O / *:*
 SUBST:  * = 9 8 *:20 .
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1208,7 +1180,6 @@ NAME:   vaults_end_minmay_curved1
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:*
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   x.x.xxxxxxxxxxxxxxxxxxx
@@ -1241,7 +1212,6 @@ ENDMAP
 NAME:   vaults_end_minmay_broken_lines
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1276,7 +1246,6 @@ TAGS:    vaults_end_quadrant unrand
 SHUFFLE: AB
 SUBST:   9 = 8 9 .:20
 SUBST:   A = ., B = x
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1309,7 +1278,6 @@ ENDMAP
 NAME:   vaults_end_minmay_split_center
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1343,7 +1311,6 @@ NAME:   vaults_end_minmay_sharp_edges
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:*
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1376,7 +1343,6 @@ ENDMAP
 NAME:   vaults_end_minmay_outlined_triangles
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1409,7 +1375,6 @@ ENDMAP
 NAME:   vaults_end_minmay_oval
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1443,7 +1408,6 @@ NAME:   vaults_end_minmay_fences
 TAGS:   vaults_end_quadrant unrand
 NSUBST: A = 1:+ / *:x, B = 1:+ / *:x
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1477,7 +1441,6 @@ NAME:   vaults_end_minmay_wings
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1511,7 +1474,6 @@ NAME:   vaults_end_minmay_cones
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1544,7 +1506,6 @@ NAME:   vaults_end_grunt_pinched
 TAGS:   vaults_end_quadrant unrand
 NSUBST: O = 1:O / *:.
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1583,7 +1544,6 @@ NSUBST:  4 = 1:9 / *:*
 NSUBST:  5 = 1:9 / *:*
 NSUBST:  6 = 1:O / *:*
 SUBST:   9 = 8 9 .:30
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1615,7 +1575,6 @@ ENDMAP
 NAME:   vaults_end_grunt_cloverleaf
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1647,7 +1606,6 @@ ENDMAP
 NAME:   vaults_end_grunt_tight_spiral
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1680,7 +1638,6 @@ NAME:   vaults_end_grunt_simple_division
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:*
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1713,7 +1670,6 @@ NAME: vaults_grunt_end_bulge
 TAGS: vaults_end_quadrant unrand
 NSUBST: O = 1:O / *:*
 SUBST: 9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxx.
@@ -1745,7 +1701,6 @@ ENDMAP
 NAME:  vaults_end_grunt_zigzag
 TAGS:  vaults_end_quadrant unrand
 SUBST: 9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxx.
@@ -1779,7 +1734,6 @@ NAME:   johnstein_vaults_end_maze
 TAGS:   vaults_end_quadrant unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:*
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1817,7 +1771,6 @@ NAME:   vaults_end_minmay_curved2
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1851,7 +1804,6 @@ NAME:    vaults_end_minmay_connected_circles
 TAGS:    vaults_end_quadrant_prize unrand
 SUBST:   9 = 8 9 .:20
 NSUBST:  * = 1:O / *:*
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1885,7 +1837,6 @@ NAME:   vaults_end_minmay_x
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1918,7 +1869,6 @@ ENDMAP
 NAME:   vaults_end_minmay_split_x
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1952,7 +1902,6 @@ NAME:   vaults_end_minmay_slanted
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -1987,7 +1936,6 @@ TAGS:    vaults_end_quadrant_prize unrand
 SHUFFLE: abcd
 SUBST:   a : ., b : x .:1, c : x .:1, d : x .:1
 SUBST:   9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2023,7 +1971,6 @@ SUBST:  9 = 8 9 .
 NSUBST: $ = 1:O / *:$
 SUBST:  $ = | *:15 $:5
 SUBST:  a = x.
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2063,7 +2010,6 @@ KFEAT:  z = known alarm trap
 KFEAT:  A = known alarm trap
 SUBST:  s = x:250 +:1
 SUBST:  a = x.
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2104,7 +2050,6 @@ NSUBST: E = 1:+ / *:x
 NSUBST: F = 1:+ / *:x
 NSUBST: G = 1:+ / *:x
 SUBST:  a = xn..
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   axxxxxxxxxxxxxxxxxxxxxa
@@ -2140,7 +2085,6 @@ SUBST:  9 = 8 9 .:20
 NSUBST: ? = 1:O / *:|
 SUBST:  " = +:1 x:99
 SUBST:  ! = x:20 .
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   x.xxxxxxxxxxxxxxxxxxxxx
@@ -2174,7 +2118,6 @@ NAME:   vaults_end_minmay_bent_boxes
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2208,7 +2151,6 @@ NAME:   vaults_end_minmay_cup_spider
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2242,7 +2184,6 @@ NAME:   vaults_end_minmay_30_sandwiches
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: | = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2276,7 +2217,6 @@ NAME:   vaults_end_minmay_small_xes
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: | = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2310,7 +2250,6 @@ NAME:   vaults_end_minmay_plusses
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: | = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2344,7 +2283,6 @@ NAME:   vaults_end_minmay_circles_and_squares
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2377,7 +2315,6 @@ ENDMAP
 NAME:   vaults_end_minmay_odd_checkers
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2411,7 +2348,6 @@ NAME:   vaults_end_minmay_bends
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2446,7 +2382,6 @@ TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
 NSUBST: O = 1:O / *:|
 SUBST:  X : x., Y : x.
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
  .xxxxxxxxxxxxxxxxxxxxxxx
@@ -2479,7 +2414,6 @@ ENDMAP
 NAME:   vaults_end_minmay_odd_hourglass
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 .:20
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2514,7 +2448,6 @@ TAGS:    vaults_end_quadrant_prize unrand
 SUBST:   9 = 8 9 .:10
 NSUBST:  O = 1:O / *:|
 SUBST:   * = * $:4
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2547,7 +2480,6 @@ NAME:    vaults_end_grunt_nonplussed
 TAGS:    vaults_end_quadrant_prize unrand
 NSUBST:  9 = 10:8 / 10:9 / *:.
 NSUBST:  O = 1:O / *:|
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2580,7 +2512,6 @@ ENDMAP
 NAME:   johnstein_vaults_end_asymmetric
 TAGS:   vaults_end_quadrant_prize unrand
 SUBST:  9 = 8 9 *:10
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
   xxxxxxxxxxxxxxxxxxxxxxx
@@ -2661,7 +2592,6 @@ NAME: vaults_end_room_traps_and_loot
 TAGS: vaults_end_room
 : default_subvault_glyphs()
 SUBST: . = ?
-: vaults_end_loot(_G)
 MAP
 ENDMAP
 
@@ -2684,7 +2614,6 @@ TAGS: vaults_end_room
       end
     end
 }}
-: vaults_end_loot(_G)
 MAP
 ENDMAP
 
@@ -2705,7 +2634,6 @@ TAGS: vaults_end_room
       end
     end
 }}
-: vaults_end_loot(_G)
 MAP
 ENDMAP
 
@@ -2713,7 +2641,6 @@ ENDMAP
 #            Potentially contains the rune.
 NAME: vaults_end_room_rune
 TAGS: vaults_end_room_rune
-: vaults_end_loot(_G)
 : vaults_end_rune(_G)
 MAP
 ......

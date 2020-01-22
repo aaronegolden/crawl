@@ -3,55 +3,6 @@
 #          in the Mines. General (mini)vaults, which can also appear in the
 #          Mines, should go to vaults.des.
 ##############################################################################
-# copy some bazaar utility functions for the endings
-lua {{
-
-function place_bazaar_portal(e)
-  e.kfeat("O = enter_bazaar")
-  e.lua_marker('O', bazaar_portal(false))
-end
-
-function bazaar_portal()
-  return one_way_stair { floor = 'stone_arch' }
-end
-
-function random_bazaar_colour()
-  local colours = {"blue", "red", "lightblue", "magenta", "green"}
-  local ret = colours[crawl.random2(#colours) + 1]
-
-  return ret
-end
-
-function bazaar_setup(e)
-  e.tags('no_monster_gen')
-  e.kfeat("< = stone_arch")
-  e.kfeat("> = exit_bazaar")
-end
-
-function fixup_bazaar()
-  dgn.change_floor_colour(random_bazaar_colour())
-
-  local default = {rock="wall_vault", floor="floor_vault", halo="halo_vault"}
-  local tileset = {
-    blue = {rock="wall_brick_gray", floor="floor_grass", halo="halo_grass"},
-    red = {rock="wall_pebble_red", floor="floor_vault", halo="halo_vault"},
-    lightblue = {rock="wall_pebble_lightblue", floor="floor_grass", halo="halo_grass2"},
-    magenta = {rock="wall_stone_gray", floor="floor_dirt", halo="halo_dirt"},
-    green = {rock="wall_stone_gray", floor="floor_grass", halo="halo_grass"},
-  }
-
-  local tile = tileset[dgn.get_floor_colour()]
-  if (tile == nil) then
-    tile = default
-  end
-
-  dgn.change_floor_tile(tile.floor)
-  dgn.change_rock_tile(tile.rock)
-end
-  
-dgn.set_branch_epilogue("Bazaar", "fixup_bazaar")
-
-}}
 
 ##############################################################################
 # Orcish Mines entries
@@ -1326,12 +1277,10 @@ MONS:    orc warrior, orc knight
 : end
 #
 MONS:    warg / nothing
-KFEAT:   s = stone_arch
+KFEAT:   s = any shop
 SUBST:   5 = 32, A:+, C:+, B:c, D:c
 SUBST:   T : TIII
-NSUBST:  s = 1:O / *:s
 SHUFFLE: AC/BD
-: place_bazaar_portal(_G)
 MAP
 ...................................
 ...................................
@@ -1358,9 +1307,7 @@ PLACE:   Orc:$
 ORIENT:  float
 MONS:    ogre / nothing w:5, two-headed ogre / nothing w:5, ogre mage
 KMONS:   s = ogre / nothing w:5
-KFEAT:   s = stone_arch
-NSUBST:  s = 1:O / *:s
-: place_bazaar_portal(_G)
+KFEAT:   s = any shop
 MAP
   ..........@.........
  ......................
@@ -1389,9 +1336,7 @@ MONS:    orc knight
 MONS:    orc warrior
 MONS:    centaur w:20 / centaur warrior w:1 / nothing w:21
 SUBST:   3 = 23
-KFEAT:   s = stone_arch
-NSUBST:  s = 1:O / *:s
-: place_bazaar_portal(_G)
+KFEAT:   s = any shop
 MAP
   ...............@...............
  .................................
@@ -1420,10 +1365,8 @@ PLACE:   Orc:$
 ORIENT:  float
 MONS:    orc / nothing, orc wizard / nothing, orc sorcerer
 MONS:    orc priest / nothing, orc high priest, orc warrior
-KFEAT:   s = stone_arch
-NSUBST:  s = 1:O / *:s
+KFEAT:   s = any shop
 SHUFFLE: 23/45
-: place_bazaar_portal(_G)
 MAP
   ...................
  ...ccccccccccccccc...
@@ -1455,9 +1398,7 @@ PLACE:   Orc:$
 ORIENT:  float
 MONS:    orc / nothing, orc warrior / nothing, orc knight / nothing
 MONS:    orc priest / nothing, orc high priest
-KFEAT:   s = stone_arch
-NSUBST:  s = 1:O / *:s
-: place_bazaar_portal(_G)
+KFEAT:   s = any shop
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   ccccccccccccccccccccccccccccccccccccccx
@@ -1487,10 +1428,8 @@ MONS:    orc / nothing, orc warrior / nothing, orc priest / nothing
 MONS:    orc wizard / nothing, orc knight, orc high priest, orc sorcerer
 KMONS:   V = orc warlord
 KFEAT:   V = T
-KFEAT:   s = stone_arch
-NSUBST:  s = 1:O / *:s
+KFEAT:   s = any shop
 SHUFFLE: 74/63
-: place_bazaar_portal(_G)
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xcccccccccccccccccccccccccccx
@@ -1527,9 +1466,7 @@ PLACE:   Orc:$
 ORIENT:  float
 MONS:    ogre, two-headed ogre, troll, deep troll w:19 / iron troll w:1
 MONS:    ogre mage, two-headed ogre w:14 / ettin w:1, cyclops w:29 / stone giant w:1
-KFEAT:   s = stone_arch
-NSUBST:  s = 1:O / *:s
-: place_bazaar_portal(_G)
+KFEAT:   s = any shop
 MAP
  .....
 ..111..  .... ....
@@ -1550,9 +1487,7 @@ PLACE:   Orc:$
 ORIENT:  float
 MONS:    orc high priest, orc sorcerer, orc knight
 MONS:    orc warrior, orc priest, orc wizard
-KFEAT:   s = stone_arch
-NSUBST:  s = 1:O / *:s
-: place_bazaar_portal(_G)
+KFEAT:   s = any shop
 MAP
 xxxxxxxxxxxxxxxxxxxxxxx
 xcccccccccccccccccccccx
@@ -1589,9 +1524,7 @@ KMONS:  A = Saint Roka band w:3 / orc warlord band, orc warlord band
 KMONS:  B = Nergalle w:3 / orc sorcerer, orc sorcerer
 KMONS:  C = Urug w:3 / orc knight, orc knight
 KMONS:  D = Blork the orc w:3 / orc wizard, orc wizard
-KFEAT:   s = stone_arch
-NSUBST:  s = 1:O / *:s
-: place_bazaar_portal(_G)
+KFEAT:   s = any shop
 MAP
 cccc  c..@..c  cccc
 cs6ccccI.4.Icccc5sc
@@ -1630,12 +1563,10 @@ MONS: gelid demonspawn / infernal demonspawn / putrid demonspawn /\
       torturous demonspawn / nothing w:20
 MONS: orc high priest / orc sorcerer
 KFEAT:   A = stone_arch
-KFEAT:   s = stone_arch
-NSUBST:  s = 1:O / *:s
+KFEAT:   s = any shop
 KFEAT: P = enter_pandemonium
 TILE:  c = wall_stone_dark
 FTILE: .1234567@O = floor_pebble_lightred
-: place_bazaar_portal(_G)
 MAP
              cc2@2c
             ccc33ccc
@@ -1681,14 +1612,12 @@ KMONS:  D = orc high priest
 KMONS:  E = Saint Roka band w:1 / orc warlord band, orc warlord band
 KMONS:  P = plant / nothing
 NSUBST: u = 2:s / I
-KFEAT:   s = stone_arch
-NSUBST:  s = 1:O / *:s
+KFEAT:   s = any shop
 : if you.where() == dgn.level_name(dgn.br_entrance("Elf")) then
 KFEAT:  p = enter_elven_halls
 : else
-KFEAT:  p = abandoned_shop w:5 / fountain_blue / floor w:30
+KFEAT:  p = fountain_blue / floor w:30
 : end
-: place_bazaar_portal(_G)
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
