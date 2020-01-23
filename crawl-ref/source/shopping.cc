@@ -884,7 +884,6 @@ static int _count_identical(const vector<item_def>& stock, const item_def& item)
 static bool _purchase(shop_struct& shop, const level_pos& pos, int index)
 {
     item_def item = shop.stock[index]; // intentional copy
-    shop.stock.erase(shop.stock.begin() + index);
 
     // Remove from shopping list if it's unique
     // (i.e., if the shop has multiple scrolls of
@@ -976,7 +975,7 @@ class ShopMenu : public InvMenu
     void init_entries();
     void update_help();
     void resort();
-    bool purchase_selected();
+    void purchase_selected();
 
     virtual bool process_key(int keyin) override;
 
@@ -1090,7 +1089,7 @@ void ShopMenu::update_help()
         "[<w>Enter</w>] make purchase")));
 }
 
-bool ShopMenu::purchase_selected()
+void ShopMenu::purchase_selected()
 {
     bool buying_from_list = false;
     vector<MenuEntry*> selected = selected_entries();
@@ -1106,7 +1105,7 @@ bool ShopMenu::purchase_selected()
         }
     }
     if (selected.empty())
-        return false;
+        return;
     const string col = colour_to_str(channel_to_colour(MSGCH_PROMPT));
     update_help();
     const formatted_string old_more = more;
@@ -1122,7 +1121,7 @@ bool ShopMenu::purchase_selected()
     {
         more = old_more;
         draw_menu();
-        return false;
+        return;
     }
     sort(begin(selected), end(selected),
          [](MenuEntry* a, MenuEntry* b)
@@ -1180,12 +1179,7 @@ bool ShopMenu::purchase_selected()
     else
         update_help();
 
-    if (bought_something)
-        return true;
-
     draw_menu();
-    
-    return false;
 }
 
 // Doesn't handle redrawing itself.
@@ -1253,7 +1247,8 @@ bool ShopMenu::process_key(int keyin)
     case CK_MOUSE_CLICK:
     case CK_ENTER:
         if (can_purchase)
-            return !purchase_selected();
+            purchase_selected();
+        return true;
     case '/':
         ++order;
         resort();
@@ -1291,7 +1286,7 @@ bool ShopMenu::process_key(int keyin)
         else
         {
             select_items(keyin);
-            return !purchase_selected();
+            purchase_selected();
         }
     }
 	else if (keyin - 'A' >= 0 && keyin - 'A' < (int)items.size())
