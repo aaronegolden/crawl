@@ -818,7 +818,7 @@ MONS:    mummy
 MONS:    wraith
 NSUBST:  = = 1:+ / *:c
 ITEM:    any scroll / any potion / nothing
-KITEM:   x = any scroll / any potion
+KITEM:   x = nothing
 KMONS:   x = wraith
 : ossuary_setup_features(_G)
 MAP
@@ -885,7 +885,7 @@ KITEM:   x = any scroll / any potion
 KMONS:   x = mummy
 NSUBST:  ' = 10:^ / *:.
 KFEAT:   ^ = known arrow trap
-KITEM:   y = any scroll w:5 / any potion w:5 / nothing w:10
+KITEM:   y = nothing
 KMONS:   y = rat skeleton
 : ossuary_setup_features(_G)
 MAP
@@ -1137,7 +1137,7 @@ KMONS:  O  = Menkaure w:5 / mummy, mummy
 KFEAT:  N  = $
 KFEAT:  O  = exit_portal_vault
 KFEAT:  ab = stone_wall
-KITEM:  $  = any scroll w:49 / any potion w:49 / any wand w:1 / any ring w:1
+KITEM:  $  = nothing
 NSUBST: `  = 2:2 / *:.
 NSUBST: 1  = 25:1 / *:. , 3 = 5:3 / *:.
 NSUBST: a  = 1:+ / *:a , B = 1:+ / *:c , C = 1:+ / *:c , D = 1:+ / *:c
@@ -1196,7 +1196,7 @@ KMONS:  2 = mummy
 KMONS:  3 = goblin zombie / hobgoblin zombie / kobold zombie / gnoll zombie w:2 /\
         big kobold zombie w:1 / human zombie w:1 / elf zombie w:1 / orc zombie w:1 /\
                 nothing w:36
-KITEM:  12d = any potion / any scroll / any jewellery w:1
+KITEM:  12d = nothing
 KFEAT:  . = floor
 NSUBST: d = 1:1 / 3:2 / 4:. / *:d
 : ossuary_setup_features(_G)

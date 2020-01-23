@@ -56,7 +56,7 @@ NAME:     vaults_room_glass_cross
 TAGS:     vaults_hard
 NSUBST:   y = 1:+ / *:x
 SUBST:    w : ....x, m : mmmx, * = *%
-KITEM:    8 = $
+KITEM:    8 = nothing
 NSUBST:   9 = 1:9 / *:000009
 NSUBST:   8 = 1:9 / *=09
 MAP
@@ -177,7 +177,7 @@ ENDMAP
 NAME:    st_cross
 TAGS:    vaults_hard
 KMONS:   8 = 8
-KITEM:   8 = |, *
+KITEM:   8 = nothing
 SUBST:   8 = 98, 0 = 09
 MAP
 xxxxx.xxxxx
@@ -197,9 +197,7 @@ NAME:    st_check
 TAGS:    vaults_hard
 WEIGHT:  5
 KMONS:   8 = 8
-KITEM:   8 = |
 KMONS:   9 = 9
-KITEM:   9 = *
 MAP
 .................
 .xxxxxxxxxxxxxxx.
@@ -781,7 +779,7 @@ NAME: nicolae_vaults_minivaults
 TAGS: vaults_hard
 NSUBST: P = 1:P / *:9
 SHUFFLE: abc, def, ghi, jkl
-KITEM: P = superb_item
+KITEM: P = nothing
 SUBST: adgj : x
 SUBST: bcefhikl : .
 MAP
@@ -876,7 +874,7 @@ NAME: nicolae_vaults_branching_niches
 TAGS: vaults_hard vaults_orient_s no_monster_gen no_item_gen
 SUBST: + : +.
 KMONS: m = 0 band w:12 / 9 w:3 / 8 w:1 / nothing w:6
-KITEM: m = nothing / % / $ / * w:5 / | w:1
+KITEM: m = nothing
 MAP
 xmxxxmxxxmxxxmx
 x+xxx+xxx+xxx+x
@@ -943,7 +941,7 @@ NAME: nicolae_vaults_quartermaster
 TAGS: vaults_hard
 NSUBST: 0 = 1:9 / *:0
 KFEAT: % = known alarm trap / . w:30
-KITEM: % = any
+KITEM: % = nothing
 KMONS: 0 = 0 band
 MAP
 xxxxx.xxxxx
@@ -966,7 +964,7 @@ SUBST: 0 = 0., Q = 9998., 9 = 9.., % = %%%$*, $ = $$.
 KMONS: 0 = 0 band
 KMONS: 9 = 9 band
 KMONS: 8 = 8 band
-KITEM: 8 = star_item / superb_item w:3
+KITEM: 8 = nothing
 MAP
 ...........................
 .xx......0...x...0......xx.
@@ -1004,7 +1002,7 @@ NSUBST: EPOD = 1:+, DNMH = 1:+, AKLH = 1:+, EIJA = 1:+, \
 SUBST: ) = )0, 0 = 0009%$
 SUBST: ABCDEFGHIJKLMNOP = x
 KMONS: 9 = 9 band
-KITEM: 9 = star_item
+KITEM: 9 = nothing
 MAP
             ...
         ...x.).
@@ -1032,7 +1030,7 @@ SHUFFLE: pqrstu/PQRSTU
 SUBST: pqRT = %, rsPU = x, tuQS = ., 0 = 0.
 KMONS: 0 = 0 band
 KMONS: 9 = 9 band
-KITEM: % = any / gold
+KITEM: % = nothing
 KMONS: % = nothing w:11 / 0 w:1
 MAP
       .
@@ -1149,7 +1147,7 @@ TAGS: vaults_hard vaults_orient_s
 MONS: vault guard
 KMONS: 2 = vault guard
 KMONS: 3 = vault warden
-KITEM: 23 = $
+KITEM: 23 = nothing
 KFEAT: ^ = known alarm trap
 MAP
 xxxxxxxxxxx
@@ -1172,8 +1170,8 @@ TAGS: vaults_hard
 WEIGHT: 5
 KMONS: 0 = 0 / 0 band w:5
 KMONS: 9 = 9 / 9 band w:5
-KITEM: 0 = $ / any w:5
-KITEM: 9 = * / % w:5
+KITEM: 0 = nothing
+KITEM: 9 = nothing
 NSUBST: p = x / ., q = x / ., r = x / ., s = x / .
 NSUBST: A = . / x, B = . / x, C = . / x, D = . / x, E = . / x,  F = . / x, \
   G = . / x, H = . / x, I = . / x, J = . / x, K = . / x, L = . / x, M = . / x, \
@@ -1235,63 +1233,4 @@ xPg....1x
 xxx1...xx
 xPg..1xxx
 xxxxxxxxx
-ENDMAP
-
-NAME:    minmay_guarded_unrand_guard_vaults
-TAGS:    vaults_hard vaults_orient_n
-WEIGHT:  3
-: if you.unrands("glaive_of_the_guard") then
-ITEM:    bardiche randart no_pickup
-: else
-ITEM:    glaive_of_the_guard no_pickup
-: end
-SUBST:   b : bxcmG.T
-NSUBST:  3:9 / 4=9. / ., 8 = 2:8 / 6=8.. / .
-MAP
-vvvvvvv@vvvvvvv
-v...v*v.v*v...v
-v8b8.*n.n*.8b8v
-v.8.v*v.v*v.8.v
-vv.vvvv.vvvv.vv
-v.9.vv.9.vv.9.v
-v.b9..9b9..9b.v
-v.9.vv...vv.9.v
-vv.vvvvnvvvv.vv
-vv.vvv...vvv.vv
-v.8.v..*..v.8.v
-v8b8..*d*..8b8v
-v...v..*..v...v
-vGvGvv...vvGvGv
-vvvvvvvvvvvvvvv
-ENDMAP
-
-NAME:    minmay_guarded_unrand_secular_launcher
-TAGS:    vaults_hard vaults_orient_s
-WEIGHT:  3
-: if you.unrands("sniper") and you.unrands("piercer") then
-ITEM:    triple crossbow randart no_pickup / longbow randart no_pickup
-: elseif you.unrands("sniper") then
-ITEM:    piercer no_pickup
-: elseif you.unrands("piercer") then
-ITEM:    sniper no_pickup
-: else
-ITEM:    piercer no_pickup / sniper no_pickup
-: end
-NSUBST:  3:9 / 6=9. / ., 8 = 2:8 / 6=8.. / .
-MAP
-     vvvvv
-   vvv999vvv
-  vv.......vv
- vv..cc.cc..vv
- v..cc888cc..v
-vv.cc|...|cc.vv
-v9.c8.bbb.8c.9v
-v9.c8.bdb.8c.9v
-v9.c8.b.b.8c.9v
-vv.cc|...|cc.vv
- v..cc888cc..v
- vv..ccncc..vv
-  vv.......vv
-   vvv999vvv
-     vv.vv
 ENDMAP

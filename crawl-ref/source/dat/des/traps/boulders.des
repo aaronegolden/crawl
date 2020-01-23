@@ -67,7 +67,7 @@ DEPTH:  D:8-13
 TAGS:   luniq_boulder_trap no_monster_gen
 ORIENT: float
 KFEAT: ^ = known pressure plate trap
-KITEM: ^ = *
+KITEM: ^ = nothing
 {{
 local tm = TriggerableFunction:new{func="callback.boulder_grate_trap_stepped",
                                    repeated=true,
@@ -96,7 +96,7 @@ DEPTH:  Lair:3-
 TAGS:   luniq_boulder_trap no_monster_gen ruin_lair
 ORIENT: float
 KFEAT: ^ = known pressure plate trap
-KITEM: ^ = *
+KITEM: ^ = nothing
 {{
 local tm = TriggerableFunction:new{func="callback.boulder_grate_trap_stepped",
                                    repeated=true,
@@ -135,7 +135,7 @@ lua_marker(',', props_marker { grate_quad=1 })
 lua_marker('A', props_marker { boulder_quad=1 })
 }}
 KFEAT: A=floor
-KITEM: ^=*
+KITEM: ^= nothing
 MAP
    xxx@xxx
  xxx.....xxx
@@ -177,7 +177,7 @@ KMONS: 1 = ball python
 KMONS: 2 = adder
 : dgn.delayed_decay(_G,'a', 'human skeleton')
 KFEAT: abAB=floor
-KITEM: b = whip w:50 / cursed whip w:10
+KITEM: b = nothing
 MAP
    xxxxx
   xx222xx

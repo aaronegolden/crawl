@@ -4886,36 +4886,6 @@ static void _vault_grid_glyph(vault_placement &place, const coord_def& where,
         grd(where) = _pick_temple_altar(place);
         break;
     }
-
-    // Then, handle grids that place "stuff" {dlb}:
-    if (vgrid == '$' || vgrid == '%' || vgrid == '*' || vgrid == '|')
-    {
-        int item_made = NON_ITEM;
-        object_class_type which_class = OBJ_RANDOM;
-        uint8_t which_type = OBJ_RANDOM;
-        int which_depth = env.absdepth0;
-
-        if (vgrid == '$')
-            which_class = OBJ_GOLD;
-        else if (vgrid == '|')
-        {
-            which_class = _superb_object_class();
-            which_depth = ISPEC_GOOD_ITEM;
-        }
-        else if (vgrid == '*')
-            which_depth = 5 + which_depth * 2;
-
-        item_made = items(true, which_class, which_type, which_depth);
-        if (item_made != NON_ITEM)
-            mitm[item_made].pos = where;
-    }
-
-    // defghijk - items
-    if (map_def::valid_item_array_glyph(vgrid))
-    {
-        int slot = map_def::item_array_glyph_to_slot(vgrid);
-        _dgn_place_item_explicit(slot, where, place);
-    }
 }
 
 static void _vault_grid(vault_placement &place,

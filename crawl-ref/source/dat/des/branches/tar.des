@@ -696,7 +696,7 @@ SUBST:    B = x
 KFEAT:    % = .
 KFEAT:    P = exit_dungeon
 KMONS:    % = soul eater w:20 / shadow wraith w:15 / reaper w:5 / nothing w:20
-KITEM:    % = | / $
+KITEM:    % = nothing
 SUBST:    4 = 3333444455566778
 KMONS:    s = eidolon
 KMONS:    t = phantasmal warrior
@@ -775,10 +775,10 @@ NSUBST:   . = 5:Q / *:.
 KFEAT:    L = known permanent teleport trap
 KMONS:    M = shadow fiend
 KFEAT:    N = floor
-KITEM:    N = superb_item
+KITEM:    N = nothing
 KMONS:    N = patrolling shadow fiend / patrolling soul eater
 KFEAT:    P = floor
-KITEM:    P = star_item
+KITEM:    P = nothing
 KMONS:    P = patrolling reaper / nothing
 KMONS:    Q = generate_awake unseen horror
 SUBST:    V = V / .
@@ -1222,7 +1222,7 @@ MONS:     lich / ancient lich w:5, shadow dragon, shadow wraith / soul eater
 NSUBST:   K = 1:D / *:.
 : serpent_of_hell_setup(_G)
 NSUBST:   P = 1:O / *:|
-KITEM:    $ = $ no_pickup
+KITEM:    $ = nothing
 KFEAT:    Q = exit_dungeon
 SHUFFLE:  {([<
 : tar_setup(_G)

@@ -141,9 +141,9 @@ NAME:    cell_vault
 ORIENT:  northwest
 DEPTH:   Depths, !Depths:$
 SHUFFLE: 890
-KITEM:   8 = | / nothing w:50
-KITEM:   9 = * / nothing w:50
-KITEM:   0 = % / nothing w:50
+KITEM:   8 = nothing
+KITEM:   9 = nothing
+KITEM:   0 = nothing
 KFEAT:   8 = 8
 KFEAT:   9 = 9
 KFEAT:   0 = 0
@@ -700,39 +700,6 @@ xxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxx
 ENDMAP
 
-NAME:   minmay_expanding_circles
-ORIENT: southeast
-DEPTH:  D:12-, !D:$, Depths
-KMONS:  01 = 0
-KMONS:  8 = 8
-KMONS:  92 = 9
-KITEM:  01 = %
-KITEM:  8 = |
-KITEM:  92 = *
-SUBST:  c : cv
-KPROP:  .089 = no_tele_into
-MAP
-@cccccccccccccccccx
-c+''ccccccccccccccx
-c'''1cccccccccccccx
-c'''2cccccccccccccx
-cc12mmccccccccccccx
-ccccmm...cccccccccx
-ccccc....0ccccccccx
-ccccc...09ccccccccx
-ccccc..098ccccccccx
-cccccc098mmcccccccx
-cccccccccmm....cccx
-cccccccccc.....0ccx
-cccccccccc....09ccx
-cccccccccc...098ccx
-cccccccccc..0988ccx
-ccccccccccc0988cccx
-ccccccccccccccccccx
-ccccccccccccccccccx
-xxxxxxxxxxxxxxxxxxx
-ENDMAP
-
 NAME:   minmay_box_of_statues
 ORIENT: southeast
 DEPTH:  D:12-, !D:$, Depths
@@ -1126,7 +1093,7 @@ ORIENT: southeast
 DEPTH:  D:12-
 KMONS:  1 = wizard / nothing w:140
 KMONS:  * = wizard / nothing
-KITEM:  * = *
+KITEM:  * = nothing
 MAP
       .........x
    ..........x+x

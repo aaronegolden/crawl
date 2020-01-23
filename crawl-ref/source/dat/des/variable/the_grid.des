@@ -1116,7 +1116,7 @@ ENDMAP
 NAME:    minmay_the_grid_prize_four_corners_diamond_a
 TAGS:    the_grid_prize unrand
 WEIGHT:  5
-KITEM:   | = |, |
+KITEM:   | = nothing
 SUBST:   8 = 88.
 MAP
 |8  .  8|
@@ -1133,7 +1133,7 @@ ENDMAP
 NAME:    minmay_the_grid_prize_four_corners_diamond_b
 TAGS:    the_grid_prize unrand
 WEIGHT:  5
-KITEM:   | = |, |
+KITEM:   | = nothing
 SUBST:   8 = 88.
 MAP
 |8  .  8|
@@ -1149,7 +1149,7 @@ ENDMAP
 
 NAME:    minmay_the_grid_prize_shrinking_boxes
 TAGS:    the_grid_prize unrand
-KITEM:   | = |,|,|,|,|,|,|,|
+KITEM:   | = nothing
 SUBST:   8 = 88.
 MAP
 .........
@@ -1200,7 +1200,7 @@ TAGS:    the_grid_prize unrand
 SUBST:   b : xcvbnTG|8
 SUBST:   8 = 8..
 KMONS:   | = 8
-KITEM:   | = |
+KITEM:   | = nothing
 MAP
    . .
   .   .

@@ -14,8 +14,8 @@ function grandhive_vaults(e, hivewallglyph)
     e.tags('uniq_greathive no_monster_gen no_item_gen')
     e.kmons('P = plant')
     e.item('gold q:1')
-    e.kitem('% = % no_pickup')
-    e.kitem('* = * no_pickup')
+    e.kitem('% = nothing')
+    e.kitem('* = nothing')
     e.kfeat(hivewallglyph .. ' = x')
     e.tile(hivewallglyph .. ' = wall_wax')
     e.colour(hivewallglyph .. ' = yellow')
@@ -51,7 +51,7 @@ MONS:    kobold/ big kobold w:1
 SUBST:   y : y:48 w:1 W:1, Y : Y:48 W:1 .:1, y = wWW, Y = WW.
 SUBST:   5 = 2 1:2 .:24
 SHUFFLE: ABCD
-KITEM:   D = gold
+KITEM:   D = nothing
 KMONS:   D = hobgoblin / kobold / gnoll / big kobold
 SUBST:   ABC = 2
 SHUFFLE: 12 / 34
@@ -124,7 +124,7 @@ WEIGHT: 5
 TAGS:   uniq_black_bear_nest
 DEPTH:  D:5-8
 NSUBST: ' = 1:1 / 2:R / *:.
-KITEM:  R = gold q:1
+KITEM:  R = nothing
 MONS:   patrolling black bear
 MAP
 xxxxxxxxxxxxxxx
@@ -142,7 +142,7 @@ WEIGHT: 5
 TAGS:   uniq_black_bear_nest
 DEPTH:  D:5-8
 NSUBST: ' = 1:1 / 2:R / *:.
-KITEM:  R = gold q:1
+KITEM:  R = nothing
 MONS:   patrolling black bear
 MAP
 xxxxxxxx@xx
@@ -220,8 +220,6 @@ SHUFFLE: '1 / '1 / w2 / l3
 : end
 KMONS:   Z = cyclops zombie / stone giant zombie / titan zombie
 KMONS:   P = plant
-KITEM:   ( = any weapon good_item
-KITEM:   Z = large rock
 SHUFFLE: aA / bB / dD / eE
 SUBST:   aA = ., b : x., B : x., d : x., D : x., e : x., E : x.
 SUBST:   0 = 4 7 9:2 P:18 ., 5 = 5:20 x`
@@ -607,7 +605,7 @@ DEPTH:  Depths, !Depths:$
 MONS:   golden dragon, fungus, plant, oklob plant
 KMONS:  6 = rime drake / swamp drake / lindwurm
 KMONS:  D = rime drake w:5 / swamp drake w:5 / death drake / lindwurm w:5
-KITEM:  D = $
+KITEM:  D = nothing
 SUBST:  $ = $|
 SUBST:  f : A B
 SUBST:  A = 3:30 .:90 5:1
@@ -1426,7 +1424,7 @@ DEPTH:   D:11-, Lair:2-, !Lair:$
 ORIENT:  north
 WEIGHT:  8
 MONS:    killer bee, meliai, queen bee, oklob plant
-KITEM:   | = |
+KITEM:   | = nothing
 SUBST:   A = X:3 .:2, z = x..
 NSUBST:  ' = 1:0 / 1:1 / 1:d / 1:% / 12 = .:260 01d% / * = .
 : if (you.branch() == "Lair" and you.absdepth() < 14)
@@ -2138,7 +2136,7 @@ DEPTH:  D:8-
 ORIENT: south
 KMONS:  12 = yak
 KMONS:  34 = death yak
-KITEM:  24 = *, $
+KITEM:  24 = nothing
 KFEAT:  _ = open_door
 : if you.absdepth() < 12 then
 NSUBST: Y = 1:42 / 1:2 / * = 1:50 .

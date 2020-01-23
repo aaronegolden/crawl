@@ -763,7 +763,7 @@ ORIENT:     encompass
 TAGS:       no_item_gen no_monster_gen no_rotate
 #           Loot: 11 items, 8 gold.
 :           volcano_setup(_G)
-KITEM:      h = large rock q:1
+KITEM:      h = nothing
 COLOUR:     m = blue
 MONS:       human 
 MONS:       toenail golem

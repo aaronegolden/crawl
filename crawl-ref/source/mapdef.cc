@@ -2253,7 +2253,7 @@ bool map_def::map_already_used() const
 
 bool map_def::valid_item_array_glyph(int gly)
 {
-    return gly >= 'd' && gly <= 'k';
+    return false;
 }
 
 int map_def::item_array_glyph_to_slot(int gly)
@@ -4741,7 +4741,8 @@ string item_list::add_item(const string &spec, bool fix)
 string item_list::set_item(int index, const string &spec)
 {
     std::string str ("rune");
-    if (spec.find(str) < 0)
+    std::string str2 ("orb");
+    if (spec.find(str) < 0 && spec.find(str2) < 0)
         return "nothing";
     error.clear();
     if (index < 0)

@@ -438,7 +438,7 @@ ENDMAP
 NAME:  vaults_end_norune
 TAGS:  vaults_end_norune allow_dup unrand
 KMONS: o = 8 / 9
-KITEM:   o = any good_item
+KITEM:   o = nothing
 MAP
 o
 ENDMAP

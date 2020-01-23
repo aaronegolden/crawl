@@ -85,8 +85,8 @@ function sroom_orc_lair(e)
     end
 
     fill_special_room(e, mon, lord_mon, true)
-    e.kitem('1. = gold level:' .. level - 4 .. ' w:1 / nothing w:8')
-    e.kitem('2 = gold')
+    e.kitem('1. = nothing')
+    e.kitem('2 = nothing')
 end
 
 function sroom_beehive(e)
@@ -183,7 +183,7 @@ function sroom_morgue(e)
 
     fill_special_room(e, mons, lord_mon, true)
     if you.in_branch("Depths") or you.in_branch("Crypt") then
-         e.kitem('2 = randbook disc:necromancy')
+         e.kitem('2 = nothing')
     else
          e.nsubst('1. = 1:})]>.')
     end
@@ -273,8 +273,7 @@ function sroom_mythical_zoo(e)
 
     fill_special_room(e, mons, lord_mon, true)
 
-    e.kitem('2 = gold good_item w:' .. Z - 7 .. ' / gold w:' .. Z + 7 .. ', ' ..
-            'box of beasts w:3 / nothing w:17')
+    e.kitem('2 = nothing')
 end
 
 function sroom_demon_pit(e)
@@ -321,7 +320,7 @@ function sroom_demon_pit(e)
 
     fill_special_room(e, mons, lord_mon, true)
 
-    e.kitem('2 = *')
+    e.kitem('2 = nothing')
     e.kfeat('2 = transit_pandemonium')
 end
 

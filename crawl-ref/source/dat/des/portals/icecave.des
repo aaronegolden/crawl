@@ -837,7 +837,7 @@ WEIGHT: 6
 SUBST:  S = GGS
 KMONS:  S = ice statue
 # I is an ice statue with loot underneath.
-KITEM:  I = any scroll
+KITEM:  I = nothing
 KMONS:  I = ice statue
 : if dgn.persist.ice_cave_hard then
 MONS:   ice devil w:20 / nothing w:7
@@ -853,8 +853,8 @@ MONS:   ice devil w:12 / nothing
 : mons(mocking_ice)
 KMONS:  3 = necromancer
 : end
-KITEM:  34 = any scroll q:3
-KITEM:  d` = any potion / any scroll / any weapon good_item / any armour good_item
+KITEM:  34 = nothing
+KITEM:  d` = nothing
 KFEAT:  ' = known alarm trap / floor w:40
 : ice_cave_appearance(_G)
 : ice_cave_random_monster_list_undead_demon(_G)
@@ -1129,7 +1129,7 @@ WEIGHT: 5
 ORIENT: encompass
 MONS:   ice beast, ice statue
 KMONS:  34 = white ugly thing
-KITEM:  *! = *
+KITEM:  *! = nothing
 {{
 -- Lua marker magic!
 local m_marker = TriggerableFunction:new {

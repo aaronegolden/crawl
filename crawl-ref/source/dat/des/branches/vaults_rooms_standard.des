@@ -1464,7 +1464,7 @@ ENDMAP
 NAME: nicolae_vaults_alarming
 TAGS: vaults_room
 NSUBST: s = 1:S / *:.
-KITEM: i = any
+KITEM: i = nothing
 KMONS: S = vault sentinel
 KFEAT: i = known alarm trap / .
 MAP
@@ -1615,20 +1615,6 @@ MAP
 ...........
 ENDMAP
 
-NAME: nicolae_vaults_yaktaur_gun_rack
-TAGS: vaults_room no_monster_gen no_item_gen
-MONS: yaktaur w:8 / yaktaur band w:4 / yaktaur captain w:2 / yaktaur captain band w:1
-KITEM: c = arbalest w:8 / arbalest good_item w:1 / triple crossbow w:1
-MAP
-xxxxxxx
-xcccccx
-x......
-x.1....
-x......
-xcccccx
-xxxxxxx
-ENDMAP
-
 NAME: nicolae_vaults_ninety_degrees
 TAGS: vaults_room vaults_orient_s vaults_orient_w
 NSUBST: a = + / x, b = + / x
@@ -1729,7 +1715,7 @@ SHUFFLE: Aa/Bb/Cc/Dd/Ee
 SUBST: Aa = ., bcde = %, % = .....%%000
 NSUBST: B = . / x, C = . / x, D = . / x, E = . / x, F = . / x, G = . / x, \
         H = . / x, I = . / x, J = . / x, K = . / x
-KITEM: 0 = nothing / any w:5
+KITEM: 0 = nothing
 KMONS: 0 = 0 / 0 band w:5
 MAP
     x..........
@@ -1753,7 +1739,7 @@ NSUBST: AB = 1:., BCD = 1:., DEF = 1:., FGH = 1:., HIJ = 1:., JK = 1:., \
 NSUBST: ab = 1:., bcd = 1:., def = 1:., fgh = 1:., hij = 1:., jk = 1:., \
    lm = 1:., mno = 1:., opq = 1:., qrs = 1:., stu = 1:., uv = 1:., z = 1:. / *:x
 SUBST: ABCDEFGHIJKLMNOPQRSTUVabcdefghijklmnopqrstuv = x
-KITEM: 0 = nothing / any w:5
+KITEM: 0 = nothing
 KMONS: 0 = 0 / 0 band w:5
 MAP
 ...A%Z%L...a%z%l...
@@ -1777,7 +1763,7 @@ NSUBST: % = 1:0 / 5 = ...0% / * = ......%
 NSUBST: D = . / x, F = . / x, G = . / x, H = . / x, I = . / x, J = . / x, \
         K = . / x, L = . / x, M = . / x, N = . / x, O = . / x, P = . / x, \
         Q = . / x, R = . / x, S = . / x, T = . / x, U = . / x
-KITEM: 0 = nothing / any w:5
+KITEM: 0 = nothing
 KMONS: 0 = 0 / 0 band w:5
 MAP
 .............
@@ -1801,7 +1787,7 @@ SUBST: % = .....%%000
 NSUBST: A = . / x, B = . / x, C = . / x, D = . / x, E = . / x, F = . / x, \
         G = . / x, H = . / x, I = . / x, J = . / x, K = . / x, L = . / x
 NSUBST: M = x / ., N = x / ., O = x / ., P = x / .
-KITEM: 0 = nothing / any w:5
+KITEM: 0 = nothing
 KMONS: 0 = 0 / 0 band w:5
 MAP
 .M.M.M.M.....
@@ -1825,7 +1811,7 @@ SUBST: % = ...%00
 NSUBST: % = 1:0 / 7 = ...%00 / * = .....%
 NSUBST: A = . / x, B = . / x, C = . / x, D = . / x, E = . / x, F = . / x, \
      G = . / x, H = . / x, I = . / x, J = . / x, K = . / x, L = . / x, M = . / x
-KITEM: 0 = nothing / any w:5
+KITEM: 0 = nothing
 KMONS: 0 = 0 / 0 band w:5
 MAP
 .............
@@ -1901,7 +1887,7 @@ TAGS: unrand nico_quincunx allow_dup
 SUBST: % = ....%0
 NSUBST: BDF = 1:x, ABHI = 1:., KFJE = 1:., CDIJ = 1:.
 SUBST: ABCDEFGHIJK = x
-KITEM: 0 = nothing / any w:5
+KITEM: 0 = nothing
 KMONS: 0 = 0 / 0 band w:5
 MAP
  .xA

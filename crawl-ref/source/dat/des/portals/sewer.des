@@ -506,9 +506,9 @@ COLOUR:   ! = green
 KMONS:    ! = bullfrog / nothing w:2
 SHUFFLE:  edfgh$*
 ITEM:     nothing, nothing
-ITEM:     scroll of teleportation w:3 / scroll of blinking
+ITEM:     nothing
 ITEM:     nothing, nothing
-KITEM:    de = *
+KITEM:    de = nothing
 : sewer_setup(_G)
 MAP
            ccccccccccccc
@@ -713,12 +713,8 @@ KMONS:   1 = frilled lizard / ball python w:5 / \
          adder w:4 / nothing w:6
 #      loot
 SUBST:   e = !!!!????%
-KITEM:   ? = potion of flight q:2 w:15 / potion of ambrosia /\
-         potion of heal wounds / potion of augmentation / potion of magic /\
-         potion of haste w:5
-KITEM:   ! =  scroll of teleportation / scroll of fear w:5 /\
-         scroll of blinking w:3 / scroll of magic mapping w:3 /\
-         scroll of silence w:2 / scroll of fog w:3
+KITEM:   ? = nothing
+KITEM:   ! =  nothing
 #      Randomized environment
 SUBST:   . = .WW
 SUBST:   X = xx.
@@ -841,24 +837,12 @@ MONS:     dart slug / nothing w:3
 MONS:     ooze / nothing w:2
 #       chances are good you'll find something to cross the deep water
 SHUFFLE:  de
-ITEM:     scroll of fear / scroll of fog / scroll of teleportation w:50 / \
-          scroll of blinking / scroll of noise / nothing
-ITEM:     potion of flight w:50 / potion of invisibility / \
-          potion of augmentation w:3 / \
-          nothing
-#       possibly rather generous loot, if you get to the center
-ITEM:     scroll of vulnerability / scroll of noise / hat / \
-          potion of magic / potion of resistance
-ITEM:     scroll of noise / potion of invisibility / \
-          pair of gloves w:5 / pair of boots w:5 / nothing
-ITEM:     scroll of noise / scroll of torment / \
-          potion of resistance / potion of augmentation / potion of berserk rage / \
-          buckler / nothing
-KITEM:    ' = scroll of immolation w:30 / \
-              scroll of noise / scroll of teleportation / \
-              potion of mutation w:100 / potion of lignification / \
-              potion of flight / hat / buckler / pair of gloves w:5 / \
-              pair of boots w:5
+ITEM:     nothing
+ITEM:     nothing
+ITEM:     nothing
+ITEM:     nothing
+ITEM:     nothing
+KITEM:    ' = nothing
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xwwwwwwwwwwwWWW-WW-W--WWWWW-WWW--W--WW-WW-WW-W-WWwwwwwwwwwwwx
@@ -906,8 +890,8 @@ COLOUR: HJ = blue
 KFEAT:  GnHJ = w
 COLOUR: G = green
 COLOUR: s = cyan
-KITEM:  M = potion of flight q:4 ident:type
-KITEM:  N = scroll of teleportation q:2 ident:type
+KITEM:  M = nothing
+KITEM:  N = nothing
 : sewer_setup(_G)
 MAP
 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -980,12 +964,8 @@ SUBST:   y = w
 SUBST:   hVZzSsUuTgY = W
 #      loot
 SUBST:   e = !!!!?????
-KITEM:   ? = potion of flight w:5 / potion of flight q:2 w:5 /\
-         potion of ambrosia / potion of heal wounds / potion of augmentation /\
-         potion of magic / potion of haste w:5
-KITEM:   ! =  scroll of teleportation / scroll of fear w:5 /\
-         scroll of blinking w:3 / scroll of magic mapping w:3 /\
-         scroll of torment w:2 / scroll of fog w:3
+KITEM:   ! = nothing
+KITEM:   ? = nothing
 : sewer_setup(_G)
 MAP
 xxxxxxxxxxxxcccxxxxxxxcccxxxxxxxxxxxx
@@ -1044,11 +1024,6 @@ SUBST:  ~ = WWWW.
 SUBST:  - = WW...
 SUBST:  " = W...
 NSUBST: ? = 4=ef / *=112233
-KITEM:  e = potion of ambrosia / potion of heal wounds / potion of augmentation /\
-        potion of magic / potion of haste w:5
-KITEM:  f = scroll of teleportation / scroll of fear w:5 /\
-        scroll of blinking w:3 / scroll of magic mapping w:3 /\
-        scroll of torment w:2 / scroll of fog w:3
 : sewer_setup(_G)
 MAP
 xxxxxxxxxxxxxxcccccccccccccccccccccxxxxxxxxxxxxxx
@@ -1139,11 +1114,8 @@ KMONS:   " = nothing w:50 / rat w:15 / iguana w:7
 KPROP:   w = no_tele_into
 #      loot
 SUBST:   e = !!!!!?????%
-KITEM:   ? = potion of ambrosia / potion of heal wounds / potion of augmentation /\
-         potion of magic / potion of haste w:5
-KITEM:   ! =  scroll of teleportation / scroll of fear w:5 /\
-         scroll of blinking w:3 / scroll of magic mapping w:3 /\
-         scroll of torment w:2 / scroll of fog w:3
+KITEM:   ! = nothing
+KITEM:   ? = nothing
 : sewer_setup(_G)
 MAP
  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -1199,11 +1171,6 @@ SUBST:   2 = 222222W.
 SUBST:   e = !!!?????%WWW
 KFEAT:   !?% = W
 COLOUR:  !?% = lightgreen
-KITEM:   ? = potion of ambrosia / potion of heal wounds / potion of augmentation /\
-         potion of magic / potion of haste w:5
-KITEM:   ! =  scroll of teleportation / scroll of fear w:5 /\
-         scroll of blinking w:3 / scroll of magic mapping w:3 /\
-         scroll of vulnerability w:2 / scroll of fog w:3
 SUBST:   . = .W
 SUBST:   X = x.
 SUBST:   Y = xxw
@@ -1285,7 +1252,7 @@ KMONS:   4 = big kobold
 KMONS:   5 = Grinder, shadow imp
 KMONS:   6 = quasit
 SHUFFLE: 456
-KITEM:   456 = star_item
+KITEM:   456 = nothing
 KFEAT:   - = deep_water
 KPROP:   W- = no_tele_into
 SUBST:   W = WWWw.

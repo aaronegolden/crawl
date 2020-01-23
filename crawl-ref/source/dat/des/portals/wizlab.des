@@ -650,19 +650,17 @@ KMONS:      | = ancient lich / greater mummy
 #           0 = scrolls. 1 = armours. 2 = mixed.
 :           local lrnd = crawl.random2(3)
 :           if lrnd == 0 then
-KITEM:      % = any scroll / any scroll q:2 w:3 / any scroll q:3 w:1
-:           kitem("* = " .. dgn.good_scrolls)
-KITEM:      | = scroll of enchant weapon q:3 ident:type /\
-                scroll of blinking q:2 ident:type, scroll of fog q:2 ident:type, \
-                scroll of holy word q:2 ident:type
+KITEM:      % = nothing
+:           kitem("* = nothing")
+KITEM:      | = nothing
 :           elseif lrnd == 1 then
-KITEM:      % = any armour
-KITEM:      * = any good_item armour
-KITEM:      | = cursed robe ego:resistance ident:type / cursed gold dragon scales
+KITEM:      % = nothing
+KITEM:      * = nothing
+KITEM:      | = nothing
 :           else
-KITEM:      % = any / star_item w:2
-KITEM:      * = star_item / superb_item w:2
-KITEM:      | = superb_item
+KITEM:      % = nothing
+KITEM:      * = nothing
+KITEM:      | = nothing
 :           end
 #           Boxification:
 :           box_glyph('%', '!')
@@ -903,11 +901,9 @@ MONS:       deep elf mage spells:magic_dart.11.wizard;\
 MONS:       obsidian statue hd:12 spells:orb_of_destruction.62.magical \
             tile:mons_statue_mage col:vehumet name:conjurer_statue n_rpl n_des
 KMONS:      3DEF = quicksilver dragon
-KITEM:      D = robe ego:archmagi ident:type, star_item / superb_item, star_item
-KITEM:      E = any book, randbook disc:earth owner:Iskenderun \
-                spells:iskenderun's_battlesphere, \
-                randbook disc:air owner:Iskenderun
-KITEM:      F = any book good_item, any book good_item, any book
+KITEM:      D = nothing
+KITEM:      E = nothing
+KITEM:      F = nothing
 KMONS:      DEF = rakshasa
 COLOUR:     v = magenta
 TILE:       v = dngn_metal_wall_magenta
@@ -1113,25 +1109,15 @@ KMONS:   6 = executioner w:5 / balrug w:5 / cacodemon / shadow demon / hellion w
 KMONS:   7 = eldritch tentacle
 KMONS:   8 = obsidian statue
 # Translocations items, abyss escape aides, shrouds, and an immeadiate aide.
-KITEM:   d = scroll of blinking / scroll of teleportation q:2 / \
-             any scroll w:1
-KITEM:   e = any ring
-KITEM:   f = book of spatial translocations w:5 / book of the warp w:5 / \
-             plane papyrus w:5 / manual of translocations w:5 / \
-             randbook disc:translocation numspells:5 / \
-             randbook disc:translocation owner:Golubria numspells:7 \
-             spells:passage_of_golubria
-KITEM:   g = potion of flight q:2 / \
-             potion of haste w:5 / \
-             scroll of fog / large rock q:3 / \
-             any potion w:1 / any scroll w:1
-KITEM:   h = pair of boots ego:flying w:8 / pair of boots ego:running w:1 / \
-             pair of boots ego:stealth w:8 / pair of boots w:3
-KITEM:   i = wand of disintegration w:5 / wand of digging w:5 / any wand w:1
-KITEM:   j = any level:3, any level:3 / nothing
-KITEM:   k = star_item / any w:5, any w:5 / nothing
-KITEM:   | = cloak good_item w:75 / randart cloak w:95 / \
-             cloak_of_starlight w:20 / cloak_of_the_thief
+KITEM:   d = nothing
+KITEM:   e = nothing
+KITEM:   f = nothing
+KITEM:   g = nothing
+KITEM:   h = nothing
+KITEM:   i = nothing
+KITEM:   j = nothing
+KITEM:   k = nothing
+KITEM:   | = nothing
 KFEAT:   m = iron_grate
 KFEAT:   ~ = deep_water
 KFEAT:   ^ = known permanent teleport trap
@@ -1328,13 +1314,10 @@ wizname = crawl.make_name()
 
 kmons     ("1 = patrolling Hellbinder dbname:Hellbinder name:" .. string.gsub(wizname, " ", "_"))
 }}
-KITEM:      $ = gold / w:1 scroll of torment / w:1 scroll of summoning
-KITEM:      i = wand of scattershot / ring of fire / ring of fire /\
-            scroll of torment / scroll of summoning / demon blade w:1 /\
-            demon whip w:1 / demon trident w:1 / gold / wand of iceblast /\
-            wand of acid / staff of summoning / any book w:30 / any good_item w:15
-KITEM:      j = majin-bo
-KITEM:      B = randbook disc:summoning
+KITEM:      $ = nothing
+KITEM:      i = nothing
+KITEM:      j = nothing
+KITEM:      B = nothing
 NSUBST:     i = 2:B / 1:j / *:i
 SHUFFLE:    A<, 4d, 7f, 4d / 5e, 7f / 8g
 SUBST:      7 = 4, 8 = 5, df = 6, eg = 3

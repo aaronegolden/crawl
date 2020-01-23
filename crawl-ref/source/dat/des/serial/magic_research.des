@@ -36,8 +36,7 @@ function init_research(e, disc)
   e.subst('hi = b')
   e.colour('v = white')
   e.tile('n = DNGN_TRANSPARENT_STONE_WHITE')
-  e.kitem('D = randbook disc:' .. disc .. ' numspells:' ..
-               5 + crawl.random2(2) .. ', star_item')
+  e.kitem('D = nothing')
 end
 }}
 

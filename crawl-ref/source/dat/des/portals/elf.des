@@ -164,7 +164,7 @@ NAME:  portal_elf_entry_minmay_elf_necromancy
 MONS:  elf zombie w:4 / large abomination w:4 / \
        necromancer w:3 / nothing
 KMONS: 2 = deep elf death mage
-KITEM: 2 = randbook disc:necromancy slevels:16
+KITEM: 2 = nothing
 : elf_portal(_G)
 MAP
 xxxxxxxxxxx
@@ -181,7 +181,7 @@ ENDMAP
 NAME:  portal_elf_entry_minmay_elf_sorcery
 MONS:  deep elf mage w:30 / nothing
 KMONS: 2 = deep elf sorcerer w:90 / deep elf annihilator / deep elf demonologist
-KITEM: 2 = randbook disc:charms disc2:summoning slevels:16
+KITEM: 2 = nothing
 SUBST: x : xxc, m : mmcxb
 : elf_portal(_G)
 MAP
@@ -208,7 +208,7 @@ ENDMAP
 NAME:  portal_elf_entry_minmay_elf_demonology
 MONS:  deep elf mage / nothing
 KMONS: 2 = deep elf demonologist w:90 / deep elf sorcerer / deep elf high priest
-KITEM: 2 = randbook disc:summoning slevels:16
+KITEM: 2 = nothing
 : elf_portal(_G)
 MAP
         ..

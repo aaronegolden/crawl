@@ -115,11 +115,11 @@ DEPTH:  D, !D:$, Depths, !Depths:$
 ORIENT: float
 WEIGHT: 5
 : if you.absdepth() > 8 then
-KITEM:  " = quarterstaff, quarterstaff good_item
+KITEM:  " = nothing
 : else
-KITEM:  " = quarterstaff, quarterstaff
+KITEM:  " = nothing
 : end
-KITEM:  ' = any magical staff
+KITEM:  ' = nothing
 MAP
 xxxxx
 x"']x
@@ -1077,13 +1077,10 @@ ENDMAP
 NAME:    old_forge
 DEPTH:   D:4-12
 ORIENT:  float
-KITEM:   ? = singing_sword, damaged rapier, \
-             damaged long sword, damaged hand axe
-KITEM:   ! = damaged executioner's axe, damaged rapier, \
-             damaged long sword, damaged morningstar
-KITEM:   + = damaged morningstar, damaged rapier, \
-             damaged long sword, damaged war axe
-KITEM:   & = damaged mace / nothing
+KITEM:   ? = nothing
+KITEM:   ! = nothing
+KITEM:   + = nothing
+KITEM:   & = nothing
 MONS:    fungus, plant
 MONS:    adder, scorpion
 MONS:    rat / porcupine, iguana / hell rat
@@ -1258,7 +1255,7 @@ MONS:    human zombie, frost giant zombie / fire giant zombie, vampire
 KMONS:   8 = vampire mage
 KMONS:   9 = vampire knight
 KMONS:   0 = Jory
-KITEM:   > = any good_item
+KITEM:   > = nothing
 KFEAT:   > = >
 KFEAT:   ; = altar_yredelemnul / altar_kikubaaqudgha
 SHUFFLE: defg
@@ -1308,8 +1305,8 @@ KMONS:   1 = slime creature w:20 / swamp worm w:50 / \
              vampire mosquito / crocodile / swamp drake w:15
 KMONS:   23 = alligator / swamp dragon / hydra
 KMONS:   45 = tentacled monstrosity / thorn hunter
-KITEM:   3 = any good_item / any potion / gold
-KITEM:   5 = acquire any / gold good_item / any potion q:4 w:20
+KITEM:   3 = nothing
+KITEM:   5 = nothing
 KMONS:   P = plant
 KFEAT:   1324P = W
 NSUBST:  @ = 1:@ / *:X
@@ -1427,7 +1424,7 @@ SHUFFLE: *5/WW
 SUBST:   *=. , W=wW , !:$.
 SUBST:   5 = 5 6 + .:5 I:5 F:5
 KFEAT:   A = >
-KITEM:   A = $
+KITEM:   A = nothing
 MAP
               xxxxx
           xxxxxx12xx
@@ -1584,7 +1581,7 @@ WEIGHT:  4
 DEPTH:   Depths
 MONS:    generate_awake angel / generate_awake daeva / w:1 angel / w:1 daeva
 KFEAT:   A = altar_the_shining_one
-KITEM:   A = w:1 acquire:the_shining_one any / nothing
+KITEM:   A = nothing
 : if crawl.one_chance_in(3) then
 SUBST:   | = .
 SUBST:   % = |
@@ -1629,7 +1626,7 @@ WEIGHT:  4
 DEPTH:   Depths
 MONS:    generate_awake angel / generate_awake daeva / w:1 angel / w:1 daeva
 KFEAT:   A = altar_the_shining_one
-KITEM:   A = w:1 acquire:the_shining_one any / nothing
+KITEM:   A = nothing
 : if crawl.one_chance_in(3) then
 SUBST:   | = .
 SUBST:   % = |
@@ -2391,8 +2388,8 @@ PLACE:  Depths:$
      kmons("2 = ettin w:" .. bigweight
            .. " / spriggan berserker w:" .. littleweight)
      kmons("3 = nothing")
-     kitem("1 = superb_item")
-     kitem("2 = any")
+     kitem("1 = nothing")
+     kitem("2 = nothing")
   end
 }}
 SUBST:  G = GTt
@@ -2528,9 +2525,9 @@ NAME:   ragdoll_tomb_raider
 TAGS:   no_item_gen no_monster_gen patrolling
 DEPTH:  D:14-, Depths, Crypt, !Crypt:$
 ORIENT: float
-KITEM:  $ = amulet_of_vitality / acquire any
-KITEM:  12345d = gold / any / nothing
-KITEM:  67M = superb_item / any
+KITEM:  $ = nothing
+KITEM:  12345d = nothing
+KITEM:  67M = nothing
 KFEAT:  ~ = known alarm trap
 KMONS:  1 = mummy
 KMONS:  25 = guardian mummy
@@ -2612,10 +2609,10 @@ SHUFFLE:  MNO / kkP
 : end
 KMONS:    h = plant / fungus
 # The loot items need KITEM and KFEAT to place in water
-KITEM:    % = %
-KITEM:    $ = $
-KITEM:    * = *
-KITEM:    6| = |
+KITEM:    % = nothing
+KITEM:    $ = nothing
+KITEM:    * = nothing
+KITEM:    6| = nothing
 KFEAT:    h3456DHJK%$*| = W
 KFEAT:    K = w
 KPROP:    ~"DE = no_tele_into
@@ -2721,8 +2718,8 @@ MONS:    necromancer
 MONS:    fire giant 
 MONS:    frost giant
 MONS:    ettin simulacrum, efreet, deep elf mage
-KITEM:   d = lamp of fire, *
-KITEM:   e = demon whip ego:freezing ident:type, *
+KITEM:   d = nothing
+KITEM:   e = nothing
 SHUFFLE: 12, 34, 5df / 6eF, {[(<
 FTILE:   fF'@{[(< = floor_pebble_darkgray
 COLOUR:  fF'@ = white
@@ -2771,7 +2768,7 @@ KMONS:  9 = zotling
 KMONS:  0 = THE GIAGGOSTUONO / orb child / electric golem
 KMONS:  ! = orb of fire / electric golem / ice fiend / iron giant
 KMONS:  & = ancient lich
-KITEM:  $ = $ no_pickup
+KITEM:  $ = nothing
 KFEAT:  ~ = .
 KFEAT:  _ = altar_qazlal
 KFEAT:  Z = enter_zot
@@ -2897,9 +2894,9 @@ ITEM:   book of air / book of the sky / manual of air magic / \
         staff of air ident:type / disc of storms w:15 / fan of gales w:15 / \
         storm dragon scales w:5
 : if you.unrands("arc blade") then
-KITEM:  2 = quick blade ego:electrocution randart ident:type
+KITEM:  2 = nothing
 : else
-KITEM:  2 = arc_blade
+KITEM:  2 = nothing
 : end
 : minmay_elemental_octagon_setup(_G)
 MAP
@@ -2929,9 +2926,9 @@ ITEM:   book of geomancy / book of the earth / manual of earth magic / \
         staff of earth ident:type / ring of protection ident:type / \
         wand of disintegration ident:type / crystal plate armour w:5
 : if you.unrands("devastator") then
-KITEM:  2 = morningstar randart
+KITEM:  2 = nothing
 : else
-KITEM:  2 = devastator
+KITEM:  2 = nothing
 : end
 : minmay_elemental_octagon_setup(_G)
 MAP
@@ -2962,13 +2959,9 @@ ITEM:   book of frost / book of ice / manual of ice magic / \
         wand of iceblast ident:type / staff of cold ident:type / \
         ring of ice ident:type / phial of floods / ice dragon scales w:5
 : if you.unrands("frostbite") then
-KITEM:  2 = executioner's axe ego:freezing randart ident:type / \
-            battleaxe ego:freezing randart ident:type / \
-            broad axe ego:freezing randart ident:type
+KITEM:  2 = nothing
 : else
-KITEM:  2 = frostbite / \
-            battleaxe ego:freezing randart ident:type / \
-            broad axe ego:freezing randart ident:type
+KITEM:  2 = nothing
 : end
 : minmay_elemental_octagon_setup(_G)
 MAP
@@ -2999,9 +2992,9 @@ ITEM:   book of flames / book of fire / manual of fire magic / \
         staff of fire ident:type / ring of fire ident:type / lamp of fire / \
         fire dragon scales w:5
 : if you.unrands("firestarter") then
-KITEM:  2 = great mace ego:flaming randart ident:type
+KITEM:  2 = nothing
 : else
-KITEM:  2 = firestarter
+KITEM:  2 = nothing
 : end
 : minmay_elemental_octagon_setup(_G)
 MAP
@@ -3160,8 +3153,7 @@ DEPTH: D:7-
 TAGS: no_item_gen no_monster_gen
 ORIENT: float
 KMONS: - = sixfirhy
-KITEM: - = star_item / w:1 superb_item / w:1 demon blade ego:electrocution / \
-           w:1 glaive ego:electrocution / w:1 broad axe ego:electrocution
+KITEM: - = nothing
 MAP
 ..@..
 .vnv.
@@ -3537,7 +3529,7 @@ SUBST:   T = TU
 SHUFFLE: xb/cc, ABC
 : if crawl.coinflip() then
 KFEAT:   X = < / >
-KITEM:   X = any good_item
+KITEM:   X = nothing
 SUBST:   A=., B=., C=.
 : else
 SUBST:   X=*, B=., C=.
@@ -4133,7 +4125,6 @@ DEPTH:   D:6-, !D:$, Depths, !Depths:$, Elf, Snake
 WEIGHT:  5 (Elf, Snake), 10
 KMONS:   0 = 0
 KMONS:   9 = 9
-KITEM:   09 = % / $ w:5
 SHUFFLE: XzZ / '09
 SUBST:   XzZ = x, ' = ., x : x:90 c
 : if you.absdepth() < 13 then
@@ -4168,9 +4159,9 @@ WEIGHT:  5 (Elf, Snake), 10
 KMONS:   12 = 0
 KMONS:   34 = 9
 KMONS:   5 = 9 / 8
-KITEM:   1 = $ / % w:5
-KITEM:   23 = % / $ w:5
-KITEM:   45 = * / % w:5
+KITEM:   1 = nothing
+KITEM:   23 = nothing
+KITEM:   45 = nothing
 : if you.in_branch("Abyss") then
 SUBST:   x = xxmmccbv, X = xxccvb, . = .:990 W, ' = .:55 WWwl G:5, 23 = 1, 45 = 2
 : elseif you.absdepth() > 20 then
@@ -4459,8 +4450,8 @@ DEPTH:   Depths, !Depths:$
 ORIENT:  float
 KMONS:   1 = patrolling 0
 KMONS:   4 = 9 w:40 / 0 band
-KITEM:   1d = % w:75 / $ w:20 / nothing w:4 / * w:1
-KITEM:   $ = $ w:40 / nothing
+KITEM:   1d = nothing
+KITEM:   $ = nothing
 KFEAT:   D = abandoned_shop
 SHUFFLE: *|, CT, 23 / CT, 8w / 8w / w8
 SHUFFLE: 1239 / 1239 / 1239 / 1239 / $444, wW / wW / wW / mm
@@ -5600,7 +5591,7 @@ ORIENT: float
 DEPTH:  Depths
 WEIGHT: 3
 # 27 / 3 items!
-KITEM:  d = |,|,|,|,|,|,|,|,|
+KITEM:  d = nothing
 SUBST:  A : ABB
 SUBST:  B : BCC
 SUBST:  C : CDD
@@ -5668,8 +5659,8 @@ FTILE:  -+2O = floor_hall
 KMONS:  8 = 8 band
 KMONS:  9 = 9 band
 KMONS:  0 = 0 band
-KITEM:  O = superb_item
-KITEM:  9 = any good_item
+KITEM:  O = nothing
+KITEM:  9 = nothing
 : end
 MAP
       x@x
@@ -5706,8 +5697,8 @@ FTILE:  -+2O = floor_hall
 KMONS:  8 = 8 band
 KMONS:  9 = 9 band
 KMONS:  0 = 0 band
-KITEM:  O = superb_item
-KITEM:  9 = any good_item
+KITEM:  O = nothing
+KITEM:  9 = nothing
 : end
 MAP
         xxxxx@xxxxx
@@ -5916,7 +5907,7 @@ TAGS:   no_item_gen no_monster_gen
 DEPTH:  Orc, !Orc:$, D:10-14
 ORIENT: float
 MONS:   orc, orc warrior, orc knight, hobgoblin
-KITEM:  $ = $ no_pickup
+KITEM:  $ = nothing
 SUBST:  ? = $., " = .14
 MAP
 cccccccccccccccc
@@ -6393,7 +6384,7 @@ SUBST: def = c, ghi = v, jk = b
 KMONS: 8 = 8 band
 KMONS: 9 = 9 band
 KMONS: 0 = 0 band
-KITEM: J = acquire any
+KITEM: J = nothing
 NSUBST: | = 1:J / 2:* / *:|
 SUBST: % = %., O = %
 MAP
@@ -6505,9 +6496,7 @@ NSUBST: 6 = 2:E / 3:F / *:.
 NSUBST: 7 = 2:H / *:.
 KMONS: _ = torpor snail patrolling
 KFEAT: _ = altar_cheibriados
-KITEM: _ = plate armour good_item ego:ponderousness no_pickup /\
-           crystal plate armour good_item ego:ponderousness no_pickup w:5 /\
-           gold dragon scales good_item ego:ponderousness no_pickup w:5
+KITEM: _ = nothing
 # general settings
 KMONS: T = torpor snail
 KMONS: D = 0 band
@@ -6517,8 +6506,8 @@ KMONS: F = 0 patrolling
 KMONS: H = 9 band patrolling
 KMONS: 8 = 8 patrolling
 #loot
-KITEM: 8 = acquire any
-KITEM: 7 = *
+KITEM: 8 = nothing
+KITEM: 7 = nothing
 MAP
                     ccc
                 ccccccccccc
@@ -6905,7 +6894,7 @@ NAME:   minmay_gate_of_8
 DEPTH:  D:8-, Depths
 ORIENT: float
 KMONS:  8 = 8
-KITEM:  8 = |
+KITEM:  8 = nothing
 SUBST:  c : cvb, x : xcvb
 MAP
  xxxxxx@xx
