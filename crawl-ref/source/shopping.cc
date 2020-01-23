@@ -976,7 +976,7 @@ class ShopMenu : public InvMenu
     void init_entries();
     void update_help();
     void resort();
-    void purchase_selected();
+    bool purchase_selected();
 
     virtual bool process_key(int keyin) override;
 
@@ -1090,14 +1090,12 @@ void ShopMenu::update_help()
         "[<w>Enter</w>] make purchase")));
 }
 
-void ShopMenu::purchase_selected()
+bool ShopMenu::purchase_selected()
 {
-    mprf("attempting to purchase");
     bool buying_from_list = false;
     vector<MenuEntry*> selected = selected_entries();
     if (selected.empty())
     {
-        mprf("not reading item selection");
         for (auto item : items)
         {
             const item_def& it = *dynamic_cast<ShopEntry*>(item)->item;
@@ -1108,7 +1106,7 @@ void ShopMenu::purchase_selected()
         }
     }
     if (selected.empty())
-        return;
+        return false;
     const string col = colour_to_str(channel_to_colour(MSGCH_PROMPT));
     update_help();
     const formatted_string old_more = more;
@@ -1124,7 +1122,7 @@ void ShopMenu::purchase_selected()
     {
         more = old_more;
         draw_menu();
-        return;
+        return false;
     }
     sort(begin(selected), end(selected),
          [](MenuEntry* a, MenuEntry* b)
@@ -1182,7 +1180,12 @@ void ShopMenu::purchase_selected()
     else
         update_help();
 
+    if (bought_something)
+        return true;
+
     draw_menu();
+    
+    return false;
 }
 
 // Doesn't handle redrawing itself.
@@ -1250,8 +1253,7 @@ bool ShopMenu::process_key(int keyin)
     case CK_MOUSE_CLICK:
     case CK_ENTER:
         if (can_purchase)
-            purchase_selected();
-        return true;
+            return !purchase_selected();
     case '/':
         ++order;
         resort();
@@ -1289,7 +1291,7 @@ bool ShopMenu::process_key(int keyin)
         else
         {
             select_items(keyin);
-            purchase_selected();
+            return !purchase_selected();
         }
     }
 	else if (keyin - 'A' >= 0 && keyin - 'A' < (int)items.size())
