@@ -1563,15 +1563,7 @@ bool needs_handle_warning(const item_def &item, operation_types oper,
 {
     if (_has_warning_inscription(item, oper))
         return true;
-
-    // Curses first.
-    if (item_known_cursed(item)
-        && (oper == OPER_WIELD && is_weapon(item) && !_is_wielded(item)
-            || oper == OPER_PUTON || oper == OPER_WEAR))
-    {
-        return true;
-    }
-
+    
     // The consequences of evokables are generally known unless it's a deck
     // and you don't know what kind of a deck it is.
     if (item.base_type == OBJ_MISCELLANY && !is_deck(item)
@@ -1587,10 +1579,6 @@ bool needs_handle_warning(const item_def &item, operation_types oper,
         penance = true;
         return true;
     }
-
-    // Everything else depends on knowing the item subtype/brand.
-    if (!item_type_known(item))
-        return false;
 
     if (oper == OPER_REMOVE
         && item.is_type(OBJ_JEWELLERY, AMU_FAITH)
@@ -1635,8 +1623,7 @@ bool needs_handle_warning(const item_def &item, operation_types oper,
         }
     }
 
-    if (oper == OPER_PUTON || oper == OPER_WEAR || oper == OPER_TAKEOFF
-        || oper == OPER_REMOVE)
+    if (oper == OPER_PUTON || oper == OPER_WEAR)
     {
         if (is_artefact(item) && artefact_property(item, ARTP_CONTAM))
         {
@@ -1654,6 +1641,9 @@ bool needs_handle_warning(const item_def &item, operation_types oper,
             return true;
         }
     }
+    
+    if (oper == OPER_TAKEOFF || oper == OPER_REMOVE || oper == OPER_WIELD)
+        return true;
 
     if (oper == OPER_EVOKE && god_hates_item(item))
     {
@@ -1728,12 +1718,6 @@ bool check_warning_inscriptions(const item_def& item,
                         return check_old_item_warning(item, oper);
                 }
             }
-        }
-        else if (oper == OPER_REMOVE || oper == OPER_TAKEOFF)
-        {
-            // Don't ask if it will fail anyway.
-            if (item.cursed())
-                return true;
         }
 
         // XXX: duplicates a check in delay.cc:_finish_delay()
