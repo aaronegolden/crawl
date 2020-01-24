@@ -5800,10 +5800,12 @@ int player::skill(skill_type sk, int scale, bool real, bool drained) const
 			level = min(level + (50 + you.piety) * scale / 100, 27 * scale);
 		}
 	}
-
-
-    if (have_passive(passive_t::heroism) && sk <= SK_LAST_MUNDANE && sk != SK_STEALTH)
+    else if (have_passive(passive_t::heroism) && sk <= SK_LAST_MUNDANE && sk != SK_STEALTH)
         level = min(level + (piety_rank() - 1) * scale, 27 * scale);
+    
+    if (sk == SK_FIRE_MAGIC)
+        level = min((level + scan_artefacts(ARTP_FIRE_SKILL)) * scale, 27 * scale);
+
     return level;
 }
 
