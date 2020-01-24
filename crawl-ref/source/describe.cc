@@ -270,6 +270,9 @@ static vector<string> _randart_propnames(const item_def& item,
         { ARTP_SLAYING,               PROPN_NUMERAL },
         { ARTP_SHIELDING,             PROPN_NUMERAL },
         { ARTP_FIRE_SKILL,            PROPN_NUMERAL },
+        { ARTP_AIR_SKILL,             PROPN_NUMERAL },
+        { ARTP_EARTH_SKILL,           PROPN_NUMERAL },
+        { ARTP_ICE_SKILL,             PROPN_NUMERAL },
 
         // Qualitative attributes (and Stealth)
         { ARTP_SEE_INVISIBLE,         PROPN_PLAIN },
@@ -516,6 +519,9 @@ static string _randart_descrip(const item_def &item)
         { ARTP_FRAGILE, "It will be destroyed if unequipped.", false },
         { ARTP_SHIELDING, "It affects your SH (%d).", false},
         { ARTP_FIRE_SKILL, "It increases your skill with fire magic (%d).", false},
+        { ARTP_AIR_SKILL, "It increases your skill with air magic (%d).", false},
+        { ARTP_EARTH_SKILL, "It increases your skill with earth magic (%d).", false},
+        { ARTP_ICE_SKILL, "It increases your skill with ice magic (%d).", false},
     };
 
     // Give a short description of the base type, for base types with no

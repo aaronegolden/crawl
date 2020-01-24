@@ -1458,6 +1458,9 @@ static void _debug_rap_stats(FILE *ostat)
         "ARTP_FRAGILE",
         "ARTP_SHIELDING",
         "ARTP_FIRE_SKILL",
+        "ARTP_AIR_SKILL",
+        "ARTP_EARTH_SKILL",
+        "ARTP_ICE_SKILL",
     };
     COMPILE_CHECK(ARRAYSZ(rap_names) == ARTP_NUM_PROPERTIES);
 

@@ -4254,6 +4254,9 @@ enum artefact_prop_type
     ARTP_FRAGILE,
     ARTP_SHIELDING,
     ARTP_FIRE_SKILL,
+    ARTP_AIR_SKILL,
+    ARTP_EARTH_SKILL,
+    ARTP_ICE_SKILL,
     ARTP_NUM_PROPERTIES
 };
 
