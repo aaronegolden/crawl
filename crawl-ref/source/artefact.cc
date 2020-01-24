@@ -550,12 +550,6 @@ static bool _artp_can_go_on_item(artefact_prop_type prop, const item_def &item,
         case ARTP_MAGICAL_POWER:
             return item_class != OBJ_WEAPONS
                    || get_weapon_brand(item) != SPWPN_ANTIMAGIC;
-            // not quite as interesting on armour, since you swap it less
-            // rings have 2 slots, so little swap pressure
-        case ARTP_FRAGILE:
-            return item_class != OBJ_ARMOUR
-                   && (item_class != OBJ_JEWELLERY
-                       || jewellery_is_amulet(item));
         case ARTP_FIRE_SKILL:
         case ARTP_AIR_SKILL:
         case ARTP_EARTH_SKILL:
@@ -696,8 +690,10 @@ static const artefact_prop_data artp_data[] =
         nullptr, []() { return 1; }, 0, 0 },
     { "*Slow", ARTP_VAL_BOOL, 25, // ARTP_SLOW,
         nullptr, []() { return 1; }, 0, 0 },
-    { "Fragile", ARTP_VAL_BOOL, 25, // ARTP_FRAGILE,
+#if TAG_MAJOR_VERSION == 34
+    { "Fragile", ARTP_VAL_BOOL, 0, // ARTP_FRAGILE,
         nullptr, []() { return 1; }, 0, 0 },
+#endif
     { "SH", ARTP_VAL_ANY, 0, nullptr, nullptr, 0, 0 }, // ARTP_SHIELDING,
     { "Fire", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_FIRE_SKILL,
     { "Air", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_AIR_SKILL,

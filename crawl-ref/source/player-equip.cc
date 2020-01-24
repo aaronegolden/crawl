@@ -338,13 +338,6 @@ static void _unequip_artefact_effect(item_def &item,
         if (entry->world_reacts_func)
             you.unrand_reacts.set(slot, false);
     }
-
-    // this must be last!
-    if (proprt[ARTP_FRAGILE] && !meld)
-    {
-        mprf("%s crumbles to dust!", item.name(DESC_THE).c_str());
-        dec_inv_item_quantity(item.link, 1);
-    }
 }
 
 static void _equip_use_warning(const item_def& item)
