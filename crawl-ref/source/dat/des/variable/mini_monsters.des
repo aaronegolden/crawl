@@ -852,7 +852,7 @@ KMONS:   F = worker ant
 KMONS:   G = hound / wolf w:3
 KMONS:   H = water moccasin
 KMONS:   I = hell rat
-KMONS:   J = unseen horror
+KMONS:   J = shadow wraith
 KMONS:   K = alligator
 KMONS:   L = lindwurm
 KMONS:   M = large slime creature
@@ -1906,7 +1906,7 @@ ENDMAP
 # XXX: Undiggable glass has been converted to statues.
 NAME:  horrible_house_mu
 DEPTH: Depths
-MONS:  boggart, unseen horror, rakshasa
+MONS:  boggart, boggart, rakshasa
 MONS:  vampire knight
 KMONS: P = plant
 SUBST: p = P.
@@ -2152,25 +2152,6 @@ xccccccccccccccccccx
 xxxxxxxxxxxxxxxxxxxx
 ENDMAP
 
-NAME:   hangedman_tell_no_tales
-DEPTH:  D:9-, !D:$
-TAGS:   no_monster_gen no_item_gen patrolling
-MONS:   spriggan skeleton / centaur skeleton
-MONS:   troll skeleton / angry ghost
-KMONS:  A = unseen horror
-ITEM:   any good_item
-SUBST:  D : DDDDE
-NSUBST: D = 1 = A:4 .:1 / 2:d / 2:e / 1:1, E = 2:d / 2:e / 2:1
-MAP
- cccccccccc
-ccxx1x1+DDc
-c.x.x..mDDc
-@.d.x2.mDDc
-c.x.x..cc+c
-ccxx1x.c1fc
- cccccccccc
-ENDMAP
-
 NAME:   hangedman_weighted_door
 TAGS:   extra
 DEPTH:  D:9-, Crypt
@@ -2250,7 +2231,7 @@ NAME:    hangedman_batty
 TAGS:    patrolling no_monster_gen no_item_gen
 DEPTH:   D:11-, Crypt, !Crypt:$
 WEIGHT:  5
-MONS:    bat, phantom, vampire, unseen horror
+MONS:    bat, phantom, vampire, vampire
 MONS:    phantasmal warrior, vampire knight, jiangshi
 # Notably, sometimes fill in parts of the grid.
 SHUFFLE: ABC, DE, FGH, 34 / 34 / 34 / 43
@@ -3115,7 +3096,7 @@ KMONS:   k = phantom
 KMONS:   l = large abomination
 KMONS:   m = scorpion
 KMONS:   n = small abomination
-KMONS:   o = unseen horror
+KMONS:   o = shadow wraith
 KMONS:   p = hornet
 KMONS:   q = wasp
 KMONS:   r = wolf spider

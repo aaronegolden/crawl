@@ -61,8 +61,7 @@ function pan_lord_setup(_G, name)
                   "brimstone fiend w:1 / infernal warmonger w:1",
         ['Gloorx Vloq'] = "skeleton w:400 / soul eater w:200 / " ..
                  "lorocyproca w:100 / executioner w:300 / " ..
-                 "demonic crawler / shadow wraith / " ..
-                 "unseen horror / torturous black sun"
+                 "demonic crawler / shadow wraith"
     }
 
     _G.set_random_mon_list(monsters[name])
@@ -1325,7 +1324,7 @@ ORIENT:    southeast
 : pan_lord_setup(_G, 'Gloorx Vloq')
 TILE:      c = dngn_stone_wall_darkgray
 MONS:      patrolling Gloorx Vloq, Executioner, curse skull
-MONS:      soul eater, shadow wraith, unseen horror
+MONS:      soul eater, shadow wraith, shadow wraith
 epilogue{{
   pan_lord_epilogue('Gloorx Vloq')
 }}

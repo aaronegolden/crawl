@@ -139,7 +139,7 @@ function species_mock(e)
   elseif you.race() == "Ogre" then
     e.kmons("1 = ettin skeleton")
   elseif you.race() == "Spriggan" then
-    e.kmons("1 = unseen horror")
+    e.kmons("1 = bat skeleton")
   elseif you.race() == "Tengu" then
     e.kmons("1 = acid robin")
   elseif you.race() == "Troll" then

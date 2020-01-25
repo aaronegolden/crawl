@@ -1089,7 +1089,7 @@ KMONS:   2 = deep elf mage w:5 / \
              boggart / \
              wizard 
 KMONS:   3 = rakshasa
-KMONS:   04 = large abomination w:15 / small abomination w:15 / unseen horror w:5 / \
+KMONS:   04 = large abomination w:15 / small abomination w:15 / shadow wraith w:5 / \
               thrashing horror w:30 / skeleton w:30 / freezing wraith w:5 /  \
               hellwing / chaos spawn w:5 / orange demon / ice devil /  \
               hell hound / lesser demon w:25 / mana viper w:5 / \
@@ -1175,7 +1175,7 @@ for i = 1, #teleporter_glyph do
 end
 
 set_random_mon_list([[rakshasa w:15 / deep elf mage w:15 / wizard w:15 / spatial vortex w:15 /
-                    boggart / blink frog w:5 / shadow wraith w:5 / unseen horror /
+                    boggart / blink frog w:5 / shadow wraith w:5 /
                     raiju / ynoxinul / neqoxec / chaos spawn / glowing orange brain /
                     large abomination w:15 / small abomination w:15 / skeleton w:20 /
                     hellwing w:5 / smoke demon w:5 / hell hound w:5 / ugly thing w:5 /

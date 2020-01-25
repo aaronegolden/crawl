@@ -780,7 +780,7 @@ KMONS:    N = patrolling shadow fiend / patrolling soul eater
 KFEAT:    P = floor
 KITEM:    P = nothing
 KMONS:    P = patrolling reaper / nothing
-KMONS:    Q = generate_awake unseen horror
+KMONS:    Q = generate_awake shadow wraith
 SUBST:    V = V / .
 MAP
 ccccccccccccccccccccccccccc

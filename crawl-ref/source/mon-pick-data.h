@@ -69,7 +69,6 @@ static const pop_entry pop_d[] =
   { 10, 18,  385, SEMI, MONS_ACID_DRAGON },
   { 10, 18,  380, SEMI, MONS_SHADOW },
   { 10, 20,  400, RISE, MONS_HYDRA },
-  { 10, 20,  315, SEMI, MONS_UNSEEN_HORROR },
   { 10, 20,  192, PEAK, MONS_NO_MONSTER },
   { 11, 18,  235, SEMI, MONS_NO_MONSTER},
   { 11, 18,  750, FLAT, MONS_UGLY_THING },
@@ -690,7 +689,6 @@ static const pop_entry pop_abyss[] =
 { // Abyss
   {  1,  5,   50, FLAT, MONS_SHAPESHIFTER },
   {  1, 10,   10, SEMI, MONS_GLOWING_SHAPESHIFTER },
-  {  1,  5,   35, FLAT, MONS_UNSEEN_HORROR },
   { -1,  6, 1500, FALL, MONS_ABOMINATION_SMALL },
   {  1,  5, 1000, FLAT, MONS_ABOMINATION_LARGE },
   {  1, 10,   16, SEMI, MONS_TENTACLED_MONSTROSITY },
