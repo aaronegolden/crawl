@@ -441,7 +441,7 @@ static const map<species_type, species_def> species_data =
     HT_LAND, US_ALIVE, SIZE_LARGE,
     10, 8, 6, // 24
     { STAT_STR, STAT_INT, STAT_DEX }, 4,
-    { { MUT_ACUTE_VISION, 1, 1 }, { MUT_SLOW, 2, 1 },  { MUT_DEFORMED, 1, 1 },
+    { { MUT_SLOW, 2, 1 },  { MUT_DEFORMED, 1, 1 },
       { MUT_SPIT_POISON, 1, 1 },  { MUT_POISON_RESISTANCE, 1, 1 },
       { MUT_CONSTRICTING_TAIL, 1, 7 } },
     { "You cannot wear boots." },
@@ -515,7 +515,7 @@ static const map<species_type, species_def> species_data =
     HT_LAND, US_ALIVE, SIZE_LITTLE,
     4, 9, 11, // 24
     { STAT_INT, STAT_DEX }, 5,
-    { { MUT_FAST, 3, 1 }, { MUT_ACUTE_VISION, 1, 1 }, },
+    { { MUT_FAST, 3, 1 }, },
     {},
     {},
     { JOB_ARTIFICER, JOB_ENCHANTER, JOB_EARTH_ELEMENTALIST, JOB_ARCANE_MARKSMAN },
@@ -586,7 +586,7 @@ static const map<species_type, species_def> species_data =
     HT_LAND, US_SEMI_UNDEAD, SIZE_MEDIUM,
     7, 10, 9, // 26
     { STAT_INT, STAT_DEX }, 5,
-    { { MUT_FANGS, 3, 1 }, { MUT_ACUTE_VISION, 1, 1 },
+    { { MUT_FANGS, 3, 1 },
       { MUT_UNBREATHING, 1, 1 }, { MUT_NEGATIVE_ENERGY_RESISTANCE, 2, 1 }, 
       { MUT_COLD_RESISTANCE, 1, 1 }, { MUT_POISON_RESISTANCE, 1, 1 },
       { MUT_HOP, 1, 1}, {MUT_HOP, 1, 13},},
@@ -732,7 +732,7 @@ static const map<species_type, species_def> species_data =
     4, 9, 11, // 24
     { STAT_INT, STAT_DEX }, 5,
     { { MUT_CARNIVOROUS, 3, 1 }, { MUT_FAST, 1, 1 }, { MUT_FANGS, 3, 1 },
-      { MUT_SHAGGY_FUR, 1, 1 }, { MUT_ACUTE_VISION, 1, 1 }, { MUT_PAWS, 1, 1 },
+      { MUT_SHAGGY_FUR, 1, 1 }, { MUT_PAWS, 1, 1 },
       { MUT_SLOW_METABOLISM, 1, 1 }, { MUT_CLAWS, 1, 1 },},
     { "You cannot wear armour.",
       "You are incapable of wielding weapons or throwing items." },

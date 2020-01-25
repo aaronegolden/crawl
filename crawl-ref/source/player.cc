@@ -7024,19 +7024,7 @@ bool player::sicken(int amount)
 /// Can the player see invisible things?
 bool player::can_see_invisible(bool calc_unid) const
 {
-    if (crawl_state.game_is_arena())
-        return true;
-
-    if (wearing(EQ_RINGS, RING_SEE_INVISIBLE, calc_unid)
-        // armour: (checks head armour only)
-        || wearing_ego(EQ_HELMET, SPARM_SEE_INVISIBLE)
-        // randart gear
-        || scan_artefacts(ARTP_SEE_INVISIBLE, calc_unid) > 0)
-    {
-        return true;
-    }
-
-    return innate_sinv();
+    return true;
 }
 
 /// Can the player see invisible things without needing items' help?

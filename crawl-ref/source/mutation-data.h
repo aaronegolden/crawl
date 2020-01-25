@@ -351,7 +351,7 @@ static const mutation_def mut_data[] =
    "You feel quick."},
 },
 
-{ MUT_ACUTE_VISION, 2, 1, mutflag::GOOD, false,
+{ MUT_ACUTE_VISION, 0, 1, mutflag::GOOD, false,
   "see invisible",
 
   {"You have supernaturally acute eyesight. (SInv)", "", ""},
@@ -839,7 +839,7 @@ static const mutation_def mut_data[] =
 
   {"You have a pair of small antennae on your head.",
    "You have a pair of antennae on your head.",
-   "You have a pair of large antennae on your head. (SInv)"},
+   "You have a pair of large antennae on your head."},
 
   {"A pair of antennae grows on your head!",
    "The antennae on your head grow some more.",
