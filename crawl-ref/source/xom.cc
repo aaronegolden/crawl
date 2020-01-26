@@ -1057,40 +1057,6 @@ static void _xom_rearrange_pieces(int sever)
     take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "swap monsters"), true);
 }
 
-/// Try to find a nearby hostile monster with an animateable weapon.
-static monster* _find_monster_with_animateable_weapon()
-{
-    vector<monster* > mons_wpn;
-    for (monster_near_iterator mi(&you, LOS_NO_TRANS); mi; ++mi)
-    {
-        if (mi->wont_attack() || mi->is_summoned()
-            || mons_itemuse(**mi) < MONUSE_STARTING_EQUIPMENT
-            || (mi->flags & MF_HARD_RESET))
-        {
-            continue;
-        }
-
-        const int mweap = mi->inv[MSLOT_WEAPON];
-        if (mweap == NON_ITEM)
-            continue;
-
-        const item_def weapon = mitm[mweap];
-
-        if (weapon.base_type == OBJ_WEAPONS
-            && !(weapon.flags & ISFLAG_SUMMONED)
-            && weapon.quantity == 1
-            && !is_range_weapon(weapon)
-            && !is_special_unrandom_artefact(weapon)
-            && get_weapon_brand(weapon) != SPWPN_DISTORTION)
-        {
-            mons_wpn.push_back(*mi);
-        }
-    }
-    if (mons_wpn.empty())
-        return nullptr;
-    return mons_wpn[random2(mons_wpn.size())];
-}
-
 static void _xom_shuffle_mutations(bool penance)
 {
     if (!you.can_safely_mutate())
