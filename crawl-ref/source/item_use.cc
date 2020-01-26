@@ -2190,7 +2190,7 @@ bool god_hates_brand(const int brand)
     return false;
 }
 
-static void _rebrand_weapon(item_def& wpn)
+void rebrand_weapon(item_def& wpn)
 {
     if (&wpn == you.weapon() && you.attribute[ATTR_EXCRUCIATING_WOUNDS])
         end_weapon_brand(wpn);
@@ -2237,7 +2237,7 @@ static void _brand_weapon(item_def &wpn)
 
     const string itname = _item_name(wpn);
 
-    _rebrand_weapon(wpn);
+    rebrand_weapon(wpn);
 
     bool success = true;
     colour_t flash_colour = BLACK;

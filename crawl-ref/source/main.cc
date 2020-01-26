@@ -33,6 +33,7 @@
 #include "acquire.h"
 #include "act-iter.h"
 #include "adjust.h"
+#include "anvil.h"
 #include "areas.h"
 #include "arena.h"
 #include "artefact.h"
@@ -1592,6 +1593,14 @@ static bool _can_take_stairs(dungeon_feature_type ftype, bool down,
             shop();
         // Even though we may have "succeeded", return false so we don't keep
         // trying to go downstairs.
+        return false;
+    }
+    else if (ftype == DNGN_ENCHANTED_ANVIL)
+    {
+        if (you.berserk())
+            canned_msg(MSG_TOO_BERSERK);
+        else 
+            use_anvil();
         return false;
     }
 

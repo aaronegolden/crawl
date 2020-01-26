@@ -3984,7 +3984,7 @@ explore_discoveries::explore_discoveries()
     : can_autopickup(::can_autopickup()),
       es_flags(0),
       current_level(nullptr), items(), stairs(), portals(), shops(), altars(),
-      runed_doors()
+      runed_doors(), anvils()
 {
 }
 
@@ -4032,6 +4032,11 @@ void explore_discoveries::found_feature(const coord_def &pos,
     {
         shops.emplace_back(shop_name(*shop_at(pos)), feat);
         es_flags |= ES_SHOP;
+    }
+    else if (feat == DNGN_ENCHANTED_ANVIL && ES_shop)
+    {
+        anvils.emplace_back(feature_description_at(pos));
+        es_flags |= ES_ANVIL;
     }
     else if (feat_is_stair(feat) && ES_stair)
     {
@@ -4260,6 +4265,14 @@ vector<string> explore_discoveries::apply_quantities(
 bool explore_discoveries::stop_explore() const
 {
     const bool marker_stop = !marker_msgs.empty() || !marked_feats.empty();
+
+    if (!anvils.empty())
+    {
+        const int size = anvils.size();
+        const bool multiple = size > 1;
+        mprf("Found %s %s%s.", multiple ? number_in_words(size).c_str() : "an",
+             "enchanted anvil", multiple ? "s" : "");
+    }
 
     for (const string &msg : marker_msgs)
         mpr(msg);

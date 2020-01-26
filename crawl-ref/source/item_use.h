@@ -24,6 +24,7 @@ string cannot_quaff_item_reason(const item_def &item);
 void drink(item_def* potion = nullptr);
 
 bool god_hates_brand(const int brand);
+void rebrand_weapon(item_def& wpn);
 
 bool safe_to_remove(const item_def &item, bool quiet = false);
 

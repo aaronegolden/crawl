@@ -1806,6 +1806,8 @@ enum dungeon_feature_type
     DNGN_ENDLESS_SALT,
     DNGN_ALTAR_WU_JIAN,
 #endif
+    DNGN_ENCHANTED_ANVIL,
+    DNGN_DESTROYED_ANVIL,
 
     NUM_FEATURES
 };

@@ -43,6 +43,7 @@ enum object_selector
                                         // are included, to prevent information
                                         // leakage.
     OSEL_DIVINE_RECHARGE         = -21,
+    OSEL_EQUIPPABLE              = -22, // Items that are equipment
 };
 
 /// Behaviour flags for prompt_invent_item().

@@ -222,6 +222,7 @@ perl.exe "util/gen-cflg.pl" compflag.h "&lt;UNKNOWN&gt;" "&lt;UNKNOWN&gt;"
     <ClCompile Include="..\actor-los.cc" />
     <ClCompile Include="..\actor.cc" />
     <ClCompile Include="..\adjust.cc" />
+    <ClCompile Include="..\anvil.cc" />
     <ClCompile Include="..\AppHdr.cc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Tiles|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Tiles|x64'">Create</PrecompiledHeader>
@@ -614,6 +615,7 @@ perl.exe "util/gen-cflg.pl" compflag.h "&lt;UNKNOWN&gt;" "&lt;UNKNOWN&gt;"
     <ClInclude Include="..\act-iter.h" />
     <ClInclude Include="..\actor.h" />
     <ClInclude Include="..\adjust.h" />
+    <ClInclude Include="..\anvil.h" />
     <ClInclude Include="..\AppHdr.h" />
     <ClInclude Include="..\aptitudes.h" />
     <ClInclude Include="..\areas.h" />

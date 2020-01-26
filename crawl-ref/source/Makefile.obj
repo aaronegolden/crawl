@@ -6,6 +6,7 @@ act-iter.o \
 actor-los.o \
 actor.o \
 adjust.o \
+anvil.o \
 areas.o \
 arena.o \
 artefact.o \

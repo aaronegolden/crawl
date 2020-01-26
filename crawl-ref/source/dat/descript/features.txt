@@ -348,6 +348,17 @@ A broken pillar
 
 A ruined and crumbled stone pillar.
 %%%%
+An enchanted anvil
+
+A magical anvil inhabited by a spirit of the forge. Breaking a piece of
+equipment on this anvil will call the spirit to reforge the item, improving it.
+Certain ancient artifacts are too powerful to be reforged.
+%%%%
+A dormant anvil
+
+An enchanted anvil that has been recently used. The spirits within it slumber and
+will not wake up any time soon.
+%%%%
 ########################################################################
 ### Branch entrances and exits
 ########################################################################

@@ -190,6 +190,7 @@ enum explore_stop_type
     ES_RUNE                      = 0x2000,
     ES_BRANCH                    = 0x4000,
     ES_RUNED_DOOR                = 0x8000,
+    ES_ANVIL                     = 0x10000,
 };
 
 ////////////////////////////////////////////////////////////////////////////
@@ -235,6 +236,7 @@ private:
 
     vector<string> marker_msgs;
     vector<string> marked_feats;
+    vector<string> anvils;
 
 private:
     template <class C> void say_any(const C &coll, const char *category) const;
