@@ -1239,9 +1239,11 @@ brand_type choose_weapon_brand(weapon_type wpn_type)
 bool set_item_ego_type(item_def &item, object_class_type item_type,
                        int ego_type)
 {
-    if (item.base_type == item_type && !is_artefact(item))
+    if (item.base_type == item_type)
     {
         item.brand = ego_type;
+        if(is_artefact(item))
+            artefact_set_property(item, ARTP_BRAND, ego_type);
         return true;
     }
 

@@ -1542,6 +1542,84 @@ static void _artefact_setup_prop_vectors(item_def &item)
     }
 }
 
+void anvil_modify_artp(item_def &item)
+{
+    if(!is_artefact(item))
+        make_item_plain_randart(item);
+
+    vector<pair<artefact_prop_type, int>> art_prop_weights;
+    
+    for (int i = 0; i < ARTP_NUM_PROPERTIES; ++i)
+    {
+        art_prop_weights.emplace_back(static_cast<artefact_prop_type>(i),
+                                      artp_data[i].weight);
+    }
+    
+    artefact_properties_t  proprt;
+    proprt.init(0);
+    artefact_properties(item, proprt);
+    
+    int remove_chance = _artefact_num_props(proprt) - (proprt[ARTP_BRAND] != 0 ? 1 : 0);
+    int removed_prop = ARTP_NUM_PROPERTIES;
+    if (x_chance_in_y(remove_chance - 2, 3))
+    {
+        //remove one property before adding a new one
+        mpr("trying to remove a property");
+        for (int i = ARTP_AC; i < ARTP_NUM_PROPERTIES && remove_chance > 0; ++i)
+        {
+            if(proprt[i] != 0)
+            {
+                mpr("maybe removing a property");
+                if (one_chance_in(remove_chance))
+                {
+                    proprt[i] = 0;
+                    artefact_set_property(item, static_cast<artefact_prop_type>(i), 0);
+                    mpr("removed a property");
+                    removed_prop = i;
+                    remove_chance = 0;
+                }
+                else
+                    remove_chance -=1;
+            }
+        }
+    }
+   
+    int tries = 0;
+    while(tries < 500)
+    {
+        const artefact_prop_type *prop_ptr
+            = random_choose_weighted(art_prop_weights);
+        ASSERTM(prop_ptr, "all %d randart properties have weight 0?",
+                (int) art_prop_weights.size());
+        const artefact_prop_type prop = *prop_ptr;
+        
+        //don't add invalid properties, don't add bad properties, and
+        //don't add a property that we removed earlier
+        if (!_artp_can_go_on_item(prop, item, proprt) || !artp_potentially_good(prop) 
+                || static_cast<int>(prop) == removed_prop)
+        {
+            tries++;
+            continue;
+        }
+        mpr("adding property");
+        _add_good_randart_prop(prop, proprt);
+        
+        artefact_set_property(item,prop, static_cast<int>(proprt[prop]));
+        return;
+    }
+}
+
+// Turn an item into a randart with no properties
+void make_item_plain_randart(item_def &item)
+{
+    _artefact_setup_prop_vectors(item);
+    item.flags |= ISFLAG_RANDART;
+    _init_artefact_properties(item);
+    set_artefact_name(item, make_artefact_name(item, false));
+    item.props[ARTEFACT_APPEAR_KEY].get_string() =
+            make_artefact_name(item, true);
+}
+
 // If force_mundane is true, normally mundane items are forced to
 // nevertheless become artefacts.
 bool make_item_randart(item_def &item, bool force_mundane)
