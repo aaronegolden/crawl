@@ -1173,6 +1173,11 @@ gnoll
 A taller and better-equipped relative of goblins and orcs, somewhat doglike in
 appearance.
 %%%%
+gnoll halberdier
+
+A gnoll well-armed and lightly skilled (as gnolls often are) in the use of a
+halberd. It tends to attack from behind the cover of its allies.
+%%%%
 gnoll sergeant
 
 A commander of a pack of gnolls. Scars on its stout body give evidence of how
