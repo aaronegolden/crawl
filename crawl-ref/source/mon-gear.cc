@@ -456,7 +456,6 @@ static void _give_weapon(monster* mon, int level, bool melee_only = false,
             { 1, 2, 4 },
             { { SPWPN_CHAOS, 1 } } } },
         { MONS_JOSEPH, { { { WPN_QUARTERSTAFF, 1 } } } },
-        { MONS_BAI_SUZHEN, { { { WPN_QUARTERSTAFF, 1 } } } },
         { MONS_ORC,                     { ORC_WEAPONS } },
         { MONS_ORC_PRIEST,              { ORC_WEAPONS } },
         { MONS_DRACONIAN,               { ORC_WEAPONS } },
@@ -1706,11 +1705,6 @@ static void _give_armour(monster* mon, int level, bool spectral_orcs)
     case MONS_ROBIN:
         item.base_type = OBJ_ARMOUR;
         item.sub_type  = ARM_ANIMAL_SKIN;
-        break;
-
-    case MONS_BAI_SUZHEN:
-        item.base_type = OBJ_ARMOUR;
-        item.sub_type  = ARM_CLOAK;
         break;
 
     case MONS_THE_ENCHANTRESS:

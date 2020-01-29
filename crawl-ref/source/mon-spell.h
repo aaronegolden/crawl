@@ -1673,13 +1673,6 @@ static const mon_spellbook mspell_list[] =
       }
     },
 
-    // ('d') Draconians.
-    { MST_BAI_SUZHEN,
-      {
-        { SPELL_SUMMON_HYDRA, 40, MON_SPELL_WIZARD },
-      }
-    },
-
     // ('e') Elves.
     {  MST_DOWAN,
       {
@@ -1812,12 +1805,6 @@ static const mon_spellbook mspell_list[] =
        { SPELL_SEARING_BREATH, 62, MON_SPELL_NATURAL | MON_SPELL_BREATH
                                     | MON_SPELL_NOISY },
        { SPELL_PARALYSE, 18, MON_SPELL_MAGICAL | MON_SPELL_NO_SILENT },
-      }
-    },
-
-    { MST_BAI_SUZHEN_DRAGON,
-      {
-        { SPELL_PRIMAL_WAVE, 60, MON_SPELL_NATURAL | MON_SPELL_BREATH },
       }
     },
 

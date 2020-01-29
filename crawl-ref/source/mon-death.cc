@@ -1723,12 +1723,11 @@ item_def* monster_die(monster* mons, const actor *killer, bool silent,
  */
 static void _special_corpse_messaging(monster &mons)
 {
-    if (!mons.props.exists(ORIGINAL_TYPE_KEY) && mons.type != MONS_BAI_SUZHEN)
+    if (!mons.props.exists(ORIGINAL_TYPE_KEY))
         return;
 
     const monster_type orig
-        = mons.type == MONS_BAI_SUZHEN ? mons.type :
-                (monster_type) mons.props[ORIGINAL_TYPE_KEY].get_int();
+        = (monster_type) mons.props[ORIGINAL_TYPE_KEY].get_int();
 
     if (orig == MONS_SHAPESHIFTER || orig == MONS_GLOWING_SHAPESHIFTER)
     {

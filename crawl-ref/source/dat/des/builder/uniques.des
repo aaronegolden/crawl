@@ -262,10 +262,6 @@ NAME:   uniq_asterion
 DEPTH:  Depths:1-3, Snake, Spider, Vaults:1-3
 : place_unique(_G, "Asterion")
 
-NAME:   uniq_bai_suzhen
-DEPTH:  Depths:1-3, Swamp:$, Snake:$, Shoals:$, Spider:$, Vaults:2-3
-: place_unique(_G, "Bai Suzhen")
-
 NAME:   uniq_khufu
 DEPTH:  Depths:2-3
 : place_unique(_G, "Khufu band")
