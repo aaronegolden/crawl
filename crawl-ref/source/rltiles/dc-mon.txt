@@ -973,6 +973,7 @@ grum MONS_GRUM
 goblin MONS_GOBLIN
 hobgoblin MONS_HOBGOBLIN
 gnoll MONS_GNOLL
+gnoll_halberdier MONS_GNOLL_HALBERDIER
 gnoll_shaman MONS_GNOLL_SHAMAN
 gnoll_sergeant MONS_GNOLL_SERGEANT
 boggart MONS_BOGGART
