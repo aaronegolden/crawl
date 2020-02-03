@@ -212,8 +212,9 @@ static bool _perform_forge_action(item_def &item)
     {
         case OBJ_WEAPONS:
         {
+            brand_type brand = get_weapon_brand(item);
             //chance to turn the item into an artifact, or add additional artifact properties
-            if(one_chance_in(is_artefact(item) ? 3 : 5))
+            if(one_chance_in(is_artefact(item) ? 3 : brand != SPWPN_NORMAL ? 5 : 10))
             {
                 anvil_modify_artp(item);
                 return true;
@@ -225,7 +226,6 @@ static bool _perform_forge_action(item_def &item)
                     return true;
             }
             //chance to rebrand weapon, or guaranteed rebrand if we can't raise enchant
-            brand_type brand = get_weapon_brand(item);
             if (item.plus >= MAX_WPN_ENCHANT || one_chance_in(brand == SPWPN_NORMAL ? 3 : 6))
             {
                 rebrand_weapon(item);

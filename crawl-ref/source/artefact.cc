@@ -1545,7 +1545,10 @@ static void _artefact_setup_prop_vectors(item_def &item)
 void anvil_modify_artp(item_def &item)
 {
     if(!is_artefact(item))
+    {
         make_item_plain_randart(item);
+        return;
+    }
 
     vector<pair<artefact_prop_type, int>> art_prop_weights;
     
@@ -1564,17 +1567,14 @@ void anvil_modify_artp(item_def &item)
     if (x_chance_in_y(remove_chance - 2, 3))
     {
         //remove one property before adding a new one
-        mpr("trying to remove a property");
         for (int i = ARTP_AC; i < ARTP_NUM_PROPERTIES && remove_chance > 0; ++i)
         {
             if(proprt[i] != 0)
             {
-                mpr("maybe removing a property");
                 if (one_chance_in(remove_chance))
                 {
                     proprt[i] = 0;
                     artefact_set_property(item, static_cast<artefact_prop_type>(i), 0);
-                    mpr("removed a property");
                     removed_prop = i;
                     remove_chance = 0;
                 }
@@ -1601,7 +1601,6 @@ void anvil_modify_artp(item_def &item)
             tries++;
             continue;
         }
-        mpr("adding property");
         _add_good_randart_prop(prop, proprt);
         
         artefact_set_property(item,prop, static_cast<int>(proprt[prop]));

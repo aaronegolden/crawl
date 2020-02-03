@@ -528,7 +528,7 @@ static const weapon_def Weapon_prop[] =
             { SPWPN_ANTIMAGIC,   2 },
         }},
     { WPN_TRIDENT,           "trident",             9,  1, 13,
-        SK_POLEARMS,     SIZE_LITTLE, SIZE_MEDIUM, MI_NONE,
+        SK_POLEARMS,     SIZE_LITTLE, SIZE_LITTLE, MI_NONE,
         DAMV_PIERCING, 6, 10, 35, POLEARM_BRANDS },
     { WPN_HALBERD,           "halberd",            13, -3, 15,
         SK_POLEARMS,     SIZE_MEDIUM, NUM_SIZE_LEVELS,  MI_NONE,
