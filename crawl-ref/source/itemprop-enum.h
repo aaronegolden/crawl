@@ -35,10 +35,7 @@ enum armour_type
 
 #if TAG_MAJOR_VERSION == 34
     ARM_CRYSTAL_PLATE_ARMOUR,
-#endif
-
     ARM_ANIMAL_SKIN,
-#if TAG_MAJOR_VERSION == 34
     ARM_TROLL_HIDE,
 #endif
     ARM_TROLL_LEATHER_ARMOUR,

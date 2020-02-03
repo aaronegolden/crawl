@@ -838,7 +838,6 @@ static special_armour_type _generate_armour_type_ego(armour_type type,
     // with egos. (unless they're artefacts, but those aren't handled here.)
 	// TODO: deduplicate with armour_is_special() (same except for animal skin)
     if (armour_type_is_hide(type)
-        || type == ARM_ANIMAL_SKIN
         || type == ARM_CRYSTAL_PLATE_ARMOUR)
     {
         return SPARM_NORMAL;
