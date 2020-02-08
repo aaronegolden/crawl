@@ -1067,7 +1067,7 @@ void ShopMenu::update_help()
 {
     set_more(formatted_string::parse_string(make_stringf(
         //[Esc/R-Click] exit  [!] buy|examine items  [a-i] select item for purchase
-        //[/] sort (default)  [Enter] make purchase  [A-I] put item on shopping list
+        //[/] sort (default)  [Enter] make selection  [A-I] put item on shopping list
 #if defined(USE_TILE) && !defined(TOUCH_UI)
         "[<w>Esc</w>/<w>R-Click</w>] exit  "
 #else
@@ -1083,7 +1083,7 @@ void ShopMenu::update_help()
         shopping_order_names[order],
         // strwidth("default")
         string(7 - strwidth(shopping_order_names[order]), ' ').c_str(),
-        "[<w>Enter</w>] make purchase")));
+        "[<w>Enter</w>] make selection")));
 }
 
 void ShopMenu::purchase_selected()
@@ -1393,9 +1393,9 @@ string shop_type_name(shop_type type)
     switch (type)
     {
         case SHOP_WEAPON_ANTIQUE:
-            return "Antique Weapon";
+            return "Weapon";
         case SHOP_ARMOUR_ANTIQUE:
-            return "Antique Armour";
+            return "Armour";
         case SHOP_WEAPON:
             return "Weapon";
         case SHOP_ARMOUR:
@@ -1417,7 +1417,7 @@ string shop_type_name(shop_type type)
         case SHOP_DISTILLERY:
             return "Distillery";
         case SHOP_GENERAL:
-            return "General Store";
+            return "Assorted Items";
         default:
             return "Bug";
     }
@@ -1434,7 +1434,7 @@ static const char *_shop_type_suffix(shop_type type, const coord_def &where)
 
     static const char * const suffixnames[] =
     {
-        "Shoppe", "Boutique", "Emporium", "Shop"
+        "Automat", "Service", "Machine"
     };
     return suffixnames[(where.x + where.y) % ARRAYSZ(suffixnames)];
 }

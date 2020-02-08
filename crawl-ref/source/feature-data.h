@@ -248,14 +248,14 @@ TRAP(DNGN_TRAP_WEB, "web", "trap_web", LIGHTGREY),
 },
 
 {
-    DNGN_ENTER_SHOP, "shop", "enter_shop",
+    DNGN_ENTER_SHOP, "vending machine", "enter_shop",
     DCHAR_ARCH, NUM_DCHAR_TYPES,
     YELLOW, LIGHTGREY, YELLOW, YELLOW, LIGHTGREY,
     FFT_NOTABLE, MF_FEATURE,
 },
 
 {
-    DNGN_ABANDONED_SHOP, "abandoned shop", "abandoned_shop",
+    DNGN_ABANDONED_SHOP, "used vending machine", "abandoned_shop",
     DCHAR_ARCH, NUM_DCHAR_TYPES,
     COLOUR_AND_MAP(LIGHTGREY),
     FFT_NONE, MF_FLOOR,

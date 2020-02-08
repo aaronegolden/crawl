@@ -359,6 +359,17 @@ A dormant anvil
 An enchanted anvil that has been recently used. The spirits within it slumber and
 will not wake up any time soon.
 %%%%
+A vending machine
+
+A strange, magical device placed in the dungeon by unknown forces with unknown motives. 
+It dispenses one item of an adventurer's choice from its stock, free of charge, then shuts off.
+How convenient!
+%%%%
+A used vending machine
+
+A vending machine that has already dispensed an item. It remains unresponsive, no matter
+how much you shake it.
+%%%%
 ########################################################################
 ### Branch entrances and exits
 ########################################################################

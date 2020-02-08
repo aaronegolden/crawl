@@ -2230,7 +2230,8 @@ void get_feature_desc(const coord_def &pos, describe_info &inf)
     dungeon_feature_type feat = env.map_knowledge(pos).feat();
 
     string desc      = feature_description_at(pos, false, DESC_A, false);
-    string db_name   = feat == DNGN_ENTER_SHOP ? "a shop" : desc;
+    string db_name   = feat == DNGN_ENTER_SHOP ? "a vending machine" : 
+                       feat == DNGN_ABANDONED_SHOP ? "a used vending machine" : desc;
     string long_desc = getLongDescription(db_name);
 
     inf.title = uppercase_first(desc);
