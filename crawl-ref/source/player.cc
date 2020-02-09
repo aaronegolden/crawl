@@ -5803,18 +5803,41 @@ int player::skill(skill_type sk, int scale, bool real, bool drained) const
     else if (have_passive(passive_t::heroism) && sk <= SK_LAST_MUNDANE && sk != SK_STEALTH)
         level = min(level + (piety_rank() - 1) * scale, 27 * scale);
     
-    //change this to a switch at some point
-    if (sk == SK_FIRE_MAGIC)
+    switch (sk)
+    {
+    case SK_FIRE_MAGIC:
         level = min((level + scan_artefacts(ARTP_FIRE_SKILL)) * scale, 27 * scale);
- 
-    if (sk == SK_AIR_MAGIC)
-        level = min((level + scan_artefacts(ARTP_AIR_SKILL)) * scale, 27 * scale);
-    
-    if (sk == SK_EARTH_MAGIC)
+        break;
+    case SK_EARTH_MAGIC:
         level = min((level + scan_artefacts(ARTP_EARTH_SKILL)) * scale, 27 * scale);
-    
-    if (sk == SK_ICE_MAGIC)
+        break;
+    case SK_AIR_MAGIC:
+        level = min((level + scan_artefacts(ARTP_AIR_SKILL)) * scale, 27 * scale);
+        break;
+    case SK_ICE_MAGIC:
         level = min((level + scan_artefacts(ARTP_ICE_SKILL)) * scale, 27 * scale);
+        break;
+    case SK_HEXES:
+        level = min((level + scan_artefacts(ARTP_HEX_SKILL)) * scale, 27 * scale);
+        break;
+    case SK_CHARMS:
+        level = min((level + scan_artefacts(ARTP_CHARM_SKILL)) * scale, 27 * scale);
+        break;
+    case SK_SUMMONINGS:
+        level = min((level + scan_artefacts(ARTP_SUMMON_SKILL)) * scale, 27 * scale);
+        break;
+    case SK_NECROMANCY:
+        level = min((level + scan_artefacts(ARTP_NECRO_SKILL)) * scale, 27 * scale);
+        break;
+    case SK_TRANSLOCATIONS:
+        level = min((level + scan_artefacts(ARTP_TLOC_SKILL)) * scale, 27 * scale);
+        break;
+    case SK_TRANSMUTATIONS:
+        level = min((level + scan_artefacts(ARTP_TMUT_SKILL)) * scale, 27 * scale);
+        break;
+    default:
+        break;
+    }
 
     return level;
 }

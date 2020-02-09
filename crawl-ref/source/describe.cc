@@ -272,6 +272,12 @@ static vector<string> _randart_propnames(const item_def& item,
         { ARTP_AIR_SKILL,             PROPN_NUMERAL },
         { ARTP_EARTH_SKILL,           PROPN_NUMERAL },
         { ARTP_ICE_SKILL,             PROPN_NUMERAL },
+        { ARTP_HEX_SKILL,             PROPN_NUMERAL },
+        { ARTP_CHARM_SKILL,           PROPN_NUMERAL },
+        { ARTP_SUMMON_SKILL,          PROPN_NUMERAL },
+        { ARTP_NECRO_SKILL,           PROPN_NUMERAL },
+        { ARTP_TLOC_SKILL,            PROPN_NUMERAL },
+        { ARTP_TMUT_SKILL,            PROPN_NUMERAL },
 
         // Qualitative attributes (and Stealth)
         { ARTP_SEE_INVISIBLE,         PROPN_PLAIN },
@@ -520,6 +526,12 @@ static string _randart_descrip(const item_def &item)
         { ARTP_AIR_SKILL, "It increases your skill with air magic (%d).", false},
         { ARTP_EARTH_SKILL, "It increases your skill with earth magic (%d).", false},
         { ARTP_ICE_SKILL, "It increases your skill with ice magic (%d).", false},
+        { ARTP_HEX_SKILL, "It increases your skill with hexes (%d).", false},
+        { ARTP_CHARM_SKILL, "It increases your skill with charms (%d).", false},
+        { ARTP_SUMMON_SKILL, "It increases your skill with summoning magic (%d).", false},
+        { ARTP_NECRO_SKILL, "It increases your skill with necromancy (%d).", false},
+        { ARTP_TLOC_SKILL, "It increases your skill with translocations (%d).", false},
+        { ARTP_TMUT_SKILL, "It increases your skill with transmutations (%d).", false},
     };
 
     // Give a short description of the base type, for base types with no

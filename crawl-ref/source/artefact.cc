@@ -80,7 +80,8 @@ static bool _god_fits_artefact(const god_type which_god, const item_def &item,
     case GOD_ELYVILON:
         // Peaceful healer god: no berserking.
         if (artefact_property(item, ARTP_ANGRY)
-            || artefact_property(item, ARTP_BERSERK))
+            || artefact_property(item, ARTP_BERSERK)
+            || artefact_property(item, ARTP_NECRO_SKILL))
         {
             return false;
         }
@@ -88,7 +89,9 @@ static bool _god_fits_artefact(const god_type which_god, const item_def &item,
 
     case GOD_ZIN:
         // Lawful god: no mutagenics.
-        if (artefact_property(item, ARTP_CONTAM))
+        if (artefact_property(item, ARTP_CONTAM)
+            || artefact_property(item, ARTP_NECRO_SKILL)
+            || artefact_property(item, ARTP_TMUT_SKILL))
             return false;
         break;
 
@@ -97,7 +100,8 @@ static bool _god_fits_artefact(const god_type which_god, const item_def &item,
         if (item.base_type == OBJ_WEAPONS && brand != SPWPN_HOLY_WRATH)
             return false;
 
-        if (artefact_property(item, ARTP_STEALTH) > 0)
+        if (artefact_property(item, ARTP_STEALTH) > 0
+            || artefact_property(item, ARTP_NECRO_SKILL))
         {
             return false;
         }
@@ -125,7 +129,17 @@ static bool _god_fits_artefact(const god_type which_god, const item_def &item,
         if (brand == SPWPN_PAIN) // Pain involves necromantic spell use.
             return false;
 
-        if (artefact_property(item, ARTP_MAGICAL_POWER) > 0)
+        if (artefact_property(item, ARTP_MAGICAL_POWER) > 0
+            || artefact_property(item, ARTP_FIRE_SKILL)
+            || artefact_property(item, ARTP_ICE_SKILL)
+            || artefact_property(item, ARTP_EARTH_SKILL)
+            || artefact_property(item, ARTP_AIR_SKILL)
+            || artefact_property(item, ARTP_SUMMON_SKILL)
+            || artefact_property(item, ARTP_HEX_SKILL)
+            || artefact_property(item, ARTP_CHARM_SKILL)
+            || artefact_property(item, ARTP_TLOC_SKILL)
+            || artefact_property(item, ARTP_TMUT_SKILL)
+            || artefact_property(item, ARTP_NECRO_SKILL))
             return false;
         break;
 
@@ -554,7 +568,15 @@ static bool _artp_can_go_on_item(artefact_prop_type prop, const item_def &item,
         case ARTP_AIR_SKILL:
         case ARTP_EARTH_SKILL:
         case ARTP_ICE_SKILL:
+        case ARTP_HEX_SKILL:
+        case ARTP_CHARM_SKILL:
+        case ARTP_SUMMON_SKILL:
+        case ARTP_NECRO_SKILL:
+        case ARTP_TLOC_SKILL:
             return !extant_props[ARTP_PREVENT_SPELLCASTING];
+        case ARTP_TMUT_SKILL:
+            return item_class == OBJ_JEWELLERY && !extant_props[ARTP_PREVENT_SPELLCASTING];
+            // every other equipment type is likely to meld
         default:
             return true;
     }
@@ -699,6 +721,12 @@ static const artefact_prop_data artp_data[] =
     { "Air", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_AIR_SKILL,
     { "Earth", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_EARTH_SKILL,
     { "Ice", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_ICE_SKILL,
+    { "Hex", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_HEX_SKILL,
+    { "Charm", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_CHARM_SKILL,
+    { "Summon", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_SUMMON_SKILL,
+    { "Necro", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_NECRO_SKILL,
+    { "Tloc", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_TLOC_SKILL,
+    { "Tmut", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_TMUT_SKILL,
 };
 COMPILE_CHECK(ARRAYSZ(artp_data) == ARTP_NUM_PROPERTIES);
 
