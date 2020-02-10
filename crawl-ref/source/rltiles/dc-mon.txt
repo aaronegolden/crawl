@@ -822,6 +822,8 @@ ogre MONS_OGRE
 two_headed_ogre MONS_TWO_HEADED_OGRE
 %rim 0
 ogre_mage MONS_OGRE_MAGE
+ogre_enchanter MONS_OGRE_ENCHANTER
+ogre_philosopher MONS_OGRE_PHILOSOPHER
 %rim 1
 
 ## Plants ('P')

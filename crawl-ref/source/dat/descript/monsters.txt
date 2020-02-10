@@ -1657,8 +1657,18 @@ tremendously strong.
 %%%%
 ogre mage
 
-A rare breed of ogre, skilled in the use of magic. It usually becomes a
+A rare breed of ogre, skilled in the use of destructive magic. It usually becomes a
 chieftain among its kin.
+%%%%
+ogre philosopher
+
+A contemplative two-headed ogre that has spent its life pondering the nature of time.
+Its magic can haste its allies and slow its enemies.
+%%%%
+ogre enchanter
+
+A powerful ogre who has mastered disruptive hexes and uses them expertly in support of
+its kin.
 %%%%
 oklob plant
 
