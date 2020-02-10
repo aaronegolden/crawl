@@ -45,7 +45,7 @@ static const pop_entry pop_d[] =
   {  6, 12,  335, SEMI, MONS_WIGHT },
   {  6, 13, 1200, FLAT, MONS_NO_MONSTER },
   {  6, 16, 1600, FLAT, MONS_NO_MONSTER },
-  {  6, 16,  335, SEMI, MONS_NO_MONSTER }, // Old ballistomycete spore weight.
+  {  6, 10,  335, SEMI, MONS_ORC_LANCER },
   {  7, 14,  415, SEMI, MONS_NO_MONSTER },
   {  7, 12,  350, SEMI, MONS_HUNGRY_GHOST },
   {  7, 13,  470, SEMI, MONS_KILLER_BEE },
@@ -62,7 +62,7 @@ static const pop_entry pop_d[] =
   {  9, 19,  192, PEAK, MONS_VAMPIRE },
   { 10, 14,  235, SEMI, MONS_ORC_HIGH_PRIEST },
   { 10, 16,  194, RISE, MONS_DEATH_YAK },
-  { 10, 18,  600, FLAT, MONS_NO_MONSTER }, //formerly part of hill giant
+  { 10, 18,  600, PEAK, MONS_OGRE_PHILOSOPHER },
   { 10, 18,  370, SEMI, MONS_GARGOYLE },
   { 10, 18,  335, SEMI, MONS_WRAITH },
   { 10, 18,  400, SEMI, MONS_BLINK_FROG },
