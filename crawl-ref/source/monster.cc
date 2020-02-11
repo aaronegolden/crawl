@@ -3077,31 +3077,7 @@ int monster::shield_bonus() const
     if(type == MONS_RAINBOW_BOA)
         return 8;
 
-    int sh = -100;
-    const item_def *shld = shield();
-    if (shld && get_armour_slot(*shld) == EQ_SHIELD)
-    {
-
-        int shld_c = property(*shld, PARM_AC) + shld->plus * 2;
-        shld_c = shld_c * 2 + (body_size(PSIZE_TORSO) - SIZE_MEDIUM)
-                            * (shld->sub_type - ARM_LARGE_SHIELD);
-        sh = random2avg(shld_c + get_hit_dice() * 4 / 3, 2) / 2;
-    }
-    if (has_ench(ENCH_BONE_ARMOUR))
-    {
-        const int bone_armour = 6 + get_hit_dice() / 3;
-        sh = max(sh + bone_armour, bone_armour);
-    }
-    // shielding from jewellery
-    const item_def *amulet = mslot_item(MSLOT_JEWELLERY);
-    if (amulet && amulet->sub_type == AMU_REFLECTION)
-    {
-        const int jewellery_plus = amulet->plus;
-        ASSERT(abs(jewellery_plus) < 30); // sanity check
-        sh += jewellery_plus * 2;
-    }
-
-    return sh;
+    return -100;
 }
 
 /**
