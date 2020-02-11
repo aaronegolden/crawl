@@ -3065,13 +3065,17 @@ bool monster::shielded() const
 {
     return shield()
            || has_ench(ENCH_BONE_ARMOUR)
-           || wearing(EQ_AMULET_PLUS, AMU_REFLECTION) > 0;
+           || wearing(EQ_AMULET_PLUS, AMU_REFLECTION) > 0
+           || type == MONS_RAINBOW_BOA;
 }
 
 int monster::shield_bonus() const
 {
     if (incapacitated())
         return -100;
+
+    if(type == MONS_RAINBOW_BOA)
+        return 8;
 
     int sh = -100;
     const item_def *shld = shield();

@@ -1886,6 +1886,11 @@ raiju
 A profoundly unnatural hound, crackling with electricity. It travels in packs,
 and covers great distances by bursting into living lightning.
 %%%%
+rainbow boa
+
+A large snake covered in iridescent scales which are tough enough to completely
+block some attacks. Much like the anaconda, it kills prey via constriction.
+%%%%
 reaper
 
 A skeletal form wielding a giant scythe, ceaselessly harvesting the souls of

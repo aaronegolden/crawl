@@ -218,6 +218,7 @@ adder MONS_ADDER
 black_mamba MONS_BLACK_MAMBA
 water_moccasin MONS_WATER_MOCCASIN
 anaconda MONS_ANACONDA
+rainbow_boa MONS_RAINBOW_BOA
 %sdir mon/aquatic
 lava_snake MONS_LAVA_SNAKE
 %sdir mon/animals
