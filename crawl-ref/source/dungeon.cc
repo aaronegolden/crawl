@@ -4414,21 +4414,6 @@ void dgn_place_multiple_items(item_list &list, const coord_def& where)
         dgn_place_item(list.get_item(i), where);
 }
 
-static void _dgn_place_item_explicit(int index, const coord_def& where,
-                                     vault_placement &place)
-{
-    item_list &sitems = place.map.items;
-
-    if ((index < 0 || index >= static_cast<int>(sitems.size())) &&
-        !crawl_state.game_is_sprint())
-    {
-        return;
-    }
-
-    const item_spec spec = sitems.get_item(index);
-    dgn_place_item(spec, where);
-}
-
 static void _dgn_give_mon_spec_items(mons_spec &mspec,
                                      monster *mon,
                                      const monster_type type)
@@ -5403,7 +5388,6 @@ static void _stock_shop_item(int j, shop_type shop_type_,
     while (true)
     {
         object_class_type basetype = item_in_shop(shop_type_);
-        int subtype = OBJ_RANDOM;
 
         if (!spec.items.empty() && !spec.use_all)
         {
