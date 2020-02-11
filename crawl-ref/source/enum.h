@@ -4270,6 +4270,7 @@ enum artefact_prop_type
     ARTP_NECRO_SKILL,
     ARTP_TLOC_SKILL,
     ARTP_TMUT_SKILL,
+    ARTP_EVOC_SKILL,
     ARTP_NUM_PROPERTIES
 };
 

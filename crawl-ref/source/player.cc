@@ -5835,6 +5835,9 @@ int player::skill(skill_type sk, int scale, bool real, bool drained) const
     case SK_TRANSMUTATIONS:
         level = min((level + scan_artefacts(ARTP_TMUT_SKILL)) * scale, 27 * scale);
         break;
+    case SK_EVOCATIONS:
+        level = min((level + scan_artefacts(ARTP_EVOC_SKILL)) * scale, 27 * scale);
+        break;
     default:
         break;
     }

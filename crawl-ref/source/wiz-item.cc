@@ -1467,6 +1467,7 @@ static void _debug_rap_stats(FILE *ostat)
         "ARTP_NECRO_SKILL",
         "ARTP_TLOC_SKILL",
         "ARTP_TMUT_SKILL",
+        "ARTP_EVOC_SKILL",
     };
     COMPILE_CHECK(ARRAYSZ(rap_names) == ARTP_NUM_PROPERTIES);
 

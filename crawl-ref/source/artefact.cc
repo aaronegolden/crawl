@@ -727,6 +727,7 @@ static const artefact_prop_data artp_data[] =
     { "Necro", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_NECRO_SKILL,
     { "Tloc", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_TLOC_SKILL,
     { "Tmut", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_TMUT_SKILL,
+    { "Evoc", ARTP_VAL_ANY, 25, []() { return 1 + random2(4); }, nullptr, 0, 0 }, // ARTP_EVOC_SKILL,
 };
 COMPILE_CHECK(ARRAYSZ(artp_data) == ARTP_NUM_PROPERTIES);
 

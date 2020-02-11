@@ -278,6 +278,7 @@ static vector<string> _randart_propnames(const item_def& item,
         { ARTP_NECRO_SKILL,           PROPN_NUMERAL },
         { ARTP_TLOC_SKILL,            PROPN_NUMERAL },
         { ARTP_TMUT_SKILL,            PROPN_NUMERAL },
+        { ARTP_EVOC_SKILL,            PROPN_NUMERAL },
 
         // Qualitative attributes (and Stealth)
         { ARTP_SEE_INVISIBLE,         PROPN_PLAIN },
@@ -532,6 +533,7 @@ static string _randart_descrip(const item_def &item)
         { ARTP_NECRO_SKILL, "It increases your skill with necromancy (%d).", false},
         { ARTP_TLOC_SKILL, "It increases your skill with translocations (%d).", false},
         { ARTP_TMUT_SKILL, "It increases your skill with transmutations (%d).", false},
+        { ARTP_EVOC_SKILL, "It increases your skill with evocations (%d).", false},
     };
 
     // Give a short description of the base type, for base types with no
