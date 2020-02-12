@@ -1278,6 +1278,11 @@ Spit Poison spell
 
 <Spit Poison ability>
 %%%%
+Spit Venom spell
+
+Spits a potent venom that may slow or paralyse the target in addition to
+poisoning it.
+%%%%
 Sprint spell
 
 Causes the caster to cover ground more rapidly for a short duration.

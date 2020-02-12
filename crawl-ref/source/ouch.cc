@@ -190,6 +190,24 @@ int check_your_resists(int hurted, beam_type flavour, string source,
         }
 
         break;
+        
+    case BEAM_VENOM:
+    {
+        hurted = resist_adjust_damage(&you, flavour, hurted);
+
+        if (hurted < original && doEffects)
+            canned_msg(MSG_YOU_RESIST);
+        if (hurted && doEffects)
+        {
+            poison_player(roll_dice(1,9), source, kaux);
+            if (one_chance_in(4))
+                paralyse_player(source, roll_dice(1,3));
+            else
+                slow_player(roll_dice(1,3));
+        }
+
+        break;
+    }
 
     case BEAM_POISON_ARROW:
         if (doEffects)

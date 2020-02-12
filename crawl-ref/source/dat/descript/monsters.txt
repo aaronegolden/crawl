@@ -2138,6 +2138,11 @@ spiny frog
 
 A frog the size of a wolf, covered in small spines and spurs which drip venom.
 %%%%
+spitting cobra
+
+A relatively small snake that can spit its potent venom a considerable distance
+with deadly accuracy. Its victims may be slowed or even paralysed.
+%%%%
 spriggan
 
 A small humanoid, resembling a human or elf except for the size. It moves at a

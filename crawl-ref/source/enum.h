@@ -702,6 +702,7 @@ enum beam_type                  // bolt::flavour
     BEAM_RANDOM,                  // currently translates into FIRE..ACID
     BEAM_CHAOS,
     BEAM_UNRAVELLED_MAGIC,
+    BEAM_VENOM,                   // poison/paralyse venom spit
 
     // Enchantments
     BEAM_SLOW,
@@ -3703,6 +3704,7 @@ MONS_ANTIMATTER_ELF,
     MONS_OGRE_ENCHANTER,
     MONS_OGRE_PHILOSOPHER,
     MONS_RAINBOW_BOA,
+    MONS_SPITTING_COBRA,
 #endif
 
     NUM_MONSTERS,               // used for polymorph

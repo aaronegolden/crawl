@@ -1830,7 +1830,7 @@ static const struct spell_desc spelldata[] =
 },
 
 {
-    SPELL_SPIT_POISON, "Spit Poison",
+    SPELL_SPIT_POISON, "Spit Venom",
     SPTYP_CONJURATION,
     SPFLAG_DIR_OR_TARGET | SPFLAG_MONSTER | SPFLAG_NOISY | SPFLAG_NEEDS_TRACER,
     2,

@@ -1384,10 +1384,10 @@ bolt mons_spell_beam(const monster* mons, spell_type spell_cast, int power,
 
     case SPELL_SPIT_POISON:
         beam.colour   = GREEN;
-        beam.name     = "splash of poison";
+        beam.name     = "splash of venom";
         beam.damage   = dice_def(1, 4 + power / 10);
         beam.hit      = 16 + power / 20;
-        beam.flavour  = BEAM_POISON;
+        beam.flavour  = BEAM_VENOM;
         break;
 
     case SPELL_SPIT_ACID:

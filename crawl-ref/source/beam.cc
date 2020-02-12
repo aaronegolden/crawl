@@ -1566,6 +1566,29 @@ int mons_adjust_flavoured(monster* mons, bolt &pbolt, int hurted,
 
         break;
     }
+    
+    case BEAM_VENOM:
+    {
+        hurted = resist_adjust_damage(mons, pbolt.flavour, hurted);
+
+        if (!hurted && doFlavouredEffects)
+        {
+            simple_monster_message(*mons,
+                                   (original > 0) ? " completely resists."
+                                                  : " appears unharmed.");
+        }
+        else if (doFlavouredEffects)
+        {
+            if (!one_chance_in(3))
+                poison_monster(mons, pbolt.agent());
+            if (one_chance_in(4))
+                mons->paralyse(pbolt.agent(), roll_dice(1,3));
+            else
+                mons->slow_down(pbolt.agent(), roll_dice(1,3));
+        }
+
+        break;
+    }
 
     case BEAM_POISON_ARROW:
         hurted = resist_adjust_damage(mons, pbolt.flavour, hurted);
@@ -3023,6 +3046,9 @@ bool bolt::is_harmless(const monster* mon) const
 
     case BEAM_POISON:
         return mon->res_poison() >= 3;
+        
+    case BEAM_VENOM:
+        return mon->res_poison() >= 3;    
 
     case BEAM_ACID:
         return mon->res_acid() >= 3;
@@ -3073,6 +3099,7 @@ bool bolt::harmless_to_player() const
         return player_prot_life(false) >= 3;
 
     case BEAM_POISON:
+    case BEAM_VENOM:
         return player_res_poison(false) >= 3
                || is_big_cloud() && player_res_poison(false) > 0;
 
@@ -6345,6 +6372,7 @@ static string _beam_type_name(beam_type type)
     case BEAM_ELECTRICITY:           return "electricity";
     case BEAM_MEPHITIC:              return "noxious fumes";
     case BEAM_POISON:                return "poison";
+    case BEAM_VENOM:                 return "venom";
     case BEAM_NEG:                   return "negative energy";
     case BEAM_ACID:                  return "acid";
     case BEAM_MIASMA:                return "miasma";
