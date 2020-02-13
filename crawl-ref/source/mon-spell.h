@@ -1099,7 +1099,7 @@ static const mon_spellbook mspell_list[] =
 
     {  MST_NAGA_SHARPSHOOTER,
       {
-       { SPELL_PORTAL_PROJECTILE, 59, MON_SPELL_WIZARD },
+       { SPELL_SMITING, 39, MON_SPELL_PRIEST },
        { SPELL_SHOOT_ARROW, 150, MON_SPELL_NATURAL },
       }
     },
@@ -1908,12 +1908,10 @@ static const mon_spellbook mspell_list[] =
     // ('N') Naga.
     {  MST_VASHNIA,
       {
-       { SPELL_SPIT_POISON, 55, MON_SPELL_NATURAL | MON_SPELL_BREATH },
-       { SPELL_PORTAL_PROJECTILE, 22, MON_SPELL_WIZARD },
-       { SPELL_BLINK_OTHER, 11, MON_SPELL_WIZARD | MON_SPELL_EMERGENCY },
+       { SPELL_SMITING, 22, MON_SPELL_PRIEST },
        { SPELL_BLINK_ALLIES_AWAY, 22, MON_SPELL_WIZARD },
        { SPELL_BLINK_AWAY, 11, MON_SPELL_WIZARD },
-       { SPELL_SHOOT_ARROW, 75, MON_SPELL_NATURAL },
+       { SPELL_SHOOT_ARROW, 130, MON_SPELL_NATURAL },
       }
     },
 

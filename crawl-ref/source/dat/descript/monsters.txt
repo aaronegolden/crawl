@@ -1621,9 +1621,9 @@ summon them in battle.
 %%%%
 naga sharpshooter
 
-A naga with exceptionally keen eyesight, adept in the use of ranged weaponry
-and simple magics which allows it to snipe at targets across nearly any
-obstruction.
+A priestly naga hunter with exceptionally keen eyesight, adept in the use of ranged weaponry
+and attuned to the divine. In addition to its fearsome arrows, it can smite foes from behind
+any obstruction.
 %%%%
 naga warrior
 
