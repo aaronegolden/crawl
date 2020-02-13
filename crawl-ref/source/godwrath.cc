@@ -152,7 +152,6 @@ static const pop_entry _okawaru_servants[] =
   {  5, 15,   3, PEAK, MONS_ORC_KNIGHT },
   {  5, 15,   2, PEAK, MONS_CYCLOPS },
   {  7, 21,   2, PEAK, MONS_CENTAUR_WARRIOR },
-  {  7, 21,   2, PEAK, MONS_NAGA_WARRIOR },
   {  7, 21,   2, PEAK, MONS_TENGU_WARRIOR },
   {  7, 21,   1, FLAT, MONS_MERFOLK_IMPALER },
   {  7, 21,   1, FLAT, MONS_MERFOLK_JAVELINEER },

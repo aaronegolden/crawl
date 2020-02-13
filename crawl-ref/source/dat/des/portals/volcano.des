@@ -654,7 +654,7 @@ KFEAT:   ! = known alarm trap
 MONS:    mummy / vampire
 MONS:    troll skeleton / ogre skeleton / spriggan skeleton / centaur skeleton / \
          merfolk skeleton
-MONS:    two-headed ogre skeleton / manticore skeleton / naga skeleton / \
+MONS:    two-headed ogre skeleton / manticore skeleton / \
          two-headed ogre skeleton / minotaur skeleton / sphinx skeleton w:5
 KMONS:   4 = guardian mummy / Menkaure w:5, guardian mummy
 #        Loot: 21 gold, 10 items.

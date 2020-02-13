@@ -507,8 +507,6 @@ static void _give_weapon(monster* mon, int level, bool melee_only = false,
 		  } } },
         { MONS_VASHNIA,                 { NAGA_WEAPONS, {}, {}, 1 } },
         { MONS_NAGA_SHARPSHOOTER,       { NAGA_WEAPONS } },
-        { MONS_NAGA,                    { NAGA_WEAPONS } },
-        { MONS_NAGA_WARRIOR,            { NAGA_WEAPONS } },
         { MONS_ORC_WARRIOR,             { NAGA_WEAPONS } },
         { MONS_BLORK_THE_ORC,           { NAGA_WEAPONS } },
         { MONS_DANCING_WEAPON,          { NAGA_WEAPONS, {}, {}, 1 } },
@@ -1633,24 +1631,6 @@ static void _give_armour(monster* mon, int level, bool spectral_orcs)
         // obscenely good, don't ever place them randomly
         item.sub_type  = coinflip() ? ARM_PEARL_DRAGON_ARMOUR
                                     : ARM_FIRE_DRAGON_ARMOUR;
-        break;
-
-    case MONS_NAGA:
-    case MONS_NAGA_MAGE:
-    case MONS_NAGA_RITUALIST:
-    case MONS_NAGA_SHARPSHOOTER:
-    case MONS_NAGA_WARRIOR:
-    case MONS_GREATER_NAGA:
-        if (one_chance_in(type == MONS_NAGA         ?  400 :
-                          type == MONS_NAGA_WARRIOR ?  200 :
-                          type == MONS_GREATER_NAGA ?  50
-                                                    :  100))
-        {
-            item.base_type = OBJ_ARMOUR;
-            item.sub_type  = ARM_NAGA_BARDING;
-        }
-        else
-            return;
         break;
 
     case MONS_VASHNIA:

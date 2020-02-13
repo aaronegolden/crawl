@@ -114,7 +114,7 @@ end
 -- : [mocking|savage|cruel]_simulacrum(_G)
 -- : mons([mocking|savage|cruel]_ice)
 function mocking_simulacrum(e)
-   mocking_ice = "naga simulacrum w:4 / troll simulacrum w:5 / " ..
+   mocking_ice = "troll simulacrum w:5 / " ..
                  "draconian simulacrum w:4 / ogre simulacrum w:3 / " ..
                  "centaur simulacrum w:3 / spriggan simulacrum w:2"
 end

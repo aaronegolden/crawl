@@ -2902,7 +2902,7 @@ NSUBST:  7 = 1:7 / 2 = 7. / *:.
 {{
   dgn.delayed_decay(_G, 'd', "human skeleton / orc skeleton / elf skeleton"
                              .. " / dwarf skeleton / ogre skeleton w:1"
-                             .. " / naga skeleton w:1 / minotaur skeleton w:1"
+                             .. " / minotaur skeleton w:1"
                              .. " / merfolk skeleton w:1")
 }}
 MAP

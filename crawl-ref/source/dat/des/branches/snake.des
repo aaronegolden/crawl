@@ -16,7 +16,7 @@ ENDMAP
 NAME:   minmay_snake_entry_guardpost_small
 TAGS:   snake_entry
 ORIENT: float
-MONS:   naga, naga / nothing w:3
+MONS:   spitting cobra, black mamba / nothing w:3
 KFEAT:  O = enter_snake_pit
 MAP
 ccc.@.ccc
@@ -34,7 +34,7 @@ NAME:   minmay_snake_entry_guardpost_medium
 TAGS:   snake_entry
 WEIGHT: 5
 ORIENT: float
-MONS:   naga, naga / nothing
+MONS:   spitting cobra, black mamba / nothing
 KFEAT:  O = enter_snake_pit
 MAP
    ccccccc
@@ -52,7 +52,7 @@ NAME:   minmay_snake_entry_guardpost_large
 TAGS:   snake_entry
 WEIGHT: 2
 ORIENT: float
-MONS:   naga, naga / nothing
+MONS:   spitting cobra, black mamba / nothing
 KFEAT:  O = enter_snake_pit
 MAP
 c@ccccccc
@@ -115,7 +115,7 @@ ENDMAP
 NAME:   guppyfry_snake_entry_island
 TAGS:   snake_entry patrolling no_monster_gen
 ORIENT: float
-MONS:   naga / nothing, plant
+MONS:   spitting cobra / nothing, plant
 KFEAT:  O = enter_snake_pit
 SUBST:  - = . W:2 2:1
 MAP
@@ -135,7 +135,7 @@ ENDMAP
 NAME:   guppyfry_snake_entry_garden
 TAGS:   snake_entry patrolling no_monster_gen
 ORIENT: float
-MONS:  naga / nothing, plant
+MONS:  spitting cobra / nothing, plant
 KFEAT:  O = enter_snake_pit
 SUBST:  - = wW2t.
 MAP
@@ -242,7 +242,7 @@ MAP
 ENDMAP
 
 NAME:   nicolae_sea_snake_s
-MONS:   naga mage, naga
+MONS:   naga mage, rainbow boa
 ORIENT: float
 DEPTH:  Snake:2-3
 TAGS:   no_monster_gen
@@ -289,7 +289,7 @@ ORIENT: float
 TAGS:   no_pool_fixup patrolling
 SHUFFLE: }])
 SUBST:  ) = >>)
-MONS:   guardian serpent, greater naga, naga mage, naga warrior
+MONS:   guardian serpent, greater naga, naga mage, rainbow boa
 MAP
        xxxxxxxx
      xxx......xx
@@ -313,7 +313,7 @@ SUBST:  A : @xx
 SUBST:  B : @xx
 SUBST:  C : @xx
 SUBST:  T : TTTVVUY
-MONS:   naga, naga warrior
+MONS:   spitting cobra, rainbow boa
 MONS:   naga mage w:25 / greater naga w:5
 MAP
              xxxxxx
@@ -513,7 +513,7 @@ ENDMAP
 NAME:    hangedman_snake_corridor_cut
 TAGS:    no_monster_gen transparent
 DEPTH:   Snake
-MONS:    naga, patrolling naga mage
+MONS:    spitting cobra, patrolling naga mage
 MONS:    black mamba / anaconda, patrolling guardian serpent
 MONS:    patrolling adder / patrolling ball python / \
          patrolling water moccasin w:5
@@ -545,7 +545,7 @@ ENDMAP
 NAME:    hangedman_snake_corridor_split
 TAGS:    no_monster_gen transparent allow_dup
 DEPTH:   Snake
-MONS:    naga, black mamba, naga warrior, anaconda, naga mage, guardian serpent
+MONS:    spitting cobra, black mamba, rainbow boa, anaconda, naga mage, guardian serpent
 SUBST:   X : xxc, Y : x:33 c:66 w:1, 0 = 12
 SHUFFLE: 34, 56, 3456 / 3456 / 3456 / 3535 / 4646 / 3636 / 4545 / 3434 / 5656
 MAP
@@ -579,7 +579,7 @@ KMONS:  C = nonbase green draconian / draconian annihilator
 KMONS:  D = golden dragon / shadow dragon / quicksilver dragon w:5 / \
             iron dragon w:5
 : else
-KMONS:  A = naga warrior / naga mage / naga
+KMONS:  A = rainbow boa / naga mage / spitting cobra
 KMONS:  B = black mamba w:6 / anaconda
 KMONS:  C = greater naga / naga mage w:5 / guardian serpent w:5
 KMONS:  D = guardian serpent / anaconda w:2
@@ -947,10 +947,10 @@ PLACE:   Snake:$
 WEIGHT:  20
 TAGS:    no_rotate
 ORIENT:  northwest
-MONS:    naga / nothing
-MONS:    greater naga / nothing
+MONS:    spitting cobra / nothing
+MONS:    rainbow boa / nothing
 MONS:    guardian serpent / nothing
-MONS:    naga warrior / naga sharpshooter w:5 / nothing w:15
+MONS:    rainbow boa / naga sharpshooter w:5 / nothing w:15
 MONS:    naga mage w:40 / naga ritualist / naga sharpshooter / nothing w:60
 MONS:    greater naga / guardian serpent
 SHUFFLE: 'Y / "Z
@@ -1017,9 +1017,9 @@ PLACE:  Snake:$
 WEIGHT: 20
 ORIENT: southwest
 TAGS:   no_rotate
-MONS:   greater naga, naga
+MONS:   greater naga, spitting cobra
 MONS:   naga mage w:40 / naga ritualist / naga sharpshooter
-MONS:   naga warrior / naga sharpshooter w:5
+MONS:   rainbow boa / naga sharpshooter w:5
 SUBST:  C = c .:1
 SUBST:  v = x .:1
 NSUBST: 1 = 3:1 / 2:. / * = 1., 3 = 16:3 / 8:. / * = 3..
@@ -1070,8 +1070,8 @@ NAME:    minmay_snake_end_coiled
 PLACE:   Snake:$
 TAGS:    no_rotate
 ORIENT:  southwest
-MONS:    naga
-MONS:    naga warrior / naga sharpshooter w:5
+MONS:    spitting cobra
+MONS:    rainbow boa / naga sharpshooter w:5
 MONS:    naga mage w:40 / naga ritualist / naga sharpshooter
 MONS:    greater naga
 SHUFFLE: ABC
@@ -1136,9 +1136,9 @@ TAGS:   no_monster_gen
 PLACE:  Snake:$
 ORIENT: north
 TAGS:   no_rotate
-MONS:   naga
+MONS:   spitting cobra
 MONS:   naga mage w:40 / naga ritualist / naga sharpshooter
-MONS:   naga warrior / naga sharpshooter w:5
+MONS:   rainbow boa / naga sharpshooter w:5
 MONS:   greater naga, guardian serpent
 MONS:   w:21 anaconda / black mamba / shock serpent w:7 / mana viper w:13 / \
         nothing w:30
@@ -1197,11 +1197,11 @@ ENDMAP
 NAME:   grunt_snake_rune_spirals
 PLACE:  Snake:$
 ORIENT: centre
-MONS:   naga / nothing
-MONS:   naga warrior / naga sharpshooter w:5 / naga w:15
-MONS:   naga mage w:20 / naga ritualist / naga sharpshooter / naga w:40
+MONS:   spitting cobra / nothing
+MONS:   rainbow boa / naga sharpshooter w:5 / spitting cobra w:15
+MONS:   naga mage w:20 / naga ritualist / naga sharpshooter / spitting cobra w:40
 MONS:   greater naga / guardian serpent
-MONS:   greater naga w:20 / naga warrior w:5 / naga mage w:5 / \
+MONS:   greater naga w:20 / rainbow boa w:5 / naga mage w:5 / \
         naga ritualist w:5 / naga sharpshooter w:5
 NSUBST: O = 1:A / 1:B
 KITEM:  A = serpentine rune of Zot
@@ -1238,9 +1238,9 @@ PLACE: Snake:$
 TAGS: no_trap_gen no_monster_gen
 ORIENT: north
 MONS: greater naga, guardian serpent
-MONS: naga warrior / naga sharpshooter w:5
+MONS: rainbow boa / naga sharpshooter w:5
 MONS: naga mage w:40 / naga ritualist / naga sharpshooter
-MONS: naga
+MONS: spitting cobra
 MONS: guardian serpent w:15 / anaconda w:30 / black mamba / \
       mana viper / shock serpent
 SUBST: 4 = 45, 3 = 35, 1 = 13, 2 = 21
@@ -1290,10 +1290,10 @@ KMONS:  L = greater naga
 KITEM:  O = serpentine rune of Zot
 KFEAT:  O = enter_vaults
 KFEAT:  A = altar_okawaru / altar_makhleb / altar_trog
-MONS:   greater naga w:20 / naga warrior w:5 / naga mage w:5 / \
+MONS:   greater naga w:20 / rainbow boa w:5 / naga mage w:5 / \
         naga ritualist w:5 / naga sharpshooter w:5
-MONS:   naga mage w:20 / naga ritualist / naga sharpshooter / naga w:40
-MONS:   naga / nothing
+MONS:   naga mage w:20 / naga ritualist / naga sharpshooter / spitting cobra w:40
+MONS:   spitting cobra / nothing
 MONS:   anaconda / guardian serpent
 MAP
      xxxxxxx
@@ -1338,13 +1338,13 @@ ENDMAP
 NAME:   johnstein_snake_rune_scales
 PLACE:  Snake:$
 ORIENT: north
-MONS:   naga / nothing
-MONS:   naga warrior / naga sharpshooter w:5 / naga w:15 / nothing
-MONS:   naga mage w:20 / naga ritualist / naga sharpshooter / naga w:30 / \
+MONS:   spitting cobra / nothing
+MONS:   rainbow boa / naga sharpshooter w:5 / spitting cobra w:15 / nothing
+MONS:   naga mage w:20 / naga ritualist / naga sharpshooter / spitting cobra w:30 / \
         nothing w:20
 MONS:   guardian serpent / salamander mystic w:5 / naga ritualist w:5 / \
         nothing
-MONS:   greater naga w:30 / naga warrior w:5 / naga sharpshooter w:5
+MONS:   greater naga w:30 / rainbow boa w:5 / naga sharpshooter w:5
 MONS:   anaconda / black mamba / shock serpent w:5 / mana viper
 
 KMONS:  Z = Vashnia / greater naga, greater naga

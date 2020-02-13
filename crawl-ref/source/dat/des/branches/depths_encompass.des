@@ -105,10 +105,10 @@ MONS:    wolf / warg / hell hound / raiju w:4
 MONS:    shadow w:20 / wraith w:20 / shadow wraith / phantasmal warrior / \
          skeletal warrior
 MONS:    war gargoyle
-MONS:    spectral spriggan / spectral centaur / spectral naga / \
+MONS:    spectral spriggan / spectral centaur / \
          spectral merfolk / spectral ogre / spectral troll / \
          spectral minotaur w:1 / spriggan simulacrum w:2 / centaur simulacrum w:1 / \
-         naga simulacrum w:2 / troll simulacrum w:2 / minotaur simulacrum w:1 / \
+         troll simulacrum w:2 / minotaur simulacrum w:1 / \
          merfolk simulacrum w:2 / vampire / wraith / wight
 MONS:    mana viper / eidolon w:5 / soul eater w:5 / \
          death drake w:5 / flayed ghost / shadow dragon w:2

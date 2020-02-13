@@ -2315,37 +2315,6 @@ ENDMAP
 
 ###################################
 
-NAME: nicolae_pan_performance_anxiety
-TAGS: no_trap_gen
-WEIGHT: 1
-KMONS:  p = human / elf / orc / naga / centaur / ogre / \
-            minotaur / troll / kobold / mummy / ghoul / spriggan / \
-            octopode / vampire / demigod / \
-            demonspawn / merfolk / gargoyle / formicid / vine stalker
-NSUBST: t = 10:p / *:', b = 10:p / *:'
-KPROP:  p' = no_tele_into
-: pan_demonic_rune(_G, 'P', true)
-: pan_lord_vault_contents(_G, 'A', 'B<', 'C')
-MAP
-      ccccc
-    ccctttccc
-   cctttttttcc
-   cttnnnnnttc
-  cctnn.B.nntcc
-  ctnn.C.C.nntc
-..cnn.C...C.nnc..
-@....B..P..B....@
-..cnn.C...C.nnc..
-  cbnn.C.C.nnbc
-  ccbnn.<.nnbcc
-   cbbnnnnnbbc
-   ccbbbbbbbcc
-    cccbbbccc
-      ccccc
-ENDMAP
-
-###################################
-
 NAME:    grunt_pan_in_and_out
 TAGS:    no_trap_gen
 KMONS:   d = pandemonium lord

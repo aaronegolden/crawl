@@ -304,12 +304,11 @@ static const pop_entry pop_shoals[] =
 
 static const pop_entry pop_snake[] =
 { // Snake Pit
-  { -4,  2,  750, SEMI, MONS_NAGA },
+  { -4,  2,  750, SEMI, MONS_SPITTING_COBRA },
   {  0,  3,  215, SEMI, MONS_SALAMANDER },
   {  0,  6,  315, SEMI, MONS_ANACONDA },
   {  0,  6,  600, SEMI, MONS_BLACK_MAMBA },
-  {  0,  6,  525, SEMI, MONS_NO_MONSTER}, //remove some mamba weight
-  {  0,  6,  340, SEMI, MONS_NAGA_WARRIOR },
+  {  0,  6,  540, SEMI, MONS_RAINBOW_BOA },
   {  0,  7,  550, SEMI, MONS_NAGA_MAGE },
   {  0,  7,  225, SEMI, MONS_NAGA_RITUALIST },
   {  0,  8,  315, SEMI, MONS_NAGA_SHARPSHOOTER },
@@ -1101,7 +1100,6 @@ static const pop_entry pop_generic_late_zombie[] =
   {  1,  27,   27, FLAT, MONS_HUMAN },
   {  1,  27,   10, FLAT, MONS_KOBOLD },
   {  1,  27,   10, FLAT, MONS_MERFOLK },
-  {  1,  27,   10, FLAT, MONS_NAGA },
   {  1,  27,   10, FLAT, MONS_OGRE },
   {  1,  27,   12, FLAT, MONS_ORC },
   {  1,  27,   10, FLAT, MONS_SPRIGGAN },

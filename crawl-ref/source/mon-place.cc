@@ -2062,8 +2062,7 @@ static const map<monster_type, band_set> bands_by_leader = {
                                            true }}}},
     { MONS_KOBOLD_DEMONOLOGIST, { {2}, {{ BAND_KOBOLD_DEMONOLOGIST, {3, 9} }}}},
     { MONS_GUARDIAN_SERPENT, { {}, {{ BAND_GUARDIAN_SERPENT, {2, 6} }}}},
-    { MONS_NAGA_MAGE,       { naga_band_condition, {{ BAND_NAGAS, {2, 5} }}}},
-    { MONS_NAGA_WARRIOR,    { naga_band_condition, {{ BAND_NAGAS, {2, 5} }}}},
+    { MONS_NAGA_MAGE,       { naga_band_condition, {{ BAND_NAGAS, {2, 4} }}}},
     { MONS_NAGA_SHARPSHOOTER, { {2}, {{ BAND_NAGA_SHARPSHOOTER, {1, 4} }}}},
     { MONS_NAGA_RITUALIST,  { {}, {{ BAND_NAGA_RITUALIST, {3, 6} }}}},
     { MONS_HELL_RAT,        { {}, {{ BAND_HELL_RATS, {3, 7} }}}},
@@ -2410,17 +2409,17 @@ static const map<band_type, vector<member_possibilites>> band_membership = {
                                   {MONS_BIG_KOBOLD, 2},
                                   {MONS_KOBOLD_DEMONOLOGIST, 1}}}},
     // Favor tougher naga suited to melee, compared to normal naga bands
-    { BAND_GUARDIAN_SERPENT,    {{{MONS_NAGA_MAGE, 5}, {MONS_NAGA_WARRIOR, 10}},
+    { BAND_GUARDIAN_SERPENT,    {{{MONS_NAGA_MAGE, 5}, {MONS_RAINBOW_BOA, 10}},
 
-                                 {{MONS_NAGA_MAGE, 5}, {MONS_NAGA_WARRIOR, 10},
-                                  {MONS_SALAMANDER, 3}, {MONS_NAGA, 12}},
+                                 {{MONS_NAGA_MAGE, 5}, {MONS_RAINBOW_BOA, 10},
+                                  {MONS_SALAMANDER, 3}, {MONS_SPITTING_COBRA, 12}},
 
-                                 {{MONS_SALAMANDER, 3}, {MONS_NAGA, 12}}}},
+                                 {{MONS_SALAMANDER, 3}, {MONS_SPITTING_COBRA, 12}}}},
     { BAND_NAGA_RITUALIST,      {{{MONS_BLACK_MAMBA, 15},
                                   {MONS_MANA_VIPER, 7},
                                   {MONS_ANACONDA, 4}}}},
     { BAND_NAGA_SHARPSHOOTER,   {{{MONS_NAGA_SHARPSHOOTER, 1},
-                                  {MONS_NAGA, 2}}}},
+                                  {MONS_SPITTING_COBRA, 2}}}},
     { BAND_GHOULS,              {{{MONS_GHOUL, 4},
                                   {MONS_BOG_BODY, 2}}}},
     { BAND_ILSUIW,              {{{MONS_SIREN, 6},
@@ -2635,14 +2634,15 @@ static monster_type _band_member(band_type band, int which,
     case BAND_NAGAS:
         if (which == 1 && coinflip() || which == 2 && one_chance_in(4))
         {
-            return random_choose_weighted( 8, MONS_NAGA_WARRIOR,
+            return random_choose_weighted( 8, MONS_RAINBOW_BOA,
                                           11, MONS_NAGA_MAGE,
                                            6, MONS_NAGA_RITUALIST,
                                            8, MONS_NAGA_SHARPSHOOTER,
-                                           6, MONS_SALAMANDER_MYSTIC);
+                                           6, MONS_SALAMANDER_MYSTIC,
+                                           3, MONS_ANACONDA);
         }
         else
-            return one_chance_in(7) ? MONS_SALAMANDER : MONS_NAGA;
+            return one_chance_in(7) ? MONS_SALAMANDER : MONS_SPITTING_COBRA;
 
     case BAND_DEATH_KNIGHT:
         if (!player_in_branch(BRANCH_DUNGEON)

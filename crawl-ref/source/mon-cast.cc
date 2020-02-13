@@ -5067,8 +5067,8 @@ static const pop_entry _invitation_lair[] =
 
 static const pop_entry _invitation_snake[] =
 { // Snake enemies
-  {  1,   1,   80, FLAT, MONS_NAGA },
-  {  1,   1,   40, FLAT, MONS_BLACK_MAMBA },
+  {  1,   1,   40, FLAT, MONS_SPITTING_COBRA },
+  {  1,   1,   80, FLAT, MONS_BLACK_MAMBA },
   {  1,   1,   20, FLAT, MONS_MANA_VIPER },
   { 0,0,0,FLAT,MONS_0 }
 };
