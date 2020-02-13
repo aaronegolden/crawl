@@ -1106,8 +1106,8 @@ static const mon_spellbook mspell_list[] =
 
     {  MST_NAGA_RITUALIST,
       {
-       { SPELL_FORCE_LANCE, 23, MON_SPELL_WIZARD },
-       { SPELL_OLGREBS_TOXIC_RADIANCE, 34, MON_SPELL_WIZARD },
+       { SPELL_FORCE_LANCE, 34, MON_SPELL_WIZARD },
+       { SPELL_SUMMON_MANA_VIPER, 23, MON_SPELL_WIZARD },
       }
     },
 

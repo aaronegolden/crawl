@@ -1616,8 +1616,8 @@ is especially skilled in spells dealing with poison and venom.
 %%%%
 naga ritualist
 
-An esoteric mystic draped in talismans. It venerates poison as a sacred gift
-and means of spiritual purification.
+An esoteric mystic draped in talismans. It venerates snakes and uses magic to
+summon them in battle.
 %%%%
 naga sharpshooter
 
