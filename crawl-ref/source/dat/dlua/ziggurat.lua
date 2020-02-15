@@ -231,7 +231,7 @@ mset(with_props(spec_fn(function ()
   local d = math.max(24, math.floor(120 - you.depth() / 4 - you.zigs_completed() * 4))
   local e = 10 + you.zigs_completed() * 4
   return "place:Shoals:$ band w:" .. d .. " / merfolk impaler w:5 / " ..
-         "merfolk javelineer / water nymph w:" .. e .. " / " ..
+         "merfolk hunter / water nymph w:" .. e .. " / " ..
          "merfolk aquamancer w:" .. e
 end), { weight = 5 }))
 
@@ -440,7 +440,7 @@ mset(with_props(spec_fn(function ()
          "centaur warrior w:" .. d .. " / faun w:" .. d .. " / " ..
          "yaktaur captain w:" .. d .. " / satyr w:" .. d .. " / " ..
          "stone giant w:" .. e .. " / naga sharpshooter w:" .. e .. " / " ..
-         "merfolk javelineer w:" .. e .. " / deep elf master archer w:" .. e
+         "merfolk hunter w:" .. e .. " / deep elf master archer w:" .. e
 end), { weight = 2 }))
 
 mset(with_props(spec_fn(function ()
@@ -478,7 +478,7 @@ mset_if(depth_ge(14), with_props(spec_fn(function ()
          "place:Shoals:$ w:" .. d .. " / place:Spider:$ w:" .. d .. " / " ..
          "greater naga w:" .. e + 2 .. " / guardian serpent w:8 / " ..
          "hydra w:5 / swamp dragon w:5 / tentacled monstrosity w:" .. e .. " / " ..
-         "merfolk aquamancer w:6 / merfolk javelineer w:" .. e - 2 .. " / " ..
+         "merfolk aquamancer w:6 / merfolk hunter w:" .. e - 2 .. " / " ..
          "alligator snapping turtle w:6 / ghost moth w:" .. e - 2 .. " / " ..
          "emperor scorpion w:8 / moth of wrath w:4"
 end), { weight = 5 }))

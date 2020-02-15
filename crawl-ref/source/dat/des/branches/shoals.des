@@ -396,7 +396,7 @@ ENDMAP
 
 NAME:    st_sunken_huts
 DEPTH:   Shoals, !Shoals:$
-KMONS:   1 = merfolk javelineer
+KMONS:   1 = merfolk hunter
 KMONS:   2 = merfolk impaler
 KMONS:   3 = merfolk aquamancer
 KMONS:   4 = merfolk
@@ -426,7 +426,7 @@ ENDMAP
 NAME:    st_sunken_temple
 DEPTH:   Shoals, !Shoals:$
 TAGS:    no_pool_fixup
-KMONS:   1 = merfolk javelineer
+KMONS:   1 = merfolk hunter
 KMONS:   2 = merfolk impaler
 KMONS:   3 = merfolk aquamancer
 KMONS:   4 = merfolk
@@ -479,7 +479,7 @@ FHEIGHT: ;'b123 = 40
 KPROP: ;'b123 = no_tide
 KMONS: 1 = merfolk
 KMONS: 2 = merfolk impaler / nothing w:4
-KMONS: 3 = merfolk javelineer / nothing w:4
+KMONS: 3 = merfolk hunter / nothing w:4
 KFEAT: ' = W
 KFEAT: ;23 = w
 KFEAT: b = .
@@ -655,7 +655,7 @@ ENDMAP
 NAME: nicolae_shoals_hunting_party
 DEPTH: Shoals:2-
 TAGS: no_item_gen no_monster_gen
-KMONS: i = merfolk impaler band / merfolk javelineer band
+KMONS: i = merfolk impaler band / merfolk hunter band
 SUBST: : = .:3 h:1, W = .W
 : dgn.delayed_decay(_G, 'h', 'snapping turtle corpse')
 MAP
@@ -719,7 +719,7 @@ KPROP: .123wqx = no_tide
 SUBST: . = ....W, w = wWW..., q = w, x = xxxc
 KFEAT: 123 = . w:40 / W
 KMONS: 1 = merfolk / nothing w:5
-KMONS: 2 = merfolk / merfolk aquamancer / merfolk javelineer / merfolk impaler / nothing w:45
+KMONS: 2 = merfolk / merfolk aquamancer / merfolk hunter / merfolk impaler / nothing w:45
 KMONS: 3 = siren / merfolk aquamancer w:5 / nothing w:5
 MAP
      .......
@@ -1093,7 +1093,7 @@ TAGS:    no_monster_gen
 DEPTH:   Shoals
 MONS:    snapping turtle / elephant
 MONS:    faun, satyr, meliai, minotaur
-KMONS:   _ = merfolk javelineer
+KMONS:   _ = merfolk hunter
 KMONS:   b = bush
 KMONS:   p = plant
 # Bacchus-approved.
@@ -1193,7 +1193,7 @@ TAGS:      shoal_rune_simple shoal_mimic_simple water_ok no_dump transparent \
 NSUBST:    A = 1:+ / 1 = x:19 +:1 / *:x
 SUBST:     0 = 0.
 SUBST:     e = e.
-KMONS:     ge = merfolk impaler / merfolk javelineer / merfolk aquamancer
+KMONS:     ge = merfolk impaler / merfolk hunter / merfolk aquamancer
 : if shoals_vault_is_mimic() then
 KFEAT:     O = .
 : else
@@ -1232,10 +1232,10 @@ ENDMAP
 NAME:    shoal_ilsuiw
 TAGS:    shoal_guardian
 KMONS:   1 = Ilsuiw, merfolk aquamancer
-KMONS:   2 = merfolk impaler / merfolk javelineer
-KMONS:   3 = merfolk aquamancer / merfolk impaler / merfolk javelineer
+KMONS:   2 = merfolk impaler / merfolk hunter
+KMONS:   3 = merfolk aquamancer / merfolk impaler / merfolk hunter
 KMONS:   A = Ilsuiw band
-KMONS:   B = merfolk aquamancer / merfolk javelineer
+KMONS:   B = merfolk aquamancer / merfolk hunter
 KFEAT:   123ABC = w
 SHUFFLE: 123 / 123 / 123 / ABC / ABC
 MAP
@@ -1254,7 +1254,7 @@ ENDMAP
 NAME:    shoals_rune_alternative
 TAGS:    shoal_rune_hangedman shoal_mimic_hangedman water_ok allow_dup \
          transparent no_dump
-KMONS:   12 = merfolk impaler / merfolk javelineer / merfolk aquamancer
+KMONS:   12 = merfolk impaler / merfolk hunter / merfolk aquamancer
 KMONS:   3 = harpy band
 KMONS:   d = merfolk aquamancer / water nymph w:5
 : if shoals_vault_is_mimic() then
@@ -1310,10 +1310,10 @@ NAME:    shoals_ilsuiw_alternative
 TAGS:    shoal_guardian water_ok
 WEIGHT:  8
 KMONS:   1 = Ilsuiw, merfolk aquamancer
-KMONS:   2 = merfolk impaler / merfolk javelineer
-KMONS:   3 = merfolk aquamancer / merfolk impaler / merfolk javelineer
+KMONS:   2 = merfolk impaler / merfolk hunter
+KMONS:   3 = merfolk aquamancer / merfolk impaler / merfolk hunter
 KMONS:   4 = Ilsuiw band
-KMONS:   5 = merfolk aquamancer / merfolk javelineer
+KMONS:   5 = merfolk aquamancer / merfolk hunter
 KFEAT:   123456 = w
 SHUFFLE: 123 / 123 / 123 / 456 / 456
 SHUFFLE: AB / AB / BA, CD / CD / DC
@@ -1338,7 +1338,7 @@ ENDMAP
 NAME:   shoals_iceberg_rune
 TAGS:   shoal_rune_grunt_ice shoal_mimic_grunt_ice water_ok no_dump
 TAGS:   transparent allow_dup
-MONS:   merfolk impaler / merfolk javelineer / merfolk aquamancer
+MONS:   merfolk impaler / merfolk hunter / merfolk aquamancer
 KMONS:  K = frost giant
 : if shoals_vault_is_mimic() then
 KFEAT:  O = .
@@ -1394,7 +1394,7 @@ ENDMAP
 NAME:    shoals_ilsuiw_ice
 TAGS:    shoal_guardian
 KMONS:   e = Ilsuiw band, merfolk aquamancer
-MONS:    merfolk aquamancer / merfolk javelineer
+MONS:    merfolk aquamancer / merfolk hunter
 NSUBST:  1 = 2:1 / *:.
 NSUBST:  A = 1:. / 1:x. / *:x
 : shoals_ice_setup(_G)
@@ -1423,7 +1423,7 @@ ENDMAP
 NAME:    shoals_garden_rune
 TAGS:    shoal_rune_grunt_garden shoal_mimic_grunt_garden water_ok
 TAGS:    no_dump allow_dup transparent
-MONS:    satyr w:18 / merfolk impaler / merfolk javelineer / merfolk aquamancer
+MONS:    satyr w:18 / merfolk impaler / merfolk hunter / merfolk aquamancer
 MONS:    faun w:6 / 0
 KMONS:   P = plant
 : if shoals_vault_is_mimic() then

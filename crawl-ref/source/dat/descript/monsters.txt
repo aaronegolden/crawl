@@ -1559,10 +1559,9 @@ merfolk impaler
 
 A powerfully muscled merfolk warrior, bearing a deadly weapon.
 %%%%
-merfolk javelineer
+merfolk hunter
 
-A fearsome merfolk champion with a piercing gaze and a large bundle of
-javelins.
+A fearsome merfolk champion with a piercing gaze and a large bow.
 %%%%
 minotaur
 
