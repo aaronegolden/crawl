@@ -103,15 +103,9 @@ static const mon_spellbook mspell_list[] =
     // ('c') Centaurs and such.
     {  MST_FAUN_I,
       {
-       { SPELL_CORONA, 15, MON_SPELL_WIZARD },
-       { SPELL_SLOW, 30, MON_SPELL_WIZARD },
-      }
-    },
-
-    {  MST_FAUN_II,
-      {
-       { SPELL_CORONA, 15, MON_SPELL_WIZARD },
-       { SPELL_CONFUSE, 10, MON_SPELL_WIZARD },
+       { SPELL_SLOW, 15, MON_SPELL_WIZARD },
+       { SPELL_CONFUSE, 15, MON_SPELL_WIZARD },
+       { SPELL_SHOOT_ARROW, 150, MON_SPELL_WIZARD },
       }
     },
 
@@ -120,6 +114,7 @@ static const mon_spellbook mspell_list[] =
        { SPELL_BATTLECRY, 25, MON_SPELL_NATURAL | MON_SPELL_NO_SILENT
                               | MON_SPELL_NOISY },
        { SPELL_SLEEP, 32, MON_SPELL_WIZARD },
+       { SPELL_SHOOT_ARROW, 140, MON_SPELL_WIZARD },
       }
     },
 
