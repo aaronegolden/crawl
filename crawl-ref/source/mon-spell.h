@@ -429,7 +429,7 @@ static const mon_spellbook mspell_list[] =
     {  MST_ORC_WIZARD_I,
       {
        { SPELL_MAGIC_DART, 18, MON_SPELL_WIZARD },
-       { SPELL_SLOW, 9, MON_SPELL_WIZARD },
+       { SPELL_SLOW, 18, MON_SPELL_WIZARD },
        { SPELL_HASTE, 9, MON_SPELL_WIZARD },
        { SPELL_BLINK, 18, MON_SPELL_WIZARD },
       }
@@ -448,10 +448,7 @@ static const mon_spellbook mspell_list[] =
     // Shared with Blork the orc.
     {  MST_ORC_WIZARD_III,
       {
-       { SPELL_CANTRIP, 9, MON_SPELL_WIZARD },
-       { SPELL_MAGIC_DART, 9, MON_SPELL_WIZARD },
-       { SPELL_THROW_FROST, 9, MON_SPELL_WIZARD },
-       { SPELL_THROW_FLAME, 9, MON_SPELL_WIZARD },
+       { SPELL_THROW_FLAME, 27, MON_SPELL_WIZARD },
        { SPELL_HASTE, 9, MON_SPELL_WIZARD },
       }
     },
