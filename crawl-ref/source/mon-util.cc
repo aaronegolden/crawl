@@ -2546,10 +2546,6 @@ static vector<mon_spellbook_type> _mons_spellbook_list(monster_type mon_type)
         return { MST_TENGU_CONJURER_I, MST_TENGU_CONJURER_II,
                  MST_TENGU_CONJURER_III, MST_TENGU_CONJURER_IV };
 
-    case MONS_TENGU_REAVER:
-        return { MST_TENGU_REAVER_I, MST_TENGU_REAVER_II,
-                 MST_TENGU_REAVER_III };
-
     case MONS_DEEP_ELF_MAGE:
         return { MST_DEEP_ELF_MAGE_I, MST_DEEP_ELF_MAGE_II,
                  MST_DEEP_ELF_MAGE_III, MST_DEEP_ELF_MAGE_IV,
