@@ -2532,9 +2532,6 @@ static vector<mon_spellbook_type> _mons_spellbook_list(monster_type mon_type)
     case MONS_HELL_KNIGHT:
         return { MST_HELL_KNIGHT_I, MST_HELL_KNIGHT_II };
 
-    case MONS_NECROMANCER:
-        return { MST_NECROMANCER_I, MST_NECROMANCER_II };
-
     case MONS_WIZARD:
     case MONS_EROLCHA:
         return { MST_WIZARD_I, MST_WIZARD_II, MST_WIZARD_III };

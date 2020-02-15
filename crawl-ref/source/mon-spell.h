@@ -489,15 +489,6 @@ static const mon_spellbook mspell_list[] =
       }
     },
 
-    {  MST_NECROMANCER_II,
-      {
-       { SPELL_BOLT_OF_FIRE, 15, MON_SPELL_WIZARD },
-       { SPELL_AGONY, 15, MON_SPELL_WIZARD },
-       { SPELL_BIND_SOULS, 30, MON_SPELL_WIZARD },
-       { SPELL_PHASE_SHIFT, 10, MON_SPELL_WIZARD | MON_SPELL_EMERGENCY },
-      }
-    },
-
     // Wizard sets are also used by Erolcha.
     {  MST_WIZARD_I,
       {
