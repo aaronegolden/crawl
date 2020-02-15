@@ -704,16 +704,8 @@ static const mon_spellbook mspell_list[] =
     // ('z') Corporeal semi-humanoid undead.
     {  MST_ANCIENT_CHAMPION_I,
       {
-       { SPELL_IRON_SHOT, 21, MON_SPELL_WIZARD },
-       { SPELL_PAIN, 21, MON_SPELL_WIZARD },
-       { SPELL_HASTE, 21, MON_SPELL_WIZARD },
-      }
-    },
-
-    {  MST_ANCIENT_CHAMPION_II,
-      {
        { SPELL_BOLT_OF_DRAINING, 21, MON_SPELL_WIZARD },
-       { SPELL_STONE_ARROW, 21, MON_SPELL_WIZARD },
+       { SPELL_IRON_SHOT, 21, MON_SPELL_WIZARD },
        { SPELL_HASTE, 21, MON_SPELL_WIZARD },
       }
     },
