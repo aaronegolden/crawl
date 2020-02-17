@@ -515,17 +515,10 @@ static const mon_spellbook mspell_list[] =
       }
     },
 
-    {  MST_HELL_KNIGHT_I,
+    {  MST_HELL_KNIGHT,
       {
-       { SPELL_BOLT_OF_DRAINING, 26, MON_SPELL_WIZARD },
+       { SPELL_BOLT_OF_FIRE, 26, MON_SPELL_WIZARD },
        { SPELL_HASTE, 26, MON_SPELL_WIZARD },
-      }
-    },
-
-    {  MST_HELL_KNIGHT_II,
-      {
-       { SPELL_BOLT_OF_FIRE, 34, MON_SPELL_WIZARD },
-       { SPELL_BLINK, 17, MON_SPELL_WIZARD | MON_SPELL_EMERGENCY },
       }
     },
 
