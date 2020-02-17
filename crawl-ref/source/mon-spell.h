@@ -105,7 +105,7 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_SLOW, 15, MON_SPELL_WIZARD },
        { SPELL_CONFUSE, 15, MON_SPELL_WIZARD },
-       { SPELL_SHOOT_ARROW, 150, MON_SPELL_WIZARD },
+       { SPELL_SHOOT_ARROW, 150, MON_SPELL_NATURAL },
       }
     },
 
@@ -114,60 +114,16 @@ static const mon_spellbook mspell_list[] =
        { SPELL_BATTLECRY, 25, MON_SPELL_NATURAL | MON_SPELL_NO_SILENT
                               | MON_SPELL_NOISY },
        { SPELL_SLEEP, 32, MON_SPELL_WIZARD },
-       { SPELL_SHOOT_ARROW, 140, MON_SPELL_WIZARD },
+       { SPELL_SHOOT_ARROW, 140, MON_SPELL_NATURAL },
       }
     },
 
     // ('e') Elves.
-    {  MST_DEEP_ELF_MAGE_I,
+    {  MST_DEEP_ELF_MAGE,
       {
-       { SPELL_STICKY_FLAME_RANGE, 15, MON_SPELL_WIZARD },
-       { SPELL_BOLT_OF_FIRE, 15, MON_SPELL_WIZARD },
-       { SPELL_FIRE_ELEMENTALS, 15, MON_SPELL_WIZARD },
-       { SPELL_BLINK, 15, MON_SPELL_WIZARD },
-      }
-    },
-
-    {  MST_DEEP_ELF_MAGE_II,
-      {
-       { SPELL_THROW_ICICLE, 15, MON_SPELL_WIZARD },
-       { SPELL_BOLT_OF_COLD, 15, MON_SPELL_WIZARD },
-       { SPELL_SUMMON_ICE_BEAST, 15, MON_SPELL_WIZARD },
-       { SPELL_BLINK, 15, MON_SPELL_WIZARD },
-      }
-    },
-
-    {  MST_DEEP_ELF_MAGE_III,
-      {
-       { SPELL_LIGHTNING_BOLT, 40, MON_SPELL_WIZARD },
+       { SPELL_BOLT_OF_FIRE, 20, MON_SPELL_WIZARD },
+       { SPELL_EARTH_ELEMENTALS, 20, MON_SPELL_WIZARD },
        { SPELL_BLINK, 20, MON_SPELL_WIZARD },
-      }
-    },
-
-    {  MST_DEEP_ELF_MAGE_IV,
-      {
-       { SPELL_BOLT_OF_DRAINING, 15, MON_SPELL_WIZARD },
-       { SPELL_SUMMON_DEMON, 15, MON_SPELL_WIZARD },
-       { SPELL_SUMMON_VERMIN, 15, MON_SPELL_WIZARD },
-       { SPELL_BLINK, 15, MON_SPELL_WIZARD },
-      }
-    },
-
-    {  MST_DEEP_ELF_MAGE_V,
-      {
-       { SPELL_STONE_ARROW, 15, MON_SPELL_WIZARD },
-       { SPELL_BOLT_OF_MAGMA, 15, MON_SPELL_WIZARD },
-       { SPELL_EARTH_ELEMENTALS, 15, MON_SPELL_WIZARD },
-       { SPELL_BLINK, 15, MON_SPELL_WIZARD },
-      }
-    },
-
-    {  MST_DEEP_ELF_MAGE_VI,
-      {
-       { SPELL_MAGIC_DART, 12, MON_SPELL_WIZARD },
-       { SPELL_ISKENDERUNS_MYSTIC_BLAST, 12, MON_SPELL_WIZARD },
-       { SPELL_FORCE_LANCE, 12, MON_SPELL_WIZARD },
-       { SPELL_BATTLESPHERE, 24, MON_SPELL_WIZARD },
       }
     },
 

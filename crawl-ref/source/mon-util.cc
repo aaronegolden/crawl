@@ -2533,11 +2533,6 @@ static vector<mon_spellbook_type> _mons_spellbook_list(monster_type mon_type)
     case MONS_EROLCHA:
         return { MST_WIZARD_I, MST_WIZARD_II, MST_WIZARD_III };
 
-    case MONS_DEEP_ELF_MAGE:
-        return { MST_DEEP_ELF_MAGE_I, MST_DEEP_ELF_MAGE_II,
-                 MST_DEEP_ELF_MAGE_III, MST_DEEP_ELF_MAGE_IV,
-                 MST_DEEP_ELF_MAGE_V, MST_DEEP_ELF_MAGE_VI };
-
     case MONS_GREATER_MUMMY:
         return { MST_GREATER_MUMMY_I, MST_GREATER_MUMMY_II,
                  MST_GREATER_MUMMY_III, MST_GREATER_MUMMY_IV };
