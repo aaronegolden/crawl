@@ -1006,6 +1006,10 @@ emperor scorpion
 A giant scorpion with a massive barb on its tail dripping deadly venom. It is
 one of the largest arachnids known to exist.
 %%%%
+enchanter
+
+An expert in hexes and curses, acquired through long years of study.
+%%%%
 entropy weaver
 
 A gaunt humanoid with flaking, pale chitin. Its spindly limbs are capable of

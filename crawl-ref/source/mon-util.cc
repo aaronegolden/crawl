@@ -2527,16 +2527,8 @@ monster_type random_demonspawn_monster_species()
 // and the books are accounted for here.
 static vector<mon_spellbook_type> _mons_spellbook_list(monster_type mon_type)
 {
-    switch (mon_type)
-    {
-    case MONS_WIZARD:
-    case MONS_EROLCHA:
-        return { MST_WIZARD_I, MST_WIZARD_II, MST_WIZARD_III };
-
-    default:
         return { static_cast<mon_spellbook_type>(
                      get_monster_data(mon_type)->sec) };
-    }
 }
 
 vector<mon_spellbook_type> get_spellbooks(const monster_info &mon)

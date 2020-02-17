@@ -3705,6 +3705,7 @@ MONS_ANTIMATTER_ELF,
     MONS_OGRE_PHILOSOPHER,
     MONS_RAINBOW_BOA,
     MONS_SPITTING_COBRA,
+    MONS_ENCHANTER,
 #endif
 
     NUM_MONSTERS,               // used for polymorph

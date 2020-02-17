@@ -432,29 +432,20 @@ static const mon_spellbook mspell_list[] =
     },
 
     // Wizard sets are also used by Erolcha.
-    {  MST_WIZARD_I,
+    {  MST_ENCHANTER,
       {
-       { SPELL_STONE_ARROW, 14, MON_SPELL_WIZARD },
-       { SPELL_LIGHTNING_BOLT, 12, MON_SPELL_WIZARD },
+       { SPELL_DISINTEGRATE, 14, MON_SPELL_WIZARD },
+       { SPELL_PARALYSE, 12, MON_SPELL_WIZARD },
        { SPELL_CURSE, 10, MON_SPELL_WIZARD },
        { SPELL_PHASE_SHIFT, 14, MON_SPELL_WIZARD },
       }
     },
 
-    {  MST_WIZARD_II,
+    {  MST_WIZARD,
       {
-       { SPELL_ISKENDERUNS_MYSTIC_BLAST, 14, MON_SPELL_WIZARD },
-       { SPELL_FIREBALL, 12, MON_SPELL_WIZARD },
-       { SPELL_PARALYSE, 12, MON_SPELL_WIZARD },
-       { SPELL_BLINK, 12, MON_SPELL_WIZARD },
-      }
-    },
-
-    {  MST_WIZARD_III,
-      {
-       { SPELL_BOLT_OF_COLD, 14, MON_SPELL_WIZARD },
+       { SPELL_SLOW, 14, MON_SPELL_WIZARD },
        { SPELL_LEHUDIBS_CRYSTAL_SPEAR, 12, MON_SPELL_WIZARD },
-       { SPELL_SLOW, 12, MON_SPELL_WIZARD },
+       { SPELL_FIREBALL, 12, MON_SPELL_WIZARD },
        { SPELL_HASTE, 12, MON_SPELL_WIZARD },
       }
     },
