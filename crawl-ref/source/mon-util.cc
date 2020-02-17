@@ -2533,11 +2533,6 @@ static vector<mon_spellbook_type> _mons_spellbook_list(monster_type mon_type)
     case MONS_EROLCHA:
         return { MST_WIZARD_I, MST_WIZARD_II, MST_WIZARD_III };
 
-    case MONS_LICH:
-    case MONS_ANCIENT_LICH:
-        return { MST_LICH_I, MST_LICH_II, MST_LICH_III,
-                 MST_LICH_IV, MST_LICH_V, };
-
     default:
         return { static_cast<mon_spellbook_type>(
                      get_monster_data(mon_type)->sec) };
