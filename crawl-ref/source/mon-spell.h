@@ -366,7 +366,6 @@ static const mon_spellbook mspell_list[] =
     // ('o') Orcs.
     {  MST_ORC_PRIEST,
       {
-       { SPELL_CANTRIP, 13, MON_SPELL_PRIEST },
        { SPELL_PAIN, 13, MON_SPELL_PRIEST },
        { SPELL_SMITING, 13, MON_SPELL_PRIEST },
        { SPELL_HEAL_OTHER, 13, MON_SPELL_PRIEST },
@@ -885,7 +884,6 @@ static const mon_spellbook mspell_list[] =
     // ('K') Kobolds.
     {  MST_KOBOLD_DEMONOLOGIST,
       {
-       { SPELL_CANTRIP, 19, MON_SPELL_WIZARD },
        { SPELL_SUMMON_MINOR_DEMON, 19, MON_SPELL_WIZARD },
        { SPELL_SUMMON_DEMON, 19, MON_SPELL_WIZARD },
       }
@@ -1598,7 +1596,6 @@ static const mon_spellbook mspell_list[] =
     // ('w') Slugs and worms.
     {  MST_GASTRONOK,
       {
-       { SPELL_CANTRIP, 12, MON_SPELL_WIZARD },
        { SPELL_AIRSTRIKE, 23, MON_SPELL_WIZARD },
        { SPELL_SUMMON_SMALL_MAMMAL, 12, MON_SPELL_WIZARD },
        { SPELL_SLOW, 12, MON_SPELL_WIZARD },
