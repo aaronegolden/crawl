@@ -1474,10 +1474,8 @@ static const mon_spellbook mspell_list[] =
     // ('e') Elves.
     {  MST_DOWAN,
       {
-       { SPELL_THROW_FLAME, 9, MON_SPELL_WIZARD },
-       { SPELL_THROW_FROST, 9, MON_SPELL_WIZARD },
+       { SPELL_THROW_FLAME, 18, MON_SPELL_WIZARD },
        { SPELL_BLINK, 9, MON_SPELL_WIZARD },
-       { SPELL_CORONA, 9, MON_SPELL_WIZARD },
        { SPELL_HASTE_OTHER, 9, MON_SPELL_WIZARD },
       }
     },
@@ -1488,7 +1486,6 @@ static const mon_spellbook mspell_list[] =
        { SPELL_OZOCUBUS_REFRIGERATION, 20, MON_SPELL_WIZARD },
        { SPELL_SUMMON_ICE_BEAST, 20, MON_SPELL_WIZARD },
        { SPELL_OZOCUBUS_ARMOUR, 10, MON_SPELL_WIZARD },
-       { SPELL_BLINK, 10, MON_SPELL_WIZARD | MON_SPELL_EMERGENCY },
       }
     },
 
@@ -1522,22 +1519,19 @@ static const mon_spellbook mspell_list[] =
     // ('i') Spriggans.
     { MST_THE_ENCHANTRESS,
       {
-       { SPELL_SLOW, 11, MON_SPELL_WIZARD },
        { SPELL_DIMENSION_ANCHOR, 11, MON_SPELL_WIZARD },
-       { SPELL_MASS_CONFUSION, 11, MON_SPELL_WIZARD },
-       { SPELL_STRIP_RESISTANCE, 11, MON_SPELL_WIZARD },
+       { SPELL_MASS_CONFUSION, 22, MON_SPELL_WIZARD },
+       { SPELL_STRIP_RESISTANCE, 17, MON_SPELL_WIZARD },
        { SPELL_HASTE, 11, MON_SPELL_WIZARD },
        { SPELL_DEFLECT_MISSILES, 11, MON_SPELL_WIZARD },
-       { SPELL_PHASE_SHIFT, 11, MON_SPELL_WIZARD | MON_SPELL_EMERGENCY },
       }
     },
 
     // ('m') Merfolk and friends.
     { MST_ILSUIW,
       {
-       { SPELL_THROW_ICICLE, 11, MON_SPELL_WIZARD },
+       { SPELL_PRIMAL_WAVE, 11, MON_SPELL_WIZARD },
        { SPELL_WATER_ELEMENTALS, 22, MON_SPELL_WIZARD },
-       { SPELL_CALL_TIDE, 11, MON_SPELL_WIZARD },
        { SPELL_PHASE_SHIFT, 11, MON_SPELL_WIZARD },
        { SPELL_BLINK, 11, MON_SPELL_WIZARD },
       }
@@ -1647,8 +1641,7 @@ static const mon_spellbook mspell_list[] =
     // ('H') Hybrids.
     {  MST_ARACHNE,
       {
-       { SPELL_VENOM_BOLT, 11, MON_SPELL_WIZARD },
-       { SPELL_POISON_ARROW, 11, MON_SPELL_WIZARD },
+       { SPELL_POISON_ARROW, 22, MON_SPELL_WIZARD },
        { SPELL_ENSNARE, 34, MON_SPELL_WIZARD },
        { SPELL_BLINK, 11, MON_SPELL_WIZARD },
       }
@@ -1737,7 +1730,6 @@ static const mon_spellbook mspell_list[] =
     {  MST_AZRAEL,
       {
        { SPELL_BOLT_OF_FIRE, 13, MON_SPELL_MAGICAL },
-       { SPELL_STICKY_FLAME_RANGE, 13, MON_SPELL_MAGICAL },
        { SPELL_FIREBALL, 13, MON_SPELL_MAGICAL },
        { SPELL_HURL_DAMNATION, 13, MON_SPELL_MAGICAL },
        { SPELL_CALL_DOWN_DAMNATION, 13, MON_SPELL_MAGICAL | MON_SPELL_EMERGENCY },
@@ -1746,7 +1738,6 @@ static const mon_spellbook mspell_list[] =
 
     {  MST_MARA,
       {
-       { SPELL_PAIN, 14, MON_SPELL_MAGICAL },
        { SPELL_BOLT_OF_FIRE, 14, MON_SPELL_MAGICAL },
        { SPELL_FAKE_MARA_SUMMON, 14, MON_SPELL_MAGICAL },
        { SPELL_SUMMON_ILLUSION, 14, MON_SPELL_MAGICAL },
@@ -1806,10 +1797,7 @@ static const mon_spellbook mspell_list[] =
     // ('8') Statues.
     { MST_ROXANNE,
       {
-       { SPELL_ISKENDERUNS_MYSTIC_BLAST, 13, MON_SPELL_WIZARD },
-       { SPELL_BOLT_OF_MAGMA, 13, MON_SPELL_WIZARD },
-       { SPELL_IRON_SHOT, 13, MON_SPELL_WIZARD },
-       { SPELL_LEHUDIBS_CRYSTAL_SPEAR, 13, MON_SPELL_WIZARD },
+       { SPELL_LEHUDIBS_CRYSTAL_SPEAR, 52, MON_SPELL_WIZARD },
        { SPELL_BLINK_OTHER_CLOSE, 13, MON_SPELL_WIZARD },
       }
     },
@@ -1834,8 +1822,7 @@ static const mon_spellbook mspell_list[] =
 
     {  MST_ERICA,
       {
-       { SPELL_VENOM_BOLT, 10, MON_SPELL_WIZARD },
-       { SPELL_ISKENDERUNS_MYSTIC_BLAST, 10, MON_SPELL_WIZARD },
+       { SPELL_ISKENDERUNS_MYSTIC_BLAST, 20, MON_SPELL_WIZARD },
        { SPELL_CONFUSE, 10, MON_SPELL_WIZARD },
        { SPELL_SLOW, 10, MON_SPELL_WIZARD },
        { SPELL_PHASE_SHIFT, 10, MON_SPELL_WIZARD },
@@ -1867,18 +1854,15 @@ static const mon_spellbook mspell_list[] =
 
     {  MST_LOUISE,
       {
-       { SPELL_STING, 10, MON_SPELL_WIZARD },
-       { SPELL_STONE_ARROW, 10, MON_SPELL_WIZARD },
-       { SPELL_LIGHTNING_BOLT, 10, MON_SPELL_WIZARD },
-       { SPELL_CURSE, 10, MON_SPELL_WIZARD },
+       { SPELL_LIGHTNING_BOLT, 25, MON_SPELL_WIZARD },
+       { SPELL_CURSE, 15, MON_SPELL_WIZARD },
        { SPELL_BLINK, 10, MON_SPELL_WIZARD },
       }
     },
 
     {  MST_FRANCES,
       {
-       { SPELL_THROW_ICICLE, 12, MON_SPELL_WIZARD },
-       { SPELL_IRON_SHOT, 12, MON_SPELL_WIZARD },
+       { SPELL_IRON_SHOT, 18, MON_SPELL_WIZARD },
        { SPELL_SUMMON_DEMON, 20, MON_SPELL_WIZARD },
        { SPELL_HASTE, 20, MON_SPELL_WIZARD },
       }
@@ -1919,9 +1903,7 @@ static const mon_spellbook mspell_list[] =
 
     {  MST_NIKOLA,
       {
-       { SPELL_SHOCK, 11, MON_SPELL_WIZARD },
-       { SPELL_LIGHTNING_BOLT, 11, MON_SPELL_WIZARD },
-       { SPELL_CHAIN_LIGHTNING, 23, MON_SPELL_WIZARD },
+       { SPELL_LIGHTNING_BOLT, 90, MON_SPELL_WIZARD },
        { SPELL_BLINK, 23, MON_SPELL_WIZARD },
       }
     },
@@ -1935,9 +1917,8 @@ static const mon_spellbook mspell_list[] =
 
     {  MST_FREDERICK,
       {
-       { SPELL_ISKENDERUNS_MYSTIC_BLAST, 12, MON_SPELL_WIZARD },
-       { SPELL_BOLT_OF_COLD, 12, MON_SPELL_WIZARD },
-       { SPELL_IRON_SHOT, 12, MON_SPELL_WIZARD },
+       { SPELL_BOLT_OF_COLD, 18, MON_SPELL_WIZARD },
+       { SPELL_IRON_SHOT, 18, MON_SPELL_WIZARD },
        { SPELL_SPELLFORGED_SERVITOR, 24, MON_SPELL_WIZARD },
       }
     },
