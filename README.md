@@ -76,6 +76,7 @@ To make Zot easier, I am going to change the following monsters to be weaker.
 | v1   | SHADOW_DRAGON         | MONS_SHADOW_DRAGON         | MONS_SWAMP_DRAGON     |
 | v1   | STORM_DRAGON          | MONS_STORM_DRAGON          | MONS_SWAMP_DRAGON     |
 | v1   | GOLDEN_DRAGON         | MONS_GOLDEN_DRAGON         | MONS_SWAMP_DRAGON     |
+| v1   | ORB_GUARDIAN          | MONS_ORB_GUARDIAN          | None                  |
 
 ## References
 
