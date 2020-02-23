@@ -39,6 +39,8 @@ Changes I would like to try, ala hellcrawl.
 - [ ] remove food
 - [ ] remove strength and intelligence
 - [ ] remove id minigame
+- [ ] smooth progression
+- [ ] add in monsters from other floors
 
 ## Bad ideas
 
@@ -54,21 +56,21 @@ To make Zot easier, I am going to change the following monsters to be weaker.
 | Done | Monster               | Monster Enum               | Proposesd Comparable  |
 | ---- | --------------------- | -------------------------- | --------------------- |
 | v2   | MOTH_OF_WRATH         | MONS_MOTH_OF_WRATH         | MONS_VAMPIRE_MOSQUITO |
-| v2   | BLACK_DRACONIAN       | MONS_BLACK_DRACONIAN       | MONS_TENGU_WARRIOR    |
-| v2   | YELLOW_DRACONIAN      | MONS_YELLOW_DRACONIAN      | MONS_ORC_WARRIOR      |
-| v2   | GREEN_DRACONIAN       | MONS_GREEN_DRACONIAN       | MONS_ORC_WARRIOR      |
-| v2   | PURPLE_DRACONIAN      | MONS_PURPLE_DRACONIAN      | MONS_ORC_WARRIOR      |
-| v2   | RED_DRACONIAN         | MONS_RED_DRACONIAN         | MONS_ORC_WARRIOR      |
-| v2   | WHITE_DRACONIAN       | MONS_WHITE_DRACONIAN       | MONS_ORC_WARRIOR      |
-| v2   | DRACONIAN_STORMCALLER | MONS_DRACONIAN_STORMCALLER | MONS_DEATH_KNIGHT     |
-| v2   | DRACONIAN_MONK        | MONS_DRACONIAN_MONK        | MONS_ORC_WARRIOR      |
-| v2   | DRACONIAN_SHIFTER     | MONS_DRACONIAN_SHIFTER     | MONS_ORC_SORCERER     |
-| v2   | DRACONIAN_ANNIHILATOR | MONS_DRACONIAN_ANNIHILATOR | MONS_DEEP_ELF_MAGE    |
-| v2   | DRACONIAN_KNIGHT      | MONS_DRACONIAN_KNIGHT      | MONS_ORC_KNIGHT       |
-| v2   | DRACONIAN_SCORCHER    | MONS_DRACONIAN_SCORCHER    | MONS_ORC_SORCERER     |
+| v3   | BLACK_DRACONIAN       | MONS_BLACK_DRACONIAN       | MONS_TENGU_WARRIOR    |
+| v3   | YELLOW_DRACONIAN      | MONS_YELLOW_DRACONIAN      | MONS_ORC_WARRIOR      |
+| v3   | GREEN_DRACONIAN       | MONS_GREEN_DRACONIAN       | MONS_ORC_WARRIOR      |
+| v3   | PURPLE_DRACONIAN      | MONS_PURPLE_DRACONIAN      | MONS_ORC_WARRIOR      |
+| v3   | RED_DRACONIAN         | MONS_RED_DRACONIAN         | MONS_ORC_WARRIOR      |
+| v3   | WHITE_DRACONIAN       | MONS_WHITE_DRACONIAN       | MONS_ORC_WARRIOR      |
+| v3   | DRACONIAN_STORMCALLER | MONS_DRACONIAN_STORMCALLER | MONS_DEATH_KNIGHT     |
+| v3   | DRACONIAN_MONK        | MONS_DRACONIAN_MONK        | MONS_ORC_WARRIOR      |
+| v3   | DRACONIAN_SHIFTER     | MONS_DRACONIAN_SHIFTER     | MONS_ORC_SORCERER     |
+| v3   | DRACONIAN_ANNIHILATOR | MONS_DRACONIAN_ANNIHILATOR | MONS_DEEP_ELF_MAGE    |
+| v3   | DRACONIAN_KNIGHT      | MONS_DRACONIAN_KNIGHT      | MONS_ORC_KNIGHT       |
+| v3   | DRACONIAN_SCORCHER    | MONS_DRACONIAN_SCORCHER    | MONS_ORC_SORCERER     |
 | v2   | KILLER_KLOWN          | MONS_KILLER_KLOWN          | MONS_RAKSHASA         |
 | v2   | DEATH_COB             | MONS_DEATH_COB             | MONS_HUNGRY_GHOST     |
-| v2   | CURSE_TOE             | MONS_CURSE_TOE             | MONS_EYE_OF_DRAINING  |
+| v3   | CURSE_TOE             | MONS_CURSE_TOE             | MONS_EYE_OF_DRAINING  |
 | v2   | TENTACLED_MONSTROSITY | MONS_TENTACLED_MONSTROSITY | MONS_UGLY_THING       |
 | v2   | ELECTRIC_GOLEM        | MONS_ELECTRIC_GOLEM        | MONS_OGRE_MAGE        |
 | v2   | ORB_OF_FIRE           | MONS_ORB_OF_FIRE           | MONS_EFREET           |
@@ -76,7 +78,7 @@ To make Zot easier, I am going to change the following monsters to be weaker.
 | v2   | SHADOW_DRAGON         | MONS_SHADOW_DRAGON         | MONS_SWAMP_DRAGON     |
 | v2   | STORM_DRAGON          | MONS_STORM_DRAGON          | MONS_SWAMP_DRAGON     |
 | v2   | GOLDEN_DRAGON         | MONS_GOLDEN_DRAGON         | MONS_SWAMP_DRAGON     |
-| v2   | ORB_GUARDIAN          | MONS_ORB_GUARDIAN          | None                  |
+| v3   | ORB_GUARDIAN          | MONS_ORB_GUARDIAN          | None                  |
 
 ### v1 balancing results
 
@@ -89,6 +91,22 @@ I set all my skills to 14, which is still likely much better than what people wo
 ### v2 balancing actions
 
 Cut hp in half for most Zot monsters. Brought AC and EV down in some cases.
+
+### v2 balancing results
+
+- [x] Draconian AC and EV may still be slightly too high, reduce AC by 2 and EV by 2.
+- [x] Curse toe AC still too high at 18. Bring down to 11.
+- [x] Able to beat Orb of Fire in 1v1 at all skills at 14 with a shield of fire resist. Still feels dangerous but not impossibe. Being seen by one at a distance is maybe too dangerous, but no change at the moment.
+- [x] Orb guardians probably a little too weak defensively at 300 HP, 4 AC 4 EV. Will bump HP up to 375. On the other hand, their offense is pretty have at 45 per hit. I will drop this down to 30.
+- [x] I messed up when making the upgraded draconians. Currently they have an average of 18 AC and 20 EV. Will fix for v3.
+
+Not sure about killer clowns. Will rebalance the above first.
+
+Part of the difficulty is in having items unidentified. I will tune with items idenitified.
+
+### v3 balacing results
+
+TODO
 
 ## References
 
