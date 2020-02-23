@@ -78,6 +78,14 @@ To make Zot easier, I am going to change the following monsters to be weaker.
 | v1   | GOLDEN_DRAGON         | MONS_GOLDEN_DRAGON         | MONS_SWAMP_DRAGON     |
 | v1   | ORB_GUARDIAN          | MONS_ORB_GUARDIAN          | None                  |
 
+### v1 balancing results
+
+After completing v1 balancing, I tested out zot in wizard mode. I ran through the dungeon and to zot with 27 in all skills, but no other adjustments. I picked up items as I went to get a sense of what an average run might have after running the previous floors.
+
+Then, I entered zot and fought the enemies there. They were still much stronger than what I was prepared for. I also saw some enemies as part of vaults which were not rebalanced, so I will need to revisit that.
+
+I set all my skills to 14, which is still likely much better than what people would have at that time, and tried fighting some enemies. Overall, everything was still too strong. Orb of Fire killed me almost a dozen times, and absorbed at least fifty hits before going down. Damage-wise, things might be okay, but enemies still feel way too bulky. I will divide AC, EV and HP of the above enemies by two and see how that feels. This will bring most enemies closer to the durability of the average orc warrior. I will revisit damage after the durability issues have been revisited.
+
 ## References
 
 [DCSS README](https://github.com/crawl/crawl)
