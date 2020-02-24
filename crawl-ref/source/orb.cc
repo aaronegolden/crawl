@@ -89,13 +89,6 @@ bool orb_limits_translocation(bool temp)
 
 void start_orb_run(game_chapter chapter, const char* message)
 {
-    if (you.chapter != CHAPTER_ANGERED_PANDEMONIUM)
-    {
-        mprf(MSGCH_WARN, "The lords of Pandemonium are not amused. Beware!");
-        if (have_passive(passive_t::slow_orb_run))
-            simple_god_message(" tells them not to hurry.");
-    }
-
     mprf(MSGCH_ORB, "%s", message);
     you.chapter = chapter;
     xom_is_stimulated(200, XM_INTRIGUED);
