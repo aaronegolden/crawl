@@ -41,6 +41,7 @@ Changes I would like to try, ala hellcrawl.
 - [x] remove id scrolls (v1)
 - [ ] smooth progression
 - [ ] add in monsters from other floors
+- [ ] run crawl server with this version
 
 ## Bad ideas
 
