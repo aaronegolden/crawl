@@ -42,6 +42,7 @@ Changes I would like to try, ala hellcrawl.
 - [ ] smooth progression
 - [ ] add in monsters from other floors
 - [ ] run crawl server with this version
+- [ ] stealing the orb to increase the players durability and skill-levels
 
 ## Bad ideas
 
