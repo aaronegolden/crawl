@@ -1030,7 +1030,8 @@ static bool _is_affordable(const item_def &item)
 //
 bool item_ident(const item_def &item, iflags_t flags)
 {
-    return (item.flags & flags) == flags;
+    // return (item.flags & flags) == flags;
+    return true;
 }
 
 void set_ident_flags(item_def &item, iflags_t flags)
@@ -1147,6 +1148,7 @@ static iflags_t _full_ident_mask(const item_def& item)
 
 bool fully_identified(const item_def& item)
 {
+    // 
     return item_ident(item, _full_ident_mask(item));
 }
 

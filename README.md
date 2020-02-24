@@ -37,7 +37,8 @@ Changes I would like to try, ala hellcrawl.
 - [ ] remove upstairs
 - [ ] remove food
 - [ ] remove strength and intelligence
-- [ ] remove id minigame
+- [x] remove id minigame
+- [x] remove id scrolls (v1)
 - [ ] smooth progression
 - [ ] add in monsters from other floors
 
