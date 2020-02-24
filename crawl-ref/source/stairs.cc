@@ -673,11 +673,15 @@ void floor_transition(dungeon_feature_type how,
     {
         you.depth = 0;
         mpr("You have escaped!");
-
-        if (player_has_orb())
-            ouch(INSTANT_DEATH, KILLED_BY_WINNING);
-
         ouch(INSTANT_DEATH, KILLED_BY_LEAVING);
+    }
+
+    // If the player has the orb and leaves zot, the game is won
+    if (how == DNGN_EXIT_ZOT && player_has_orb())
+    {
+        you.depth = 0;
+        mpr("You have escaped!");
+        ouch(INSTANT_DEATH, KILLED_BY_WINNING);
     }
 
     if (how == DNGN_ENTER_ZIGGURAT)
