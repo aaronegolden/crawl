@@ -25,9 +25,8 @@ Core changes
 - [x] remove abyss access via miscast, replace with maligned_gateway
 - [x] revert mapping zot enemies to dungeon enemies
 - [x] rebalance zot enemies for a 10 level crawl
-- [ ] to make orb run easier, nerf or remove panlords
-- [ ] to make orb run easier, nerf orb run enemies to easier ones
-- [ ] end the game when the player exits the realm of zot with the orb. This is to avoid players spending 10 minutes predigging tunnels in a now 25 minute game.
+- [x] remove orb run
+- [x] end the game when the player exits the realm of zot with the orb
 
 ## Extended changes
 

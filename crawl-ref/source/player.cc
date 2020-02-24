@@ -7792,8 +7792,10 @@ int player_monster_detect_radius()
  */
 bool player_on_orb_run()
 {
-    return you.chapter == CHAPTER_ESCAPING
-           || you.chapter == CHAPTER_ANGERED_PANDEMONIUM;
+    // Never consider the player to be on the orb run.
+    return false;
+    // return you.chapter == CHAPTER_ESCAPING
+    //        || you.chapter == CHAPTER_ANGERED_PANDEMONIUM;
 }
 
 /**

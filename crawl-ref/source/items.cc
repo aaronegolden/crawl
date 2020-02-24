@@ -1920,7 +1920,7 @@ static void _get_orb()
     orb_pickup_noise(you.pos(), 30);
 
     start_orb_run(CHAPTER_ESCAPING, "Now all you have to do is get back out "
-                                    "of the dungeon!");
+                                    "of Zot!");
 }
 
 /**
