@@ -3130,9 +3130,6 @@ int player_stealth()
     if (you.duration[DUR_STEALTH])
         stealth += STEALTH_PIP * 2;
 
-    if (you.duration[DUR_AGILITY])
-        stealth += STEALTH_PIP;
-
     if (you.form == transformation::blade_hands && you.species == SP_FELID
         && !you.airborne())
     {
@@ -7782,7 +7779,7 @@ int player_monster_detect_radius()
 {
     int radius = you.get_mutation_level(MUT_ANTENNAE) * 2;
 
-    if (player_equip_unrand(UNRAND_BOOTS_ASSASSIN))
+    if (player_equip_unrand(UNRAND_HOOD_ASSASSIN))
         radius = max(radius, 4);
     if (have_passive(passive_t::detect_montier))
         radius = max(radius, you.piety / 20);
@@ -8298,8 +8295,6 @@ void player_end_berserk()
     // slightly longer.
     you.increase_duration(DUR_BERSERK_COOLDOWN, dur * 2);
 
-    notify_stat_change(STAT_STR, -5, true);
-
     // Don't trigger too many hints mode messages.
     const bool hints_slow = Hints.hints_events[HINT_YOU_ENCHANTED];
     Hints.hints_events[HINT_YOU_ENCHANTED] = false;
@@ -8391,4 +8386,16 @@ bool player::immune_to_hex(const spell_type hex) const
     default:
         return false;
     }
+}
+
+// Activate DUR_AGILE.
+void player::be_agile(int pow)
+{
+    const bool were_agile = you.duration[DUR_AGILITY] > 0;
+    mprf(MSGCH_DURATION, "You feel %sagile all of a sudden.",
+         were_agile ? "more " : "");
+
+    you.increase_duration(DUR_AGILITY, 35 + random2(pow), 80);
+    if (!were_agile)
+        you.redraw_evasion = true;
 }

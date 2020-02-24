@@ -132,7 +132,7 @@ static const duration_def duration_data[] =
       "agile", "agility",
       "You are agile.", D_DISPELLABLE,
       {{ "You feel a little less agile now.", []() {
-          notify_stat_change(STAT_DEX, -5, true);
+          you.redraw_evasion = true;
       }}}},
     { DUR_BERSERK,
       BLUE, "Berserk",
@@ -152,9 +152,7 @@ static const duration_def duration_data[] =
       LIGHTBLUE, "Brill",
       "brilliant", "brilliance",
       "You are brilliant.", D_DISPELLABLE,
-      {{ "You feel a little less clever now.", []() {
-          notify_stat_change(STAT_INT, -5, true);
-      }}}},
+      {{ "You feel a little less clever now." }}},
     { DUR_CONF,
       RED, "Conf",
       "confused", "conf",
@@ -222,9 +220,7 @@ static const duration_def duration_data[] =
       LIGHTBLUE, "Might",
       "mighty", "might",
       "You are mighty.", D_DISPELLABLE,
-      {{ "You feel a little less mighty now.", []() {
-          notify_stat_change(STAT_STR, -5, true);
-      }}}},
+      {{ "You feel a little less mighty now." }}},
     { DUR_PARALYSIS,
       RED, "Para",
       "paralysed", "paralysis",
@@ -561,6 +557,12 @@ static const duration_def duration_data[] =
       {{ "", []() {
           you.redraw_evasion = true;
       }}}},
+    { DUR_STABBING,
+      LIGHTBLUE, "Stab",
+      "stab", "stabbing",
+      "You are ready to backstab.", D_DISPELLABLE,
+      {{ "You feel less ready to backstab.", }}},
+
     // The following are visible in wizmode only, or are handled
     // specially in the status lights and/or the % or @ screens.
 

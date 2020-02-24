@@ -1498,7 +1498,8 @@ static coord_def _get_tremorstone_target(coord_def center)
  * @return          spret::abort if the player cancels, spret::fail if they
  *                  try to evoke but fail, and spret::success otherwise.
  */
-static spret _tremorstone() {
+static spret _tremorstone()
+{
     dist target;
     bolt beam;
 
@@ -1515,7 +1516,8 @@ static spret _tremorstone() {
     direction_chooser_args args;
     args.mode = TARG_HOSTILE;
     args.top_prompt = "Throw a tremorstone where?";
-    unique_ptr<targeter> hitfunc = make_unique<targeter_beam>(&you, RANGE, ZAP_TREMORSTONE, 1, 1, 3);
+    unique_ptr<targeter> hitfunc =
+        make_unique<targeter_beam>(&you, RANGE, ZAP_TREMORSTONE, 1, 1, 3);
     args.hitfunc = hitfunc.get();
     if (!spell_direction(target, beam, &args))
         return spret::abort;
@@ -1540,9 +1542,14 @@ static spret _tremorstone() {
     if (tracer.beam_cancelled)
         return spret::abort;
 
-    beam.target = _get_tremorstone_target(beam.target);
     mpr("The tremorstone explodes into fragments!");
-    beam.explode(true);
+    const coord_def center = beam.target;
+    for (int i = 0; i < 2; i++)
+    {
+        bolt explosion = beam;
+        explosion.target = _get_tremorstone_target(center);
+        explosion.explode(i == 1);
+    }
 
     return spret::success;
 }
@@ -1842,15 +1849,20 @@ bool evoke_item(int slot)
             unevokable = !_make_zig(item);
             break;
 
-        case MISC_TREMORSTONE:
-            switch (_tremorstone()) {
+        case MISC_TIN_OF_TREMORSTONES:
+            switch (_tremorstone())
+            {
                 default:
                 case spret::abort:
                     return false;
 
                 case spret::success:
-                    ASSERT(in_inventory(item));
-                    dec_inv_item_quantity(item.link, 1);
+                    if (one_chance_in(3))
+                    {
+                        mpr("The tin disintegrates.");
+                        ASSERT(in_inventory(item));
+                        dec_inv_item_quantity(item.link, 1);
+                    }
                     break;
 
                 case spret::fail:
