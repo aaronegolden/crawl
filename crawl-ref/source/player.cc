@@ -1809,14 +1809,9 @@ int player_spec_poison()
     return sp;
 }
 
-int player_energy()
+bool hungerless_spells()
 {
-    int pe = 0;
-
-    // Staves
-    pe += you.wearing(EQ_STAFF, STAFF_ENERGY);
-
-    return pe;
+    return you.wearing(EQ_STAFF, STAFF_ENERGY) || you.duration[DUR_BRILLIANCE];
 }
 
 // If temp is set to false, temporary sources of resistance won't be
@@ -4043,8 +4038,10 @@ void contaminate_player(int change, bool controlled, bool msg)
     bool was_glowing = player_severe_contamination();
     int new_level  = 0;
 
+#if TAG_MAJOR_VERSION == 34
     if (change > 0 && player_equip_unrand(UNRAND_ETHERIC_CAGE))
         change *= 2;
+#endif
 
     you.magic_contamination = max(0, min(250000,
                                          you.magic_contamination + change));
