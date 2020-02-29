@@ -1,0 +1,583 @@
+Tuskjar
+
+Level 1 of the Dungeon
+(0, 0, D:1)
+  a scroll of vulnerability
+(18, -34, D:1)
+  a +0 mace
+(20, -16, D:1)
+  a +0 club
+(28, -35, D:1)
+  a +0 flail
+(28, -18, D:1)
+  17 stones
+(29, -18, D:1)
+  a +0 dagger
+  4 stones
+(30, -16, D:1)
+  a +0 club
+(32, -5, D:1)
+  a cursed -2 club
+(35, 5, D:1)
+  21 stones
+(36, -21, D:1)
+  a scroll of torment
+(51, -7, D:1)
+  a potion of degeneration
+(52, -24, D:1)
+  a +0 hunting sling
+(52, -5, D:1)
+  a potion of degeneration
+(58, -22, D:1)
+  13 stones
+
+Level 2 of the Dungeon
+(0, 0, D:2)
+  a +0 robe
+(0, 14, D:2)
+  a +0 short sword
+(3, 13, D:2)
+  a +0 mace
+(6, 2, D:2)
+  a +0 dagger
+(17, 34, D:2)
+  a +0 club
+(19, 46, D:2)
+  a +0 club
+(22, 16, D:2)
+  a +0 short sword
+(23, 14, D:2)
+  a cursed amulet of inaccuracy
+(27, 5, D:2)
+  11 sling bullets
+(30, 40, D:2)
+  a +0 dagger
+(33, 28, D:2)
+  a +0 spear
+(34, 49, D:2)
+  a +0 club
+(45, 44, D:2)
+  a +0 dagger
+
+Level 3 of the Dungeon
+(0, 0, D:3)
+  a scroll of amnesia
+(2, -1, D:3)
+  a +3 whip of electrocution
+(13, 8, D:3)
+  a potion of lignification {!q}
+(14, 19, D:3)
+  a +0 club
+(15, 5, D:3)
+  a +0 ring mail
+  (unseen)
+(15, 16, D:3)
+  a cursed +0 club
+(17, 5, D:3)
+  a +0 flail
+  a +0 leather armour
+  a +0 whip
+(21, 18, D:3)
+  a +1 mace of protection
+  a +0 leather armour
+  a +0 ring mail
+  a +0 short sword
+(23, 40, D:3)
+  a +0 leather armour
+(30, -19, D:3)
+  a +0 short sword
+(31, 22, D:3)
+  a +0 war axe
+(32, 23, D:3)
+  a cursed -3 club
+(33, -21, D:3)
+  a +0 robe
+  a +0 dagger of venom
+(33, -19, D:3)
+  a +0 scale mail
+  a +0 animal skin
+  a +0 mace
+(37, -8, D:3)
+  a +0 robe
+  a +3 scythe of protection
+(42, 1, D:3)
+  a +0 ring mail
+(43, 2, D:3)
+  a book of Maledictions
+(45, -1, D:3)
+  a cursed -2 chain mail
+(50, 17, D:3)
+  a +0 whip
+(57, 3, D:3)
+  a +0 dagger
+
+Level 4 of the Dungeon
+(0, 0, D:4)
+  a cursed -2 ring of evasion
+(0, 25, D:4)
+  a +0 war axe
+(6, 15, D:4)
+  a +0 club
+  a +0 leather armour
+(11, 7, D:4)
+  a +0 short sword
+(19, 4, D:4)
+  a +0 mace
+(27, -12, D:4)
+  a cursed -3 dagger
+(32, 29, D:4)
+  a cursed +0 club
+(36, 8, D:4)
+  a +0 leather armour
+(36, 22, D:4)
+  a +0 club
+(39, 27, D:4)
+  a cursed +0 ring mail
+(40, 22, D:4)
+  a +0 dagger
+  a +0 robe
+  a +0 dagger
+  a +0 leather armour
+(41, -7, D:4)
+  a +0 robe
+  a +0 dagger
+(41, -6, D:4)
+  a +0 giant club
+  a +0 giant club
+(41, 2, D:4)
+  a +0 scale mail
+(41, 23, D:4)
+  a +0 dagger
+  a +0 robe
+(43, 45, D:4)
+  a +0 club
+(44, -1, D:4)
+  a potion of degeneration {!q}
+(44, 29, D:4)
+  a book of Air
+(45, 25, D:4)
+  a +0 chain mail
+(45, 30, D:4)
+  a book of Minor Magic
+
+Level 5 of the Dungeon
+[Shop] Totek's Antique Armour Shop
+  a +0 helmet of see invisible (287 gold)
+  a +2 cloak of poison resistance (462 gold)
+  a +2 plate armour of cold resistance (1000 gold)
+  a +0 plate armour (575 gold)
+  a +0 robe (17 gold)
+  the +1 ring mail of the Armoured One {+Blink} (575 gold)
+    It lets you blink.
+    
+    If you switch to wearing this armour, your AC will decrease by 2 (6 -> 4).
+  a +0 helmet of intelligence (287 gold)
+  a +4 chain mail of cold resistance (787 gold)
+  a +0 robe (17 gold)
+  a +0 robe (17 gold)
+  a +0 ring mail (100 gold)
+  a +0 robe (17 gold)
+  a +0 leather armour (50 gold)
+(0, 0, D:5)
+  a +0 chain mail
+  a cursed -1 mace
+(0, 1, D:5)
+  a cursed staff of conjuration {!a}
+(1, 8, D:5)
+  a +0 robe
+(3, 12, D:5)
+  a +0 morningstar
+  a +0 leather armour
+  a +0 club
+(3, 14, D:5)
+  a +0 leather armour
+  a +0 dagger
+(4, 12, D:5)
+  a +0 dagger
+  a +4 vampiric rapier {!w}
+(4, 14, D:5)
+  a +0 giant club
+(4, 16, D:5)
+  a +0 chain mail
+  a +0 spear
+(5, 12, D:5)
+  a +0 leather armour
+  a cursed -2 hand axe
+(5, 15, D:5)
+  a +0 robe
+  a +0 dagger
+(18, 11, D:5)
+  a +0 ring mail
+(23, 11, D:5)
+  a +0 chain mail
+  a +0 flail
+(29, 0, D:5)
+  a +0 leather armour
+(31, -23, D:5)
+  a +0 ring mail
+(31, 5, D:5)
+  a +0 dagger
+
+Level 6 of the Dungeon
+(0, 0, D:6)
+  a +0 giant spiked club
+(1, 5, D:6)
+  a +0 club
+(1, 7, D:6)
+  a +0 ring mail
+(19, -27, D:6)
+  a +0 ring mail
+(19, -13, D:6)
+  a +0 dagger
+  a +0 robe
+(22, 17, D:6)
+  a +0 quick blade
+(24, -14, D:6)
+  a +0 quarterstaff
+  a +0 leather armour
+(24, -1, D:6)
+  a +0 hand axe
+(25, -14, D:6)
+  a +0 dagger of venom
+  a +0 robe
+(25, -1, D:6)
+  a +0 spear
+(27, -9, D:6)
+  a +0 mace
+(34, 28, D:6)
+  a +0 robe
+(39, -21, D:6)
+  a +0 dagger
+  a +0 robe
+(40, -21, D:6)
+  a +0 hand axe
+  a cursed +0 leather armour
+(41, -21, D:6)
+  a +0 dagger
+  a +0 leather armour
+(42, 10, D:6)
+  a +0 flail
+(47, 0, D:6)
+  a +0 shortbow
+
+Level 7 of the Dungeon
+(0, 0, D:7)
+  a +0 shortbow
+(10, 17, D:7)
+  a +0 giant spiked club
+(18, 21, D:7)
+  a +0 falchion
+(28, 25, D:7)
+  a +0 dagger
+  a +0 robe
+  a +0 war axe
+(28, 26, D:7)
+  a +0 shortbow
+(30, 23, D:7)
+  a +0 short sword
+(49, 9, D:7)
+  a +0 dagger (still there?)
+  Sif Muna's Volume of the Rocks (still there?)
+    Spells                           Type                      Level      
+    Known
+     a - Sandblast                    Earth                         1         
+    no
+    
+    
+    Trog disapproves of the use of such an item.
+(50, 7, D:7)
+  a +0 ring mail
+(50, 9, D:7)
+  a +0 dagger
+  (unseen)
+(50, 11, D:7)
+  a +2 glaive
+(57, 29, D:7)
+  a +0 scale mail
+
+Level 8 of the Dungeon
+(0, 0, D:8)
+  a +0 shortbow
+(4, 29, D:8)
+  2 datura-tipped darts
+(8, 2, D:8)
+  a cursed +0 battleaxe
+  a +0 robe
+  a +5 falchion
+  a +0 robe
+  a +0 short sword
+  a +0 robe
+(8, 3, D:8)
+  a +0 halberd
+  a +0 robe
+(9, 7, D:8)
+  a +4 mace
+  a +0 robe
+(17, 6, D:8)
+  22 sling bullets
+(23, 40, D:8)
+  a +0 short sword
+  a cursed -1 leather armour
+  a +0 dagger
+  a +0 robe
+(24, 40, D:8)
+  a +0 dagger
+(25, 3, D:8)
+  a cursed -1 shortbow
+(37, 24, D:8)
+  a +0 giant club
+  a +0 dire flail
+(39, 6, D:8)
+  a +0 club
+
+Level 9 of the Dungeon
+(0, 9, D:9)
+  a +0 giant club
+(33, -9, D:9)
+  a +0 mace
+(33, 33, D:9)
+  a +3 leather armour of magic resistance {MR+}
+  a +0 chain mail
+(37, -2, D:9)
+  17 bolts
+(44, 14, D:9)
+  a potion of resistance
+(45, 0, D:9)
+  26 bolts
+(46, -4, D:9)
+  a +0 club
+  a +0 ring mail
+(46, -3, D:9)
+  a +0 dagger
+  a +0 robe
+(46, 9, D:9)
+  a +0 dagger
+  a +0 robe
+(47, -4, D:9)
+  a +0 dagger
+  a +0 robe
+(47, 8, D:9)
+  a +0 club
+  a +0 trident
+  a +0 chain mail
+  a cursed -2 hand axe
+(48, -4, D:9)
+  a +0 mace
+  a +0 plate armour
+(51, 13, D:9)
+  24 gold pieces
+(51, 14, D:9)
+  a +0 war axe
+(51, 15, D:9)
+  a +1 cloak of poison resistance
+(52, 13, D:9)
+  19 gold pieces
+(52, 15, D:9)
+  a ration
+(53, 39, D:9)
+  a +0 giant club
+  a +0 dire flail
+(54, 38, D:9)
+  a +0 long sword
+  a +0 robe
+(55, 3, D:9)
+  a +1 falchion of flaming
+(55, 38, D:9)
+  a cursed +0 mace
+  a +0 robe
+  a scroll of amnesia
+(56, 14, D:9)
+  a +0 robe
+(56, 37, D:9)
+  a cursed +0 great sword
+  a +0 robe
+(63, 8, D:9)
+  a +0 halberd
+(64, 7, D:9)
+  2 rations
+
+Level 10 of the Dungeon
+(1, -42, D:10)
+  an uncursed staff of conjuration
+(1, -38, D:10)
+  a cursed -3 glaive
+(3, -42, D:10)
+  a +4 quick blade
+(3, -31, D:10)
+  an uncursed amulet of rage
+(4, -31, D:10)
+  4 boomerangs
+(5, -31, D:10)
+  a scroll of amnesia
+(6, -31, D:10)
+  a scroll of amnesia
+(8, -32, D:10)
+  a large rock {!d}
+(9, -28, D:10)
+  a +0 long sword
+(9, -27, D:10)
+  a +0 glaive
+  a +0 chain mail
+  a +1 helmet
+(10, -27, D:10)
+  3 large rocks {!d}
+(10, -12, D:10)
+  a +0 shortbow
+(11, -33, D:10)
+  a +0 war axe
+  a +0 chain mail
+(11, -24, D:10)
+  a +0 giant spiked club
+  a +0 giant spiked club
+  a large rock
+(11, -13, D:10)
+  4 large rocks
+(12, -40, D:10)
+  a +0 leather armour
+(12, -26, D:10)
+  a large rock
+(13, -23, D:10)
+  10 sling bullets
+(14, -11, D:10)
+  a +0 mace of protection
+(14, 6, D:10)
+  a +0 trident
+(15, -30, D:10)
+  a +0 chain mail
+(15, -12, D:10)
+  a +0 glaive
+  a +0 chain mail
+(15, -10, D:10)
+  a +0 dire flail
+  a +0 dire flail
+(16, -11, D:10)
+  a +0 shortbow
+(17, -30, D:10)
+  a potion of degeneration {!q}
+(17, -28, D:10)
+  a +0 halberd
+  a cursed -3 dire flail
+  a +0 plate armour
+(17, -21, D:10)
+  a +0 scimitar
+  a +0 chain mail
+(17, -6, D:10)
+  a bolt
+(17, -4, D:10)
+  a bolt
+(17, -3, D:10)
+  a bolt
+(18, -1, D:10)
+  a +0 vorpal arbalest
+  12 bolts
+(24, -39, D:10)
+  a cursed +0 long sword
+  a +0 robe
+(24, -20, D:10)
+  a +1 great sword of flaming
+(27, -39, D:10)
+  a +0 mace
+  a +0 robe
+(27, -15, D:10)
+  a +0 fustibalus
+(28, -39, D:10)
+  a cursed +0 battleaxe
+  a +0 robe
+  a +0 hand axe
+  a +0 robe
+(28, -17, D:10)
+  a +0 leather armour
+(28, -15, D:10)
+  a +0 robe
+(29, -39, D:10)
+  a +4 dagger of flaming
+(30, -40, D:10)
+  a +5 hand axe
+  a +0 robe
+(30, -24, D:10)
+  a +0 chain mail
+(34, -29, D:10)
+  4 large rocks {!d}
+(37, -26, D:10)
+  a +0 war axe
+  a +0 chain mail
+  a cursed +0 war axe
+  a +0 robe
+  a +0 shortbow
+(37, -19, D:10)
+  a cursed -2 flail
+(38, -26, D:10)
+  a +0 battleaxe of freezing
+(42, -25, D:10)
+  a +1 long sword of holy wrath
+  a +0 plate armour
+(50, -20, D:10)
+  a +0 dagger
+(50, -17, D:10)
+  a +0 short sword
+(50, -16, D:10)
+  a +0 short sword
+
+the Realm of Zot
+(5, -18, Zot)
+  a +8 club of venom
+(6, 16, Zot)
+  22 stones
+(11, 19, Zot)
+  16 gold pieces
+(13, 10, Zot)
+  a +9 vorpal club
+(13, 14, Zot)
+  a +0 battleaxe
+  (unseen)
+(14, 1, Zot)
+  a scroll of remove curse
+(14, 14, Zot)
+  a +0 hand axe
+  (unseen)
+(16, 13, Zot)
+  a +2 long sword of electrocution
+  (unseen)
+(27, 18, Zot)
+  a +0 scimitar
+  the ring of the Tempest {+Inv rN+ MR+ Str+3}
+    [ring of protection from magic]
+    
+    It affects your strength (+3).
+    It protects you from negative energy.
+    It affects your resistance to hostile enchantments.
+    It lets you turn invisible.
+  26 gold pieces
+(32, -3, Zot)
+  a +0 chain mail
+(39, 23, Zot)
+  an arrow
+(40, 3, Zot)
+  a +10 club of flaming
+(40, 24, Zot)
+  an arrow
+(42, 2, Zot)
+  a +1 glaive
+  a +2 halberd of flaming
+  a +3 halberd
+(46, -9, Zot)
+  a +0 chain mail
+(47, 9, Zot)
+  a +1 long sword of protection
+(48, -23, Zot)
+  the +2 Maxwell's thermic engine {flame, freeze}
+    It has been specially enchanted to burn those struck by it, causing extra
+    injury to most foes and up to half again as much damage against particularly
+    susceptible opponents. Big, fiery blades are also staple armaments of
+    hydra-hunters.
+    
+    It has been specially enchanted to freeze those struck by it, causing extra
+    injury to most foes and up to half again as much damage against particularly
+    susceptible opponents.
+(48, 10, Zot)
+  a +0 long sword
+(50, 11, Zot)
+  a cursed -2 lajatang
+(55, 2, Zot)
+  a potion of degeneration
+
