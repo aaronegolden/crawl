@@ -2,6 +2,10 @@
 
 Notes on balancing.
 
+## Game duration
+
+The entire game took me about an hour in Wizmode. I died around ten times, starting on d10 and then several more times in zot.
+
 ## Seems Weird
 
 TODO - grab my morgue file.

@@ -1950,6 +1950,8 @@ vector<skill_type> get_crosstrain_skills(skill_type sk)
 
     switch (sk)
     {
+    case SK_FIGHTING:
+      return { SK_SPELLCASTING };
     case SK_SHORT_BLADES:
         return { SK_LONG_BLADES };
     case SK_LONG_BLADES:
