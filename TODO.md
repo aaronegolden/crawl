@@ -63,6 +63,7 @@ Small clean-up or refinement changes to enhance the experience.
 - [ ] set all items to 'known' on game start
 - [ ] spell-book crash when I press '\'
 - [ ] generating dungeon should only say 'generating zot'
+- [ ] remove cursed +0 or -ve armor and weapons, which are now no brainers to avoid.
 
 ## Stolen Ideas
 
