@@ -1025,7 +1025,7 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_BOLT_OF_FIRE, 12, MON_SPELL_WIZARD },
        { SPELL_IRON_SHOT, 12, MON_SPELL_WIZARD },
-       { SPELL_SUMMON_GREATER_DEMON, 12, MON_SPELL_WIZARD },
+      //  { SPELL_SUMMON_GREATER_DEMON, 12, MON_SPELL_WIZARD },
        { SPELL_CONFUSE, 12, MON_SPELL_WIZARD },
        { SPELL_INVISIBILITY, 12, MON_SPELL_WIZARD },
       }
@@ -1035,7 +1035,7 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_BOLT_OF_COLD, 12, MON_SPELL_WIZARD },
        { SPELL_FORCE_LANCE, 12, MON_SPELL_WIZARD },
-       { SPELL_SUMMON_GREATER_DEMON, 12, MON_SPELL_WIZARD },
+      //  { SPELL_SUMMON_GREATER_DEMON, 12, MON_SPELL_WIZARD },
        { SPELL_SLOW, 12, MON_SPELL_WIZARD },
        { SPELL_INVISIBILITY, 12, MON_SPELL_WIZARD },
       }
