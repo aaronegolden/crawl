@@ -113,6 +113,20 @@ static const branch_type swap_branches[number_of_branch_swap_pairs][2] =
     {BRANCH_SPIDER, BRANCH_SNAKE}
 };
 
+static const int number_of_disabled_branches = 8;
+
+static const branch_type disabled_branches[number_of_disabled_branches] =
+{
+    BRANCH_SEWER,
+    BRANCH_OSSUARY,
+    BRANCH_BAILEY,
+    BRANCH_LAIR,
+    BRANCH_GAUNTLET,
+    BRANCH_ICE_CAVE,
+    BRANCH_VOLCANO,
+    BRANCH_ORC
+};
+
 branch_iterator::branch_iterator(branch_iterator_type type) :
     iter_type(type), i(0)
 {
@@ -167,6 +181,17 @@ vector<branch_type> random_choose_disabled_branches()
         disabled_branch.push_back(swap_branches[i][random_choose(0,1)]);
 
     return disabled_branch;
+}
+
+vector<branch_type> fixed_disabled_branches()
+{
+  // These branches are always disabled.
+  vector<branch_type> disabled_branch;
+
+  for (int i=0; i < number_of_disabled_branches; i++)
+      disabled_branch.push_back(disabled_branches[i]);
+
+  return disabled_branch;
 }
 
 const Branch& your_branch()
