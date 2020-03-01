@@ -1053,7 +1053,7 @@ static const mon_spellbook mspell_list[] =
     {  MST_LICH_IV,
       {
        { SPELL_CORROSIVE_BOLT, 18, MON_SPELL_WIZARD },
-       { SPELL_LEHUDIBS_CRYSTAL_SPEAR, 12, MON_SPELL_WIZARD },
+       { SPELL_IRON_SHOT, 12, MON_SPELL_WIZARD },
        { SPELL_PETRIFY, 18, MON_SPELL_WIZARD },
        { SPELL_HASTE, 12, MON_SPELL_WIZARD },
       }
