@@ -11,7 +11,7 @@
 
 {{
 function zot_entry_setup(e)
-    e.place("Depths:$")
+    e.place("Dungeon:$")
     e.orient("float")
     e.kfeat("O = enter_zot")
     e.mons("patrolling base draconian")
