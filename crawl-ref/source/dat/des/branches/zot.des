@@ -234,7 +234,6 @@ ENDMAP
 
 NAME:   evilmike_zot_entry_gauntlet
 TAGS:   no_monster_gen zot_entry
-PLACE:  Depths:$
 ORIENT: float
 WEIGHT: 8
 SUBST:  b: v.., v: c.
