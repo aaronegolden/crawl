@@ -6855,6 +6855,12 @@ void player::petrify(actor *who, bool force)
 {
     ASSERT(!crawl_state.game_is_arena());
 
+    if (stasis())
+    {
+        mpr("Your stasis prevents you from being petrified.");
+        return;
+    }
+
     if (res_petrify() && !force)
     {
         canned_msg(MSG_YOU_UNAFFECTED);
