@@ -89,7 +89,7 @@ static spell_type search_order_summon[] =
 static spell_type search_order_misc[] =
 {
     SPELL_DISPEL_UNDEAD_RANGE,
-    SPELL_PARALYSE,
+    SPELL_PETRIFY,
     SPELL_SLEEP,
     SPELL_MASS_CONFUSION,
     SPELL_DRAIN_MAGIC,

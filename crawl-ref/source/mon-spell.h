@@ -481,7 +481,7 @@ static const mon_spellbook mspell_list[] =
        { SPELL_BOLT_OF_FIRE, 12, MON_SPELL_WIZARD },
        { SPELL_BOLT_OF_DRAINING, 12, MON_SPELL_WIZARD },
        { SPELL_SUMMON_DEMON, 12, MON_SPELL_WIZARD },
-       { SPELL_PARALYSE, 12, MON_SPELL_WIZARD },
+       { SPELL_PETRIFY, 12, MON_SPELL_WIZARD },
       }
     },
 
@@ -518,7 +518,7 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_FORCE_LANCE, 14, MON_SPELL_WIZARD },
        { SPELL_FIREBALL, 12, MON_SPELL_WIZARD },
-       { SPELL_PARALYSE, 12, MON_SPELL_WIZARD },
+       { SPELL_PETRIFY, 12, MON_SPELL_WIZARD },
        { SPELL_BLINK, 12, MON_SPELL_WIZARD },
       }
     },
@@ -968,7 +968,7 @@ static const mon_spellbook mspell_list[] =
 
     {  MST_GREAT_ORB_OF_EYES,
       {
-       { SPELL_PARALYSE, 12, MON_SPELL_MAGICAL },
+       { SPELL_PETRIFY, 12, MON_SPELL_MAGICAL },
        { SPELL_DISINTEGRATE, 12, MON_SPELL_MAGICAL },
        { SPELL_DRAIN_MAGIC, 12, MON_SPELL_MAGICAL },
        { SPELL_CONFUSE, 12, MON_SPELL_MAGICAL },
@@ -996,7 +996,7 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_CONFUSE, 11, MON_SPELL_WIZARD },
        { SPELL_SLOW, 11, MON_SPELL_WIZARD },
-       { SPELL_PARALYSE, 11, MON_SPELL_WIZARD },
+       { SPELL_PETRIFY, 11, MON_SPELL_WIZARD },
        { SPELL_SMITING, 11, MON_SPELL_WIZARD },
        { SPELL_MINOR_HEALING, 22, MON_SPELL_WIZARD },
       }
@@ -1045,7 +1045,7 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_LIGHTNING_BOLT, 18, MON_SPELL_WIZARD },
        { SPELL_IOOD, 12, MON_SPELL_WIZARD },
-       { SPELL_PARALYSE, 18, MON_SPELL_WIZARD },
+       { SPELL_PETRIFY, 18, MON_SPELL_WIZARD },
        { SPELL_HASTE, 12, MON_SPELL_WIZARD },
       }
     },
@@ -1164,7 +1164,7 @@ static const mon_spellbook mspell_list[] =
        { SPELL_LIGHTNING_BOLT, 12, MON_SPELL_WIZARD },
        { SPELL_HASTE_OTHER, 10, MON_SPELL_WIZARD },
        { SPELL_SLOW, 10, MON_SPELL_WIZARD },
-       { SPELL_PARALYSE, 10, MON_SPELL_WIZARD },
+       { SPELL_PETRIFY, 10, MON_SPELL_WIZARD },
        { SPELL_HASTE, 10, MON_SPELL_WIZARD },
       }
     },
@@ -1351,7 +1351,7 @@ static const mon_spellbook mspell_list[] =
     {  MST_VAMPIRE_KNIGHT,
       {
        { SPELL_BLINK_CLOSE, 12, MON_SPELL_WIZARD },
-       { SPELL_PARALYSE, 12, MON_SPELL_WIZARD },
+       { SPELL_PETRIFY, 12, MON_SPELL_WIZARD },
        { SPELL_HASTE, 12, MON_SPELL_WIZARD },
        { SPELL_INVISIBILITY, 12, MON_SPELL_WIZARD },
        { SPELL_VAMPIRIC_DRAINING, 50, MON_SPELL_WIZARD },
@@ -1828,7 +1828,7 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_SEARING_BREATH, 62, MON_SPELL_NATURAL | MON_SPELL_BREATH
                                     | MON_SPELL_NOISY },
-       { SPELL_PARALYSE, 18, MON_SPELL_MAGICAL | MON_SPELL_NO_SILENT },
+       { SPELL_PETRIFY, 18, MON_SPELL_MAGICAL | MON_SPELL_NO_SILENT },
       }
     },
 
@@ -2020,7 +2020,7 @@ static const mon_spellbook mspell_list[] =
     {  MST_GRINDER,
       {
        { SPELL_PAIN, 19, MON_SPELL_MAGICAL },
-       { SPELL_PARALYSE, 19, MON_SPELL_MAGICAL },
+       { SPELL_PETRIFY, 19, MON_SPELL_MAGICAL },
        { SPELL_BLINK, 19, MON_SPELL_MAGICAL },
       }
     },
@@ -2097,7 +2097,7 @@ static const mon_spellbook mspell_list[] =
 
     {  MST_RUPERT,
       {
-       { SPELL_PARALYSE, 16, MON_SPELL_MAGICAL | MON_SPELL_NO_SILENT },
+       { SPELL_PETRIFY, 16, MON_SPELL_MAGICAL | MON_SPELL_NO_SILENT },
        { SPELL_CONFUSE, 16, MON_SPELL_MAGICAL | MON_SPELL_NO_SILENT },
        { SPELL_BERSERKER_RAGE, 33, MON_SPELL_MAGICAL },
       }
@@ -2213,7 +2213,7 @@ static const mon_spellbook mspell_list[] =
        { SPELL_BOLT_OF_COLD, 11, MON_SPELL_MAGICAL },
        { SPELL_SYMBOL_OF_TORMENT, 11, MON_SPELL_MAGICAL },
        { SPELL_SUMMON_GREATER_DEMON, 11, MON_SPELL_MAGICAL },
-       { SPELL_PARALYSE, 11, MON_SPELL_MAGICAL },
+       { SPELL_PETRIFY, 11, MON_SPELL_MAGICAL },
        { SPELL_SILENCE, 11, MON_SPELL_MAGICAL },
        { SPELL_MAJOR_HEALING, 11, MON_SPELL_MAGICAL | MON_SPELL_EMERGENCY },
       }
