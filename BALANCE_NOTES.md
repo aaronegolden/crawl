@@ -45,3 +45,20 @@ Killer Klown damage also seems astronomical. I think all these bolt spells need 
 Killer Klown clubs also seem to do 45 dmg a hit. I was unable to kill one. EV too high?
 
 I think pretty much everything does too much damage. 10 to 20 points could come off everything and it could still be too hard.
+
+# Cross-training changes
+
+Played HoFi. I think the first 5 or so floors worked, but by D7 I was too strong. I may need to shift enemies from 
+later in the dungeon down a bit. This was on the 3/5 build, rather than the 2/5 build, so I will revisit this again
+soon.
+
+Oddly enough the difficulty picked up slightly around D9, but still pretty easy to tab through the whole thing.
+
+I was able to use level 3 spells in untrained schools by zot, and fireball with 25% failure rate with FM of 11.3.
+
+d10 I skipped, knowing better.
+
+stopped at zot.
+
+Character is: 'Cross-Trainrevision.txt' in morgue files, so I may load it up again and try zot out in skills 2/5 when
+trying to balance zot.

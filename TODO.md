@@ -64,6 +64,8 @@ Small clean-up or refinement changes to enhance the experience.
 - [ ] spell-book crash when I press '\'
 - [ ] generating dungeon should only say 'generating zot'
 - [ ] remove cursed +0 or -ve armor and weapons, which are now no brainers to avoid.
+- [ ] clean up skill cross-training; maybe organize skills by what they cross-train with and only highlight 'special'
+cross-training, like axes and fire magic.
 
 ## Stolen Ideas
 
