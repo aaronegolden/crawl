@@ -1,6 +1,6 @@
 # Coffee Crawl fork
 
-Crawl is won by lair. Therefor, coffee crawl is the first ten floors of crawl, then one floor of Zot.
+Crawl is won by lair. Therefor, coffee crawl is the first ten floors of dungeon, then one floor of Zot.
 
 The goal of this game is to make a 15-30 minute crawl.
 
