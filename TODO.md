@@ -25,8 +25,14 @@ Core changes
 - [x] rebalance zot enemies for a 10 level crawl
 - [x] remove orb run
 - [x] end the game when the player exits the realm of zot with the orb
-- [ ] enhance skill cross-training to make it easier to use what the dungeon gives over the duration of the game.
-- [ ] rebalance zot (again)
+- [x] enhance skill cross-training to make it easier to use what the dungeon gives over the duration of the game.
+- [x] rebalance zot entrances
+- [x] nerf dragons to allow having them in the entrances
+- [x] nerf ancient liches
+- [ ] nerf killer klowns AC, EV and damage
+- [ ] nerf orb guardian damage
+- [ ] nerf oof damage
+- [ ] fix zot entrances sometimes having powerful monsters for some reason
 - [ ] put 0.1.0 onto a server when the balance feels ok.
 
 
