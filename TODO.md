@@ -29,10 +29,10 @@ I'll complete these before sharing the game.
 - [x] rebalance zot entrances
 - [x] nerf dragons to allow having them in the entrances
 - [x] nerf ancient liches
-- [ ] nerf electric golem
-- [ ] nerf killer klowns AC, EV and damage
-- [ ] nerf orb guardian damage
-- [ ] nerf oof damage
+- [x] nerf electric golem
+- [x] nerf killer klowns AC, EV and damage
+- [x] nerf orb guardian damage
+- [x] nerf oof damage
 - [ ] clean up skill cross-training; have two levels of cross-training highlighting, light blue for common skills 
 cross-training (ie: all weapons skills cross-train) and green for special cross-training (ie: fire-magic and axes).
 - [ ] fix zot entrances sometimes having powerful monsters for some reason
