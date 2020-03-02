@@ -304,13 +304,13 @@ COLOURS SkillMenuEntry::get_colour() const
         return CYAN;
     }
     else if (skm.get_state(SKM_LEVEL) == SKM_LEVEL_ENHANCED
-             && (you.skill(m_sk, 10, true) != you.skill(m_sk, 10, false)
+             && (you.skill(m_sk, 10, false, true, false) != you.skill(m_sk, 10, false, true, true)
                  // Drained a tiny but nonzero amount.
                  || you.attribute[ATTR_XP_DRAIN] && you.skill_points[m_sk]))
     {
-        if (you.skill(m_sk, 10, true) < you.skill(m_sk, 10, false))
+        if (you.skill(m_sk, 10, false, true, false) < you.skill(m_sk, 10, false, true, true))
             return use_bright_colour ? LIGHTGREEN : GREEN;
-        else
+        else if (you.skill(m_sk, 10, false) < you.skill(m_sk, 10, true))
             return use_bright_colour ? LIGHTMAGENTA : MAGENTA;
     }
     else if (mastered())
