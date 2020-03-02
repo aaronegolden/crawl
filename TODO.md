@@ -34,7 +34,7 @@ I'll complete these before sharing the game.
 - [x] nerf orb guardian damage
 - [x] nerf oof damage
 - [x] fix zot entrances sometimes having powerful monsters for some reason. I fixed this by hopefully nerfing all of the enemies.
-- [ ] clean up skill cross-training; have two levels of cross-training highlighting, light blue for common skills 
+- [x] clean up skill cross-training; have two levels of cross-training highlighting, light blue for common skills 
 cross-training (ie: all weapons skills cross-train) and green for special cross-training (ie: fire-magic and axes).
 - [ ] put 0.1.0 onto a server when the balance feels ok.
 

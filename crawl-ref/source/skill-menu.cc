@@ -623,7 +623,7 @@ string SkillMenuSwitch::get_help()
                 causes.push_back("cross-training");
             result = "Skills enhanced by "
                      + comma_separated_line(causes.begin(), causes.end())
-                     + " are in <green>green</green>.";
+                     + " are not highlighted.";
         }
 
         if (skm.is_set(SKMF_REDUCED))
