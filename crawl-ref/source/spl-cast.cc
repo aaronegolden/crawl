@@ -1838,6 +1838,9 @@ static spret_type _do_cast(spell_type spell, int powc,
     {
     case SPELL_FREEZE:
         return cast_freeze(powc, monster_at(target), fail);
+        
+    case SPELL_FOXFIRE:
+        return cast_foxfire(powc, god, fail);
 
     case SPELL_SANDBLAST:
         return cast_sandblast(powc, beam, fail);

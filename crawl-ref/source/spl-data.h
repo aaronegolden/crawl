@@ -1319,7 +1319,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_FLAME_TONGUE, "Flame Tongue",
     SPTYP_FIRE,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NOT_SELF | SPFLAG_NEEDS_TRACER,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NOT_SELF | SPFLAG_NEEDS_TRACER | SPFLAG_MONSTER,
     1,
     40, // cap for range; damage cap is at 25
     2, 5,
@@ -3941,6 +3941,17 @@ static const struct spell_desc spelldata[] =
     LOS_RADIUS, LOS_RADIUS,
     3, 0,
     TILEG_ERROR,
+},
+
+{
+    SPELL_FOXFIRE, "Foxfire",
+    SPTYP_FIRE,
+    SPFLAG_SELFENCH,
+    1,
+    25,
+    -1, -1,
+    1, 0,
+    TILEG_FOXFIRE,
 },
 
 {

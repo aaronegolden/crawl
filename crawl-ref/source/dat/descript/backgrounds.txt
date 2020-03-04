@@ -45,7 +45,7 @@ choice and a potion of augmentation.
 %%%%
 Fire Elementalist
 
-Fire Elementalists start with the book of Flames and know the Flame Tongue
+Fire Elementalists start with the book of Flames and know the Foxfire
 spell. The other spells in their book focus on destruction as well.
 %%%%
 Gladiator

@@ -105,6 +105,7 @@
 #include "mon-abil.h"
 #include "mon-act.h"
 #include "mon-cast.h"
+#include "mon-death.h"
 #include "mon-place.h"
 #include "mon-transit.h"
 #include "mon-util.h"
@@ -3176,11 +3177,20 @@ static void _swap_places(monster* mons, const coord_def &loc)
             return;
         }
     }
-
+    
+    // Friendly foxfire dissipates instead of damaging the player.
+    if (mons->type == MONS_FOXFIRE)
+    {
+        simple_monster_message(*mons, " dissipates!",
+                               MSGCH_MONSTER_DAMAGE, MDAM_DEAD);
+        monster_die(mons, KILL_DISMISSED, NON_MONSTER, true);
+        return;
+    }
+    return;
+    
     mpr("You swap places.");
 
     mons->move_to_pos(loc, true, true);
-    return;
 }
 
 static void _entered_malign_portal(actor* act)

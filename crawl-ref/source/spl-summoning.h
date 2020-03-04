@@ -129,4 +129,6 @@ bool summons_are_capped(spell_type spell);
 int summons_limit(spell_type spell);
 int count_summons(const actor *summoner, spell_type spell);
 
+spret_type cast_foxfire(int pow, god_type god, bool fail);
+
 #endif

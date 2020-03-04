@@ -1018,6 +1018,7 @@ enum cloud_type
     CLOUD_XOM_TRAIL,
     CLOUD_SALT,
     CLOUD_GOLD_DUST,
+    CLOUD_FLAME,
     NUM_CLOUD_TYPES,
 
     // Random per-square.
@@ -3706,6 +3707,7 @@ MONS_ANTIMATTER_ELF,
     MONS_RAINBOW_BOA,
     MONS_SPITTING_COBRA,
     MONS_ENCHANTER,
+    MONS_FOXFIRE,
 #endif
 
     NUM_MONSTERS,               // used for polymorph
@@ -4950,6 +4952,7 @@ enum spell_type : int
     SPELL_CURSE,
     SPELL_SHOOT_ARROW,
     SPELL_THROW_BOULDER,
+    SPELL_FOXFIRE,
     NUM_SPELLS
 };
 
@@ -5131,6 +5134,7 @@ enum zap_type
     ZAP_FIRE_STORM,
     ZAP_SHOOT_ARROW,
     ZAP_THROW_BOULDER,
+    ZAP_FOXFIRE,
     NUM_ZAPS
 };
 

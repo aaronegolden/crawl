@@ -75,4 +75,6 @@ spret_type cast_scattershot(const actor *caster, int pow, const coord_def &pos,
                             bool fail = false);
 
 spret_type cast_ignition(const actor *caster, int pow, bool fail = false);
+
+void foxfire_attack(const monster *foxfire, const actor *target);
 #endif
