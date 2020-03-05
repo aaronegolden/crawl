@@ -1648,7 +1648,12 @@ bool needs_handle_warning(const item_def &item, operation_types oper,
         }
     }
     
-    if (oper == OPER_TAKEOFF || oper == OPER_REMOVE || oper == OPER_WIELD)
+    if (oper == OPER_TAKEOFF || oper == OPER_REMOVE)
+        return true;
+    
+    // only warn for weapons on unequip, not equip 
+    // bad property warnings are covered above
+    if (oper == OPER_WIELD && _is_wielded(item))
         return true;
 
     if (oper == OPER_EVOKE && god_hates_item(item))
