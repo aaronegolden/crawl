@@ -5775,10 +5775,10 @@ int player::skill(skill_type sk, int scale, bool real, bool drained) const
       + get_skill_progress(sk, actual_skill, effective_points, scale);
 
     if (you.species == SP_KOBOLD)
-        level = level + (you.experience_level - 1)*scale/2;
+        level = level + (you.experience_level - 1) / 2;
 
     if (you.species == SP_GNOLL)
-       level = level + max(you.experience_level + 1, 0)*scale/2;
+       level = level + max(you.experience_level + 1, 0) / 2;
 
     // apply gnoll/kobold before returning for "real"
     if (real)
