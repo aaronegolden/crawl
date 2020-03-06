@@ -5475,11 +5475,11 @@ void place_spec_shop(const coord_def& where, shop_spec &spec, int shop_level)
     shop.type = spec.sh_type;
     if (shop.type == SHOP_RANDOM)
     {
-		do
-		{
-			shop.type = static_cast<shop_type>(random2(NUM_SHOPS));
-		}
-		while(shop_type_removed(shop.type));
+        shop.type = static_cast<shop_type>(random_choose_weighted(SHOP_GENERAL, 15,
+                                                                  SHOP_GENERAL_ANTIQUE, 5,
+                                                                  SHOP_SCROLL, 2,
+                                                                  SHOP_DISTILLERY, 2,
+                                                                  SHOP_EVOKABLES,1 ));
 	}
     shop.greed = _shop_greed(shop.type, level_number, spec.greed);
     shop.pos = where;
@@ -5515,14 +5515,14 @@ object_class_type item_in_shop(shop_type shop_type)
     case SHOP_GENERAL:
     case SHOP_GENERAL_ANTIQUE:
     {
-        return random_choose_weighted(2, OBJ_WEAPONS,
+        return random_choose_weighted(1, OBJ_WEAPONS,
                                       2, OBJ_ARMOUR,
-                                      1, OBJ_BOOKS,
+                                      2, OBJ_BOOKS,
                                       2, OBJ_JEWELLERY,
                                       1, OBJ_MISSILES,
-                                      1, OBJ_POTIONS,
-                                      1, OBJ_SCROLLS,
-                                      1, OBJ_WANDS,
+                                      2, OBJ_POTIONS,
+                                      2, OBJ_SCROLLS,
+                                      2, OBJ_WANDS,
                                       1, OBJ_MISCELLANY);
     }
 
