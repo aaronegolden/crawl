@@ -5775,10 +5775,10 @@ int player::skill(skill_type sk, int scale, bool real, bool drained) const
       + get_skill_progress(sk, actual_skill, effective_points, scale);
 
     if (you.species == SP_KOBOLD)
-        level = level + (you.experience_level - 1) / 2;
+        level = level + (you.experience_level - 1) * scale /2;
 
     if (you.species == SP_GNOLL)
-       level = level + max(you.experience_level + 1, 0) / 2;
+       level = level + max(you.experience_level + 1, 0) * scale/2;
 
     // apply gnoll/kobold before returning for "real"
     if (real)
@@ -5806,37 +5806,37 @@ int player::skill(skill_type sk, int scale, bool real, bool drained) const
     switch (sk)
     {
     case SK_FIRE_MAGIC:
-        level = min((level + scan_artefacts(ARTP_FIRE_SKILL)) * scale, 27 * scale);
+        level = min(level + scan_artefacts(ARTP_FIRE_SKILL) * scale, 27 * scale);
         break;
     case SK_EARTH_MAGIC:
-        level = min((level + scan_artefacts(ARTP_EARTH_SKILL)) * scale, 27 * scale);
+        level = min(level + scan_artefacts(ARTP_EARTH_SKILL) * scale, 27 * scale);
         break;
     case SK_AIR_MAGIC:
-        level = min((level + scan_artefacts(ARTP_AIR_SKILL)) * scale, 27 * scale);
+        level = min(level + scan_artefacts(ARTP_AIR_SKILL) * scale, 27 * scale);
         break;
     case SK_ICE_MAGIC:
-        level = min((level + scan_artefacts(ARTP_ICE_SKILL)) * scale, 27 * scale);
+        level = min(level + scan_artefacts(ARTP_ICE_SKILL) * scale, 27 * scale);
         break;
     case SK_HEXES:
-        level = min((level + scan_artefacts(ARTP_HEX_SKILL)) * scale, 27 * scale);
+        level = min(level + scan_artefacts(ARTP_HEX_SKILL) * scale, 27 * scale);
         break;
     case SK_CHARMS:
-        level = min((level + scan_artefacts(ARTP_CHARM_SKILL)) * scale, 27 * scale);
+        level = min(level + scan_artefacts(ARTP_CHARM_SKILL) * scale, 27 * scale);
         break;
     case SK_SUMMONINGS:
-        level = min((level + scan_artefacts(ARTP_SUMMON_SKILL)) * scale, 27 * scale);
+        level = min(level + scan_artefacts(ARTP_SUMMON_SKILL) * scale, 27 * scale);
         break;
     case SK_NECROMANCY:
-        level = min((level + scan_artefacts(ARTP_NECRO_SKILL)) * scale, 27 * scale);
+        level = min(level + scan_artefacts(ARTP_NECRO_SKILL) * scale, 27 * scale);
         break;
     case SK_TRANSLOCATIONS:
-        level = min((level + scan_artefacts(ARTP_TLOC_SKILL)) * scale, 27 * scale);
+        level = min(level + scan_artefacts(ARTP_TLOC_SKILL) * scale, 27 * scale);
         break;
     case SK_TRANSMUTATIONS:
-        level = min((level + scan_artefacts(ARTP_TMUT_SKILL)) * scale, 27 * scale);
+        level = min(level + scan_artefacts(ARTP_TMUT_SKILL) * scale, 27 * scale);
         break;
     case SK_EVOCATIONS:
-        level = min((level + scan_artefacts(ARTP_EVOC_SKILL)) * scale, 27 * scale);
+        level = min(level + scan_artefacts(ARTP_EVOC_SKILL) * scale, 27 * scale);
         break;
     default:
         break;
