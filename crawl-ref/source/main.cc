@@ -3186,11 +3186,12 @@ static void _swap_places(monster* mons, const coord_def &loc)
         monster_die(mons, KILL_DISMISSED, NON_MONSTER, true);
         return;
     }
-    return;
     
     mpr("You swap places.");
 
     mons->move_to_pos(loc, true, true);
+    
+    return;
 }
 
 static void _entered_malign_portal(actor* act)
