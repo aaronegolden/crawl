@@ -5475,8 +5475,7 @@ void place_spec_shop(const coord_def& where, shop_spec &spec, int shop_level)
     shop.type = spec.sh_type;
     if (shop.type == SHOP_RANDOM)
     {
-        shop.type = static_cast<shop_type>(random_choose_weighted(SHOP_GENERAL, 15,
-                                                                  SHOP_GENERAL_ANTIQUE, 5 ));
+        shop.type = SHOP_GENERAL;
 	}
     shop.greed = _shop_greed(shop.type, level_number, spec.greed);
     shop.pos = where;
