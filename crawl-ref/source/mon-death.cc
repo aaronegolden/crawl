@@ -3386,11 +3386,10 @@ void elven_twin_died(monster* twin, bool in_transit, killer_type killer, int kil
         // have way more fun spells than this. If this ever changes, the
         // following code would need to be rewritten, as it'll crash.
         // TODO: this is a fairly brittle way of upgrading Dowan...
-        ASSERT(mons->spells.size() >= 5);
+        ASSERT(mons->spells.size() >= 3);
         mons->spells[0].spell = SPELL_STONE_ARROW;
-        mons->spells[1].spell = SPELL_THROW_ICICLE;
-        mons->spells[3].spell = SPELL_BLINK;
-        mons->spells[4].spell = SPELL_HASTE;
+        mons->spells[1].spell = SPELL_BLINK;
+        mons->spells[2].spell = SPELL_HASTE;
         // Nothing with 6.
 
         // Indicate that he has an updated spellbook.
