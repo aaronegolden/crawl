@@ -1132,7 +1132,8 @@ int acquirement_create_item(object_class_type class_wanted,
     ASSERT(class_wanted != OBJ_RANDOM);
 
     const bool divine = (agent == GOD_OKAWARU || agent == GOD_XOM
-                         || agent == GOD_TROG || agent == GOD_PAKELLAS);
+                         || agent == GOD_TROG || agent == GOD_PAKELLAS
+                         || agent == GOD_SIF_MUNA);
     int thing_created = NON_ITEM;
     int quant = 1;
 #define MAX_ACQ_TRIES 40
@@ -1352,6 +1353,8 @@ int acquirement_create_item(object_class_type class_wanted,
         ASSERT(mitm[thing_created].is_valid());
         mitm[thing_created].props[ACQUIRE_KEY].get_int() = agent;
     }
+    if(divine)
+        move_item_to_grid(&thing_created, pos, quiet);
     return thing_created;
 }
 
