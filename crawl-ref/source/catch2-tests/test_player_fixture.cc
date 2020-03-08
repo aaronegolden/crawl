@@ -6,6 +6,7 @@
 #include "player.h"
 #include "player-equip.h"
 #include "item-prop.h"
+#include "skills.h"
 
 #include "test_player_fixture.h"
 
@@ -39,6 +40,15 @@ MockPlayerYouTestsFixture::MockPlayerYouTestsFixture() {
     destroy_items_in_player_inventory();
 
     init_properties();
+
+    // Set all defensive skills to zero.
+    set_skill_level(SK_FIGHTING, 0);
+    set_skill_level(SK_ARMOUR, 0);
+    set_skill_level(SK_DODGING, 0);
+    set_skill_level(SK_STEALTH, 0);
+    set_skill_level(SK_SHIELDS, 0);
+    set_skill_level(SK_SPELLCASTING, 0);
+
 }
 
 MockPlayerYouTestsFixture::~MockPlayerYouTestsFixture() {
