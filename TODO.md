@@ -11,6 +11,8 @@ This is primarily based on feedback from other users right now. I'll address the
 Planned features for v2.
 
 - [ ] Remove upstairs.
+- [ ] Replace two dungeon floors with single floor vault quadrant.
+- [ ] Replace two dungeon floors with two depths floor.
 
 ### Changes
 
@@ -19,6 +21,9 @@ Planned changes to existing functionality for v2.
 - [ ] Endgame damage is swingy; incoming and outgoing damage very high. would be nice if less one-shots in both directions. Apparently draconians were getting slaughtered with regular rocks!
 - [ ] Balance zot and depths' uniques which appear in Zot and around Zot entrances.
 - [ ] Increase difficulty of enemies in the later part of the dungeon.
+- [ ] Stealth should not cross-train with other skills as it breaks the flow of the game.
+- [ ] Range is too powerful.
+- [ ] Endgame monster skills need to be scaled down, and HD needs to be increased to compensate to create more balanced monsters.
 
 ### Fixes
 
