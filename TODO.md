@@ -2,6 +2,31 @@
 
 Ideas or changes I would like to make are here.
 
+## v2 TODO
+
+This is primarily based on feedback from other users right now. I'll address these before moving onto other changes.
+
+### Features
+
+Planned features for v2.
+
+- [ ] Remove upstairs.
+
+### Changes
+
+Planned changes to existing functionality for v2.
+
+- [ ] Endgame damage is swingy; incoming and outgoing damage very high. would be nice if less one-shots in both directions. Apparently draconians were getting slaughtered with regular rocks!
+- [ ] Balance zot and depths' uniques which appear in Zot and around Zot entrances.
+- [ ] Increase difficulty of enemies in the later part of the dungeon.
+
+### Fixes
+
+Planned bugfixes for v2.
+
+- [ ] Abyss entrances are still appearing in Zot.
+- [ ] '\' still crashes the game.
+
 ## Core changes
 
 I'll complete these before sharing the game.
@@ -36,7 +61,7 @@ I'll complete these before sharing the game.
 - [x] fix zot entrances sometimes having powerful monsters for some reason. I fixed this by hopefully nerfing all of the enemies.
 - [x] clean up skill cross-training; have two levels of cross-training highlighting, light blue for common skills 
 cross-training (ie: all weapons skills cross-train) and green for special cross-training (ie: fire-magic and axes).
-- [ ] put 0.1.0 onto a server when the balance feels ok.
+- [x] put 0.1.0 onto a server when the balance feels ok.
 
 ## Changes to improve the experience
 
