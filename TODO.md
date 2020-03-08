@@ -15,7 +15,7 @@ Planned features for v2.
 - [ ] Replace one dungeon floor (D8) with a single depths floor.
 - [ ] Remove shafts.
 - [ ] Tighten up range spill-over altars appear in.
-- [ ] Players start with a full spellbook.
+- [ ] Reduce overall number of spellbooks, and increase the spellbooks 
 
 ### Balance changes
 
@@ -35,6 +35,20 @@ Planned bugfixes for v2.
 
 - [ ] Abyss entrances are still appearing in Zot.
 - [ ] '\' still crashes the game.
+
+### Meta
+
+Changes to improve development and make it easier for people to give feedback.
+
+- [x] enable github issues.
+- [ ] move everything in this file to github issues.
+- [ ] create a milestone for v2.
+- [ ] figure out how you can see ttyrec files.
+- [x] enable ci for this repo to build binaries.
+
+# v1 Planned changes
+
+Historically planned changed.
 
 ## Core changes
 

@@ -1,3 +1,5 @@
+![Build](https://github.com/WilliamTheMarsman/crawl/workflows/Build/badge.svg?branch=coffee-crawl)
+
 Inspired by [dungeon crawl short soup](https://github.com/dcandido/crawl), [coffee-crawl](https://github.com/WilliamTheMarsman/crawl) is a  [crawl](https://github.com/crawl/crawl) variant featuring the first 10 floors of dungeon followed by one floor of zot.
 
 The game has been rebalanced to ensure the zot floor is possible for most characters at that stage of the game.
