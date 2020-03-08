@@ -288,8 +288,7 @@ KFEAT:    y = shallow_water
 KFEAT:    E = altar_zin / altar_elyvilon w:30
 MONS:     jackal / w:3 nothing, kobold / w:5 nothing, big kobold
 SHUFFLE:  de
-ITEM:     potion of ambrosia / potion of heal wounds
-ITEM:     potion of flight
+KFEAT: Z = scroll shop / distillery shop / distillery shop
 MONS:     rat w:15 / iguana w:7 / nothing w:3
 MAP
         ccc
@@ -321,7 +320,7 @@ MAP
       c.'WWW''c
       c..''''.c
 xxxxxxcccc1ccccx
-xedExxxx.122...xx
+xZdExxxx.122...xx
 xdexxxx.2232.y..x
 xx?.?xxx....yYy.x
  xx?.xxx?....y.xx
@@ -347,6 +346,9 @@ ITEM:   potion of ambrosia / potion of heal wounds / potion of augmentation w:4 
 : sewer_setup(_G)
 : set_feature_name("clear_stone_wall", "large window")
 KFEAT:  C = deep_water
+KFEAT: Z = scroll shop / distillery shop / distillery shop
+KFEAT: Y= altar_elyvilon
+SHUFFLE: ZY
 MAP
 vvvvxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxvvvv
 vwwvxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxvCCv
@@ -359,7 +361,7 @@ vwwvxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxvCCv
 vwwvvvvvvvxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxvvvvvvvCCv
 vwwnddv..vxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx..v..vddnCCv
 vwwnd2.2.v..3.xxxxxxx11111xxxxxxx11xxxxxx...3...v.2.2dnCCv
-vwwvv.2..+......xxxx..11....xxxx11111xxx........+..2.vvCCv
+vwwvvZ2..+......xxxx..11....xxxx11111xxx........+..2YvvCCv
 vwwnd2.2.v......3.....xxx.........11...........3v.2.2dnCCv
 vwwnddv..vyyy..........xxx...3...xx......3....yyv..vddnCCv
 vwwvvvvvvvYYyy..xx.....xx.......3xxxx......xxyyYvvvvvvvCCv
@@ -407,6 +409,9 @@ NSUBST:  . = 10:2 / *:.
 KFEAT:   p = shallow_water
 COLOUR:  p = lightgreen
 KFEAT:   ! = floor
+KFEAT: Z = scroll shop / distillery shop / distillery shop
+KFEAT: Y = altar_makhleb
+SHUFFLE: ZY
 : sewer_setup(_G)
 MAP
     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -419,7 +424,7 @@ MAP
     cDDDDc...................................cFFFFc
     cDDDD+......p.............pWpW.......W.pW+FFFFc
     cD<DD+.....WWWW..WWp..WWpWWWWWpWWW...WWWW+FF<Fc
-    cDDDDc....pWpWWpWWp...pWWWpWWWWpWp...pWpWcFFFFc
+    cZDDDc....pWpWWpWWp...pWWWpWWWWpWp...pWpWcFFFYc
 cccccccccccccccccWWWccccccccccWWWWccccccccccWcccccc
 cwWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWc
 cwwWwwwwwWwwwwwWwwwwwWwwwwwWwwwwwWwwwwwWwwwwwWwc
@@ -458,6 +463,7 @@ NSUBST:   ! = 2:! / *:w
 KFEAT:    ! = w
 COLOUR:   ! = green
 KMONS:    ! = bullfrog / nothing w:2
+KFEAT: Z = scroll shop / distillery shop / distillery shop
 : sewer_setup(_G)
 MAP
 ccccccccccccccccccccccccccccccccccc
@@ -469,7 +475,7 @@ c.WwW1ccccccccccccccccccccccc.WwW-c
 c.WwwWccccccc!!!!!!cccccccccc-WwW-c
 c.Wwwwccccwwwwwwwww!!!ccccccc-WwW-c
 c-WwwwccwwwWwwwwwwwwww!cccccc-WwW-c
-c-WwwwcwwWW<-wwwwwwwwww!ccccc-WwW-c
+c-WwwwcwwWW<Zwwwwwwwwww!ccccc-WwW-c
 c-Wwwwwwww-..-ww.--wwwww!cccc-WwW-c
 c-WwWwwWww---.-.*.--wwwwwcccc-WwW-c
 c-WwWWWwWww-.--***.wwwwwwcccc-WwW.c
@@ -509,6 +515,7 @@ ITEM:     nothing, nothing
 ITEM:     nothing
 ITEM:     nothing, nothing
 KITEM:    de = nothing
+KFEAT: Z = scroll shop / distillery shop / distillery shop
 : sewer_setup(_G)
 MAP
            ccccccccccccc
@@ -522,7 +529,7 @@ MAP
  c----c----cc!w---ww!!cc----c----c
 cc---cc---ccw--..---ww!cc---cc---c
 c.---c----cw--.gh*.---w!c----c---c
-c<.--c----c--.edf.-----!c----c---c
+c<.--c----c--.edfZ-----!c----c---c
 c.---c----c----$------w!c----c---c
 cc---cc---c---.------w!cc---cc---c
  c----c---c--.------w!cc----c----c
@@ -560,6 +567,7 @@ ITEM:    scroll of teleportation / scroll of blinking w:5 /\
 SUBST:   y : yyyyyyW., Y : YYYYYYWw
 SUBST:   y = W., Y = Ww
 SUBST:   c = c x:1
+KFEAT: Z = scroll shop / distillery shop / distillery shop
 : sewer_setup(_G)
 MAP
 xxxxxxxxxxxxxxxxxxxxxxccccccxxxxxxxxxxxxxxxxxxxxxx
@@ -567,7 +575,7 @@ xxxxxxxxxxxxxxxxxxxcccc2..2ccccxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxccc..........cccxxxxxxxxxxxxxxxxx
 xccccccxxxxxxxxxcc..............ccxxxxcccccccccccx
 cc....ccxxxxxxxcc................ccxxxcdedcc3..3cc
-c......cxxxxxxxc.1.1.1.2cc2.......cxxxce<e+2..2.2c
+c......cxxxxxxxc.1.1.1.2cc2.......cxxxcZ<e+2..2.2c
 c..<A..cxxxxxxcc1.1.1.cccc+c......ccxxcdedc.2..2.c
 c......cxxxxxxc1.1.1.ccxcddcc......cxxccccc2.2..2c
 cyyyyyycxxxxxxcyyyyyycxxcddccyyyyyycxxxxxxcyyyyyyc
@@ -610,9 +618,10 @@ KMONS:    2 = crocodile
 KMONS:    3 = Purgy, crocodile
 ITEM:     potion of berserk rage / potion of haste w:5
 MONS:     bat
+KFEAT: Z = scroll shop / distillery shop / distillery shop
 MAP
  ccccccc
-cc$***$cc
+cc$*Z*$cc
 c..$*$..c
 c.......c
 c...2...c
@@ -648,14 +657,13 @@ MONS:   kobold, jackal
 SUBST:  3 = 334
 KMONS:  3 = crocodile
 KMONS:  4 = Purgy, crocodile
-ITEM:   potion of flight / potion of heal wounds / \
-        potion of invisibility / potion of mutation /\
-        scroll of blinking / scroll of teleportation / scroll of fear / \
-        nothing w:140
+KFEAT: Z = scroll shop / distillery shop / distillery shop
+KFEAT: Y = altar_elyvilon / altar_zin
+SHUFFLE: ZY
 : sewer_setup(_G)
 MAP
    ccccccccc
-   c%*c3c*%c
+   cZ.c3c.Yc
    c*-c-c-*c
    ccc---ccc
     cc---cc
@@ -719,16 +727,17 @@ KITEM:   ! =  nothing
 SUBST:   . = .WW
 SUBST:   X = xx.
 SUBST:   Y = xw
+KFEAT: Z = scroll shop / distillery shop / distillery shop
 : sewer_setup(_G)
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxcccxxxx
-xxxxxxxxxxxxxxYYxxxYYYxxxxYYYxxxxxxcc.ccxxx
-xxxxxxxxxxxxxYwwYYwwwwwYYwwwwccccccc.e.ccxx
-xxxxxxxxxxYwwwwwwwwwwwwwwwwwwwwwww..*<*.cxx
-xxxxxxxxxxYwwwwwwwwwwwwwwwwwwccccccc.e.ccxx
-xxxxxxxxYYwwwwwwwwwwwwwwwwwwwwYxxxxcc.ccxxx
+xxxxxxxxxxxxxxYYxxxYYYxxxxxxxxxxxxxccxccxxx
+xxxxxxxxxxxxxYwwYYwwwwwYYwxxxxxxxxxxxxxxxxx
+xxxxxxxxxxYwwwwwwwwwwwwwwwwwxxxwwwxxxxxxcxx
+xxxxxxxxxxYwwwwwwwwwwwwwwwwwwxxxccccxxxccxx
+xxxxxxxxYYwwwwwwwwwwwwwwwwwwwwYxxxxccxccxxx
 xxxxxxxYwwwwwwwwwwwwwwwwwww1wwwYxxxxcccxxxx
 xxxxxxYwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxx
 xxxxxxwwwww1wwwww....wwwwwwwwwwwwYxxxxxxxxx
@@ -741,7 +750,7 @@ xxxYwwwww.XxxxxxxxxxxxxxxxxxxX.wwwwwwwwYxxx
 xxxxYwwww.XxxxxxxxxxxxxxxxxxxX.wwwwwwwwYxxx
 xxxxYwwwww.XxxxxxxxcccccxxxxxX.wwwwwwwYxxxx
 xxxYwwwwww.Xxxxxxxxceeeccccccc.wwwwwwwYxxxx
-xxxYwwwwwww.Xxxxxxxce<....P...wwwwwwwwYxxxx
+xxxYwwwwwww.XxxxxxxcZ<....P...wwwwwwwwYxxxx
 xxYwwwwwwwwwAXxxxxxceeeccccccc.wwwwwwwYxxxx
 xxYwwww1wwww<XxxxxxcccccxxxxxX.wwwwwwwYxxxx
 xxxYwwwwwww.XxxxxxxxxxxxxxxxxxX.wwwwwwYxxxx
@@ -770,13 +779,14 @@ TAGS:   no_item_gen no_monster_gen no_pool_fixup
 ORIENT: encompass
 MONS:   kobold w:40 / bat / frilled lizard / giant cockroach / \
         adder w:5 / big kobold w:1
-KMONS:  2 = purgy, crocodile
+KMONS:  Z = purgy, crocodile
+KFEAT:  Z = scroll shop / distillery shop / distillery shop
 ITEM:   potion of flight / potion of heal wounds / \
         potion of invisibility / potion of mutation / \
         scroll of blinking / scroll of teleportation / scroll of fear / \
         nothing w:140
 NSUBST: e = 3:* / 9:d / *:.
-NSUBST: 0 = 5:1 / 1:2 / *:.
+NSUBST: 0 = 5:1 / 1:Z / *:.
 KFEAT:  ' = deep_water
 COLOUR: ' = green
 KFEAT:  " = shallow_water
@@ -810,10 +820,11 @@ NAME:     sewer_fruit_machine
 TAGS:     no_item_gen no_monster_gen no_pool_fixup
 ORIENT:   encompass
 SHUFFLE:  QEDS
-SUBST:    Q = 4, E = 5, D : fgh, S = $
+SUBST:    Q = 4, E = 5, D : fgh
 NSUBST:   f = 1:f / *:'
 NSUBST:   g = 2:g / *:'
 NSUBST:   h = 3:h / *:'
+NSUBST:   S = 1:Z / *:'
 #       some random monsters I: bat or nothing
 NSUBST:   w = 4:" / *:w
 KFEAT:    " = w
@@ -843,6 +854,7 @@ ITEM:     nothing
 ITEM:     nothing
 ITEM:     nothing
 KITEM:    ' = nothing
+KFEAT: Z = scroll shop / distillery shop / distillery shop
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xwwwwwwwwwwwWWW-WW-W--WWWWW-WWW--W--WW-WW-WW-W-WWwwwwwwwwwwwx
@@ -892,6 +904,7 @@ COLOUR: G = green
 COLOUR: s = cyan
 KITEM:  M = nothing
 KITEM:  N = nothing
+KFEAT: Z = scroll shop / distillery shop / distillery shop
 : sewer_setup(_G)
 MAP
 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -910,7 +923,7 @@ OOOnnnnnnnnnnnns.+.....+...%Wwc  c1.....cc$$$.1McccwwWWWgWWWWWWWW..W..WW.Www..c
 OOOnnnnnnnnHnnsW.ccccccc...%*Wc  c.ccccc.c.1.W.NcccwWWccccccccccccc11cccc.gwWwcc
 OOOnnnnnnnnnnnsW.ccc.1cc...%*Wc  c2cwwcc.ccccWcccwwwc.c           cccc  cc..WWwc
 OOOnnnnnnnnnJnsW.ccc..cc...*WWc ccwWgcwc.cGgwWWWWWWcc.c                  ccccwwc
-OOOnnnnnnnnnnssWWccc1.cc<..WwccccwgWccwc.chwgWW..1....c            cccccccccccwc
+OOOnnnnnnnnnnssWWccc1.cc<Z.WwccccwgWccwc.chwgWW..1....c            cccccccccccwc
 OOOnnnnnnnnsssWWWWWc.1ccccccccwwwWW.1cwWWcWWW..2ccccccc            cGwwwwwwwwwwc
 OOOnnnnnnnsssWWWWWWWWsswwswwwhcWW..1ccccWWWW1..cc                  ccccccccccccc
 OOOnnnnnnnnssshWWWWc..cccccccccW.1.cc  ccW1..ccc
@@ -966,6 +979,7 @@ SUBST:   hVZzSsUuTgY = W
 SUBST:   e = !!!!?????
 KITEM:   ! = nothing
 KITEM:   ? = nothing
+KFEAT: Z = scroll shop / distillery shop / distillery shop
 : sewer_setup(_G)
 MAP
 xxxxxxxxxxxxcccxxxxxxxcccxxxxxxxxxxxx
@@ -986,7 +1000,7 @@ cc...2.cccc.....ccBcc...e.cccc.2...cc
 xcc...ccxxcc.W.ccxCxcc.W.ccxxcc...ccx
 xxccUccxxxxccwccxx.xxccwccxxxxccuccxx
 xxxcUcxxxxxxcwcxx1e.xxcwcxxxxxxcucxxx
-xxxcUcxxxxxxcwDE.e<e.FGwcxxxxxxcucxxx
+xxxcUcxxxxxxcwDE.Z<e.FGwcxxxxxxcucxxx
 xxxcUcxxxxxxcwcxx.e1xxcwcxxxxxxcucxxx
 xxccUccxxxxccwccxx.xxccwccxxxxccuccxx
 xcc...ccxxcc.W.ccxHxcc.W.ccxxcc...ccx
@@ -1005,76 +1019,6 @@ xxX.1.xxxxc.2...ccccc...2.cxxxxxxxxxx
 xxxXXXxxxxcc...ccxxxcc...ccxxxxxxxxxx
 xxxxxxxxxxxcccccxxxxxcccccxxxxxxxxxxx
 xxxxxxxxxxxxcccxxxxxxxcccxxxxxxxxxxxx
-ENDMAP
-
-############################################################################
-# Tree sewer. by co
-# This sewer is structured as a tree, in the sense that there are no loops.
-# At each endpoint there is  monster or loot.
-# At least you won't go in circles...
-#
-NAME:   sewer_co_tree
-TAGS:   no_item_gen no_monster_gen no_pool_fixup
-ORIENT: encompass
-MONS:   kobold / big kobold
-MONS:   adder / ball python / dart slug
-MONS:   ooze / rat / iguana w:5
-# less water in the middle, more at the endpoints.
-SUBST:  ~ = WWWW.
-SUBST:  - = WW...
-SUBST:  " = W...
-NSUBST: ? = 4=ef / *=112233
-: sewer_setup(_G)
-MAP
-xxxxxxxxxxxxxxcccccccccccccccccccccxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxc?c?c?c?cxxxc?c?c?c?cxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxcWcWcWcWcxxxcWcWcWcWcxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxcWcWcWcWcxxxcWcWcWcWcxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxcWcWcWcWcxxxcWcWcWcWcxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxx~~~x~~~xxxxx~~~x~~~xxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxx~xxx~xxxxxxx~xxx~xxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxx~xxx~xxxxxxx~xxx~xxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxx~xxx~xxxxxxx~xxx~xxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxx~~~~~xxxxxxx~~~~~xxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxx~~~xxxxxxxxx~~~xxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxx-~-xxxxxxxxx-~-xxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxx-~-xxxxxxxxx-~-xxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxx-~-xxxxxxxxx-~-xxxxxxxxxxxxxxxxx
-cccccxxxxxxxxxxxx-~--xxxxxxx--~-xxxxxxxxxxxxccccc
-c?WWW~xxxxxxxxxxx-~~--xxxxx--~~-xxxxxxxxxxx~WWW?c
-ccccc~~~~~xxxxxxxx--~-~~~~~-~--xxxxxxxx~~~~~ccccc
-c?WWW~xxx~~-----xxxx-~~~~~~~-xxxx-----~~xxx~WWW?c
-cccccxxxx~~~~~~~-xxxx---~---xxxx-~~~~~~~xxxxccccc
-c?WWW~xxx~~----~-xxxx~--~--~xxxx-~----~~xxx~WWW?c
-ccccc~~~~~xxxx--~-xx~---~---~xx-~--xxxx~~~~~ccccc
-c?WWW~xxxxxxxxx--~-~----~----~-~--xxxxxxxxx~WWW?c
-cccccxxxxxxxxxxx~~-----"""-----~~xxxxxxxxxxxccccc
-cxxxxxxxxxxxxxxx~~----"..."----~~xxxxxxxxxxxxxxxc
-cxxxxxxxxxxxxxxx~~~~~~"A.<"~~~~~~xxxxxxxxxxxxxxxc
-cxxxxxxxxxxxxxxx~~----"..."----~~xxxxxxxxxxxxxxxc
-cccccxxxxxxxxxxx~~-----"""-----~~xxxxxxxxxxxccccc
-c?WWW~xxxxxxxxx--~-~----~----~-~--xxxxxxxxx~WWW?c
-ccccc~~~~~xxxx--~-xx~---~---~xx-~--xxxx~~~~~ccccc
-c?WWW~xxx~~----~-xxxx~--~--~xxxx-~----~~xxx~WWW?c
-cccccxxxx~~~~~~~-xxxx~--~---xxxx-~~~~~~~xxxxccccc
-c?WWW~xxx~~-----xxxx-~~~~~~~-xxxx-----~~xxx~WWW?c
-ccccc~~~~~xxxxxxxx--~-~~~~~-~--xxxxxxxx~~~~~ccccc
-c?WWW~xxxxxxxxxxx-~~--xxxxx--~~-xxxxxxxxxxx~WWW?c
-cccccxxxxxxxxxxxx-~--xxxxxxx--~-xxxxxxxxxxxxccccc
-xxxxxxxxxxxxxxxxx-~-xxxxxxxxx-~-xxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxx-~-xxxxxxxxx-~-xxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxx-~-xxxxxxxxx-~-xxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxx~~~xxxxxxxxx~~~xxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxx~~~~~xxxxxxx~~~~~xxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxx~xxx~xxxxxxx~xxx~xxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxx~xxx~xxxxxxx~xxx~xxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxx~xxx~xxxxxxx~xxx~xxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxx~~~x~~~xxxxx~~~x~~~xxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxcWcWcWcWcxxxcWcWcWcWcxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxcWcWcWcWcxxxcWcWcWcWcxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxcWcWcWcWcxxxcWcWcWcWcxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxc?c?c?c?cxxxc?c?c?c?cxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxcccccccccccccccccccccxxxxxxxxxxxxxx
 ENDMAP
 
 ############################################################################
@@ -1116,12 +1060,13 @@ KPROP:   w = no_tele_into
 SUBST:   e = !!!!!?????%
 KITEM:   ! = nothing
 KITEM:   ? = nothing
+KFEAT: Z = scroll shop / distillery shop / distillery shop
 : sewer_setup(_G)
 MAP
  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
  xcccccccccccccccccccccccccccccccccccccccccccccccx
  xwwwwwwwwmwWe.....1......VVVVVVVVV......1.....<cx
- xwwwwwwwwmwWe.........1..VVVVVVVVV.1..........ecx
+ xwwwwwwwwmwWe.........1..VVVVVVVVV.1..........Zcx
  xccccccccccccIIIIIIccccccccccKccccccMMMcccccMMMcx
  xxxxxxxxxxxxxx"xx"xxxxxxxxxxcVcxxxxxx"xxxxxxx"xxx
              xxx""xxxxxxxxxxxcVcxxxxxxx"xXxxx"xx
@@ -1168,12 +1113,13 @@ SUBST:   1 = 1111W
 KMONS:   2 = jackal / kobold, w:5 big kobold / w:5 iguana, rat
 SUBST:   2 = 222222W.
 #      loot
-SUBST:   e = !!!?????%WWW
 KFEAT:   !?% = W
 COLOUR:  !?% = lightgreen
 SUBST:   . = .W
 SUBST:   X = x.
 SUBST:   Y = xxw
+KFEAT:   Z = scroll shop / distillery shop / distillery shop
+SHUFFLE: Ze
 #
 NSUBST:  B = 1:< / *:.
 : sewer_setup(_G)
@@ -1187,9 +1133,9 @@ xxxxYwwwwwcWcwwcccwwwwwwwwwwwwwwwwwwwwYxxxxx
 xxxxwwwww.cWcPPcccwwwwwwwwwwwwwwwwwwwwwYxxxx
 xxxxww....cWcPPcecwwwwwwwwwwwwwwwwwwwwwYxxxx
 xxxX...A<.PPPPxcWcccccccc.wwwwwwwwwwwwwwYxxx
-xxx........PxxxcWceW1WWWW..wwwwwwwwwwwwwYxxx
+xxx........PxxxcWc.W1WWWW..wwwwwwwwwwwwwYxxx
 xxx..Pcccccccccc1cccccccc..wwwwwww...wwwwYxx
-xxxPPPWWWWW1WWecWPxxexxxX..wwwwww..e..wwwYxx
+xxxPPPWWWWW1WW.cWPxxexxxX..wwwwww..e..wwwYxx
 xxxPPPccccccccccWcPx2xxx...wwwwww.2B2.wwwYxx
 xxx.....XxxxxxxcWc..xxxX...wwwwww..P..wwwYxx
 xxxX.....XxxxxxcWcxxxxX....wwwwww.PPP.wwwYxx
@@ -1199,9 +1145,9 @@ xxxx....cWc....cWcX.......wwwwwwwwcWcwwwwYxx
 xxxP.2..cWc..........2..Pccccccccwc1cwwwYxxx
 xxxPP...c1c...P..2.....P.PwwwwwwwwcWcwwwYxxx
 xxxPPP..cWc..PPP.......PPccccccccwcWcwwwwYxx
-xxxXPPP.cec2.cWc.......P.wwwwwwwwwcWcwwwYxxx
+xxxXPPP.c.c2.cWc.......P.wwwwwwwwwcWcwwwYxxx
 xxxX.cccccccccWc.......P.wwwwwwwwwcWcwwwwYxx
-xxxX.WWWW1WWecWc......P..wwwwwwwwwcWcwwwwxxx
+xxxX.WWWW1WW.cWc......P..wwwwwwwwwcWcwwwwxxx
 xxxX.cccccccccWc.2...P..wwwwwwwwwPcWc.wwwYxx
 xxxXXxxX.2.xPP1c....P...wwwwwwwwPPPPPP..wYxx
 xxxxxxx.e.xPxcWc...PPPccccccccccccPPP...Xxxx
@@ -1218,7 +1164,7 @@ xxxYwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxcWcxxxxxx
 xxxYwwwwwwwwwwwwwwwwwwwwwwwwwYxxxX.cWc.Xxxxx
 xxxxYwwwwwwwwwwwwwwwwwwwwwwwYxxxX..PPP..Xxxx
 xxxxxwwwwwwwwwwwwwwwwwwwwwwxxxxxX..PB.2.Xxxx
-xxxxxYwwwwwwwwwwwwwwwwwwwwYxxxxxX.2..e..Xxxx
+xxxxxYwwwwwwwwwwwwwwwwwwwwYxxxxxX.2..Z..Xxxx
 xxxxxxYwwwwwwYYYYwwwYYYwwYxxxxxxxX.....Xxxxx
 xxxxxxxYYYxYYxxxxYYYxxxYYxxxxxxxxxxXXXxxxxxx
 ENDMAP
@@ -1259,11 +1205,8 @@ SUBST:   W = WWWw.
 SUBST:   - = wwwW-
 COLOUR:  w- = green
 COLOUR:  W = lightgreen
-ITEM:    potion of ambrosia / potion of heal wounds / \
-         potion of augmentation w:2 / \
-         potion of flight w:14 / \
-         any scroll w:7 / any armour w:2 / any weapon w:2
-NSUBST:  d = 1:*
+KFEAT: Z = scroll shop / distillery shop / distillery shop
+NSUBST:  d = 1:Z
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xwwwxwwwwwww---xWWWx---wwwwww----WWxWWWx  ccc

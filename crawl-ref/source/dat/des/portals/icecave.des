@@ -223,7 +223,7 @@ end
 
 # Entries ##########################################
 # Not actually used, but useful for reference.
-default-depth: D:11-, Lair, Orc, Swamp, Shoals, Snake, Spider
+default-depth: D:11-, Orc, Swamp, Shoals, Snake, Spider
 
 # "Easy" ice cave entrances (D, Lair, Orc).
 NAME:   portal_ice_cave_entry_pillars_1
@@ -255,7 +255,7 @@ ENDMAP
 
 NAME:   portal_ice_cave_entry_imps
 TAGS:   patrolling no_monster_gen transparent
-DEPTH:  D:11-, Lair, Orc
+DEPTH:  D:11-, Orc
 : ice_cave_portal(_G)
 MONS:   white imp
 MAP
@@ -268,7 +268,7 @@ ENDMAP
 
 NAME:   portal_ice_cave_entry_ice_beasts
 TAGS:   patrolling no_monster_gen transparent
-DEPTH:  D:11-, Lair, Orc
+DEPTH:  D:11-, Orc
 : ice_cave_portal(_G)
 MONS:   ice beast
 MAP
@@ -281,7 +281,7 @@ ENDMAP
 
 NAME:   portal_ice_cave_entry_animals_and_master
 TAGS:   patrolling no_monster_gen no_trap_gen
-DEPTH:  D:11-, Lair:4-, Orc
+DEPTH:  D:11-, Orc
 WEIGHT: 6
 : ice_cave_portal(_G)
 MONS:   wolf, yak, polar bear, rime drake, ice dragon
@@ -300,7 +300,7 @@ ENDMAP
 
 NAME:   portal_ice_cave_demonic_guard
 TAGS:   patrolling no_monster_gen no_trap_gen
-DEPTH:  D:11-, Lair, Orc
+DEPTH:  D:11-, Orc
 : ice_cave_portal(_G)
 MONS:   ice devil
 MAP
@@ -318,7 +318,7 @@ ENDMAP
 
 NAME:   portal_ice_cave_rime
 TAGS:   patrolling no_monster_gen no_pool_fixup
-DEPTH:  D:11-, Lair, Orc
+DEPTH:  D:11-, Orc
 : ice_cave_portal(_G)
 MONS:   rime drake
 MAP
@@ -336,7 +336,7 @@ ENDMAP
 # Hard ice cave entrances (Elf, Swamp, Shoals, Snake, Spider).
 NAME:   portal_ice_cave_entry_pillars_three
 TAGS:   transparent
-DEPTH:  Elf, Swamp, Shoals, Snake, Spider
+DEPTH:  Swamp, Shoals, Snake, Spider
 : ice_cave_portal(_G)
 MAP
    ...
@@ -350,7 +350,7 @@ ENDMAP
 
 NAME:   portal_ice_cave_entry_pillars_four
 TAGS:   transparent
-DEPTH:  Elf, Swamp, Shoals, Snake, Spider
+DEPTH:  Swamp, Shoals, Snake, Spider
 WEIGHT: 6
 : ice_cave_portal(_G)
 MAP
@@ -367,7 +367,7 @@ ENDMAP
 
 NAME:   portal_ice_cave_entry_horrid_things
 TAGS:   patrolling no_monster_gen
-DEPTH:  Elf, Snake
+DEPTH:  Snake
 WEIGHT: 6
 : ice_cave_portal(_G)
 MONS:   ice beast, freezing wraith, azure jelly
@@ -386,7 +386,7 @@ ENDMAP
 
 NAME:   portal_ice_cave_entry_ice_statue_one
 TAGS:   no_pool_fixup
-DEPTH:  Elf, Swamp, Shoals, Snake, Spider
+DEPTH:  Swamp, Shoals, Snake, Spider
 : ice_cave_portal(_G)
 MONS:   ice statue
 KFEAT:  ^ = known web trap
@@ -410,7 +410,7 @@ xxXX+XXxx
 ENDMAP
 
 NAME:   portal_ice_cave_entry_ice_statue_two
-DEPTH:  Elf, Swamp, Snake, Shoals, Spider
+DEPTH:  Swamp, Snake, Shoals, Spider
 WEIGHT: 6
 : ice_cave_portal(_G)
 MONS:   ice statue, patrolling ice dragon
@@ -451,7 +451,7 @@ ENDMAP
 NAME:   portal_ice_cave_entry_frozen_things
 TAGS:   no_monster_gen
 WEIGHT: 6
-DEPTH:  Elf, Swamp, Shoals, Snake, Spider
+DEPTH:  Swamp, Shoals, Snake, Spider
 MONS:   freezing wraith, azure jelly
 SUBST:  2 = 12.
 : ice_cave_portal(_G)
@@ -470,7 +470,7 @@ ENDMAP
 
 NAME:     portal_ice_cave_entry_ugly_swarm
 TAGS:     no_monster_gen no_item_gen transparent
-DEPTH:    Elf, Swamp, Shoals, Snake, Spider
+DEPTH:    Swamp, Shoals, Snake, Spider
 WEIGHT:   2
 MONS:     white ugly thing, white very ugly thing
 SHUFFLE:  ABC
@@ -538,24 +538,9 @@ MONS:    polar bear w:3 generate_awake / wolf generate_awake / \
 MONS:    polar bear, rime drake
 MONS:    frost giant
 MONS:    ice statue
-ITEM:    giant club / great mace w:9 / \
-         battleaxe w:7 / glaive w:8 / halberd w:8 / double sword w:6 / \
-         nothing w:58
-ITEM:    great mace good_item / battleaxe good_item / glaive good_item / \
-         halberd good_item / double sword good_item / nothing w:50
-: ice_cave_item_attributes(_G)
-: item("battleaxe " .. freezeweap .. " / glaive " .. freezeweap ..
-:   " / halberd " .. freezeweap .. " / double sword " .. freezeweap ..
-:   " / battleaxe " .. goodfreezeweap .. " / glaive " .. goodfreezeweap ..
-:   " / halberd " .. goodfreezeweap .. " / double sword " .. goodfreezeweap ..
-:   " / nothing w:80")
-: item("cloak " .. coldres .. " w:15 / hat good_item " ..
-:   " / shield " .. coldres ..  " / large shield " .. coldres ..
-:   " / nothing w:60")
-ITEM:    potion of resistance w:5 / potion of mutation q:2 w:5 / \
-         potion of augmentation / potion of flight / \
-         potion of heal wounds w:5 / any potion w:1
-SHUFFLE: defg
+KFEAT: Z = armour shop / weapon shop / jewellery shop
+KFEAT: Y = distillery shop / book shop
+SHUFFLE: ZY
 NSUBST:  3 = 2 = 3 6:3 / *:3
 MAP
                   xxxxx        xxxxxxxx
@@ -564,8 +549,8 @@ MAP
       xxxx......1..xxxx...x313.xxxxxxx...1xxxx
      xx.......1..1.xxxxxx....xxxxxxxxxxxx31..xxx
    xxx...xxxx.5.1....xxxxxxxxxxxxxwwwxxxxxx....xxx
-  xx...xxxfgxx.1..1...xxxxxxxxxxwwwwwxxxxxxxx....xxx
-  x...xxdegefxx..1.....xxxxxwwwwwwwwwwwwwxxxxxx....x
+  xx...xxxfZxx.1..1...xxxxxxxxxxwwwwwxxxxxxxx....xxx
+  x...xxdegeYxx..1.....xxxxxwwwwwwwwwwwwwxxxxxx....x
   x...x$$$$gdex.......xxxxxwwwwwwwwwwwwwwwwwxxxxx..x
   x...x....$$xx.....xxxxwwwwxxwwwwwwwwwwwwxxxxxx11xx
   xx.......xxx.....xxwwwwxxxxxxxxxwwwwwwxxxxx...3xx
@@ -618,6 +603,9 @@ MONS:    ice dragon, ice statue
 ITEM:    any jewellery
 ITEM:    any jewellery good_item
 NSUBST:  d = 1:d / * = d $:15 .:5, e = 1:e / * = e $:5 .:5
+KFEAT: Z = armour shop / weapon shop / jewellery shop
+KFEAT: Y = distillery shop / book shop
+SHUFFLE: ZY
 MAP
                          xxxxxxxx
                       xxxx......xxxx
@@ -625,8 +613,8 @@ MAP
                      x...xx.xxx...4..xxx
                    xxxxx..xxx$$.4....dexx
                   xx...xx.xx$$$$....deddx
-                  xx.x....x$$$$$$..deddxx
-                 xx..xxx.xxxx$$$$$$$xx''x
+                  xx.x....xY$$$$$..deddxx
+                 xx..xxx.xxxxZ$$$$$$xx''x
               xxxx11xxxxxxwxxxxxxxxxxwx'x
            xxxx...1xxwwwwwwwwwwwwwwwwwwwxx
          xxx......xxwwwwwwwwwwwwwwwwwwwwwxx
@@ -683,13 +671,9 @@ MONS:    freezing wraith
 : savage_simulacrum(_G)
 : mons(savage_ice)
 MONS:    ice statue
-ITEM:    wand of iceblast ident:type, ring of ice / staff of cold
-ITEM:    book of ice / book of frost / randbook disc:ice numspells:6 w:2
-ITEM:    manual of ice magic
-: item("cloak " .. coldres .. " w:15 / pair of gloves good_item " ..
-:   " / hat good_item / naga barding " .. coldres .. " w:5 " ..
-:   " / naga barding " .. coldres .. " w:5 / buckler " .. coldres .. " w:5")
-SHUFFLE: fg
+KFEAT: Z = armour shop / weapon shop / jewellery shop
+KFEAT: Y = distillery shop / book shop
+SHUFFLE: ZY
 KPROP:   l = no_tele_into
 MAP
                           xxxxxx
@@ -702,14 +686,14 @@ MAP
    xx.G...G.xxwwxx...3xxxx..xx     xxxxx
 xxxx.........xwwx....xxxxx...xxx xxx...xxxx
 xdx....2_424.xwwx..xxxxxxxx....xxx...2....xx
-x*+.....44..2xxwx...xxxxxxxx.......2.1.2...xx
+xZ+.....44..2xxwx...xxxxxxxx.......2.1.2...xx
 xdx....423.342xwxx.3.xxxxxxxxxx...1.....1...x
 xxxx..4...324xxwwxxx3..xxxxxxxxx............x
    xxxG4.2G...xxwwwxxx...xxxxwwxx2........2xx
      xxxxxx....xxxxxxxx....xxxwwxx1x....x1xx
           xxx...xx.xxxxxx....xxwwxxxx..xxxx
    xxxxxxxx....xx...xxxxxxx...xxwwxxx..x
-   xlmh.xxx..xxx..x..xxxxxxxx..xwwxx..xx
+   xY...xxx..xxx..x..xxxxxxxx..xwwxx..xx
    xxxx+xxxx.....xxx.....xxx..xxwxx..xx
   xx444544xxx...xxxxx........xxxwwx...xx
  xx.444444.xxxxxxxxx..3..3...xxwwwxx...xx
@@ -772,27 +756,9 @@ SUBST:   2 = .:5 2:12, 0 = 21, ` = .
 SHUFFLE: dg, efh
 SUBST:   e = ed
 SUBST:   ` = .
-: ice_cave_item_attributes(_G)
-: item("battleaxe " .. freezeweap .. " / executioner's axe " .. freezeweap ..
-:   " / glaive " .. freezeweap .. " / bardiche " .. freezeweap ..
-:   " / quick blade " .. freezeweap .. " / double sword " .. freezeweap ..
-:   " / triple sword " .. freezeweap .. " / giant club " .. freezeweap ..
-:   " / demon trident " .. freezeweap)
-: item("battleaxe " .. goodfreezeweap .. " / executioner's axe " .. goodfreezeweap ..
-:   " / glaive " .. goodfreezeweap .. " / halberd " .. goodfreezeweap ..
-:   " / double sword " .. goodfreezeweap .. " / quick blade " .. goodfreezeweap ..
-:   " / triple sword " .. goodfreezeweap .. " / demon trident " .. goodfreezeweap ..
-:   " / giant club " .. goodfreezeweap)
-ITEM: demon whip good_item / demon blade good_item / demon trident good_item
-: item("cloak " .. coldres .. " / hat good_item / pair of gloves good_item / " ..
-:   " / pair of boots good_item / buckler " .. coldres)
-: item("crystal plate armour " .. coldres ..
-:   " / troll leather armour " .. coldres ..
-:   " / ice dragon scales good_item / robe ego:resistance ident:type / " ..
-:   " / naga barding " .. goodcoldres .. " w:5" ..
-:   " / naga barding " .. goodcoldres .. " w:5" ..
-:   " / crystal plate armour " .. goodcoldres ..
-:   " / troll leather armour " .. goodcoldres)
+KFEAT: Z = armour shop / weapon shop / jewellery shop
+KFEAT: Y = distillery shop / book shop
+SHUFFLE: ZY
 MAP
                     xxxxxx
                   xxx....xxx
@@ -821,7 +787,7 @@ xx............xxxxwwwwwwxxx...xx
  x---A---xxwwwccccc.R.R.ccccc
  x-------xwwwwc...ccc.ccc...c
  xx--<--xxwwwwc.e...`4`...f.c
-  xx---xxwwwwwc...cc*|*cc...c
+  xx---xxwwwwwc...ccZ|Ycc...c
    xxxxxxxwwwxccccccccccccccc
          xxxxx
 ENDMAP
@@ -856,6 +822,9 @@ KMONS:  3 = necromancer
 KITEM:  34 = nothing
 KITEM:  d` = nothing
 KFEAT:  ' = known alarm trap / floor w:40
+KFEAT: Z = armour shop / weapon shop / jewellery shop
+KFEAT: Y = distillery shop / book shop
+SHUFFLE: ZY
 : ice_cave_appearance(_G)
 : ice_cave_random_monster_list_undead_demon(_G)
 MAP
@@ -901,7 +870,7 @@ c...............c
 ccccS.ccccc.Scccc
    cc.cd3dc.cc
     c.c`U`c.c
-    c.cdddc.c
+    c.cZdYc.c
     c.cc+cc.c
     c.'''''.c
     ccccScccc
@@ -940,8 +909,10 @@ SUBST: _ = w
 : ice_cave_caverns_natural_giant_monster_set(_G)
 : ice_cave_caverns_natural_giant_loot(_G)
 : end
-ITEM: any wand / any potion w:5 / any scroll w:5
 SUBST: ` = .
+KFEAT: Z = armour shop / weapon shop / jewellery shop
+KFEAT: Y = distillery shop / book shop
+SHUFFLE: ZY
 MAP
    xxx         xxxx        xxx
  xxx.xx       xx-'xx       xwxxx  xxx xxxx      xxxxxxxxxx      xxx
@@ -963,9 +934,9 @@ xx..xwwwwxxxx....xxxx5.xxxwxx_xx...xxxxxwwwxxxx.1.5xxxxx.x.xxx..xxx
  x...xxwwwxx..'xxxxwxx15.5xxwwx__xxx51xxxxwwxxxxxx5.41.xxxx..xxx454xx
  xx..-xxxxx..xxxwxwwwxxx5.1xxwwxx_--x1xxxxxwwwxxxxxx.5..x...xxx5`7`5x
   x...-xx-..xxxwxwwxxwxx-x1.xxwwxx'''xxxxxxwwwwxxxxxxx'...xxxxxx5.5xxx
-  x...x--xx..1xxxxxwxx--x-..'xxwx'x'xxxxxwxxwwwwxxxx*.xxxxx.xxx..xxx|x
+  x...x--xx..1xxxxxwxx--x-..'xxwx'x'xxxxxwxxwwwwxxxx*.xxxxx.xxx..xxxZx
   x222x''x''x..xx1xxx----xxxx'xx'''xxxxwxxxwwwwwwxxxx*xxxx.<.xxx.$defx
-  xx'.'xx'xx1.x.1...2xxxxx  xx'''xxxxwxxwwxwwwwwwwwxxx--........x|fedx
+  xx'.'xx'xx1.x.1...2xxxxx  xx'''xxxxwxxwwxwwwwwwwwxxx--........x|feYx
    xxxxxxxxxxxxxxxxxxx       xx'xx xwxwwwxwwwwwxwxxx xxxxxx.xxxxxxxxxx
                               xxx  xxxxxxxxxxxxxxx        xxx
 ENDMAP
@@ -1008,6 +979,9 @@ SUBST: '=x , -=.
 : else
 SUBST: '=. , -=x
 : end
+KFEAT: Z = armour shop / weapon shop / jewellery shop
+KFEAT: Y = distillery shop / book shop
+SHUFFLE: ZY
 : ice_cave_appearance(_G)
 MAP
  xxxxxxxxxx xxxxxxxxxxxxxxxxxxxxx xxxxxxxxx    xxxxxxxx    xxxxxxxx
@@ -1028,9 +1002,9 @@ x$x..x.!..xx..xxx..xwwwwxx--xxxx-xx;1;xxxwwwwwwxxxxx;;;;xxx
 xx.xx;x;;xxx..xx...xxwwwwxx1;xxxx.;;xxxxxwwwwwwxxxxxx;2;2;xx
 xxxxxx;;xxxx...xx.3.xxwwxx'-;1x'''xxxxxwwwwwwwwxxxxxx;54;2;xx
    xx;;xxxx...xxxx...xxxx;;x;;''xxxxxxwwwwwwwxxxx$$x;2475;;;xx
-   x5;5xx...xxxx.x.xxxxx..;x;xxxxxxwwwwwwwwxxxxdf$$;;;;``;xx;xxx
+   x5;5xx...xxxx.x.xxxxx..;x;xxxxxxwwwwwwwwxxxxZf$$;;;;``;xx;xxx
    x;;xx;..xxwwxx|x.xx...xx;xx xxwwwwwwwwwwwxxed|$$$;;;xxxxxx..xxxxx
-   x122;;.xxwwwwxx....xxxxxxx  xwwwwwwwwwwwwwxxfe|$$$$.x    xxx....xxx
+   x122;;.xxwwwwxx....xxxxxxx  xwwwwwwwwwwwwwxxYe|$$$$.x    xxx....xxx
    xx1;;xxxwwwwwxxxxxxx        xxwwwwwwwwwwwwwxxxxxxxxxx      xxx...<x
     xxxxx xxxxxxx               xxxxxxxxxxxxxxx                 xxxxxx
 ENDMAP
@@ -1074,6 +1048,9 @@ SUBST: '=x , -=.
 : else
 SUBST: '=. , -=x
 : end
+KFEAT: Z = armour shop / weapon shop / jewellery shop
+KFEAT: Y = distillery shop / book shop
+SHUFFLE: ZY
 : ice_cave_appearance(_G)
 MAP
                                  xxxxx
@@ -1088,9 +1065,9 @@ MAP
                xxxxxxxwwwxx."xxxwwwwwxwwxwwwxxxxxxx....xxxx
              xxx;...xxxwwwxx..xxxwwwwwwwwwwxx<..!x...xx.xfxx
            xxx;;;xx...xxxwwxx..xxxxwwwwwwwwxxxx....xxxxxex|x
-          xx;44x;xxxx...xxwx..xxxxxxwwxwxwwwwxxxxxxx  xdx$xdx
+          xx;44x;xxxx...xxwx..xxxxxxwwxwxwwwwxxxxxxx  xdx$xZx
          xx;4;xxx$xxxx;;;xwxx"..xxxxxwwwwwxwwwxx      xx|xexx
-         x;;;xxx$xxx;;;xxxwwxxx..xxxwwwxxwwwwxwx       xxfxx
+         x;;;xxx$xxx;;;xxxwwxxx..xxxwwwxxwwwwxwx       xxYxx
          xx;;..xxxx5;xxxwwwwxx...xxxxxwwwwwwwxxx        xxx
         xx.x.xxxxx51;5xxwwwwxxxx..xxxxxwwxxxxx
        xx;;;xxxxxxx15;5xxwwxxx'''".xxxxwwxxx
@@ -1147,12 +1124,15 @@ KFEAT:  M = teleporter
 TILE:   M = dngn_teleporter_ice_cave
 FTILE:  m = floor_pebble_lightblue
 KPROP:  -24!|m_| = no_tele_into
+KFEAT: Z = armour shop / weapon shop / jewellery shop
+KFEAT: Y = distillery shop / book shop
+SHUFFLE: ZY
 SUBST:  m- = .
 SUBST:  _ = <
 : ice_cave_appearance(_G)
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxccccccccccccccccccccccccc
-xxx...GMG...xxxxxxxxxxxccccccccccccc---!-!---ccc
+xxx...GMG...xxxxxxxxxxxccccccccccccc---Z-Y---ccc
 xx...%.%.%...xxxxxxxxxxcccccccccccc---G-|-G---cc
 xx....*.*....xxxxxxxxxxcccccccccccc----!-!----cc
 x......*......xxxxxxxxxccccccccccc------!------c
@@ -1174,19 +1154,18 @@ ORIENT: encompass
 MONS:   ice beast, white ugly thing, ice statue, white very ugly thing
 : cruel_simulacrum(_G)
 : mons(cruel_ice)
-ITEM:   battleaxe ego:freezing good_item ident:type / book of frost w:5 / \
-        book of ice w:5 / ice dragon scales
-ITEM:   executioner's axe ego:freezing good_item ident:type / \
-        book of ice w:5 / manual of ice magic w:5 / ice dragon scales randart
 : if dgn.persist.ice_cave_hard then
 SUBST:  ! = 3, 2 = 4, ? = d
+KFEAT: Z = armour shop / weapon shop / jewellery shop
+KFEAT: Y = distillery shop / book shop
+SHUFFLE: ZY
 : else
 SUBST:  !5 = ., ? = e
 : end
 : ice_cave_appearance(_G)
 MAP
 ccccccccccc
-c|*..?..*|c
+cAZ..?..YAc
 c*.......*c
 c%.......%c
 c.........c

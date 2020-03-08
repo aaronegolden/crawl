@@ -513,57 +513,6 @@ ENDMAP
 default-depth: Volcano
 
 ###############################################################################
-# "Forgotten grotto Temple"
-#
-# In the bowels of a volcano, some renegade priests of
-# makhleb/trog/vehumet have built a temple, which has
-# since been forgotten... the temple guardians still remain
-# and are ready to fight to the death.
-NAME:       volcano_grotto
-WEIGHT:     50
-ORIENT:     encompass
-TAGS:       no_item_gen no_monster_gen
-SUBVAULT:   B : volcano_grotto_subvault
-KMONS:      l = lava snake w:2 / fire bat w:1 / nothing w:117
-KFEAT:      l = l
-:           volcano_setup(_G)
-:           place_tiny_volcano(_G)
-MAP
-                                    BBBBBBBBBBB
-                                    BBBBBBBBBBB
-                                    BBBBBBBBBBB
-                                    BBBBBBBBBBB
-                         xxxx       BBBBBBBBBBB
-                    xxxxxxyyxxxx    BBBBBBBBBBB
-                 xxxxy......yyyxx   BBBBBBBBBBB
-              xxxxyyy.LLLLL....yxxx BBBBBBBBBBB
-            xxxyyy...LlllllL.....GxxBBBBBBBBBBB
-          xxxyy....LLlllllllL......BBBBBBBBBBBB
-        xxxyy....LLlllllllllL....GxxBBBBBBBBBBB
-       xxyy.....LllllllllllllL..yxx BBBBBBBBBBB
-      xxy......LlllllllllllllL..yxxxBBBBBBBBBBB
-     xxy......LlllllllllllllllL..yyxBBBBBBBBBBB
-    xxy.....LllllllllllllllllllL..yyBBBBBBBBBBB
-   xxy.....LllllllllllllllllllllL...BBBBBBBBBBB
-  xxy....LllllllllllVlllllllllllL...BBBBBBBBBBB
-  xy....LlllllllllllllllllllllLL...yBBBBBBBBBBB
-  xxy....LlllllllllllllllllllL....yxBBBBBBBBBBB
-   xy.....LlllllllllllllllllLL...yxx
-   xy.y...LllllllllllllllllLL...yxx
-   xxyxy...LllllllllllllllL...yyx
-    xxxxy...LllllllllllllL...yxxx
-       xxy...LL....LlllllL..yxx
-        xxy....xxx..LlllL...yx
-         xy.yxxx<xxy.LLL...yxx
-         xx.xx....xxx.....yxx
-          x.xxx.....xxy....yx
-          xx..xxxAxx.xxy..yxx
-           xxx..xxx.xxxx..xx
-             xxx.x.xx  xxxx
-               x...x
-               xxxxx
-ENDMAP
-
 ###############################################################################
 # "Volcano tomb"
 #
@@ -617,6 +566,9 @@ MONS:    lindwurm skeleton w:5 / manticore skeleton / hell hound skeleton
 :        volcano_setup(_G)
 SHUFFLE: 12K
 KFEAT:   JK = l
+KFEAT:   Z = armour shop / weapon shop / jewellery shop
+KFEAT:   V = any shop
+SHUFFLE: ZV
 MARKER:  J = lua:fog_machine { size = 3, pow_min = 7, pow_max = 7, delay = 80, \
                                start_clouds = 1, cloud_type = "flame", excl_rad = -1 }
 MARKER:  K = lua:fog_machine { size = 3, pow_min = 7, pow_max = 7, delay = 80, \
@@ -624,7 +576,7 @@ MARKER:  K = lua:fog_machine { size = 3, pow_min = 7, pow_max = 7, delay = 80, \
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxyyxxx
-xxxxxxxxxxxxxxxxxxy.y..Lxx
+xxxxxxxxxxxxxxxxxxy.y.VLxx
 xxxxxxxxxcccccccxy.y.4Lllx
 xxxxxxxxxc..Y..cy.xxxLlllx
 cxxxxxxccc.....+.xxxxxllJx
@@ -635,7 +587,7 @@ cxxxxxxccc.....cxxxxxxxxxx
 xxxxxxxc1c..Y..cxxxxxxxxxx
 xxxxxxcc+ccccc+ccxvvvvvvxx
 xxxxccc.........ccv$defvxx
-xxxxc2+.lllllll.+4+ge$fvxx
+xxxxc2+.lllllll.+4+ge$Zvxx
 xxxxccc.........ccv$defvxx
 xxxxxxcc+ccccc+ccxvvvvvvxx
 xxxxxxxc1cxxxcKcxxxxxxxxxx
@@ -657,6 +609,9 @@ MONS:    troll skeleton / ogre skeleton / spriggan skeleton / centaur skeleton /
 MONS:    two-headed ogre skeleton / manticore skeleton / \
          two-headed ogre skeleton / minotaur skeleton / sphinx skeleton w:5
 KMONS:   4 = guardian mummy / Menkaure w:5, guardian mummy
+KFEAT:   Z = armour shop / weapon shop / jewellery shop
+KFEAT:   V = any shop
+SHUFFLE: ZV
 #        Loot: 21 gold, 10 items.
 :        volcano_setup(_G)
 MAP
@@ -664,7 +619,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxcccccxxxxxxxxxxxxxxxxx
 xxxxc...cxxxxxxxxxxxxxxxxx
 xxxcc.<.cccxxxccccvvvvvxxx
-xccc......ccccc..$X$$$vxxx
+xccc......ccccc..$X$$Zvxxx
 cc1.........3....$X$$$vxxx
 cccc.c2.c.ccccc..$X...vxxx
 ...+...2..cxxxccccvv+vvxxx
@@ -675,7 +630,7 @@ xxxcc.cc.ccddeccYvvvv+vxxx
 xxxxc3cc3c1eeg+!.+4Yttvvvx
 xxccc.cc.cccccccYvvvtt+1vx
 xxc...cc...c...c..3v+vvvvx
-xxc...cc...c...+.1.vffvxxx
+xxc...cc...c...+.1.vfVvxxx
 xxc$$$cc$$$+$$$c3..+fgvxxx
 xxcccccccccccccccccvvvvxxx
 ENDMAP
@@ -698,6 +653,9 @@ NSUBST:     Y = 8:3 / 6:J / *:.
 SUBST:      X = lx
 KPROP:      l = no_cloud_gen
 COLOUR:     m = blue
+KFEAT:      Z = armour shop / weapon shop / jewellery shop
+KFEAT:      Y = any shop
+SHUFFLE:    ZY
 TAGS:       no_item_gen no_monster_gen
 :           volcano_setup(_G)
 MARKER:     J = lua:fog_machine { size = 3, pow_min = 7, pow_max = 7, delay = 80, \
@@ -711,7 +669,7 @@ MAP
      xxKlllllKxx
     xxllLLLLLllxx
    xxXl.d$$ef.lXxx
-  xxy...$f<g$...yxx
+  xxy...Zf<gY...yxx
    xxy..g$de$..yxx
     xxy..yyy..yxx
      xxx+mxm+xxxx
@@ -771,6 +729,9 @@ MONS:       toenail golem
 :           set_feature_name("clear_rock_wall", "glass window")
 KFEAT:      K = w
 KFEAT:      h = W
+KFEAT:      Z = armour shop / weapon shop / jewellery shop
+KFEAT:      Y = any shop
+SHUFFLE:    ZY
 MARKER:     K = lua:fog_machine ( { cloud_type = "rain", walk_dist=3, pow_max=2, \
                                     delay=250, size=3 } )
 KPROP:      lVK = no_tele_into
@@ -778,7 +739,7 @@ MAP
       xxxx                  vvvvvvvvvvvvv
    xxxxllxxx xxx            v...........v
  xxxlllllllxxxlxxx          v.vvvvvvvvv.v
-xxlllVlllllllllllxxxx       v.v22$e$$fv.v
+xxlllVlllllllllllxxxx       v.vY2$e$2Zv.v
  xxlllllllllllllllllxxx     v.v$$egddgv.v
 xxllllllllllllllllllllxx    v.+ggdf$$3v.v
  xxllllllllvmvmvmvmvmvvvvvvvvvvvvvvvvvv.v
@@ -797,67 +758,6 @@ xxllllllllllllllllllllxx    v.+ggdf$$3v.v
           xxxllllllllxxx        xxxllxx
             xxxlllllxx            xxxx
               xxxxxxxx
-ENDMAP
-
-###############################################################################
-
-###############################################################################
-# Let's go, Overflow!
-#
-# You don't have much time to get the loot, as the Volcano is spitting out lava
-# like there's no tomorrow! Of course, if you can fly, you've got a good chance
-# of getting everything. If you get stuck, you can just wait it out.
-#
-# Original idea by dpeg.
-NAME:       volcano_overflow
-WEIGHT:     20
-ORIENT:     encompass
-TAGS:       no_item_gen no_monster_gen no_rotate
-MONS:       gargoyle / fire elemental / fire vortex w:5
-MONS:       efreet / molten gargoyle
-{{
--- So we know what to convert.
-lua_marker("A", portal_desc { lava_phase=2 })
-lua_marker("B", portal_desc { lava_phase=4 })
-lua_marker("C", portal_desc { lava_phase=6 })
-
--- And finally, let's convert it
-local sink_marker = TriggerableFunction:new {
-  func = "volcano_overflow_convert_lava",
-  repeated = true,
-  data = {lava_phase=0}
-}
-
-sink_marker:add_triggerer(DgnTriggerer:new {
-  type="turn",
-  delay_min=200,
-  delay_max=400, })
-
-lua_marker("M", sink_marker)
-}}
-SUBST:      M = c
-NSUBST:     ABC = 6:d / 6:e / 6:f / 6:g / 6:h / *:.
-NSUBST:     1 = 1:2 / *:1
-:           volcano_setup(_G)
-MAP
-                xxxx         xxx xxx                   xxx
-        xxxxx  xx..xxx     xxx.xxx.xxxx xxxxx xxx     xx.xx
-       xx...xxxx.CC..xxx xxx..C.1.C...xxxx..xxx.xxx xxx.C.xx
-     xxx.CBB....CBBCC..xxx..CCBBCCBBCB....CC...C..xxx..CBC.xx
-   xxx..CBABCCCCBAABBB......BBAABBBABBBCCCCBCCBBCC...CCBBBC.xx
- xxx..CBAAlABBBBAllAAABBBBBBAAllAAAlAAABBBBBBBBBBBCCCBAABC.xx
-xx.1CBAAllllAAAAllllllAAAAAAlllllllllllAAABBC...CBBAAlABC.xx
- xx..CBAlllllllllllllllllllllllllllllllllABC.xxx..CBAllBC.xx
-  xxx.CBAlllllllllllllllllAAAlllllllllllABC.xxAxxx.CBlllBC.xx
-    xx.CBAlllAAllllllllAAABBBAAAlllllllABC.xx<...xx.CBAllBC.xx
-     xx.CBAlABBAllllllABCC...CCBAlllllllABC.xxx...xx.CAllABC.x
-      x.CBAABCCBAllllABCC.xxx.CBBAllllllABBC..x......CBllAAB.xx
-    xxx.CBAB...CBAAAABC..xx xx.CCBAllllAAABC.xx...xx.CBAAABC.xx
-   xx..CBB..xxx..CBBBC1xxx   xx..CBAAAABBC......xxx.CCBBBC.1xx
-   x..CC..xxx xxx..C..xx      xxx..CBBBC..xxxxxxx xx..CC..xxx
-   xxx..xxx     xxx.xxx    M    xxx..C..xxx        xxx..xxx
-     xxxx         xxx             xxx.xxx            xxxx
-                                    xxx
 ENDMAP
 
 ###############################################################################
@@ -888,18 +788,21 @@ MONS: salamander
 MONS: ogre w:5 / two-headed ogre w:5 / steam dragon w:5 / wyvern / crocodile /\
       fire bat
 MONS: patrolling fire bat band
+KFEAT: Z = armour shop / weapon shop / jewellery shop
+KFEAT: Y = any shop
+SHUFFLE: ZY
 : dgn.delayed_decay(_G, 'C', 'human skeleton')
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxllllllllxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxllllllllllllxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxlllll.g.t.<.tllxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxlllll.g.t.<Ztllxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxllllll..t.$..$.g.llxxxxxxxxxxxxxx
 xxxxxxxxxxxxxlllMlll.t$.gp.t.p.t.lxxxxxxxxxxxxxx
 xxxxxxxxxxxxlllllllt.g.$..g$.g..tllxxxxxxxxxxxxx
 xxxxxxxxxxxllllllllt.gt.3.1.p.t..lllxxxxxxxxxxxx
 xxxxxxxxxxlllllJllltp..p.....$...lllxxxxxxxxxxxx
-xxxxxxxxxlllKllllllt.......3...t.llxxxxxdCexxxxx
+xxxxxxxxxlllKllllllt.......3...t.llxxxxxdCYxxxxx
 xxxxxxxxlllllllllllttp...tttttt.llxxxxxxxf4xxxxx
 xxxxxxxxllllllllMlllttt..tt.ptttlxxxxxxxxx.xxxxx
 xxxxxxxlllMllllllllllltt....ttlllxxxxxxxx..xxxxx

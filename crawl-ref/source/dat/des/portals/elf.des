@@ -344,6 +344,7 @@ KMONS:   A = deep elf master archer
 KFEAT:   A = |
 KMONS:   B = deep elf blademaster
 KFEAT:   B = |
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT:   > = exit_elven_halls
 KFEAT:   Q = stone_arch
 MAP
@@ -361,9 +362,9 @@ xc2ccc.c.3.ww..ww.4.ccc...cx
 xc.ccc..3..ww..ww..5......cx
 xc$$$ccc...ww..ww...ccccc.cx
 xc$$$ccc.1.ww..ww.5.ccccc.cx
-xc$$$cccccccc2.cccccc1262.cx
+xcY$$cccccccc2.cccccc1262.cx
 xccc+cccccccc..cccccccccc.cx
-xcB*|*|**|*cc..cc$|$*$|$|.cx
+xcB*|*|**|Ycc..ccY|$*$|$|.cx
 xc**|*|||||cc..cc|$|$*$*$.cx
 xc*|*|||**|cc..cc$*$*$*$|.cx
 xc|**|*|||Acc..ccA$|$|$|$2cx
@@ -397,6 +398,7 @@ PLACE:   Elf:$
 SUBST:   1=11., 2=22., 3=33., 4=44., 5=543, 6=66., 7=77.
 SHUFFLE: 12, 34, 67
 SHUFFLE: A>
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT:   > = exit_elven_halls
 : elf_loot_defenders(_G)
 : elf_loot_randomisation(_G)
@@ -440,9 +442,9 @@ xxxxxxxxxxxxxxxxxxc.cxxxxxxxxxxxxxxxxxx
 xxxxxxxxcccccxxxccc.cccxxxcccccxxxxxxxx
 xxxxxcccc|$*ccccc6...6ccccc*||ccccxxxxx
 xxxccc*|$*|$$|+....U....+|$$|*$*$cccxxx
-xxcc*$$*|$$|$$ccc7...7ccc|*|$$$||*$ccxx
+xxcc*$$*|$$|$$ccc7.Y.7ccc|*|$$$||*$ccxx
 xcc$*|*|*|*|cccxcccccccxccc$*$$*$$$|ccx
-xc|*|$$|*ccccxxxxxxxxxxxxxcccc|*$||$*cx
+xcY*|$$|*ccccxxxxxxxxxxxxxcccc|*$||$Ycx
 xcccccccccxxxxxxxxxxxxxxxxxxxcccccccccx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ENDMAP
@@ -460,6 +462,7 @@ SUBST:   1=1., 2=2., 3=3., 4=4., 5=5.
 : elf_loot_defenders(_G)
 SUBST:   v = v .:2
 SUBST:   v : xvb
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT: > = exit_elven_halls
 : elf_loot_randomisation(_G)
 MAP
@@ -471,8 +474,8 @@ xxxxxcc******$|$|$|$|$|$ccxxxxxx
 xxxxcc**cc+cc|$|$|$|$|$|$ccxxxxx
 xxxcc**cc5..cccc|$|$|$|$|$ccxxxx
 xxxc****cc...2.ccccc$|$|$|$cxxxx
-xxcc*****ccc......3cccccc$|ccxxx
-xxc*****cc6cccc........5cccccxxx
+xxcc*****ccc......3ccccccYYccxxx
+xxc****Ycc6cccc........5cccccxxx
 xcccccccc.....ccccc.5......6ccxx
 xc2........2......cccccc.....cxx
 xc..........4................cxx
@@ -518,12 +521,13 @@ SHUFFLE: 12, 34, 67
 : elf_loot_defenders(_G)
 SUBST:   v = v .:2
 SUBST:   v : xvb
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT:   > = exit_elven_halls
 : elf_loot_randomisation(_G)
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxcccxxxxxxxxxxcccxxxxxxxxxxcccxxxxxx
-xxxxccc*cccxxxxxxccc.cccxxxxxxccc$cccxxxx
+xxxxcccYcccxxxxxxcccYcccxxxxxxcccYcccxxxx
 xxxcc*****ccxxxxcc.....ccxxxxcc|$|$|ccxxx
 xccc**ccc$|cccccc....5..cccccc|$ccc$|cccx
 xc***ccccc$|$c.............c$|$ccccc$|$cx
@@ -584,13 +588,14 @@ PLACE:   Elf:$
 : elf_monsters(_G)
 SUBST:   1=11., 2=22., 3=33., 4=44., 5=543, 6=66., 7=77.
 SHUFFLE: 12, 34, 67
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT: > = exit_elven_halls
 : elf_loot_defenders(_G)
 : elf_loot_randomisation(_G)
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xccccccccccccccccccccccccccccccx
-xccccccccccc4....5..cccccccccccx
+xccccccccccc4..Y.5..cccccccccccx
 xcccccccc..............ccccccccx
 xcccccc......1....3......ccccccx
 xccccc...............5....cccccx
@@ -611,7 +616,7 @@ xc+cccccccccccc..cccccccccccc+cx
 xc$**cc*$cc*$cc..cc$|cc$|cc||$cx
 xc*$*$***$*$**c.4c||$|$|$|||$|cx
 xc**$*$***$*$*c3.c|||$|||$|$||cx
-xcc**cc$*cc$*cc..cc|$cc|$cc|$ccx
+xccY*cc$*cc$*cc..cc|$cc|$cc|Yccx
 xcccccccccccccc..ccccccccccccccx
 xxxxxxxxxxxxxxx..xxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxx..xxxxxxxxxxxxxxx
@@ -638,18 +643,19 @@ PLACE:   Elf:$
 : elf_monsters(_G)
 SUBST:   1=11., 2=22., 3=33., 4=44., 5=543, 6=66., 7=77.
 SHUFFLE: 12, 34, 67
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT:   > = exit_elven_halls
 : elf_loot_defenders(_G)
 : elf_loot_randomisation(_G)
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxcccccccccccxxxxxxxxxxx
-xxxxxxxxxccc*|*|+...1cccxxxxxxxxx
+xxxxxxxxxcccY|*|+...1cccxxxxxxxxx
 xxxxxxxccc*$|*||c.....6cccxxxxxxx
 xxxxxxcc$*|*|cccc........ccxxxxxx
 xxxxxcc*|$|ccc*|c....3....ccxxxxx
 xxxxcc|$*ccc|$*$+......5...ccxxxx
-xxxcc$||cc*$*|$*c..6........ccxxx
+xxxccY||cc*$*|$*c..6........ccxxx
 xxxc|$$cc*$**cccc............cxxx
 xxcc$*cc$**ccc1....3...U.....ccxx
 xxc$||c*|$cc.................2cxx
@@ -657,7 +663,7 @@ xcc*|cc**cc...5bbb7.......4...ccx
 xc$|*c|**c..1bbbbbbb..........2cx
 xc|$cc*|cc..bbbbbbbbb..4.......cx
 xc*|c|**c..6bbbbbbbbb..........cx
-xc|*c$$|c..bbbbbbbbbbb..........x
+xcY*c$$|c..bbbbbbbbbbb..........x
 xc+ccc+cc6.bbbbbbbbbbb...1..3cccx
 xc..1......bbbbbbbbbbb......2cxxx
 xc..........bbbbbbbbb.......ccxxx
@@ -702,6 +708,7 @@ KMONS:   8 = crystal guardian
 SUBST:   1=11., 2=22., 3=33., 4=44., 5=543, 6=66., 7=77., 8=8.
 SHUFFLE: 12, 34, 67
 SUBST:   b : bc
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT:   > = exit_elven_halls
 SHUFFLE: A>
 : elf_loot_defenders(_G)
@@ -709,7 +716,7 @@ SHUFFLE: A>
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxcccccccccccccccccccccccccxxxxx
-xxxxxc$*|$$$|*$$*$$*$|$|$|$*$cxxxxx
+xxxxxc$*|$$$|*$$*Y$*$|$|$|$*$cxxxxx
 xxxxcc+cc|*$$*$$$$|$$$|$*$cc+ccxxxx
 xxxcc8.8ccccccccccccccccccc8.8ccxxx
 xccc8.......4.......6......4..8cccx
@@ -718,7 +725,7 @@ xc*c8..4.......2..4.....1.....8c*cx
 xc|cc5....................2...cc*cx
 xc$$cccc......5.......7...5cccc$|cx
 xc*|$*|cc..2.......2......cc|*||$cx
-xc|*$|$*c.........2.....5.c*$$|**cx
+xc|*$|Y*c.........2.....5.c*Y$|**cx
 xc*|**|cc.....1...........cc$|*|$cx
 xc$*cccc........1....3.....cccc||cx
 xc$cc4.....bb1........bb.4....cc*cx
@@ -755,6 +762,7 @@ PLACE:   Elf:$
 : elf_monsters(_G)
 SUBST:   1=11., 2=22., 3=33., 4=44., 5=543, 6=66., 7=77.
 SHUFFLE: 12, 34, 67
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT: > = exit_elven_halls
 SHUFFLE: A>
 : elf_loot_defenders(_G)
@@ -762,7 +770,7 @@ SHUFFLE: A>
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxcccccccccccccccccccccccccccccxxxx
-xxxxc$||*$|$$|*$+c2c+*$|*$$$|*||cxxxx
+xxxxcY||*$|$$|*$+c2c+*$|*$$$|*|Ycxxxx
 xxxccc|$|*$*|*|cc4..cc*|*|**|$*cccxxx
 xxcc.cc|*||*|$cc...3.cc*|$|||*cc4ccxx
 xcc...cc||*||cc.......cc*||$|cc...ccx
@@ -774,7 +782,7 @@ xxxxcc.3.....4..bbbbb..........ccxxxx
 xxxxxcc...2......bbb...5...3..ccxxxxx
 xxxxxxcc..........b..........ccxxxxxx
 xxxxxcc....5....4.........7...ccxxxxx
-xxxxcc.2...b.........2...b.....ccxxxx
+xxxxcc.2...b......Y..2...b.....ccxxxx
 xxxcc.....bbb...........bbb.....ccxxx
 xxxc..5..bbbbb.3..6.2..bbbbb...1.cxxx
 xxxcc.....bbb...........bbb...5.ccxxx
@@ -820,6 +828,7 @@ SHUFFLE: st
 SUBST:   s = +, t = c
 SUBST:   U = +c
 KFEAT: Z = stone_arch
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT: > = exit_elven_halls
 : elf_loot_defenders(_G)
 : elf_loot_randomisation(_G)
@@ -829,8 +838,8 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxcccccccccccccxxxxxxxxxxxxx
-xxxxxxxxxxxxxxcccccc$|$|$ccccccxxxxxxxxxxx
-xxxxxxxxxxxcccccccc.|$|$|.ccccccccxxxxxxxx
+xxxxxxxxxxxxxxcccccc$|Y|$ccccccxxxxxxxxxxx
+xxxxxxxxxxxcccccccc$|Y|Y|$ccccccccxxxxxxxx
 xxxxxxxxxccccccccc+.$|*|$.+cccccccccxxxxxx
 xxxxxxxxcc.......7c.|$|$|.c7.......ccxxxxx
 xxxxxxccc.........cc$|$|$cc.........cccxxx
@@ -880,65 +889,6 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ENDMAP
 
-# Before transform: 30x$, 31x*, 26x|, 4x1, 12x2, 12x3, 8x4, 8x5, 2x6, 2x7
-NAME:   grunt_elf_hall_branching
-ORIENT: encompass
-PLACE:   Elf:$
-: elf_setup(_G)
-: elf_monsters(_G)
-SUBST:   1=1., 2=2., 3=3., 4=4., 5=5.
-SHUFFLE: 23, 45, 67
-KFEAT: > = exit_elven_halls
-: elf_loot_defenders(_G)
-: elf_loot_randomisation(_G)
-MAP
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxcccccccccxxxxxxxxxxx
-xxxxxxxxxxcc$|*|*|$ccxxxxxxxxxx
-xxxxxxxxxxc$|*|*|*|$cxxxxxxxxxx
-xxxxxxxxxxc$.|*|*|.$cxxxxxxxxxx
-xxxxxxxxxxcc+ccccc+ccxxxxxxxxxx
-xxxxxxxxxxc2.3ccc2.3cxxxxxxxxxx
-xxxxxxxxxxc...ccc...cxxxxxxxxxx
-xxccccccxxc...ccc...cxxccccccxx
-xcc|*$$cxxcc.5...4.ccxxc$$*|ccx
-cc|*$*.cxxxc...b...cxxxc.*$*|cc
-c|*|cc+cxxxcc..b..ccxxxc+cc|*|c
-c*$cc3.ccccxc.4b5.cxcccc.2cc$*c
-c$*c261.5.cccc...cccc.4.173c*$c
-c$.+...4U....c.2.c....U5...+.$c
-ccccccc...5..3...3..4...ccccccc
-c..............b..............c
-@.bbb.2..3..2.bbb.2..2..3.bbb.@
-c..............b..............c
-ccccccc...4..3...3..5...ccccccc
-c$.+...5U....c.2.c....U4...+.$c
-c$*c371.4.cccc...cccc.5.162c*$c
-c*$cc2.ccccxxc.b.cxxcccc.3cc$*c
-c|*|cc+cxxxxxc.b.cxxxxxc+cc|*|c
-cc|*$*.cxxxxxc.b.cxxxxxc.*$*|cc
-xcc|*$$cxxxxxc...cxxxxxc$$*|ccx
-xxccccccxxxxxcc.ccxxxxxccccccxx
-xxxxxxxxxxxxxxx.xxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxx.xxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxx.xxxxxxxxxxxxxxx
-xxxxx...xxxxxxx.xxxxxx...xxxxxx
-xxxxx.A.xxxxxxx.xxxxxx.A.xxxxxx
-xxxxx...xxxxxxx.xxxxxx...xxxxxx
-xxxxx...xxxxxxx.xxxxxx...xxxxxx
-xxxxx....................xxxxxx
-xxxxx..........>.........xxxxxx
-xxxxx....................xxxxxx
-xxxxx...xxxxxxxxxxxxxx...xxxxxx
-xxxxx...xxxxxxxxxxxxxx...xxxxxx
-xxxxx.A.xxxxxxxxxxxxxx.A.xxxxxx
-xxxxx...xxxxxxxxxxxxxx...xxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-ENDMAP
-
 # Before randomisation: 27x$, 27x*, 28x|, 4x1, 12x2, 12x3, 8x4, 8x5, 2x6, 2x7
 NAME:   grunt_elf_hall_asides
 ORIENT: encompass
@@ -949,6 +899,7 @@ SUBST:   1=1., 2=2., 3=3., 4=4., 5=5.
 SHUFFLE: 23, 45, 67
 SHUFFLE: AB, CD, EFGH, IJKL, MNOP
 SUBST:   ACEFIJ = ., BDGH = c, KLP = b, MNO = $
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT: > = exit_elven_halls
 KFEAT: Q = stone_arch
 : elf_loot_defenders(_G)
@@ -958,7 +909,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxcccccxxxxxxxxxxx
-xxxxxxxxcc|*|ccxxxxxxxxxx
+xxxxxxxxccYYYccxxxxxxxxxx
 xxxxxxxcc|*|*|ccxxxxxxxxx
 xxxxxxccO*|*|*Pccxxxxxxxx
 xxxxxccOOO*|*PPPccxxxxxxx
@@ -1015,6 +966,7 @@ SHUFFLE: 12, 34, 67
 : elf_loot_defenders(_G)
 SUBST:   v = v .:2
 SUBST:   v : xvb
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT: > = exit_elven_halls
 : elf_loot_randomisation(_G)
 MAP
@@ -1036,7 +988,7 @@ xc....c..3.bbbbbb....cc......5.cx.xxx
 xc.5.cc....bbbbbb.....ccc......c...xx
 xc...c......bbbb..2.....cccc.....t.xx
 xc...c................6...7ccccc...xx
-xc.1.c......1...4..bbbb..U.+||*cx.xxx
+xc.1.c......1...4..bbbb..U.+||Ycx.xxx
 xc...ccccc........bbbbbb.3.c**|cx.xxx
 xc.......cccc..3..bbbbbb...c|*|cx.xxx
 xc...5.4....ccc...bbbbbb...c**|cx.xxx
@@ -1045,10 +997,10 @@ xcc..vvv.......c.6.bbbb...c||*ccx.xxx
 xxc...vvvv.2...cc........cc**|cxx.xxx
 xxc....vvvvv....c.U...4.cc||*|cxx.xxx
 xxcc.....vvvv...c..3.7ccc***|ccxx.xxx
-xxxc..5....vvv..cc+cccc|*||**cxxx.xxx
+xxxc..5....vvv..cc+cccc|*||Y*cxxx.xxx
 xxxcc.......v....c**||**|*|*ccxxx.xxx
 xxxxccc..1....3..c|**|*|||cccxxxx.xxx
-xxxxxxcccc.......c|||*|ccccxxxxxx.xxx
+xxxxxxcccc.......cY||*|ccccxxxxxx.xxx
 xxxxxxxxxccccccc.cccccccxxxxx.....xxx
 xxxxxxxxxxxxxxx...xxxxxxxxxxx..A...xx
 xxxxxxxxxxxxxx..t...............>..xx
@@ -1066,6 +1018,7 @@ PLACE:   Elf:$
 : elf_monsters(_G)
 SUBST:   1=11., 2=22., 3=33., 4=44., 5=543, 6=66., 7=77.
 SHUFFLE: 12, 34, 67
+KFEAT: Y = jewellery shop / book shop / any shop
 KFEAT: > = exit_elven_halls
 : elf_loot_defenders(_G)
 SUBST:   v = v .:2
@@ -1074,7 +1027,7 @@ SUBST:   v : xvb
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxcccccccccxxxxxxxxxxxxx
-xxxxxxxxxxcccc|*|*|*|ccccxxxxxxxxxx
+xxxxxxxxxxcccc|*|Y|*|ccccxxxxxxxxxx
 xxxxxxxxxxc|*|*|*v*|*|*|cxxxxxxxxxx
 xxxxccccccc*|v|*|*|*|v|*cccccccxxxx
 xxxxc$|$+3cc*|*cc+cc*|*cc4+$$|cxxxx
@@ -1086,7 +1039,7 @@ xxcc$*$c5.vvvvv..U..vvvvv.5c$$|ccxx
 xxc|$|cc..3v2..3...4..1v4..cc$$$cxx
 xxc$v*c4.....4..1.2..3.....3c*v$cxx
 xcc*$$c..ccc7.ccccccc.6ccc..c$$|ccx
-xc$$|cc....cccc3...4cccc....cc$$$cx
+xcY$|cc....cccc3...4cccc....cc$$Ycx
 xccccc6.....................7cccccx
 xxxxxccc1......v.5.v......2cccxxxxx
 xxxxxxxcccc.............ccccxxxxxxx

@@ -66,7 +66,7 @@ end
 }}
 
 # Basic bailey entries ##########################################
-default-depth: D:7-14
+default-depth: Crypt
 
 
 
@@ -237,53 +237,6 @@ ENDMAP
 #        #
 ##########
 
-############################################################################
-# Fourteen circles.  (I'm very creative.)
-#
-# Loot consists of good scrolls or books.
-#
-NAME:    bailey_polearm_3
-ORIENT:  encompass
-WEIGHT:  5
-TAGS:    bailey_polearm no_rotate
-SHUFFLE: DF/EG
-SUBST:   D : d, E = 1.., F : 2, G : .
-NSUBST:  d = 3:d / *:$
-ITEM:    scroll of enchant armour q:2 / scroll of enchant weapon q:3 /\
-         scroll of silence q:3 /\
-         scroll of fog q:3 / scroll of vulnerability q:3 /\
-         scroll of summoning q:3 / scroll of immolation q:3 /\
-         any good_item book w:30 /\
-         book of annihilations w:1 / grand grimoire w:1 / necronomicon w:1
-MONS:    deep elf mage
-MONS:    deep elf knight / deep elf archer
-: bailey_setup(_G)
-MAP
-         ccccc
-    cccccc...cccccc
-   cc..cc..A..cc..cc
-   c.1..c.....c..1.c
-   c....cc...cc....c
-   cc..cc+cccccc..cc
- cccccc...ccc...cc+ccc
-ccEEcc.....c.....cc..cc
-c.EE.c..<..c.....c....c
-c.EE.c.....c.1...c..F.c
-cc..ccc....c....ccc..cc
-ccc+ccccccc+ccccccc+ccc
-cc..ccc....c....ccc..cc
-c.G..c...1.c.1...c.DD.c
-c....c.....c.....c.DD.c
-cc..cc.....c.....ccDDcc
- ccc+cc...ccc...cccccc
-   cc..ccccc+ccc..cc
-   c....cc...cc....c
-   c.1..c.....c..1.c
-   cc..cc..<..cc..cc
-    cccccc...cccccc
-         ccccc
-ENDMAP
-
 #6 good items and two gold piles for murdering a bunch of gnolls
 NAME:   bailey_polearm_gnolls_kennysheep
 ORIENT: encompass
@@ -295,13 +248,14 @@ MONS:   hound
 ITEM:   any good_item
 FTILE:  4't = floor_grass
 KFEAT:  ' = floor
+KFEAT:  s = antique weapon shop / antique armour shop
 NSUBST: _ = 12:1 / *:.
 : bailey_setup(_G)
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxx
 xtttttttttttttttttttttttttx
 xttttwwwwwwwwwwwwwwwwwttttx
-xtttww'''''''''''''''wwtttx
+xtttww'''''''s'''''''wwtttx
 xtttw'''''''''''''''''wtttx
 xtttw''ccccc_3_ccccc''wtttx
 xtttw'cc___c___c___cc'wtttx

@@ -5449,6 +5449,22 @@ static void _stock_shop_item(int j, shop_type shop_type_,
     shop.stock.push_back(item);
 }
 
+static bool _shop_type_is_useless(shop_type type)
+{
+    switch(type)
+    {
+        case SHOP_BOOK:
+            return (you.species == SP_GNOLL || you.species == SP_KOBOLD)
+                        && you_worship(GOD_TROG);
+        case SHOP_DISTILLERY:
+            return you.species == SP_MUMMY;
+        case SHOP_EVOKABLES:
+            return you.get_mutation_level(MUT_NO_ARTIFICE);
+        default:
+            return false;
+    }
+}
+
 /**
  * Attempt to place a shop in a given location.
  *
@@ -5473,7 +5489,7 @@ void place_spec_shop(const coord_def& where, shop_spec &spec, int shop_level)
     shop.shop_suffix_name = spec.suffix;
     shop.level = level_number * 2;
     shop.type = spec.sh_type;
-    if (shop.type == SHOP_RANDOM)
+    if (shop.type == SHOP_RANDOM || _shop_type_is_useless(shop.type))
     {
         shop.type = SHOP_GENERAL;
 	}
@@ -5513,13 +5529,13 @@ object_class_type item_in_shop(shop_type shop_type)
     {
         return random_choose_weighted(1, OBJ_WEAPONS,
                                       2, OBJ_ARMOUR,
-                                      2, OBJ_BOOKS,
+                                      _shop_type_is_useless(SHOP_BOOK) ? 0 : 2, OBJ_BOOKS,
                                       2, OBJ_JEWELLERY,
                                       1, OBJ_MISSILES,
-                                      2, OBJ_POTIONS,
+                                      _shop_type_is_useless(SHOP_DISTILLERY) ? 0 : 2, OBJ_POTIONS,
                                       2, OBJ_SCROLLS,
-                                      2, OBJ_WANDS,
-                                      1, OBJ_MISCELLANY);
+                                      _shop_type_is_useless(SHOP_EVOKABLES) ? 0 : 2, OBJ_WANDS,
+                                      _shop_type_is_useless(SHOP_EVOKABLES) ? 0 : 1, OBJ_MISCELLANY);
     }
 
     case SHOP_JEWELLERY:
