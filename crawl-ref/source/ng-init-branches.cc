@@ -48,6 +48,9 @@ FixedVector<level_id, NUM_BRANCHES> create_brentry()
 
 bool skip_branch_brentry(branch_iterator branch_iter)
 {
+    // Removed branches by setting branch mindepth to 100.
+    const int BRANCH_REMOVED=100;
     return branch_is_unfinished(branch_iter->id)
-            || branch_iter->parent_branch == NUM_BRANCHES;
+            || branch_iter->parent_branch == NUM_BRANCHES
+            || branch_iter->mindepth >= BRANCH_REMOVED;
 }
