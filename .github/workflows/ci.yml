@@ -17,6 +17,71 @@ jobs:
       - name: Checkwhite
         run: util/checkwhite -n
         working-directory: crawl-ref/source
+
+  codecov_catch2:
+    name: Catch2 (GCC/Linux) + Codecov
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set fake version
+        run: echo "1.0.0" > util/release_ver
+        working-directory: crawl-ref/source
+      - name: Install dependencies
+        run: ./deps.py --coverage
+        working-directory: .github/workflows
+      - name: Add ccache to PATH
+        run: echo "::add-path::/usr/lib/ccache"
+      - name: Cache compilation
+        uses: actions/cache@v1
+        with:
+          path: /home/runner/.ccache
+          key: ccache-catch2
+          restore-keys: |
+            ccache-catch2
+      # ccache uses ~110mb to store the output from a single crawl compile
+      # (including submodules) (when compressed)
+      - name: Configure ccache
+        run: |
+          mkdir -p ~/.ccache
+          cat >~/.ccache/ccache.conf <<EOF
+          compression = true
+          compression_level = 9
+          log_file = /tmp/ccache.log
+          max_size = 150M
+          EOF
+      - name: Display ccache configuration
+        run: |
+          ccache -s
+          ls -l /usr/lib/ccache
+      - run: make -j$(nproc) catch2-tests
+        working-directory: crawl-ref/source
+      - name: Print ccache stats
+        run: ccache -s
+      - name: Generate LCOV data
+        working-directory: crawl-ref/source
+        run: >
+          lcov
+          --capture
+          --directory .
+          --output-file ../../coverage.info
+          --ignore-errors source
+          --rc lcov_branch_coverage=1
+      - name: Remove unimportant files from coverage
+        working-directory: crawl-ref/source
+        run: |
+          mv ../../coverage.info ../../coverage.info.old
+          lcov --remove ../../coverage.info.old \
+            'crawl-ref/source/catch2-tests/*' \
+            --rc lcov_branch_coverage=1 \
+            -o ../../coverage.info
+      - name: Send coverage data to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.info
+          flags: catch2
+          fail_ci_if_error: false
+
   build_linux:
     name: "${{ matrix.compiler }} ${{ matrix.build_opts }} ${{ matrix.debug }}"
     runs-on: ubuntu-latest
@@ -169,66 +234,3 @@ jobs:
         working-directory: crawl-ref/source
       - name: Print ccache stats
         run: ccache -s
-  codecov_catch2:
-    name: Catch2 (GCC/Linux) + Codecov
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set fake version
-        run: echo "1.0.0" > util/release_ver
-        working-directory: crawl-ref/source
-      - name: Install dependencies
-        run: ./deps.py --coverage
-        working-directory: .github/workflows
-      - name: Add ccache to PATH
-        run: echo "::add-path::/usr/lib/ccache"
-      - name: Cache compilation
-        uses: actions/cache@v1
-        with:
-          path: /home/runner/.ccache
-          key: ccache-catch2
-          restore-keys: |
-            ccache-catch2
-      # ccache uses ~110mb to store the output from a single crawl compile
-      # (including submodules) (when compressed)
-      - name: Configure ccache
-        run: |
-          mkdir -p ~/.ccache
-          cat >~/.ccache/ccache.conf <<EOF
-          compression = true
-          compression_level = 9
-          log_file = /tmp/ccache.log
-          max_size = 150M
-          EOF
-      - name: Display ccache configuration
-        run: |
-          ccache -s
-          ls -l /usr/lib/ccache
-      - run: make -j$(nproc) catch2-tests
-        working-directory: crawl-ref/source
-      - name: Print ccache stats
-        run: ccache -s
-      - name: Generate LCOV data
-        working-directory: crawl-ref/source
-        run: >
-          lcov
-          --capture
-          --directory .
-          --output-file ../../coverage.info
-          --ignore-errors source
-          --rc lcov_branch_coverage=1
-      - name: Remove unimportant files from coverage
-        working-directory: crawl-ref/source
-        run: |
-          mv ../../coverage.info ../../coverage.info.old
-          lcov --remove ../../coverage.info.old \
-            'crawl-ref/source/catch2-tests/*' \
-            --rc lcov_branch_coverage=1 \
-            -o ../../coverage.info
-      - name: Send coverage data to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.info
-          flags: catch2
-          fail_ci_if_error: false
