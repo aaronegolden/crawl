@@ -427,9 +427,7 @@ void banished(const string &who, const int power)
 
     // Xom just might decide to interfere.
     if (you_worship(GOD_XOM) && who != "Xom" && who != "wizard command")
-    {
         xom_maybe_reverts_banishment(false, false);
-    }
 }
 
 void push_features_to_abyss()
