@@ -1247,6 +1247,8 @@ int acquirement_create_item(object_class_type class_wanted,
         }
         else if (class_wanted == OBJ_MISSILES && !divine)
             acq_item.quantity *= 5;
+        else if (class_wanted == OBJ_SCROLLS || class_wanted == OBJ_POTIONS)
+            acq_item.quantity = quant + 1 + random2(3);
         else if (quant > 1)
             acq_item.quantity = quant;
 
