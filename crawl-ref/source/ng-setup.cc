@@ -304,6 +304,9 @@ static void _give_items_skills(const newgame_def& ng)
         if (!you_worship(GOD_XOM))
             you.piety_max[you.religion] = you.piety;
     }
+    
+    //finally, give everyone a scroll of teleportation
+    newgame_make_item(OBJ_SCROLLS, SCR_TELEPORTATION);
 }
 
 static void _give_starting_food()
