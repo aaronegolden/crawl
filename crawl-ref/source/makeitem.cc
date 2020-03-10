@@ -219,24 +219,17 @@ static bool _try_make_weapon_artefact(item_def& item, int force_type,
         // Make a randart or unrandart.
 
         // 1 in 20 randarts are unrandarts.
-        if (one_chance_in(item_level == ISPEC_GOOD_ITEM ? 7 : 20)
+        if (one_chance_in(item_level == ISPEC_GOOD_ITEM ? 15 : 20)
             && !force_randart)
         {
             if (_try_make_item_unrand(item, force_type, agent))
                 return true;
         }
 
-        // Mean enchantment +6.
-        item.plus = 12 - biased_random2(7,2) - biased_random2(7,2) - biased_random2(7,2);
+        int absdepth = env.absdepth0;
 
-        bool cursed = false;
-        if (one_chance_in(5))
-        {
-            cursed = true;
-            item.plus = 3 - random2(6);
-        }
-        else if (item.plus < 0 && !one_chance_in(3))
-            cursed = true;
+        item.plus = 12 - random2(8 - div_rand_round(absdepth,6)) 
+                       - random2(8 - div_rand_round(absdepth,6)) - random2(3);
 
         // On weapons, an enchantment of less than 0 is never viable.
         item.plus = max(static_cast<int>(item.plus), random2(2));
@@ -244,11 +237,6 @@ static bool _try_make_weapon_artefact(item_def& item, int force_type,
         // The rest are normal randarts.
         make_item_randart(item);
 
-        if (cursed)
-            do_curse_item(item);
-
-        if (get_weapon_brand(item) == SPWPN_HOLY_WRATH)
-            item.flags &= (~ISFLAG_CURSED);
         return true;
     }
 
@@ -706,7 +694,7 @@ static bool _try_make_armour_artefact(item_def& item, int force_type,
         // Make a randart or unrandart.
 
         // 1 in 20 randarts are unrandarts.
-        if (one_chance_in(item_level == ISPEC_GOOD_ITEM ? 7 : 20)
+        if (one_chance_in(item_level == ISPEC_GOOD_ITEM ? 15 : 20)
             && !force_randart)
         {
             if (_try_make_item_unrand(item, force_type, agent))
@@ -721,26 +709,15 @@ static bool _try_make_armour_artefact(item_def& item, int force_type,
             item.sub_type = ARM_NAGA_BARDING;
         }
 
-        // Determine enchantment and cursedness.
-        if (one_chance_in(5))
-        {
-            do_curse_item(item);
-            item.plus = 0;
-        }
-        else
-        {
-            int max_plus = armour_max_enchant(item);
-            item.plus = random2(max_plus + 1);
+        int absdepth = env.absdepth0;
+        int max_plus = armour_max_enchant(item);
+        item.plus = random2(max_plus + 1);
 
-            if (one_chance_in(5))
-                item.plus += random2(max_plus + 6) / 2;
+        if (one_chance_in(10 - div_rand_round(absdepth, 6)))
+            item.plus += random2(max_plus + 6) / 2;
 
-            if (one_chance_in(6))
-                item.plus -= random2(max_plus + 6);
-
-            if (item.plus < 0 && !one_chance_in(3))
-                do_curse_item(item);
-        }
+        if (one_chance_in(3 + div_rand_round(absdepth, 6)))
+            item.plus -= random2(max_plus + 1);
 
         // On body armour, an enchantment of less than 0 is never viable.
         if (get_armour_slot(item) == EQ_BODY_ARMOUR)

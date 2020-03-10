@@ -347,7 +347,7 @@ static skill_type _acquirement_weapon_skill(bool divine)
 static int _acquirement_weapon_subtype(bool divine, int & /*quantity*/)
 {
     const skill_type skill = _acquirement_weapon_skill(divine);
-
+    
     int best_sk = 0;
     for (int i = SK_FIRST_WEAPON; i <= SK_LAST_WEAPON; i++)
         best_sk = max(best_sk, _skill_rdiv((skill_type)i));
@@ -370,6 +370,8 @@ static int _acquirement_weapon_subtype(bool divine, int & /*quantity*/)
     // At XL 10, weapons of the handedness you want get weight *2, those of
     // opposite handedness 1/2, assuming your shields usage is respectively
     // 0% or 100% in the above formula. At skill 25 that's *3.5 .
+    
+    int absdepth = env.absdepth0;
     for (int i = 0; i < NUM_WEAPONS; ++i)
     {
         const int wskill = item_attack_skill(OBJ_WEAPONS, i);
@@ -389,7 +391,8 @@ static int _acquirement_weapon_subtype(bool divine, int & /*quantity*/)
             continue;
 
         // For non-Trog/Okawaru acquirements, give a boost to high-end items.
-        if (!divine && !is_range_weapon(item_considered))
+        // chance of receiving this boost increases with absdepth.
+        if (!divine && !is_range_weapon(item_considered) && x_chance_in_y(absdepth, 25))
         {
             if (acqweight < 500)
                 acqweight = 500;
