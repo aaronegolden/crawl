@@ -2048,7 +2048,7 @@ static spret_type _do_cast(spell_type spell, int powc,
         return cast_controlled_blink(fail);
 
     case SPELL_CONJURE_FLAME:
-        return conjure_flame(&you, powc, beam.target, fail);
+        return conjure_flame(powc, fail);
 
     case SPELL_PASSWALL:
         return cast_passwall(spd.delta, powc, fail);

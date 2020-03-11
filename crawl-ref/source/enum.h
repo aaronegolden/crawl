@@ -1019,6 +1019,7 @@ enum cloud_type
     CLOUD_SALT,
     CLOUD_GOLD_DUST,
     CLOUD_FLAME,
+    CLOUD_EMBERS,
     NUM_CLOUD_TYPES,
 
     // Random per-square.

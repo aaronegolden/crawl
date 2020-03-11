@@ -293,6 +293,11 @@ static const cloud_data clouds[] = {
       ETC_FIRE,                                   // colour
       { TILE_CLOUD_FLAME, CTVARY_DUR },           // tile
     },
+    // CLOUD_EMBERS,
+    { "smoldering embers", "embers",
+        ETC_SMOKE,
+        { TILE_CLOUD_BLACK_SMOKE, CTVARY_NONE },
+    },
 
 };
 COMPILE_CHECK(ARRAYSZ(clouds) == NUM_CLOUD_TYPES);
@@ -488,6 +493,36 @@ static void _cloud_interacts_with_terrain(const cloud_struct &cloud)
 }
 
 /**
+ * Convert timing out embers to conjured flames.
+ *
+ * @param cloud     The cloud in question.
+ * @return          Whether a flame cloud has been created.
+ */
+static bool _handle_conjure_flame(const cloud_struct &cloud)
+{
+    if (cloud.type != CLOUD_EMBERS)
+        return false;
+
+    if (you.pos() == cloud.pos)
+    {
+        mpr("You smother the flame.");
+        return false;
+    }
+    else if (monster_at(cloud.pos))
+    {
+        mprf("%s smothers the flame.",
+             monster_at(cloud.pos)->name(DESC_THE).c_str());
+        return false;
+    }
+    else
+    {
+        mpr("The fire ignites!");
+        place_cloud(CLOUD_FIRE, cloud.pos, you.props["cflame_dur"], &you);
+        return true;
+    }
+}
+
+/**
  * How fast should a given cloud fade away this turn?
  *
  * @param cloud_idx     The cloud in question.
@@ -548,7 +583,7 @@ static void _dissipate_cloud(cloud_struct& cloud)
     }
 
     // Check for total dissipation and handle accordingly.
-    if (cloud.decay < 1)
+    if (cloud.decay < 1 && !_handle_conjure_flame(cloud))
         delete_cloud(cloud.pos);
 }
 
@@ -1407,6 +1442,10 @@ bool is_damaging_cloud(cloud_type type, bool accept_temp_resistances, bool yours
 static bool _mons_avoids_cloud(const monster* mons, const cloud_struct& cloud,
                                bool extra_careful)
 {
+    // Friendlies avoid snuffing the player's conjured flames
+    if (mons->attitude == ATT_FRIENDLY && cloud.type == CLOUD_EMBERS)
+        return true;
+    
     // clouds you're immune to are inherently safe.
     if (actor_cloud_immune(mons, cloud))
         return false;

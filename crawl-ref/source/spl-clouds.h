@@ -5,8 +5,7 @@
 
 struct bolt;
 
-spret_type conjure_flame(const actor *agent, int pow, const coord_def& where,
-                         bool fail);
+spret_type conjure_flame(int pow, bool fail);
 
 void big_cloud(cloud_type cl_type, const actor *agent, const coord_def& where,
                int pow, int size, int spread_rate = -1);
