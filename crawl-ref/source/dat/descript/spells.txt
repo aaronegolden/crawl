@@ -422,6 +422,13 @@ Gives the caster the ability to instantaneously release a fireball at a later
 time. Knowing this spell allows the learner to memorise Fireball for no
 additional spell levels.
 %%%%
+Detonate spell
+
+With a snap of the fingers, the caster creates a fiery explosion centered on
+a random hostile monster within their sight. The explosion is big enough to
+harm adjacent creatures, including the caster or their allies, so a bit of 
+caution is advised.
+%%%%
 Dig spell
 
 Digs a tunnel through unworked rock.

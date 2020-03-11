@@ -1448,7 +1448,7 @@ bool vehumet_supports_spell(spell_type spell)
         || spell == SPELL_OLGREBS_TOXIC_RADIANCE
         || spell == SPELL_VIOLENT_UNRAVELLING
         || spell == SPELL_IGNITION
-        || spell == SPELL_FIREBALL
+        || spell == SPELL_DETONATE
         || spell == SPELL_CONJURE_FLAME      
         || spell == SPELL_BOLT_OF_FIRE
         || spell == SPELL_FREEZING_CLOUD

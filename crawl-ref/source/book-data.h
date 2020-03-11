@@ -27,7 +27,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SEARING_RAY,
     SPELL_CONJURE_FLAME,
     SPELL_STICKY_FLAME,
-    SPELL_FIREBALL,
+    SPELL_DETONATE,
 },
 
 {   // Book of Frost
@@ -49,7 +49,7 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Fire
     SPELL_IGNITE_POISON,
-    SPELL_FIREBALL,
+    SPELL_DETONATE,
     SPELL_BOLT_OF_FIRE,
     SPELL_RING_OF_FLAMES,
     SPELL_IGNITION,

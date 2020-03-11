@@ -4954,6 +4954,7 @@ enum spell_type : int
     SPELL_SHOOT_ARROW,
     SPELL_THROW_BOULDER,
     SPELL_FOXFIRE,
+    SPELL_DETONATE,
     NUM_SPELLS
 };
 

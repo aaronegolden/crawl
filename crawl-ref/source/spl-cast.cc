@@ -1172,9 +1172,6 @@ static unique_ptr<targetter> _spell_targetter(spell_type spell, int pow,
 {
     switch (spell)
     {
-    case SPELL_FIREBALL:
-        return make_unique<targetter_beam>(&you, range, ZAP_FIREBALL, pow,
-                                          1, 1);
     case SPELL_ICEBLAST:
         return make_unique<targetter_beam>(&you, range, ZAP_ICEBLAST, pow,
                                           1, 1);
@@ -2049,6 +2046,9 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     case SPELL_CONJURE_FLAME:
         return conjure_flame(powc, fail);
+        
+    case SPELL_DETONATE:
+        return random_fireball(powc, fail);
 
     case SPELL_PASSWALL:
         return cast_passwall(spd.delta, powc, fail);

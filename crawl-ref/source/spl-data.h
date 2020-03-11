@@ -58,10 +58,21 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_FIREBALL, "Fireball",
     SPTYP_FIRE,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MONSTER,
     5,
     200,
     5, 5,
+    5, 0,
+    TILEG_FIREBALL,
+},
+
+{
+    SPELL_DETONATE, "Detonate",
+    SPTYP_FIRE,
+    SPFLAG_NO_GHOST,
+    5,
+    200,
+    -1, -1,
     5, 0,
     TILEG_FIREBALL,
 },

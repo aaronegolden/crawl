@@ -1897,6 +1897,56 @@ static void _ignition_square(const actor *agent, bolt beam, coord_def square, bo
         noisy(spell_effect_noise(SPELL_IGNITION),square);
 }
 
+coord_def random_target_in_range(int radius)
+{
+    targetter_los hitfunc(&you, LOS_NO_TRANS);
+    vector<coord_def> targets;
+    
+    for (actor_near_iterator ai(you.pos(), LOS_NO_TRANS);
+         ai; ++ai)
+    {
+        if (ai->is_monster()
+            && !ai->as_monster()->wont_attack()
+            && !mons_is_firewood(*ai->as_monster())
+            && !mons_is_tentacle_segment(ai->as_monster()->type)
+            && ai->pos().distance_from(you.pos()) <= radius)
+        {
+            targets.push_back(ai->position);
+        }
+    }
+    
+    if (targets.empty())
+        return coord_def(0, 0);
+    
+    return targets[random2(targets.size())];
+}
+
+spret_type random_fireball(int pow, bool fail)
+{
+    fail_check();
+    
+    coord_def target = random_target_in_range(LOS_RADIUS);
+    
+    if (!in_bounds(target))
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        bolt beam_actual;
+        beam_actual.set_agent(&you);
+        beam_actual.flavour       = BEAM_FIRE;
+        beam_actual.real_flavour  = BEAM_FIRE;
+        beam_actual.damage        = calc_dice(3, 10 + pow/2);
+        beam_actual.name          = "fireball";
+        beam_actual.target        = target;
+        beam_actual.colour        = RED;
+        beam_actual.ex_size       = 1;
+        beam_actual.is_explosion  = true;
+        beam_actual.explode();
+    }
+    
+    return SPRET_SUCCESS;
+}
+
 spret_type cast_ignition(const actor *agent, int pow, bool fail)
 {
     ASSERT(agent->is_player());
