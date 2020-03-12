@@ -306,7 +306,11 @@ static void _give_items_skills(const newgame_def& ng)
     }
     
     //finally, give everyone a scroll of teleportation
-    newgame_make_item(OBJ_SCROLLS, SCR_TELEPORTATION);
+    //except formicids, who get a scroll of fear instead
+    if (you.species == SP_FORMICID)
+        newgame_make_item(OBJ_SCROLLS, SCR_FEAR);
+    else 
+        newgame_make_item(OBJ_SCROLLS, SCR_TELEPORTATION);
 }
 
 static void _give_starting_food()
