@@ -5527,15 +5527,15 @@ object_class_type item_in_shop(shop_type shop_type)
     case SHOP_GENERAL:
     case SHOP_GENERAL_ANTIQUE:
     {
-        return random_choose_weighted(1, OBJ_WEAPONS,
-                                      2, OBJ_ARMOUR,
-                                      _shop_type_is_useless(SHOP_BOOK) ? 0 : 2, OBJ_BOOKS,
-                                      2, OBJ_JEWELLERY,
-                                      1, OBJ_MISSILES,
-                                      _shop_type_is_useless(SHOP_DISTILLERY) ? 0 : 2, OBJ_POTIONS,
-                                      2, OBJ_SCROLLS,
-                                      _shop_type_is_useless(SHOP_EVOKABLES) ? 0 : 2, OBJ_WANDS,
-                                      _shop_type_is_useless(SHOP_EVOKABLES) ? 0 : 1, OBJ_MISCELLANY);
+        return random_choose_weighted(2, OBJ_WEAPONS,
+                                      5, OBJ_ARMOUR,
+                                      _shop_type_is_useless(SHOP_BOOK) ? 0 : 4, OBJ_BOOKS,
+                                      4, OBJ_JEWELLERY,
+                                      2, OBJ_MISSILES,
+                                      _shop_type_is_useless(SHOP_DISTILLERY) ? 0 : 4, OBJ_POTIONS,
+                                      4, OBJ_SCROLLS,
+                                      _shop_type_is_useless(SHOP_EVOKABLES) ? 0 : 4, OBJ_WANDS,
+                                      _shop_type_is_useless(SHOP_EVOKABLES) ? 0 : 2, OBJ_MISCELLANY);
     }
 
     case SHOP_JEWELLERY:
