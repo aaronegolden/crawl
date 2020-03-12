@@ -1925,8 +1925,16 @@ spret_type random_fireball(int pow, bool fail)
 {
     fail_check();
     
-    coord_def target = random_target_in_range(LOS_RADIUS);
+    coord_def target = random_target_in_range(5);
     
+    //bias targeting toward closer monsters
+    for(int i = 0; i < 3; i++)
+    {
+        coord_def t = random_target_in_range(5);
+        if(t.distance_from(you.pos()) < target.distance_from(you.pos()))
+            target = t;
+    }
+        
     if (!in_bounds(target))
         canned_msg(MSG_NOTHING_HAPPENS);
     else
