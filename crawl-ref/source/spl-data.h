@@ -702,10 +702,10 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_FREEZE, "Freeze",
     SPTYP_ICE,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NOT_SELF,
+    SPFLAG_NO_GHOST,
     1,
     25,
-    1, 1,
+    -1, -1,
     1, 0,
     TILEG_FREEZE,
 },

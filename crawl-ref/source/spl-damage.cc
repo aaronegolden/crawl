@@ -882,58 +882,56 @@ spret_type vampiric_drain(int pow, monster* mons, bool fail)
     return SPRET_SUCCESS;
 }
 
-spret_type cast_freeze(int pow, monster* mons, bool fail)
+spret_type cast_freeze(int pow, bool fail)
 {
-    pow = min(25, pow);
-
-    if (mons == nullptr || mons->submerged())
-    {
-        fail_check();
-        canned_msg(MSG_NOTHING_CLOSE_ENOUGH);
-        // If there's no monster there, you still pay the costs in
-        // order to prevent locating invisible/submerged monsters.
-        return SPRET_SUCCESS;
-    }
-
-    god_conduct_trigger conducts[3];
-    disable_attack_conducts(conducts);
-
-    const bool abort = stop_attack_prompt(mons, false, you.pos());
-
-	bolt beam;
-    beam.flavour = BEAM_COLD;
-    beam.thrower = KILL_YOU;
-	
-	const int orig_hurted = roll_dice(1, 3 + pow / 3);
-    int hurted = mons_adjust_flavoured(mons, beam, orig_hurted);
-	
-    if (!abort && !fail)
-    {
-        set_attack_conducts(conducts, mons);
-
-        mprf("You freeze %s (%d).", mons->name(DESC_THE).c_str(), hurted);
-
-        behaviour_event(mons, ME_ANNOY, &you);
-    }
-
-    enable_attack_conducts(conducts);
-
-    if (abort)
-    {
-        canned_msg(MSG_OK);
-        return SPRET_ABORT;
-    }
-
     fail_check();
-
-    mons->hurt(&you, hurted);
-
-    if (mons->alive())
+    
+    pow = min(25, pow);
+    
+    coord_def target = random_target_in_range(1);
+    
+    if(!in_bounds(target))
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
     {
-        mons->expose_to_element(BEAM_COLD, orig_hurted);
-        print_wounds(*mons);
-    }
+        monster* mons = monster_at(target);
+        if (mons == nullptr || mons->submerged())
+        {
+            // Just in case
+            canned_msg(MSG_NOTHING_CLOSE_ENOUGH);
+            return SPRET_SUCCESS;
+        }
 
+        god_conduct_trigger conducts[3];
+        disable_attack_conducts(conducts);
+
+        bolt beam;
+        beam.flavour = BEAM_COLD;
+        beam.thrower = KILL_YOU;
+	
+        const int orig_hurted = roll_dice(1, 3 + pow / 3);
+        int hurted = mons_adjust_flavoured(mons, beam, orig_hurted);
+	
+        if (!fail)
+        {
+            set_attack_conducts(conducts, mons);
+
+            mprf("You freeze %s (%d).", mons->name(DESC_THE).c_str(), hurted);
+
+            behaviour_event(mons, ME_ANNOY, &you);
+        }
+
+        enable_attack_conducts(conducts);
+
+        mons->hurt(&you, hurted);
+
+        if (mons->alive())
+        {
+            mons->expose_to_element(BEAM_COLD, orig_hurted);
+            print_wounds(*mons);
+        }
+    }
+    
     return SPRET_SUCCESS;
 }
 

@@ -1819,7 +1819,7 @@ static spret_type _do_cast(spell_type spell, int powc,
                            bool fail)
 {
     const coord_def target = spd.isTarget ? beam.target : you.pos() + spd.delta;
-    if (spell == SPELL_FREEZE || spell == SPELL_VAMPIRIC_DRAINING)
+    if (spell == SPELL_VAMPIRIC_DRAINING)
     {
         if (!adjacent(you.pos(), target))
             return SPRET_ABORT;
@@ -1833,8 +1833,6 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     switch (spell)
     {
-    case SPELL_FREEZE:
-        return cast_freeze(powc, monster_at(target), fail);
         
     case SPELL_FOXFIRE:
         return cast_foxfire(powc, god, fail);
@@ -1883,6 +1881,9 @@ static spret_type _do_cast(spell_type spell, int powc,
         return cast_gravitas(powc, beam.target, fail);
 
     // other effects
+    case SPELL_FREEZE:
+        return cast_freeze(powc, fail);
+   
     case SPELL_DISCHARGE:
         return cast_discharge(powc, fail);
 
