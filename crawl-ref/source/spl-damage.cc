@@ -884,6 +884,11 @@ spret_type vampiric_drain(int pow, monster* mons, bool fail)
 
 spret_type cast_freeze(int pow, bool fail)
 {
+    targetter_radius hitfunc(&you, LOS_NO_TRANS, 1);
+    
+    if (stop_attack_prompt(hitfunc, "freeze", nullptr))
+        return SPRET_ABORT;
+    
     fail_check();
     
     pow = min(25, pow);
@@ -1985,7 +1990,7 @@ static void _ignition_square(const actor *agent, bolt beam, coord_def square, bo
 
 coord_def random_target_in_range(int radius)
 {
-    targetter_los hitfunc(&you, LOS_NO_TRANS);
+    
     vector<coord_def> targets;
     
     for (actor_near_iterator ai(you.pos(), LOS_NO_TRANS);
@@ -2009,6 +2014,11 @@ coord_def random_target_in_range(int radius)
 
 spret_type random_fireball(int pow, bool fail)
 {
+    targetter_radius hitfunc(&you, LOS_NO_TRANS, 5);
+    
+    if (stop_attack_prompt(hitfunc, "detonate", nullptr))
+        return SPRET_ABORT;
+    
     fail_check();
     
     coord_def target = random_target_in_range(5);
