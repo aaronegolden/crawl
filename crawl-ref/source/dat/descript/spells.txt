@@ -692,6 +692,14 @@ by any means of protection, such as armour or resistances. However, certain
 creatures, usually those able to invoke damnation themselves, are entirely
 unscathed by damnation.
 %%%%
+Hailstorm spell
+
+Conjures a cannonade of hail. The peculiarities of the magic involved in
+creating the hail prevent the spell from hitting monsters adjacent to the
+caster. Due to the strong impact and cutting edges a significant portion of its
+damage bypasses cold resistance. However, creatures made of pure ice are
+immune.
+%%%%
 Hurl Damnation spell
 
 <Hurl Damnation ability>

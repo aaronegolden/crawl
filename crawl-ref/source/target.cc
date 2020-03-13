@@ -561,6 +561,46 @@ bool targetter_fragment::set_aim(coord_def a)
     return true;
 }
 
+targetter_radius::targetter_radius(const actor *act, los_type _los,
+                             int ran, int ran_max, int ran_min):
+    range(ran), range_max(ran_max), range_min(ran_min)
+{
+    ASSERT(act);
+    agent = act;
+    origin = aim = act->pos();
+    los = _los;
+    if (!range_max)
+        range_max = range;
+    ASSERT(range_max >= range);
+}
+
+bool targetter_radius::valid_aim(coord_def a)
+{
+    if ((a - origin).rdist() > range_max || (a - origin).rdist() < range_min)
+        return notify_fail("Out of range.");
+    // If this message ever becomes used, please improve it. I did not
+    // bother adding complexity just for monsters and "hit allies" prompts
+    // which don't need it.
+    if (!is_affected(a))
+        return notify_fail("The effect is blocked.");
+    return true;
+}
+
+aff_type targetter_radius::is_affected(coord_def loc)
+{
+    if (loc == aim)
+        return AFF_YES;
+
+    if ((loc - origin).rdist() > range_max || (loc - origin).rdist() < range_min)
+        return AFF_NO;
+
+    if (!cell_see_cell(loc, origin, los))
+        return AFF_NO;
+
+    return AFF_YES;
+}
+
+
 targetter_reach::targetter_reach(const actor* act, reach_type ran) :
     range(ran)
 {

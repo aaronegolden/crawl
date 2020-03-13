@@ -17,7 +17,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SANDBLAST,
     SPELL_SEARING_RAY,
     SPELL_DISCHARGE,
-    SPELL_THROW_ICICLE,
+    SPELL_HAILSTORM,
     SPELL_BATTLESPHERE,
 },
 #endif
@@ -34,7 +34,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_FREEZE,
     SPELL_HIBERNATION,
     SPELL_OZOCUBUS_ARMOUR,
-    SPELL_THROW_ICICLE,
+    SPELL_HAILSTORM,
     SPELL_ENGLACIATION,
 },
 

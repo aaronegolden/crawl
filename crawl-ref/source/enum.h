@@ -4955,6 +4955,7 @@ enum spell_type : int
     SPELL_THROW_BOULDER,
     SPELL_FOXFIRE,
     SPELL_DETONATE,
+    SPELL_HAILSTORM,
     NUM_SPELLS
 };
 

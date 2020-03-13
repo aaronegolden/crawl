@@ -129,6 +129,18 @@ private:
     int pow;
 };
 
+class targetter_radius : public targetter
+{
+public:
+    targetter_radius(const actor *act, los_type los = LOS_DEFAULT,
+                  int ran = LOS_RADIUS, int ran_max = 0, int ran_min = 0);
+    bool valid_aim(coord_def a) override;
+    aff_type is_affected(coord_def loc) override;
+private:
+    los_type los;
+    int range, range_max, range_min;
+};
+
 class targetter_reach : public targetter
 {
 public:

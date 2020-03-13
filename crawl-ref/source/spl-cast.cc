@@ -1883,6 +1883,9 @@ static spret_type _do_cast(spell_type spell, int powc,
     // other effects
     case SPELL_FREEZE:
         return cast_freeze(powc, fail);
+        
+    case SPELL_HAILSTORM:
+        return cast_hailstorm(powc, fail);
    
     case SPELL_DISCHARGE:
         return cast_discharge(powc, fail);
@@ -2354,6 +2357,9 @@ int calc_spell_range(spell_type spell, int power)
  */
 string spell_range_string(spell_type spell)
 {
+    if (spell == SPELL_HAILSTORM)
+        return "@.->"; // Special case: hailstorm is a ring
+    
     const int cap      = spell_power_cap(spell);
     const int range    = calc_spell_range(spell, 0);
     const int maxrange = spell_range(spell, cap);

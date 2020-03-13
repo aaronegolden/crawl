@@ -80,4 +80,5 @@ spret_type random_fireball(int pow, bool fail);
 spret_type cast_ignition(const actor *caster, int pow, bool fail = false);
 
 void foxfire_attack(const monster *foxfire, const actor *target);
+spret_type cast_hailstorm(int pow, bool fail, bool tracer=false);
 #endif

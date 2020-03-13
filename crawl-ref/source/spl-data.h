@@ -1274,7 +1274,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_THROW_ICICLE, "Throw Icicle",
     SPTYP_ICE,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MONSTER,
     4,
     100,
     5, 5,
@@ -3963,6 +3963,17 @@ static const struct spell_desc spelldata[] =
     -1, -1,
     1, 0,
     TILEG_FOXFIRE,
+},
+
+{
+    SPELL_HAILSTORM, "Hailstorm",
+    SPTYP_ICE,
+    SPFLAG_AREA,
+    4,
+    100,
+    3, 3, // Range special-cased in describe-spells
+    4, 0,
+    TILEG_HAILSTORM,
 },
 
 {
