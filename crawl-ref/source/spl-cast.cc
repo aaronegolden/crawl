@@ -1842,6 +1842,9 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     case SPELL_VAMPIRIC_DRAINING:
         return vampiric_drain(powc, monster_at(target), fail);
+        
+    case SPELL_STARBURST:
+        return cast_starburst(powc, fail);
 
     case SPELL_IOOD:
         return cast_iood(&you, powc, &beam, 0, 0, MHITNOT, fail);

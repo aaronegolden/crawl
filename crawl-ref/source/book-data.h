@@ -50,7 +50,7 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Fire
     SPELL_IGNITE_POISON,
     SPELL_DETONATE,
-    SPELL_BOLT_OF_FIRE,
+    SPELL_STARBURST,
     SPELL_RING_OF_FLAMES,
     SPELL_IGNITION,
 },
@@ -259,7 +259,7 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Power
     SPELL_FULMINANT_PRISM,
     SPELL_BATTLESPHERE,
-    SPELL_BOLT_OF_FIRE,
+    SPELL_STARBURST,
     SPELL_OZOCUBUS_REFRIGERATION,
     SPELL_IOOD,
     SPELL_SPELLFORGED_SERVITOR,
@@ -301,7 +301,7 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of the Dragon
     SPELL_SEARING_RAY,
     SPELL_CAUSE_FEAR,
-    SPELL_BOLT_OF_FIRE,
+    SPELL_STARBURST,
     SPELL_DRAGON_FORM,
     SPELL_DRAGON_CALL,
 },

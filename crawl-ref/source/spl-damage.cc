@@ -35,6 +35,7 @@
 #include "mutation.h"
 #include "ouch.h"
 #include "prompt.h"
+#include "random.h"
 #include "shout.h"
 #include "spl-summoning.h"
 #include "spl-util.h"
@@ -3371,6 +3372,65 @@ spret_type cast_scattershot(const actor *caster, int pow, const coord_def &pos,
             continue;
 
         print_wounds(*mons);
+    }
+
+    return SPRET_SUCCESS;
+}
+
+spret_type cast_starburst(int pow, bool fail, bool tracer)
+{
+    int range = spell_range(SPELL_STARBURST, pow);
+
+    vector<coord_def> offsets = { coord_def(range, 0),
+                                coord_def(range, range),
+                                coord_def(0, range),
+                                coord_def(-range, range),
+                                coord_def(-range, 0),
+                                coord_def(-range, -range),
+                                coord_def(0, -range),
+                                coord_def(range, -range) };
+
+    bolt beam;
+    beam.range        = range;
+    beam.source       = you.pos();
+    beam.source_id    = MID_PLAYER;
+    beam.is_tracer    = tracer;
+    beam.is_targeting = tracer;
+    beam.dont_stop_player = true;
+    beam.friend_info.dont_stop = true;
+    beam.foe_info.dont_stop = true;
+    beam.attitude = ATT_FRIENDLY;
+    beam.thrower      = KILL_YOU;
+    beam.origin_spell = SPELL_STARBURST;
+    beam.draw_delay   = 5;
+    zappy(ZAP_BOLT_OF_FIRE, pow, false, beam);
+
+    for (const coord_def & offset : offsets)
+    {
+        beam.target = you.pos() + offset;
+        if (!tracer && !player_tracer(ZAP_BOLT_OF_FIRE, pow, beam))
+            return SPRET_ABORT;
+
+        if (tracer)
+        {
+            beam.fire();
+            // something to hit
+            if (beam.foe_info.count > 0)
+                return SPRET_SUCCESS;
+        }
+    }
+
+    if (tracer)
+        return SPRET_ABORT;
+
+    fail_check();
+
+    // Randomize for nice animations
+    shuffle_array(offsets);
+    for (auto & offset : offsets)
+    {
+        beam.target = you.pos() + offset;
+        beam.fire();
     }
 
     return SPRET_SUCCESS;

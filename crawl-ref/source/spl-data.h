@@ -124,7 +124,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_BOLT_OF_FIRE, "Bolt of Fire",
     SPTYP_FIRE,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MONSTER,
     6,
     200,
     6, 6,
@@ -3974,6 +3974,17 @@ static const struct spell_desc spelldata[] =
     3, 3, // Range special-cased in describe-spells
     4, 0,
     TILEG_HAILSTORM,
+},
+
+{
+    SPELL_STARBURST, "Starburst",
+    SPTYP_FIRE,
+    SPFLAG_AREA,
+    6,
+    200,
+    5, 5,
+    6, 0,
+     TILEG_STARBURST,
 },
 
 {

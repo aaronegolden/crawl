@@ -1317,6 +1317,12 @@ other adjacent creatures, or back to the caster, before eventually grounding
 out. It deals reduced damage when arcing to the caster, and bypasses any armour
 the target may have.
 %%%%
+Starburst spell
+
+Releases penetrating bolts of fire from the caster in every direction.
+The range of each bolt is decreased by one for every creature
+it strikes.
+%%%%
 Statue Form spell
 
 
