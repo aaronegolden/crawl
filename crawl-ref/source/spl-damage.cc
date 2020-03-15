@@ -883,27 +883,40 @@ spret_type vampiric_drain(int pow, monster* mons, bool fail)
     return SPRET_SUCCESS;
 }
 
-spret_type cast_freeze(int pow, bool fail)
+spret_type cast_freeze(int pow, bool fail, bool tracer)
 {
     targetter_radius hitfunc(&you, LOS_NO_TRANS, 1);
     
     if (stop_attack_prompt(hitfunc, "freeze", nullptr))
         return SPRET_ABORT;
     
-    fail_check();
-    
     pow = min(25, pow);
     
     coord_def target = random_target_in_range(1);
     
-    if(!in_bounds(target))
-        canned_msg(MSG_NOTHING_HAPPENS);
-    else
+    if(!in_bounds(target) && tracer)
     {
+        //nothing to hit
+        return SPRET_ABORT;
+    }
+    else
+    {     
+        if(tracer)
+            return SPRET_SUCCESS;
+        
+        if(!in_bounds(target))
+        {
+            canned_msg(MSG_NOTHING_HAPPENS);
+            return SPRET_SUCCESS;
+        }
+        
+        fail_check();
+        
         monster* mons = monster_at(target);
+        
+        //this should not ever happen, but just in case...
         if (mons == nullptr || mons->submerged())
         {
-            // Just in case
             canned_msg(MSG_NOTHING_CLOSE_ENOUGH);
             return SPRET_SUCCESS;
         }
@@ -2013,16 +2026,23 @@ coord_def random_target_in_range(int radius)
     return targets[random2(targets.size())];
 }
 
-spret_type random_fireball(int pow, bool fail)
+spret_type random_fireball(int pow, bool fail, bool tracer)
 {
-    targetter_radius hitfunc(&you, LOS_NO_TRANS, 5);
+    coord_def target = random_target_in_range(5);
     
+    if(tracer)
+    {
+        if(!in_bounds(target))
+            return SPRET_ABORT;
+        else
+            return SPRET_SUCCESS;
+    }
+    
+    targetter_radius hitfunc(&you, LOS_NO_TRANS, 5);
     if (stop_attack_prompt(hitfunc, "detonate", nullptr))
         return SPRET_ABORT;
     
     fail_check();
-    
-    coord_def target = random_target_in_range(5);
     
     //bias targeting toward closer monsters
     for(int i = 0; i < 3; i++)

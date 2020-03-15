@@ -1742,6 +1742,12 @@ bool spell_no_hostile_in_range(spell_type spell)
     case SPELL_STARBURST:
         return cast_starburst(-1, false, true) == SPRET_ABORT;
         
+    case SPELL_FREEZE:
+        return cast_freeze(-1, false, true) == SPRET_ABORT;
+        
+    case SPELL_DETONATE:
+        return random_fireball(-1, false, true) == SPRET_ABORT;
+        
     case SPELL_HAILSTORM:
         return cast_hailstorm(-1, false, true) == SPRET_ABORT;
 
