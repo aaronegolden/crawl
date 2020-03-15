@@ -98,7 +98,7 @@ NAME:   shop_statue
 TAGS:   allow_dup extra shop no_tele_into
 KFEAT:  O = any shop
 MAP
-@G..O..G@
+@G..O...@
 ENDMAP
 
 NAME: nicolae_shop_behind_doors
@@ -124,7 +124,7 @@ TAGS: allow_dup extra shop no_tele_into
 KFEAT: O = any shop
 MAP
    @
-   G
+   .
    .
 @G.O.G@
    .
