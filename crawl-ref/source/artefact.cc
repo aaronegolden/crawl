@@ -841,7 +841,11 @@ static void _get_randart_properties(const item_def &item,
     // If we didn't receive a quality level, figure out how good we want the
     // artefact to be. The default calculation range is 1 to 7.
     if (quality < 1)
+    {
+        if (max_bad_props == 0)
+            quality = 1 + random2(2);
         quality = max(1, binomial(7, 30));
+    }
 
     // then consider adding bad properties. the better the artefact, the more
     // likely we add a bad property, up to a max of 2.
@@ -947,7 +951,7 @@ void setup_unrandart(item_def &item, bool creating)
     item.plus      = unrand->plus;
 }
 
-static bool _init_artefact_properties(item_def &item)
+static bool _init_artefact_properties(item_def &item, bool bad_allowed = true)
 {
     ASSERT(is_artefact(item));
 
@@ -965,7 +969,7 @@ static bool _init_artefact_properties(item_def &item)
 
     artefact_properties_t prop;
     prop.init(0);
-    _get_randart_properties(item, prop);
+    _get_randart_properties(item, prop, 0, bad_allowed ? 2 : 0);
 
     for (int i = 0; i < ART_PROPERTIES; i++)
     {
@@ -1571,12 +1575,56 @@ static void _artefact_setup_prop_vectors(item_def &item)
     }
 }
 
-void anvil_modify_artp(item_def &item)
+static bool _negative_property(int artp, int val)
+{
+    switch(artp)
+    {
+    case ARTP_CORRODE:
+    case ARTP_SLOW:
+    case ARTP_NOISE:
+    case ARTP_PREVENT_SPELLCASTING:
+    case ARTP_PREVENT_TELEPORTATION:
+    case ARTP_CAUSE_TELEPORTATION:
+    case ARTP_ANGRY:
+    case ARTP_DRAIN:
+    case ARTP_CONTAM:
+        return true;
+    default:
+        return false;
+    }
+}
+
+static bool _improvable_property(int artp, int val)
+{
+    switch(artp)
+    {
+    case ARTP_STRENGTH:
+    case ARTP_DEXTERITY:
+    case ARTP_INTELLIGENCE:
+    case ARTP_FIRE_SKILL:
+    case ARTP_ICE_SKILL:
+    case ARTP_EARTH_SKILL:
+    case ARTP_AIR_SKILL:
+    case ARTP_HEX_SKILL:
+    case ARTP_CHARM_SKILL:
+    case ARTP_NECRO_SKILL:
+    case ARTP_SUMMON_SKILL:
+    case ARTP_TLOC_SKILL:
+    case ARTP_TMUT_SKILL:
+    case ARTP_EVOC_SKILL:
+        return val < 9;
+    default:
+        return false;
+    }
+}
+
+//try to modify an artp, returning true if we succeed
+bool anvil_modify_artp(item_def &item)
 {
     if(!is_artefact(item))
     {
         make_item_plain_randart(item);
-        return;
+        return true;
     }
 
     vector<pair<artefact_prop_type, int>> art_prop_weights;
@@ -1591,27 +1639,31 @@ void anvil_modify_artp(item_def &item)
     proprt.init(0);
     artefact_properties(item, proprt);
     
-    int remove_chance = _artefact_num_props(proprt) - (proprt[ARTP_BRAND] != 0 ? 1 : 0);
+    int improve_chance = _artefact_num_props(proprt) - (proprt[ARTP_BRAND] != 0 ? 1 : 0);
     int removed_prop = ARTP_NUM_PROPERTIES;
-    if (x_chance_in_y(remove_chance - 2, 3))
+    if (x_chance_in_y(improve_chance - 2, 3))
     {
-        //remove one property before adding a new one
-        for (int i = ARTP_AC; i < ARTP_NUM_PROPERTIES && remove_chance > 0; ++i)
+        //try to remove a bad property or improve an existing one before adding a new one
+        for (int tries = 0; tries < 500; ++tries)
         {
-            if(proprt[i] != 0)
+            int i = ARTP_NUM_PROPERTIES - random2(ARTP_NUM_PROPERTIES - ARTP_AC) - 1;
+            if(proprt[i] != 0 && _negative_property(i, proprt[i]))
             {
-                if (one_chance_in(remove_chance))
-                {
-                    proprt[i] = 0;
-                    artefact_set_property(item, static_cast<artefact_prop_type>(i), 0);
-                    removed_prop = i;
-                    remove_chance = 0;
-                }
-                else
-                    remove_chance -=1;
+                proprt[i] = 0;
+                artefact_set_property(item, static_cast<artefact_prop_type>(i), 0);
+                return true;
+            }
+            if(proprt[i] != 0 && _improvable_property(i, proprt[i]))
+            {
+                proprt[i] += 1 + random2(3);
+                artefact_set_property(item, static_cast<artefact_prop_type>(i), proprt[i]);
+                return true;
             }
         }
     }
+   
+   if (_artefact_num_props(proprt) > (proprt[ARTP_BRAND] != 0 ? 6 : 5))
+       return false; // failed to remove, no space to add
    
     int tries = 0;
     while(tries < 500)
@@ -1622,10 +1674,8 @@ void anvil_modify_artp(item_def &item)
                 (int) art_prop_weights.size());
         const artefact_prop_type prop = *prop_ptr;
         
-        //don't add invalid properties, don't add bad properties, and
-        //don't add a property that we removed earlier
-        if (!_artp_can_go_on_item(prop, item, proprt) || !artp_potentially_good(prop) 
-                || static_cast<int>(prop) == removed_prop)
+        //don't add invalid properties, don't add bad properties
+        if (!_artp_can_go_on_item(prop, item, proprt) || !artp_potentially_good(prop))
         {
             tries++;
             continue;
@@ -1633,8 +1683,10 @@ void anvil_modify_artp(item_def &item)
         _add_good_randart_prop(prop, proprt);
         
         artefact_set_property(item,prop, static_cast<int>(proprt[prop]));
-        return;
+        return true;
     }
+    
+    return false;
 }
 
 // Turn an item into a randart with no properties
@@ -1642,7 +1694,7 @@ void make_item_plain_randart(item_def &item)
 {
     _artefact_setup_prop_vectors(item);
     item.flags |= ISFLAG_RANDART;
-    _init_artefact_properties(item);
+    _init_artefact_properties(item, false);
     set_artefact_name(item, make_artefact_name(item, false));
     item.props[ARTEFACT_APPEAR_KEY].get_string() =
             make_artefact_name(item, true);

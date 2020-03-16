@@ -216,8 +216,8 @@ static bool _perform_forge_action(item_def &item)
             //chance to turn the item into an artifact, or add additional artifact properties
             if(one_chance_in(is_artefact(item) ? 3 : brand != SPWPN_NORMAL ? 5 : 10))
             {
-                anvil_modify_artp(item);
-                return true;
+                if(anvil_modify_artp(item))
+                    return true;
             }
             //chance to improve base type; continue if the base type can't be improved
             if(one_chance_in(_basetype_sucks(item) ? 3: 5))
@@ -244,24 +244,29 @@ static bool _perform_forge_action(item_def &item)
             //chance to turn the item into an artifact or add artifact properties
             if (item.plus >= max_ench || one_chance_in(is_artefact(item) ? 3 : 5))
             {
-                anvil_modify_artp(item);
-                return true;
+                if(anvil_modify_artp(item))
+                    return true;
             }
             //if we didn't do that, raise enchantment
             else
             {
-                item.plus = min(item.plus + 1 + random2(3), max_ench);
-                return true;
+                if(item.plus < max_ench)
+                {
+                    item.plus = min(item.plus + 1 + random2(3), max_ench);
+                    return true;
+                }
             }
         }
         case OBJ_JEWELLERY:
         {
-            anvil_modify_artp(item);
-            return true;
+            if(anvil_modify_artp(item))
+                return true;
         }
         default:
             return false;
     }
+    
+    return false;
 }
 
 //use an anvil and turn it dormant
