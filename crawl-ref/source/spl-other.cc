@@ -351,13 +351,3 @@ spret_type cast_intoxicate(int pow, bool fail)
 
     return SPRET_SUCCESS;
 }
-
-spret_type cast_darkness(int pow, bool fail)
-{
-    fail_check();
-    you.attribute[ATTR_DARKNESS] = 1;
-    mpr("It gets dark.");
-    update_vision_range();
-
-    return SPRET_SUCCESS;
-}

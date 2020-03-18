@@ -2479,7 +2479,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_DARKNESS, "Darkness",
     SPTYP_HEXES,
-    SPFLAG_NONE | SPFLAG_PERMABUFF,
+    SPFLAG_MONSTER,
     7,
     200,
     -1, -1,

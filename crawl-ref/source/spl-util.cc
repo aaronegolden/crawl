@@ -397,14 +397,6 @@ static void _remove_spell_attributes(spell_type spell)
             mprf(MSGCH_DURATION, "Your unholy channeling expires.");
         }
         break;
-    case SPELL_DARKNESS:
-	    if (you.attribute[ATTR_DARKNESS])
-        {
-            you.attribute[ATTR_DARKNESS] = 0;
-            update_vision_range();
-            mprf(MSGCH_DURATION, "The darkness lifts.");
-        }
-        break;
     case SPELL_AURA_OF_ABJURATION:
         if (you.attribute[ATTR_ABJURATION_AURA])
         {
@@ -1374,14 +1366,6 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
             return "invisibility won't help you when you glow in the dark.";
         if (temp && you.attribute[ATTR_PERMAINVIS])
             return "you are already as invisible as you can get, sorry.";
-        break;
-
-    case SPELL_DARKNESS:
-        // mere corona is not enough, but divine light blocks it completely
-        if (temp && (you.haloed() || !prevent && have_passive(passive_t::halo)))
-            return "darkness is useless against divine light.";
-        if(temp && you.attribute[ATTR_DARKNESS])
-            return "it's already dark.";
         break;
 
     case SPELL_REPEL_MISSILES:

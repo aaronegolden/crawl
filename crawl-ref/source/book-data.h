@@ -311,7 +311,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_PASSWALL,
     SPELL_GOLUBRIAS_PASSAGE,
     SPELL_LRD,
-    SPELL_DARKNESS,
     SPELL_INVISIBILITY,
 },
 
@@ -319,7 +318,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_HIBERNATION,
     SPELL_SILENCE,
     SPELL_SHADOW_CREATURES,
-    SPELL_DARKNESS,
+    SPELL_INVISIBILITY,
 },
 
 {   // Book of Alchemy

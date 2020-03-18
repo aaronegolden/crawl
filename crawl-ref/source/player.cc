@@ -711,10 +711,6 @@ void update_vision_range()
     if (you.attribute[ATTR_SHADOWS])
         nom *= 3, denom *= 4;
 
-    // the Darkness spell.
-    if (you.attribute[ATTR_DARKNESS] > 0)
-        nom *= 3, denom *= 4;
-
     // robe of Night.
     if (player_equip_unrand(UNRAND_NIGHT))
         nom *= 3, denom *= 4;

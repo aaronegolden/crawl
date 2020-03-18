@@ -425,10 +425,6 @@ int calculate_frozen_mp()
     {
 		frozen_mp += spell_mp_freeze(SPELL_DEATH_CHANNEL);
 	}
-    if (you.attribute[ATTR_DARKNESS] > 0)
-    {
-		frozen_mp += spell_mp_freeze(SPELL_DARKNESS);
-	}
     if (you.attribute[ATTR_ABJURATION_AURA] > 0)
     {
 		frozen_mp += spell_mp_freeze(SPELL_AURA_OF_ABJURATION);
@@ -550,12 +546,6 @@ void dispel_permanent_buffs(bool evil_only)
     if(you.attribute[ATTR_DEATH_CHANNEL])
     {
         you.attribute[ATTR_DEATH_CHANNEL] = 0;
-        dispelled = true;
-    }
-    if(you.attribute[ATTR_DARKNESS] && !evil_only)
-    {
-        you.attribute[ATTR_DARKNESS] = 0;
-        update_vision_range();
         dispelled = true;
     }
     if(you.attribute[ATTR_DEFLECT_MISSILES] && !evil_only)

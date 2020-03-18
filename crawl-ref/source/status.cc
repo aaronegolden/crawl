@@ -491,14 +491,6 @@ bool fill_status_info(int status, status_info* inf)
                            you.attribute[ATTR_SONG_OF_SLAYING]);
         }
         break;
-		
-    case STATUS_DARKNESS:
-        if(you.attribute[ATTR_DARKNESS])
-        {
-            inf->light_colour = LIGHTMAGENTA;
-            inf->light_text = "Dark";
-        }
-        break;
 
     case STATUS_ABJURATION:
         if(you.attribute[ATTR_ABJURATION_AURA])
