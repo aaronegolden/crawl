@@ -2026,33 +2026,45 @@ coord_def random_target_in_range(int radius)
     return targets[random2(targets.size())];
 }
 
+static monster* _closest_target_in_range(int radius)
+{
+    
+    for (distance_iterator di(you.pos(), true, true, radius); di; ++di)
+    {
+        monster *mon = monster_at(*di);
+        if (mon
+            && you.can_see(*mon)
+            && you.see_cell_no_trans(mon->pos())
+            && !mon->wont_attack()
+            && !mons_is_firewood(*mon)
+            && !mons_is_tentacle_segment(mon->type))
+        { 
+            return mon;
+        }
+    }
+    
+    return nullptr;
+}
+
 spret_type random_fireball(int pow, bool fail, bool tracer)
 {
-    coord_def target = random_target_in_range(5);
+    monster* target = _closest_target_in_range(min(5,LOS_RADIUS));
     
     if(tracer)
     {
-        if(!in_bounds(target))
+        if(!target)
             return SPRET_ABORT;
         else
             return SPRET_SUCCESS;
     }
     
-    targetter_radius hitfunc(&you, LOS_NO_TRANS, 5);
+    targetter_radius hitfunc(&you, LOS_NO_TRANS, min(5,LOS_RADIUS));
     if (stop_attack_prompt(hitfunc, "detonate", nullptr))
         return SPRET_ABORT;
     
     fail_check();
-    
-    //bias targeting toward closer monsters
-    for(int i = 0; i < 3; i++)
-    {
-        coord_def t = random_target_in_range(5);
-        if(t.distance_from(you.pos()) < target.distance_from(you.pos()))
-            target = t;
-    }
-        
-    if (!in_bounds(target))
+
+    if (!target)
         canned_msg(MSG_NOTHING_HAPPENS);
     else
     {
@@ -2062,7 +2074,7 @@ spret_type random_fireball(int pow, bool fail, bool tracer)
         beam_actual.real_flavour  = BEAM_FIRE;
         beam_actual.damage        = calc_dice(3, 10 + pow/2);
         beam_actual.name          = "fireball";
-        beam_actual.target        = target;
+        beam_actual.target        = target->pos();
         beam_actual.colour        = RED;
         beam_actual.ex_size       = 1;
         beam_actual.is_explosion  = true;

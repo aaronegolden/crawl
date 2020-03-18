@@ -425,7 +425,7 @@ additional spell levels.
 Detonate spell
 
 With a snap of the fingers, the caster creates a fiery explosion centered on
-a random hostile monster within range 5, with a preference for closer targets. 
+the closest hostile monster within range 5. 
 The explosion is big enough to harm adjacent creatures, including the caster 
 or their allies, so a bit of caution is advised.
 %%%%
