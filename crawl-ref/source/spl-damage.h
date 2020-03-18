@@ -76,6 +76,7 @@ spret_type cast_scattershot(const actor *caster, int pow, const coord_def &pos,
                             
 coord_def random_target_in_range(int radius = 7);
 spret_type random_fireball(int pow, bool fail, bool tracer = false);
+spret_type cast_absolute_zero(int pow, bool fail, bool tracer = false);
 
 spret_type cast_ignition(const actor *caster, int pow, bool fail = false);
 

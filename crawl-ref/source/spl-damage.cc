@@ -28,9 +28,11 @@
 #include "losglobal.h"
 #include "macro.h"
 #include "message.h"
+#include "mgen_data.h"
 #include "misc.h"
 #include "mon-behv.h"
 #include "mon-death.h"
+#include "mon-place.h"
 #include "mon-tentacle.h"
 #include "mutation.h"
 #include "ouch.h"
@@ -2050,9 +2052,9 @@ spret_type random_fireball(int pow, bool fail, bool tracer)
 {
     monster* target = _closest_target_in_range(min(5,LOS_RADIUS));
     
-    if(tracer)
+    if (tracer)
     {
-        if(!target)
+        if (!target)
             return SPRET_ABORT;
         else
             return SPRET_SUCCESS;
@@ -2079,6 +2081,55 @@ spret_type random_fireball(int pow, bool fail, bool tracer)
         beam_actual.ex_size       = 1;
         beam_actual.is_explosion  = true;
         beam_actual.explode();
+    }
+    
+    return SPRET_SUCCESS;
+}
+
+spret_type cast_absolute_zero(int pow, bool fail, bool tracer)
+{
+    monster* target = _closest_target_in_range(LOS_RADIUS);
+    
+    if (tracer)
+    {
+        if (!target)
+            return SPRET_ABORT;
+        else
+            return SPRET_SUCCESS;
+    }
+    
+    coord_def pos = target->pos();
+    
+    if (stop_attack_prompt(target, false, pos))
+        return SPRET_ABORT;
+    
+    fail_check();
+    
+    if (!target)
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        monster_type block_type = mons_is_zombified(*target) ? mons_zombie_base(*target)
+                                                    : mons_species(target->type);
+       
+        mprf("You chill %s to absolute zero!", target->name(DESC_THE).c_str());
+        target->hurt(&you, INSTANT_DEATH);
+        
+        if (monster *pillar = create_monster(
+                        mgen_data(MONS_BLOCK_OF_ICE,
+                                  BEH_HOSTILE,
+                                  pos,
+                                  MHITNOT,
+                                  MG_FORCE_PLACE).set_base(block_type),
+                                  false))
+        {
+            int time_left = (12 + random2(8)) * BASELINE_DELAY;
+            mon_enchant temp_en(ENCH_SLOWLY_DYING, 1, 0, time_left);
+            pillar->update_ench(temp_en);
+        }
+        
+        // extremely loud at low power, zero noise at max power
+        noisy(40 - div_rand_round(pow,5), pos);
     }
     
     return SPRET_SUCCESS;

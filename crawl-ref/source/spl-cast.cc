@@ -1839,6 +1839,9 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     case SPELL_SANDBLAST:
         return cast_sandblast(powc, beam, fail);
+        
+    case SPELL_ABSOLUTE_ZERO:
+        return cast_absolute_zero(powc, fail);
 
     case SPELL_VAMPIRIC_DRAINING:
         return vampiric_drain(powc, monster_at(target), fail);

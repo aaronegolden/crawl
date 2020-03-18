@@ -4957,6 +4957,7 @@ enum spell_type : int
     SPELL_DETONATE,
     SPELL_HAILSTORM,
     SPELL_STARBURST,
+    SPELL_ABSOLUTE_ZERO,
     NUM_SPELLS
 };
 

@@ -339,7 +339,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Annihilations
-    SPELL_OZOCUBUS_REFRIGERATION,
+    SPELL_ABSOLUTE_ZERO,
     SPELL_IOOD,
     SPELL_CHAIN_LIGHTNING,
     SPELL_FIRE_STORM,

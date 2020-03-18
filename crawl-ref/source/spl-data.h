@@ -3988,6 +3988,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_ABSOLUTE_ZERO, "Absolute Zero",
+    SPTYP_ICE,
+    SPFLAG_NO_GHOST,
+    9,
+    200,
+    LOS_RADIUS, LOS_RADIUS, // Range special-cased in describe-spells
+    4, 0, // effect noise is power dependent; see cast_absolute_zero,
+    TILEG_ICE_STORM,
+},
+
+{
     SPELL_NO_SPELL, "nonexistent spell",
     SPTYP_NONE,
     SPFLAG_TESTING,
