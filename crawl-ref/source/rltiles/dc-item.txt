@@ -781,7 +781,8 @@ i-spirit AMU_GUARDIAN_SPIRIT
 i-faith AMU_FAITH
 i-reflection AMU_REFLECTION
 i-regeneration AMU_REGENERATION 
-i-destruction AMU_DESTRUCTION AMU_ID_LAST
+i-destruction AMU_DESTRUCTION 
+i-darkness AMU_DARKNESS AMU_ID_LAST
 
 ####################OBJ_POTIONS
 %sdir item/potion

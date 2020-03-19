@@ -193,6 +193,7 @@ const char* jewellery_base_ability_string(int subtype)
 #if TAG_MAJOR_VERSION == 34
     case AMU_INACCURACY:          return "Inacc";
 #endif
+    case AMU_DARKNESS:            return "Dark";
     }
     return "";
 }
@@ -464,6 +465,8 @@ static const char* _jewellery_base_ability_description(int subtype)
         return "It shields you and reflects attacks.";
     case AMU_INACCURACY:
         return "It reduces the accuracy of all your attacks.";
+    case AMU_DARKNESS:
+        return "It reduces your range of vision.";
     }
     return "";
 }

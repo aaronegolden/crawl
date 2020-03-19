@@ -75,6 +75,8 @@ static uint8_t _jewellery_type_from_artefact_prop(const string &s
         return AMU_FAITH;
     if (s == "Reflect")
         return AMU_REFLECTION;
+    if (s == "Dark")
+        return AMU_DARKNESS;
 
     if (s == "rCorr")
         return RING_RESIST_CORROSION;

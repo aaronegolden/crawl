@@ -699,6 +699,13 @@ void update_vision_range()
         nom *= LOS_DEFAULT_RANGE + 1;
         denom *= LOS_DEFAULT_RANGE;
     }
+    
+    // Amulet of darkness gives -1
+    if(you.wearing(EQ_AMULET, AMU_DARKNESS))
+    {
+        nom *= LOS_DEFAULT_RANGE - 1;
+        denom *= LOS_DEFAULT_RANGE;
+    }
 	
     // Nightstalker gives -1/-2/-3.
     if (you.get_mutation_level(MUT_NIGHTSTALKER))
@@ -706,11 +713,7 @@ void update_vision_range()
         nom *= LOS_DEFAULT_RANGE - you.get_mutation_level(MUT_NIGHTSTALKER);
         denom *= LOS_DEFAULT_RANGE;
     }
-
-    // Lantern of shadows.
-    if (you.attribute[ATTR_SHADOWS])
-        nom *= 3, denom *= 4;
-
+    
     // robe of Night.
     if (player_equip_unrand(UNRAND_NIGHT))
         nom *= 3, denom *= 4;

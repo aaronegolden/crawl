@@ -6,6 +6,11 @@ much protection as the armour made from the scales of some larger dragons, it is
 somewhat lighter and less encumbering. It is also remarkably smooth, letting
 corrosive slime flow off it like water.
 %%%%
+amulet of darkness
+
+An amulet attuned to the shadows. It reduces the wearer's range of vision, lowering
+the distance at which they can be seen.
+%%%%
 amulet of destruction
 
 An amulet inscribed with mysterious runes. Casting a destructive spell briefly 
