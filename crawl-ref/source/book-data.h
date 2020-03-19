@@ -26,7 +26,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_FOXFIRE,
     SPELL_SEARING_RAY,
     SPELL_CONJURE_FLAME,
-    SPELL_STICKY_FLAME,
     SPELL_DETONATE,
 },
 

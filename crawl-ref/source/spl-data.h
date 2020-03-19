@@ -737,7 +737,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_STICKY_FLAME, "Sticky Flame",
     SPTYP_FIRE,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MONSTER,
     4,
     100,
     1, 1,
