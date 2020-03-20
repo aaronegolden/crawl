@@ -83,4 +83,5 @@ spret_type cast_ignition(const actor *caster, int pow, bool fail = false);
 void foxfire_attack(const monster *foxfire, const actor *target);
 spret_type cast_hailstorm(int pow, bool fail, bool tracer=false);
 spret_type cast_starburst(int pow, bool fail, bool tracer=false);
+spret_type directional_lbolt(int pow, bool fail, bool tracer=false);
 #endif

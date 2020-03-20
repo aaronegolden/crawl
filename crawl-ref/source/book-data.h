@@ -87,7 +87,7 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of the Tempests
     SPELL_DISCHARGE,
-    SPELL_FULMINANT_PRISM,
+    SPELL_ELECTRIC_SURGE,
     SPELL_IGNITION,
     SPELL_TORNADO,
     SPELL_SHATTER,
@@ -178,7 +178,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_REPEL_MISSILES,
     SPELL_DISCHARGE,
 	SPELL_MEPHITIC_CLOUD,
-    SPELL_FULMINANT_PRISM,
+    SPELL_ELECTRIC_SURGE,
 },
 
 {   // Book of the Sky
@@ -256,7 +256,7 @@ static const vector<spell_type> spellbook_templates[] =
 #endif
 
 {   // Book of Power
-    SPELL_FULMINANT_PRISM,
+    SPELL_ELECTRIC_SURGE,
     SPELL_BATTLESPHERE,
     SPELL_STARBURST,
     SPELL_OZOCUBUS_REFRIGERATION,

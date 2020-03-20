@@ -1735,6 +1735,9 @@ bool spell_no_hostile_in_range(spell_type spell)
     case SPELL_HAILSTORM:
         return cast_hailstorm(-1, false, true) == SPRET_ABORT;
         
+    case SPELL_ELECTRIC_SURGE:
+        return directional_lbolt(-1, false, true) == SPRET_ABORT;
+        
     case SPELL_ABSOLUTE_ZERO:
         return cast_absolute_zero(-1, false, true) == SPRET_ABORT;
 

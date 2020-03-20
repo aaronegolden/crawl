@@ -535,6 +535,12 @@ Electrical Bolt spell
 
 Throws a bolt of electricity at the target, with high accuracy.
 %%%%
+Electric Surge spell
+
+Unleashes a surge of electric power that homes in on a nearby 
+(within range 3) monster. The electric surge arcs to additional monsters
+near the first target, though each arc always moves away from the caster.
+%%%%
 Energy Bolt spell
 
 Fires a bolt of highly destructive energy.

@@ -3999,6 +3999,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_ELECTRIC_SURGE, "Electric Surge",
+    SPTYP_AIR,
+    SPFLAG_NO_GHOST,
+    5,
+    200,
+    3, 3,
+    8, 12,
+    TILEG_LIGHTNING_BOLT,
+},
+
+{
     SPELL_NO_SPELL, "nonexistent spell",
     SPTYP_NONE,
     SPFLAG_TESTING,

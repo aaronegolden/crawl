@@ -2048,6 +2048,105 @@ static monster* _closest_target_in_range(int radius)
     return nullptr;
 }
 
+static vector<coord_def> _directional_bolt_targets(int radius, int max_targets = 3)
+{
+    vector<coord_def> targets;
+    
+    monster* first = _closest_target_in_range(radius);
+    
+    if(!first)
+        return targets;
+    
+    targets.push_back(first->pos());
+    max_targets--;
+    
+    coord_def current = first->pos();
+    
+    bool target_found = true;
+    
+    while(max_targets > 0 && target_found)
+    {
+        for (distance_iterator di(current, true, true, radius); di; ++di)
+        {
+            target_found = false;
+            monster *mon = monster_at(*di);
+            if(mon
+                && !mons_is_firewood(*mon)
+                && !mons_is_tentacle_or_tentacle_segment(mon->type)
+                && cell_see_cell(you.pos(), mon->pos(), LOS_SOLID)
+                && cell_see_cell(current, mon->pos(), LOS_SOLID_SEE)
+                && mon->pos().distance_from(you.pos()) > current.distance_from(you.pos())
+                && mon->pos().distance_from(current) < mon->pos().distance_from(you.pos()))
+            {
+                targets.push_back(mon->pos());
+                current = mon->pos();
+                max_targets--;
+                target_found = true;
+                break;
+            } 
+        }
+    }
+    
+    return targets;
+}
+
+spret_type directional_lbolt(int pow, bool fail, bool tracer)
+{
+    vector<coord_def> targets = _directional_bolt_targets(3, 2 + div_rand_round(pow, 50));
+    
+    if (tracer)
+    {
+        if (targets.empty())
+            return SPRET_ABORT;
+        else
+            return SPRET_SUCCESS;
+    }
+    
+    targetter_radius hitfunc(&you, LOS_NO_TRANS, LOS_RADIUS);
+    if(stop_attack_prompt(hitfunc, "electric surge", nullptr))
+        return SPRET_ABORT;
+    
+    fail_check();
+    
+    if (targets.empty())
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        bolt beam;
+        beam.name = "electric surge";
+        beam.thrower = KILL_YOU_MISSILE;
+        beam.flavour = BEAM_ELECTRICITY;
+        beam.pierce = true;
+        beam.real_flavour = BEAM_ELECTRICITY;
+        beam.colour = LIGHTBLUE;
+        beam.is_explosion = false;
+        beam.is_tracer = false;
+        
+        
+       mprf("You unleash a surge of electricity!");
+        
+        coord_def source = you.pos();
+        coord_def target;
+        
+        for (int i = 0; i < static_cast<int>(targets.size()); i++)
+        {
+            target = targets[i];
+            beam.hit = 7 + div_rand_round(pow, 20);
+            beam.damage = calc_dice(1, 11 + div_rand_round(pow * 3, 5));
+            beam.range = target.distance_from(source);
+            beam.source = source;
+            beam.target = target;
+            
+            noisy(spell_effect_noise(SPELL_ELECTRIC_SURGE), beam.target);
+            
+            source = target;
+            beam.fire();
+        }      
+    }
+    
+    return SPRET_SUCCESS;
+}
+
 spret_type random_fireball(int pow, bool fail, bool tracer)
 {
     monster* target = _closest_target_in_range(min(5,LOS_RADIUS));
