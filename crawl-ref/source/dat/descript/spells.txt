@@ -32,6 +32,12 @@ creatures may resist the effects). The caster may experience vertigo briefly
 as a result of making contact with other minds. It is frequently used as an
 icebreaker at wizard parties.
 %%%%
+Ambulatory Bomb spell
+
+Summons a construct imbued with inner flame, which will attempt to move toward
+a nearby enemy and violently explode. The construct is incredibly fragile and 
+will detonate prematurely if attacked.
+%%%%
 Animate Dead spell
 
 Reanimates corpses of monsters slain by the caster as mindless zombies. 

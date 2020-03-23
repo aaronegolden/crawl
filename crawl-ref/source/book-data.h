@@ -26,6 +26,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_FOXFIRE,
     SPELL_SEARING_RAY,
     SPELL_CONJURE_FLAME,
+    SPELL_AMBULATORY_BOMB,
     SPELL_DETONATE,
 },
 
@@ -157,7 +158,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SUMMON_SMALL_MAMMAL,
     SPELL_CALL_IMP,
     SPELL_CALL_CANINE_FAMILIAR,
-    SPELL_SUMMON_GUARDIAN_GOLEM,
+    SPELL_AMBULATORY_BOMB,
     SPELL_SUMMON_LIGHTNING_SPIRE,
     SPELL_SUMMON_ICE_BEAST,
 },

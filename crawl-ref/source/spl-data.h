@@ -4010,6 +4010,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_AMBULATORY_BOMB, "Ambulatory Bomb",
+    SPTYP_SUMMONING | SPTYP_FIRE,
+    SPFLAG_NONE,
+    4,
+    100,
+    -1, -1,
+    3, 0,
+    TILEG_SUMMON_GUARDIAN_GOLEM,
+},
+
+{
     SPELL_NO_SPELL, "nonexistent spell",
     SPTYP_NONE,
     SPFLAG_TESTING,

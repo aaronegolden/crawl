@@ -353,6 +353,7 @@ void handle_behaviour(monster* mon)
         && mon->type != MONS_BALLISTOMYCETE_SPORE
         && mon->type != MONS_BALL_LIGHTNING
         && mon->type != MONS_FOXFIRE
+        && mon->type != MONS_GUARDIAN_GOLEM
         && !mons_is_avatar(mon->type))
     {
         if (you.pet_target != MHITNOT)
@@ -367,7 +368,8 @@ void handle_behaviour(monster* mon)
             || ((mon->berserk()
                  || mon->type == MONS_BALLISTOMYCETE_SPORE
                  || mon->type == MONS_BALL_LIGHTNING
-                 || mon->type == MONS_FOXFIRE)
+                 || mon->type == MONS_FOXFIRE
+                 || mon->type == MONS_GUARDIAN_GOLEM)
                 && (mon->foe == MHITNOT
                     || isFriendly && mon->foe == MHITYOU))))
     {

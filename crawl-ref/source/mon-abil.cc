@@ -1038,7 +1038,24 @@ bool mon_special_ability(monster* mons)
         }
         break;
 
+    case MONS_GUARDIAN_GOLEM:
+        if (is_sanctuary(mons->pos()))
+            break;
+        for (monster_near_iterator targ(mons, LOS_NO_TRANS); targ; ++targ)
+        {
+            if (mons_aligned(mons, *targ) 
+                || mons_is_firewood(**targ) 
+                || grid_distance(mons->pos(), targ->pos()) > 1)
+                continue;
 
+            if (!cell_is_solid(targ->pos()))
+            {
+                mons->suicide();
+                used = true;
+                break;
+            }
+        }
+        break;
 
     case MONS_CRAWLING_CORPSE:
     case MONS_MACABRE_MASS:
@@ -1195,16 +1212,6 @@ bool mon_special_ability(monster* mons)
     }
     break;
 
-    case MONS_GUARDIAN_GOLEM:
-        if (mons->hit_points * 2 < mons->max_hit_points && one_chance_in(4)
-             && !mons->has_ench(ENCH_INNER_FLAME))
-        {
-            simple_monster_message(*mons, " overheats!");
-            mons->add_ench(mon_enchant(ENCH_INNER_FLAME, 0, 0,
-                                       INFINITE_DURATION));
-        }
-        break;
-
     default:
         break;
     }
@@ -1213,16 +1220,4 @@ bool mon_special_ability(monster* mons)
         mons->lose_energy(EUT_SPECIAL);
 
     return used;
-}
-
-void guardian_golem_bond(monster* mons)
-{
-    for (monster_near_iterator mi(mons, LOS_NO_TRANS); mi; ++mi)
-    {
-        if (mons_aligned(mons, *mi) && !mi->has_ench(ENCH_CHARM)
-            && *mi != mons)
-        {
-            mi->add_ench(mon_enchant(ENCH_INJURY_BOND, 1, mons, INFINITE_DURATION));
-        }
-    }
 }

@@ -985,23 +985,22 @@ spret_type cast_summon_lightning_spire(int pow, const coord_def& where, god_type
 
 }
 
-spret_type cast_summon_guardian_golem(int pow, god_type god, bool fail)
+spret_type cast_ambulatory_bomb(int pow, god_type god, bool fail)
 {
     fail_check();
 
-    mgen_data golem = _pal_data(MONS_GUARDIAN_GOLEM, 3, god,
-                                SPELL_SUMMON_GUARDIAN_GOLEM);
+    mgen_data golem = _pal_data(MONS_GUARDIAN_GOLEM, 1, god,
+                                SPELL_AMBULATORY_BOMB);
     golem.flags &= ~MG_AUTOFOE; // !!!
-    golem.hd = 4 + div_rand_round(pow, 16);
+    golem.hd = 1;
 
     monster* mons = (create_monster(golem));
 
     if (mons)
     {
-        // Immediately apply injury bond
-        guardian_golem_bond(mons);
+        mons->add_ench(mon_enchant(ENCH_INNER_FLAME, 0, &you, INFINITE_DURATION));
 
-        mpr("A guardian golem appears, shielding your allies.");
+        mpr("An ambulatory bomb appears, filled with inner flames.");
     }
     else
         canned_msg(MSG_NOTHING_HAPPENS);
@@ -3286,6 +3285,7 @@ static const map<spell_type, summon_cap> summonsdata =
     { SPELL_SHADOW_CREATURES,           { 4, 2 } },
     { SPELL_SUMMON_LIGHTNING_SPIRE,     { 1, 2 } },
     { SPELL_SUMMON_GUARDIAN_GOLEM,      { 1, 2 } },
+    { SPELL_AMBULATORY_BOMB,            { 1, 2 } },
     { SPELL_SPELLFORGED_SERVITOR,       { 1, 2 } },
     // Monster spells
     { SPELL_SUMMON_UFETUBUS,            { 8, 2 } },
