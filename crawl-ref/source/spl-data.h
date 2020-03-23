@@ -1285,7 +1285,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_AIRSTRIKE, "Airstrike",
     SPTYP_AIR,
-    SPFLAG_TARGET | SPFLAG_NOT_SELF,
+    SPFLAG_TARGET | SPFLAG_NOT_SELF | SPFLAG_MONSTER,
     4,
     200,
     LOS_RADIUS, LOS_RADIUS,
