@@ -331,9 +331,9 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Annihilations
-    SPELL_ABSOLUTE_ZERO,
     SPELL_IOOD,
     SPELL_CHAIN_LIGHTNING,
+    SPELL_ABSOLUTE_ZERO,
     SPELL_FIRE_STORM,
 },
 
