@@ -1739,8 +1739,6 @@ static spret_type _handle_buff_spells(spell_type spell, int powc, bolt& beam, go
             return cast_song_of_slaying(powc, false);  
         case SPELL_DEATH_CHANNEL:
             return cast_death_channel(powc, god, false);
-        case SPELL_AURA_OF_ABJURATION:
-            return cast_aura_of_abjuration(powc, false);      
         case SPELL_REPEL_MISSILES:
             return missile_prot(powc, false);
         case SPELL_DEFLECT_MISSILES:

@@ -397,13 +397,6 @@ static void _remove_spell_attributes(spell_type spell)
             mprf(MSGCH_DURATION, "Your unholy channeling expires.");
         }
         break;
-    case SPELL_AURA_OF_ABJURATION:
-        if (you.attribute[ATTR_ABJURATION_AURA])
-        {
-            you.attribute[ATTR_ABJURATION_AURA] = 0;
-            mprf(MSGCH_DURATION, "Your aura of abjuration dissipates.");
-        }
-        break;
     case SPELL_PORTAL_PROJECTILE:
         if (you.attribute[ATTR_PORTAL_PROJECTILE])
         {
@@ -1606,11 +1599,6 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
         if (env.level_state & LSTATE_STILL_WINDS)
             return "the air is too still for clouds to form.";
         break;
-    
-    case SPELL_AURA_OF_ABJURATION:
-        if (temp && you.attribute[ATTR_ABJURATION_AURA])
-            return "you are already abjuring hostile summons.";
-        break;
 
     case SPELL_HASTE:
         if (temp && you.attribute[ATTR_PERMAHASTE])
@@ -1622,7 +1610,6 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
     }
 
     if (get_spell_disciplines(spell) & SPTYP_SUMMONING
-        && spell != SPELL_AURA_OF_ABJURATION
         && you.get_mutation_level(MUT_NO_LOVE))
     {
         return "you cannot coerce anything to answer your summons.";

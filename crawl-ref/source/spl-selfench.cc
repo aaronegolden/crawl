@@ -425,10 +425,6 @@ int calculate_frozen_mp()
     {
 		frozen_mp += spell_mp_freeze(SPELL_DEATH_CHANNEL);
 	}
-    if (you.attribute[ATTR_ABJURATION_AURA] > 0)
-    {
-		frozen_mp += spell_mp_freeze(SPELL_AURA_OF_ABJURATION);
-	}
     if (you.attribute[ATTR_DEFLECT_MISSILES] > 0)
     {
 		frozen_mp += spell_mp_freeze(SPELL_DEFLECT_MISSILES);

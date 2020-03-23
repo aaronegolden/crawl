@@ -417,7 +417,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_AURA_OF_ABJURATION, "Aura of Abjuration",
     SPTYP_SUMMONING,
-    SPFLAG_AREA | SPFLAG_NEUTRAL | SPFLAG_ESCAPE | SPFLAG_PERMABUFF,
+    SPFLAG_MONSTER,
     5,
     200,
     -1, -1,
@@ -933,7 +933,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_SUMMON_DEMON, "Summon Demon",
     SPTYP_SUMMONING,
-    SPFLAG_UNHOLY | SPFLAG_SELFENCH | SPFLAG_MONS_ABJURE,
+    SPFLAG_UNHOLY | SPFLAG_SELFENCH | SPFLAG_MONSTER | SPFLAG_MONS_ABJURE,
     5,
     200,
     -1, -1,
@@ -1130,7 +1130,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_RECALL, "Recall",
     SPTYP_SUMMONING | SPTYP_TRANSLOCATION,
-    SPFLAG_UTILITY,
+    SPFLAG_MONSTER,
     3,
     0,
     -1, -1,
@@ -1646,7 +1646,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_MONSTROUS_MENAGERIE, "Monstrous Menagerie",
     SPTYP_SUMMONING,
-    SPFLAG_MONS_ABJURE,
+    SPFLAG_MONS_ABJURE | SPFLAG_MONSTER,
     7,
     200,
     -1, -1,

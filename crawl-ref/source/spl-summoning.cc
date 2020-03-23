@@ -2500,25 +2500,6 @@ static int _abjuration(int pow, monster *mon)
     return true;
 }
 
-spret_type cast_aura_of_abjuration(int pow, bool fail)
-{
-    fail_check();
-
-    mpr("You begin to abjure the creatures around you!");
-    you.attribute[ATTR_ABJURATION_AURA] = 1;
-    return SPRET_SUCCESS;
-}
-
-void do_aura_of_abjuration(int delay)
-{
-    if (!you.attribute[ATTR_ABJURATION_AURA])
-        return;
-    const int raw_pow = calc_spell_power(SPELL_AURA_OF_ABJURATION, true);
-    const int pow = raw_pow * delay / 10;
-    for (monster_near_iterator mi(you.pos(), LOS_NO_TRANS); mi; ++mi)
-        _abjuration(pow / 2, *mi);
-}
-
 monster* find_battlesphere(const actor* agent)
 {
     if (agent->props.exists("battlesphere"))

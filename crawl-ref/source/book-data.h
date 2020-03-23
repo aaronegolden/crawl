@@ -39,9 +39,6 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Summonings
-    SPELL_RECALL,
-    SPELL_AURA_OF_ABJURATION,
-    SPELL_SUMMON_DEMON,
     SPELL_SUMMON_FOREST,
     SPELL_SUMMON_MANA_VIPER,
     SPELL_SHADOW_CREATURES,
@@ -201,7 +198,6 @@ static const vector<spell_type> spellbook_templates[] =
 #endif
 
 {   // Book of Unlife
-    SPELL_RECALL,
     SPELL_ANIMATE_DEAD,
     SPELL_CONTROL_UNDEAD,
     SPELL_CIGOTUVIS_EMBRACE,
@@ -336,7 +332,6 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Grand Grimoire
-    SPELL_MONSTROUS_MENAGERIE,
     SPELL_SUMMON_GREATER_DEMON,
     SPELL_MALIGN_GATEWAY,
     SPELL_SUMMON_HORRIBLE_THINGS,
