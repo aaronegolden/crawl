@@ -56,7 +56,6 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Ice
     SPELL_ICE_FORM,
-    SPELL_SUMMON_ICE_BEAST,
     SPELL_FREEZING_CLOUD,
     SPELL_OZOCUBUS_REFRIGERATION,
 },
@@ -160,7 +159,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_CALL_CANINE_FAMILIAR,
     SPELL_AMBULATORY_BOMB,
     SPELL_SUMMON_LIGHTNING_SPIRE,
-    SPELL_SUMMON_ICE_BEAST,
 },
 
 {   // Book of Maledictions
@@ -326,7 +324,6 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Beasts
     SPELL_SUMMON_BUTTERFLIES,
     SPELL_CALL_CANINE_FAMILIAR,
-    SPELL_SUMMON_ICE_BEAST,
     SPELL_SUMMON_MANA_VIPER,
     SPELL_SUMMON_HYDRA,
 },

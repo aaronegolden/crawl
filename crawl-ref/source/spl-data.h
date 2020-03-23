@@ -748,7 +748,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_SUMMON_ICE_BEAST, "Summon Ice Beast",
     SPTYP_ICE | SPTYP_SUMMONING,
-    SPFLAG_NONE,
+    SPFLAG_MONSTER,
     4,
     100,
     -1, -1,
