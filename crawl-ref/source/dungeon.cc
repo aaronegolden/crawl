@@ -5530,6 +5530,7 @@ object_class_type item_in_shop(shop_type shop_type)
         return random_choose_weighted(2, OBJ_WEAPONS,
                                       5, OBJ_ARMOUR,
                                       _shop_type_is_useless(SHOP_BOOK) ? 0 : 4, OBJ_BOOKS,
+                                      _shop_type_is_useless(SHOP_BOOK) ? 0 : 1, OBJ_STAVES,
                                       4, OBJ_JEWELLERY,
                                       2, OBJ_MISSILES,
                                       _shop_type_is_useless(SHOP_DISTILLERY) ? 0 : 4, OBJ_POTIONS,

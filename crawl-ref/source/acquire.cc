@@ -516,8 +516,10 @@ static int _acquirement_staff_subtype(bool /*divine*/, int & /*quantity*/)
     if (x_chance_in_y(2,found_enhancer ? 3 : 5))
         return result;
 
-    // Otherwise pick a staff of fuckin wizardry.
-    result = STAFF_WIZARDRY;
+    // Otherwise pick a staff of wizardry half of the time.
+    if (coinflip())
+        result = STAFF_WIZARDRY;
+    
     return result;
 }
 
