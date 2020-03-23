@@ -47,7 +47,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_MAGIC_DART, "Magic Dart",
     SPTYP_AIR,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MONSTER,
     1,
     25,
     LOS_RADIUS, LOS_RADIUS,
@@ -1036,10 +1036,10 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_SHOCK, "Shock",
     SPTYP_AIR,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MONSTER,
+    SPFLAG_NO_GHOST,
     1,
     25,
-    LOS_RADIUS, LOS_RADIUS,
+    3, 3,
     1, 0,
     TILEG_SHOCK,
 },

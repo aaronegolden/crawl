@@ -3,7 +3,7 @@ static const vector<spell_type> spellbook_templates[] =
 {
 
 {   // Book of Minor Magic
-    SPELL_MAGIC_DART,
+    SPELL_SHOCK,
     SPELL_BLINK,
     SPELL_PASSWALL,
     SPELL_SLOW,
@@ -173,7 +173,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Air
-    SPELL_MAGIC_DART,
+    SPELL_SHOCK,
     SPELL_SWIFTNESS,
     SPELL_REPEL_MISSILES,
     SPELL_DISCHARGE,

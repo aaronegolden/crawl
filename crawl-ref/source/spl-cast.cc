@@ -1877,6 +1877,9 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     case SPELL_AIRSTRIKE:
         return cast_airstrike(powc, spd, fail);
+        
+    case SPELL_SHOCK:
+        return cast_shock(powc, fail);
 
     case SPELL_LRD:
         return cast_fragmentation(powc, &you, spd.target, fail);

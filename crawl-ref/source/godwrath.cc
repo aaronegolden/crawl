@@ -527,7 +527,6 @@ static spell_type _makhleb_destruction_type()
             return random_choose(SPELL_THROW_FLAME,
                                  SPELL_PAIN,
                                  SPELL_STONE_ARROW,
-                                 SPELL_SHOCK,
                                  SPELL_SPIT_ACID);
         case 1:
             // major destruction

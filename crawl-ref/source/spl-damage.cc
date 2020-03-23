@@ -2090,6 +2090,61 @@ static vector<coord_def> _directional_bolt_targets(int radius, int max_targets =
     return targets;
 }
 
+spret_type cast_shock(int pow, bool fail, bool tracer)
+{
+    monster* closest = _closest_target_in_range(min(3, LOS_RADIUS));
+    
+    if (tracer)
+    {
+        if (!closest)
+            return SPRET_ABORT;
+        else
+            return SPRET_SUCCESS;
+    }
+    
+    targetter_radius hitfunc(&you, LOS_NO_TRANS, LOS_RADIUS);
+    if (stop_attack_prompt(hitfunc, "shock", nullptr))
+        return SPRET_ABORT;
+    
+    fail_check();
+
+    if (!closest)
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        coord_def close = closest->pos();
+        
+        bolt beam;
+        beam.name = "shock";
+        beam.thrower = KILL_YOU_MISSILE;
+        beam.flavour = BEAM_ELECTRICITY;
+        beam.pierce = true;
+        beam.real_flavour = BEAM_ELECTRICITY;
+        beam.colour = LIGHTCYAN;
+        beam.is_explosion = false;
+        beam.is_tracer = false;
+        
+        beam.hit = 8 + div_rand_round(pow, 7);
+        beam.damage = calc_dice(1, 3 + div_rand_round(pow,4));
+        beam.range = close.distance_from(you.pos());
+        beam.source = you.pos();
+        beam.target = close;
+        beam.fire();
+        
+        coord_def random = random_target_in_range(LOS_RADIUS);
+        
+        //reset damage and to-hit as well as setting up the source and target
+        beam.hit = 8 + div_rand_round(pow, 7);
+        beam.damage = calc_dice(1, 3 + div_rand_round(pow,4));
+        beam.range = random.distance_from(close);
+        beam.source = close;
+        beam.target = random;
+        beam.fire();
+    }
+    
+    return SPRET_SUCCESS;
+}
+
 spret_type directional_lbolt(int pow, bool fail, bool tracer)
 {
     vector<coord_def> targets = _directional_bolt_targets(3, 2 + div_rand_round(pow, 50));
