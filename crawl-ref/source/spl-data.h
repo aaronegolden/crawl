@@ -338,7 +338,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_OLGREBS_TOXIC_RADIANCE, "Olgreb's Toxic Radiance",
     SPTYP_HEXES,
-    SPFLAG_AREA,
+    SPFLAG_AREA | SPFLAG_MONSTER,
     5,
     100,
     -1, -1,
@@ -1352,7 +1352,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_IGNITE_POISON, "Ignite Poison",
     SPTYP_FIRE | SPTYP_TRANSMUTATION,
-    SPFLAG_AREA,
+    SPFLAG_AREA | SPFLAG_MONSTER,
     3,
     100,
     -1, -1,

@@ -47,7 +47,6 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Fire
-    SPELL_IGNITE_POISON,
     SPELL_DETONATE,
     SPELL_STARBURST,
     SPELL_RING_OF_FLAMES,
@@ -80,7 +79,6 @@ static const vector<spell_type> spellbook_templates[] =
 #if TAG_MAJOR_VERSION == 34
 {   // Young Poisoner's Handbook
     SPELL_MEPHITIC_CLOUD,
-    SPELL_OLGREBS_TOXIC_RADIANCE,
     SPELL_INTOXICATE,
 },
 #endif
@@ -125,7 +123,6 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Fen Folio
     SPELL_LEDAS_LIQUEFACTION,
-    SPELL_OLGREBS_TOXIC_RADIANCE,
     SPELL_SUMMON_FOREST,
     SPELL_HYDRA_FORM,
     SPELL_SUMMON_HYDRA,
@@ -200,7 +197,6 @@ static const vector<spell_type> spellbook_templates[] =
 #if TAG_MAJOR_VERSION == 34
 {   // Book of Envenomations
     SPELL_SPIDER_FORM,
-    SPELL_OLGREBS_TOXIC_RADIANCE,
     SPELL_INTOXICATE,
 },
 #endif
@@ -321,7 +317,6 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Alchemy
     SPELL_SUBLIMATION_OF_BLOOD,
-    SPELL_IGNITE_POISON,
     SPELL_PETRIFY,
     SPELL_INTOXICATE,
     SPELL_IRRADIATE,
