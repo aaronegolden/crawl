@@ -2442,6 +2442,12 @@ static void _unravelling_explode(bolt &beam)
 
 bool bolt::is_bouncy(dungeon_feature_type feat) const
 {
+    if (range == 0)
+        return false;
+    
+    if (name == "shock" || name == "electric surge")
+        return false;
+    
     if (real_flavour == BEAM_CHAOS
         && feat_is_solid(feat))
     {

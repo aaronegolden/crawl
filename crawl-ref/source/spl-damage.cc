@@ -2133,13 +2133,17 @@ spret_type cast_shock(int pow, bool fail, bool tracer)
         
         coord_def random = random_target_in_range(LOS_RADIUS);
         
-        //reset damage and to-hit as well as setting up the source and target
-        beam.hit = 8 + div_rand_round(pow, 7);
-        beam.damage = calc_dice(1, 3 + div_rand_round(pow,4));
-        beam.range = random.distance_from(close);
-        beam.source = close;
-        beam.target = random;
-        beam.fire();
+        //could have only had one monster onscreen and killed it with the first beam
+        if(in_bounds(random))
+        {
+            //reset damage and to-hit as well as setting up the source and target
+            beam.hit = 8 + div_rand_round(pow, 7);
+            beam.damage = calc_dice(1, 3 + div_rand_round(pow,4));
+            beam.range = random.distance_from(close);
+            beam.source = close;
+            beam.target = random;
+            beam.fire();
+        }
     }
     
     return SPRET_SUCCESS;
