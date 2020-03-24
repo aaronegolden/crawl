@@ -15,7 +15,6 @@ static const vector<spell_type> spellbook_templates[] =
 #if TAG_MAJOR_VERSION == 34
 {   // Book of Conjurations
     SPELL_SANDBLAST,
-    SPELL_SEARING_RAY,
     SPELL_DISCHARGE,
     SPELL_HAILSTORM,
     SPELL_BATTLESPHERE,
@@ -24,7 +23,6 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Flames
     SPELL_FOXFIRE,
-    SPELL_SEARING_RAY,
     SPELL_CONJURE_FLAME,
     SPELL_AMBULATORY_BOMB,
     SPELL_DETONATE,
@@ -287,7 +285,6 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of the Dragon
-    SPELL_SEARING_RAY,
     SPELL_CAUSE_FEAR,
     SPELL_STARBURST,
     SPELL_DRAGON_FORM,
