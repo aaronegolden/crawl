@@ -2027,6 +2027,9 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     case SPELL_ENGLACIATION:
         return cast_englaciation(powc, fail);
+        
+    case SPELL_HIBERNATION:
+        return cast_hibernation(powc, fail);
 
     case SPELL_CONTROL_UNDEAD:
         return mass_enchantment(ENCH_CHARM, powc, fail);

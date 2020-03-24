@@ -31,6 +31,7 @@
 #include "religion.h"
 #include "spl-book.h"
 #include "spl-damage.h"
+#include "spl-monench.h"
 #include "spl-summoning.h"
 #include "spl-wpnench.h"
 #include "spl-zap.h"
@@ -1715,6 +1716,9 @@ bool spell_no_hostile_in_range(spell_type spell)
         
     case SPELL_FREEZE:
         return cast_freeze(-1, false, true) == SPRET_ABORT;
+        
+    case SPELL_HIBERNATION:
+        return cast_hibernation(-1, false, true) == SPRET_ABORT;
         
     case SPELL_DETONATE:
         return random_fireball(-1, false, true) == SPRET_ABORT;

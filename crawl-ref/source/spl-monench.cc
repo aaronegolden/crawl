@@ -8,8 +8,10 @@
 
 #include "spl-monench.h"
 
+#include "coordit.h"
 #include "env.h"
 #include "message.h"
+#include "mon-tentacle.h"
 #include "spl-util.h"
 #include "terrain.h"
 
@@ -67,6 +69,62 @@ spret_type cast_englaciation(int pow, bool fail)
     apply_area_visible([pow] (coord_def where) {
         return englaciate(where, pow, &you);
     }, you.pos());
+    return SPRET_SUCCESS;
+}
+
+//similar to closest_target_in_range, but checks some other stuff
+static monster* _hibernation_target()
+{
+    for (distance_iterator di(you.pos(), true, true, 1); di; ++di)
+    {
+        monster *mon = monster_at(*di);
+        if (mon
+            && you.can_see(*mon)
+            && you.see_cell_no_trans(mon->pos())
+            && !mon->wont_attack()
+            && !mons_is_firewood(*mon)
+            && !mons_is_tentacle_or_tentacle_segment(mon->type)
+            && !mon->is_summoned()
+            &&  mon->can_hibernate())
+        { 
+            //valid target obtained
+            return mon;
+        }
+    }
+    
+    return nullptr;
+}
+
+spret_type cast_hibernation(int pow, bool fail, bool tracer)
+{
+    monster *mon = _hibernation_target();
+    
+    if (tracer)
+    {
+        if (!mon)
+            return SPRET_ABORT;
+        else
+            return SPRET_SUCCESS;
+    }
+    
+    fail_check();
+    
+    if (!mon)
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        int res_margin = mon->check_res_magic(pow);
+        if (res_margin > 0)
+        {
+            simple_monster_message(*mon,
+                    mon->resist_margin_phrase(res_margin).c_str());
+        }
+        else
+        {
+            mprf("%s falls asleep", mon->name(DESC_THE).c_str());
+            mon->put_to_sleep(&you, pow, true);
+        }
+    }
     return SPRET_SUCCESS;
 }
 

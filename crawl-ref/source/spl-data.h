@@ -1396,9 +1396,9 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_HIBERNATION, "Ensorcelled Hibernation",
     SPTYP_HEXES | SPTYP_ICE,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NOT_SELF | SPFLAG_NEEDS_TRACER | SPFLAG_MR_CHECK,
+    SPFLAG_NO_GHOST | SPFLAG_MR_CHECK,
     2,
-    56,
+    50,
     LOS_RADIUS, LOS_RADIUS,
     0, 0, //putting a monster to sleep should be silent
     TILEG_ENSORCELLED_HIBERNATION,

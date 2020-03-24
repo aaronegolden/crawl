@@ -561,8 +561,9 @@ Shoots a stream of webbing at a creature, ensnaring the target in a spider web.
 %%%%
 Ensorcelled Hibernation spell
 
-Lowers its target's metabolic rate, inducing hibernation. After awakening, the
-target will be unable to be put to sleep again for some time.
+Lowers the metabolic rate of an adjacent monster, inducing hibernation. After awakening, the
+target will be unable to be put to sleep again for some time. Monsters which are unable to
+sleep or which have been summoned are unaffected by the spell, and thus ignored by its magic.
 %%%%
 Entropic Weave spell
 
