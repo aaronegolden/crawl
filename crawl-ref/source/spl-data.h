@@ -2649,13 +2649,13 @@ static const struct spell_desc spelldata[] =
 #endif
 
 {
-    SPELL_DAZZLING_SPRAY, "Dazzling Spray",
+    SPELL_DAZZLING_FLASH, "Dazzling Flash",
     SPTYP_FIRE | SPTYP_HEXES,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NOT_SELF,
+    SPFLAG_AREA | SPFLAG_NO_GHOST,
     3,
-    50,
-    5, 5,
-    3, 0,
+    100,
+    2, 4,
+    0, 0,
     TILEG_DAZZLING_SPRAY,
 },
 

@@ -1464,7 +1464,6 @@ bool vehumet_supports_spell(spell_type spell)
         || spell == SPELL_CHAIN_LIGHTNING
         || spell == SPELL_FULMINANT_PRISM
         || spell == SPELL_BATTLESPHERE
-        || spell == SPELL_DAZZLING_SPRAY
         || spell == SPELL_FORCE_LANCE
         || spell == SPELL_GLACIATE
         || spell == SPELL_SPELLFORGED_SERVITOR

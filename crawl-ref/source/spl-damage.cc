@@ -3169,42 +3169,74 @@ vector<bolt> get_spray_rays(const actor *caster, coord_def aim, int range,
     return beams;
 }
 
-static bool _dazzle_can_hit(const actor *act)
+spret_type cast_dazzling_flash(int pow, bool fail, bool tracer)
 {
-    if (act->is_monster())
+    int range = spell_range(SPELL_DAZZLING_FLASH, pow);
+    targetter_radius hitfunc(&you, LOS_SOLID_SEE, range);
+    bool (*vulnerable) (const actor *) = [](const actor * act) -> bool
     {
-        const monster* mons = act->as_monster();
-        bolt testbeam;
-        testbeam.thrower = KILL_YOU;
-        zappy(ZAP_DAZZLING_SPRAY, 100, false, testbeam);
+        // No fedhas checks needed, plants can't be dazzled
+        return act->is_monster()
+               && mons_can_be_dazzled(act->as_monster()->type);
+    };
 
-        return !testbeam.ignores_monster(mons);
+    if (tracer)
+    {
+        for (radius_iterator ri(you.pos(), range, C_SQUARE, LOS_SOLID_SEE, true); ri; ++ri)
+        {
+            if (!in_bounds(*ri))
+                continue;
+
+            const monster* mon = monster_at(*ri);
+
+            if (!mon || !you.can_see(*mon))
+                continue;
+
+            if (!mon->friendly() && (*vulnerable)(mon))
+                return SPRET_SUCCESS;
+        }
+
+        return SPRET_ABORT;
     }
-    else
-        return false;
-}
 
-spret_type cast_dazzling_spray(int pow, coord_def aim, bool fail)
-{
-    int range = spell_range(SPELL_DAZZLING_SPRAY, pow);
 
-    targetter_spray hitfunc(&you, range, ZAP_DAZZLING_SPRAY);
-    hitfunc.set_aim(aim);
-    if (stop_attack_prompt(hitfunc, "fire towards", _dazzle_can_hit))
+    // [eb] the simulationist in me wants to use LOS_DEFAULT
+    // and let this blind through glass
+    if (stop_attack_prompt(hitfunc, "dazzle", vulnerable))
         return SPRET_ABORT;
 
     fail_check();
 
-    if (hitfunc.beams.size() == 0)
-    {
-        mpr("You can't see any targets in that direction!");
-        return SPRET_ABORT;
-    }
+    bolt beam;
+    beam.name = "energy";
+    beam.flavour = BEAM_VISUAL;
+    beam.origin_spell = SPELL_DAZZLING_FLASH;
+    beam.set_agent(&you);
+    beam.colour = WHITE;
+    beam.glyph = dchar_glyph(DCHAR_EXPLOSION);
+    beam.range = range;
+    beam.ex_size = range;
+    beam.is_explosion = true;
+    beam.source = you.pos();
+    beam.target = you.pos();
+    beam.hit = AUTOMATIC_HIT;
+    beam.loudness = 0;
+    beam.explode(true, true);
 
-    for (bolt &beam : hitfunc.beams)
+    for (radius_iterator ri(you.pos(), range, C_SQUARE, LOS_SOLID_SEE, true);
+         ri; ++ri)
     {
-        zappy(ZAP_DAZZLING_SPRAY, pow, false, beam);
-        beam.fire();
+        monster* mons = monster_at(*ri);
+
+        if (!mons || !mons_can_be_dazzled(mons->type))
+            continue;
+
+        if (mons->check_res_magic(pow) <= 0)
+        {
+            simple_monster_message(*mons, " is dazzled.");
+            mons->add_ench(mon_enchant(ENCH_BLIND, 1, &you,
+                           random_range(4, 8) * BASELINE_DELAY));
+        }
     }
 
     return SPRET_SUCCESS;

@@ -4007,12 +4007,6 @@ void bolt::affect_player()
             you.duration[DUR_FROZEN] = (2 + random2(3)) * BASELINE_DELAY;
         }
     }
-    else if (origin_spell == SPELL_DAZZLING_SPRAY
-             && !(you.holiness() & (MH_UNDEAD | MH_NONLIVING | MH_PLANT)))
-    {
-        if (x_chance_in_y(85 - you.experience_level * 3 , 100))
-            you.confuse(agent(), 5 + random2(3));
-    }
 }
 
 int bolt::apply_AC(const actor *victim, int hurted)
@@ -4471,9 +4465,7 @@ void bolt::monster_post_hit(monster* mon, int dmg)
 
     knockback_actor(mon, dmg);
 
-    if (origin_spell == SPELL_DAZZLING_SPRAY)
-        _dazzle_monster(mon, agent());
-    else if (origin_spell == SPELL_FLASH_FREEZE
+    if (origin_spell == SPELL_FLASH_FREEZE
              || name == "blast of ice"
              || origin_spell == SPELL_GLACIATE && !is_explosion)
     {
@@ -5940,8 +5932,11 @@ bool bolt::explode(bool show_more, bool hole_in_the_middle)
         loudness = explosion_noise(r);
 
         // Not an "explosion", but still a bit noisy at the target location.
-        if (origin_spell == SPELL_INFESTATION)
-            loudness = spell_effect_noise(SPELL_INFESTATION);
+        if (origin_spell == SPELL_INFESTATION
+            || origin_spell == SPELL_DAZZLING_FLASH)
+        {
+            loudness = spell_effect_noise(origin_spell);
+        }
 
         // Lee's Rapid Deconstruction can target the tiles on the map
         // boundary.
@@ -6346,8 +6341,7 @@ string bolt::get_short_name() const
     if (flavour == BEAM_ELECTRICITY && pierce)
         return "lightning";
 
-    if (origin_spell == SPELL_ISKENDERUNS_MYSTIC_BLAST
-        || origin_spell == SPELL_DAZZLING_SPRAY)
+    if (origin_spell == SPELL_ISKENDERUNS_MYSTIC_BLAST)
     {
         return "energy";
     }

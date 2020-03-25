@@ -2350,7 +2350,6 @@ static spell_type servitor_spells[] =
     SPELL_FREEZING_CLOUD,
     SPELL_POISONOUS_CLOUD,
     SPELL_FORCE_LANCE,
-    SPELL_DAZZLING_SPRAY,
     SPELL_MEPHITIC_CLOUD,
     // fallback spells
     SPELL_STICKY_FLAME,
@@ -2646,7 +2645,6 @@ bool battlesphere_can_mirror(spell_type spell)
         || spell == SPELL_IRON_SHOT
         || spell == SPELL_THROW_ICICLE
         || spell == SPELL_FLAME_TONGUE
-        || spell == SPELL_DAZZLING_SPRAY
         || spell == SPELL_FORCE_LANCE
         || spell == SPELL_MAGIC_DART
         || spell == SPELL_SEARING_RAY;

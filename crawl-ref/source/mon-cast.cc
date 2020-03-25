@@ -1297,10 +1297,6 @@ bolt mons_spell_beam(const monster* mons, spell_type spell_cast, int power,
         zappy(spell_to_zap(real_spell), power, true, beam);
         break;
 
-    case SPELL_DAZZLING_SPRAY: // special-cased because of a spl-zap hack...
-        zappy(ZAP_DAZZLING_SPRAY, power, true, beam);
-        break;
-
     case SPELL_SANDBLAST: // special-cased to avoid breaking battlesphere :(
         zappy(ZAP_SANDBLAST, power, true, beam);
         break;
@@ -3893,14 +3889,6 @@ static bool _target_and_justify_spell(monster &mons,
             // hexing the player.
             if (mons.foe == MHITYOU && !_set_hex_target(&mons, beem))
                 return false;
-            break;
-        case SPELL_DAZZLING_SPRAY:
-            if (!mons.get_foe()
-                || !_spray_tracer(&mons, _mons_spellpower(spell, mons),
-                                  beem, spell))
-            {
-                return false;
-            }
             break;
         default:
             break;
@@ -6707,18 +6695,6 @@ void mons_cast(monster* mons, bolt pbolt, spell_type spell_cast,
         }
         mons->add_ench(mon_enchant(ENCH_SHROUD));
         return;
-
-    case SPELL_DAZZLING_SPRAY:
-    {
-        vector<bolt> beams = get_spray_rays(mons, pbolt.target, pbolt.range, 3,
-                                            ZAP_DAZZLING_SPRAY);
-        for (bolt &child : beams)
-        {
-            bolt_parent_init(pbolt, child);
-            child.fire();
-        }
-        return;
-    }
 
     case SPELL_GLACIATE:
     {

@@ -1198,8 +1198,6 @@ static unique_ptr<targetter> _spell_targetter(spell_type spell, int pow,
         return make_unique<targetter_fragment>(&you, pow, range);
     case SPELL_FULMINANT_PRISM:
         return make_unique<targetter_smite>(&you, range, 0, 2);
-    case SPELL_DAZZLING_SPRAY:
-        return make_unique<targetter_spray>(&you, range, ZAP_DAZZLING_SPRAY);
     case SPELL_GLACIATE:
         return make_unique<targetter_cone>(&you, range);
     case SPELL_CLOUD_CONE:
@@ -1928,8 +1926,8 @@ static spret_type _do_cast(spell_type spell, int powc,
     case SPELL_THUNDERBOLT:
         return cast_thunderbolt(&you, powc, target, fail);
 
-    case SPELL_DAZZLING_SPRAY:
-        return cast_dazzling_spray(powc, target, fail);
+    case SPELL_DAZZLING_FLASH:
+        return cast_dazzling_flash(powc, fail);
 
     case SPELL_CHAIN_OF_CHAOS:
         return cast_chain_spell(SPELL_CHAIN_OF_CHAOS, powc, &you, fail);

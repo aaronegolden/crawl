@@ -159,7 +159,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_CORONA,
     SPELL_HIBERNATION,
     SPELL_CONFUSE,
-    SPELL_DAZZLING_SPRAY,
+    SPELL_DAZZLING_FLASH,
 },
 
 {   // Book of Air
