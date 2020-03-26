@@ -1750,7 +1750,9 @@ static spret_type _handle_buff_spells(spell_type spell, int powc, bolt& beam, go
 		case SPELL_RING_OF_FLAMES:
             return cast_ring_of_flames(powc, false);     
         case SPELL_INFUSION:
-            return cast_infusion(powc, false);   
+            return cast_infusion(powc, false);
+        case SPELL_CONFUSING_TOUCH:
+            return cast_confusing_touch(powc, false);
         case SPELL_EXCRUCIATING_WOUNDS:
             return cast_excruciating_wounds(powc, false);
         case SPELL_INFESTATION:
@@ -2011,9 +2013,6 @@ static spret_type _do_cast(spell_type spell, int powc,
         return cast_haunt(powc, beam.target, god, fail);
 
     // Enchantments.
-    case SPELL_CONFUSING_TOUCH:
-        return cast_confusing_touch(powc, fail);
-
     case SPELL_CAUSE_FEAR:
         return mass_enchantment(ENCH_FEAR, powc, fail);
 

@@ -446,6 +446,13 @@ static void _remove_spell_attributes(spell_type spell)
             mprf(MSGCH_DURATION, "Your attacks are no longer infused with magic.");
         }
         break;
+    case SPELL_CONFUSING_TOUCH: 
+        if (you.attribute[ATTR_CONFUSING_TOUCH])
+        {
+            you.attribute[ATTR_CONFUSING_TOUCH] = 0;
+            mprf(MSGCH_DURATION, "Your attacks no longer confuse your enemies.");
+        }
+        break;
     case SPELL_EXCRUCIATING_WOUNDS:
         if(you.attribute[ATTR_EXCRUCIATING_WOUNDS])
         {
@@ -1498,6 +1505,11 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
     case SPELL_INFUSION:
         if(temp && you.attribute[ATTR_INFUSION])
             return "you are already infusing your attacks with magic.";
+        break;
+        
+    case SPELL_CONFUSING_TOUCH:
+        if(temp && you.attribute[ATTR_CONFUSING_TOUCH])
+            return "your attacks already confuse your foes.";
         break;
 
     case SPELL_OZOCUBUS_ARMOUR:

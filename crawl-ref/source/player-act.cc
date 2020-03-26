@@ -234,7 +234,7 @@ brand_type player::damage_brand(int)
 
     // unarmed
 
-    if (duration[DUR_CONFUSING_TOUCH])
+    if (you.attribute[ATTR_CONFUSING_TOUCH])
         return SPWPN_CONFUSE;
 
     return get_form()->get_uc_brand();

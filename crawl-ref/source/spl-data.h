@@ -224,7 +224,8 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_CONFUSE, "Confuse",
     SPTYP_HEXES,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MR_CHECK,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MR_CHECK 
+        | SPFLAG_MONSTER,
     3,
     200,
     LOS_RADIUS, LOS_RADIUS,
@@ -1308,11 +1309,11 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_CONFUSING_TOUCH, "Confusing Touch",
     SPTYP_HEXES,
-    SPFLAG_NONE,
-    1,
-    50,
+    SPFLAG_UTILITY | SPFLAG_PERMABUFF,
+    3,
+    100,
     -1, -1,
-    2, 0,
+    0, 0,
     TILEG_CONFUSING_TOUCH,
 },
 

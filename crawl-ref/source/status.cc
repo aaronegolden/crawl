@@ -331,12 +331,6 @@ bool fill_status_info(int status, status_info* inf)
         break;
     }
 
-    case DUR_CONFUSING_TOUCH:
-    {
-        inf->long_text = you.hands_act("are", "glowing red.");
-        break;
-    }
-
     case DUR_FIRE_SHIELD:
     {
         // Might be better to handle this with an extra virtual status.
@@ -741,6 +735,16 @@ bool fill_status_info(int status, status_info* inf)
                 inf->light_colour = DARKGREY;
             else
                 inf->light_colour = WHITE;
+        }
+        break;
+    }
+    
+    case STATUS_CONFUSING_TOUCH:
+    {
+        if(you.attribute[ATTR_CONFUSING_TOUCH])
+        {
+            inf->light_text = "CTouch";
+            inf->light_colour = WHITE;
         }
         break;
     }

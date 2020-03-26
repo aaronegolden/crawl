@@ -502,6 +502,7 @@ enum ability_type
     ABIL_END_SERVITOR,
     ABIL_END_PPROJ,
 	ABIL_END_PIERCE,
+    ABIL_END_CONFUSING_TOUCH,
     NUM_ABILITIES
 };
 
@@ -645,6 +646,7 @@ enum attribute_type
 	ATTR_PIERCING_SHOT,        // Piercing shot
     ATTR_XOM_MUT_XP,           // How much XP before Xom mutates the player again
     ATTR_XOM_GIFT_XP,          // How much XP before Xom gifts the player again
+    ATTR_CONFUSING_TOUCH,      // confusing touch
     NUM_ATTRIBUTES
 };
 
