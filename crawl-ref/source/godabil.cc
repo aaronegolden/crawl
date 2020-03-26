@@ -1440,37 +1440,32 @@ bool vehumet_supports_spell(spell_type spell)
     if (spell == SPELL_SHATTER
         || spell == SPELL_LRD
         || spell == SPELL_SANDBLAST
-        || spell == SPELL_AIRSTRIKE
         || spell == SPELL_TORNADO
         || spell == SPELL_FREEZE
-        || spell == SPELL_IGNITE_POISON
         || spell == SPELL_OZOCUBUS_REFRIGERATION
-        || spell == SPELL_OLGREBS_TOXIC_RADIANCE
         || spell == SPELL_VIOLENT_UNRAVELLING
         || spell == SPELL_IGNITION
-        || spell == SPELL_DETONATE
         || spell == SPELL_CONJURE_FLAME      
-        || spell == SPELL_BOLT_OF_FIRE
+        || spell == SPELL_STARBURST
         || spell == SPELL_FREEZING_CLOUD
         || spell == SPELL_MEPHITIC_CLOUD
-        || spell == SPELL_BOLT_OF_DRAINING
         || spell == SPELL_FIRE_STORM
-        || spell == SPELL_STICKY_FLAME
         || spell == SPELL_IRON_SHOT
-        || spell == SPELL_THROW_ICICLE
-        || spell == SPELL_FLAME_TONGUE
+        || spell == SPELL_HAILSTORM
+        || spell == SPELL_FOXFIRE
         || spell == SPELL_DISCHARGE
         || spell == SPELL_CONJURE_BALL_LIGHTNING
         || spell == SPELL_CHAIN_LIGHTNING
-        || spell == SPELL_FULMINANT_PRISM
         || spell == SPELL_BATTLESPHERE
         || spell == SPELL_FORCE_LANCE
-        || spell == SPELL_GLACIATE
         || spell == SPELL_SPELLFORGED_SERVITOR
         || spell == SPELL_IRRADIATE
-        || spell == SPELL_MAGIC_DART
+        || spell == SPELL_SHOCK
         || spell == SPELL_IOOD
-        || spell == SPELL_SEARING_RAY)
+        || spell == SPELL_DETONATE
+        || spell == SPELL_ABSOLUTE_ZERO
+        || spell == SPELL_ELECTRIC_SURGE
+        || spell == SPELL_AMBULATORY_BOMB)
     {
         return true;
     }
