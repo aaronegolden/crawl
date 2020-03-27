@@ -232,11 +232,6 @@ brand_type player::damage_brand(int)
         return get_weapon_brand(inv[wpn]);
     }
 
-    // unarmed
-
-    if (you.attribute[ATTR_CONFUSING_TOUCH])
-        return SPWPN_CONFUSE;
-
     return get_form()->get_uc_brand();
 }
 

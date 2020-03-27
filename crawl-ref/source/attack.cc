@@ -1747,18 +1747,7 @@ bool attack::apply_damage_brand(const char *what)
         beam_temp.flavour   = BEAM_CONFUSION;
         beam_temp.source_id = attacker->mid;
 
-        if (attacker->is_player() && damage_brand == SPWPN_CONFUSE
-            && you.attribute[ATTR_CONFUSING_TOUCH])
-        {
-            beam_temp.ench_power = calc_spell_power(SPELL_CONFUSING_TOUCH, true);
-            int margin;
-            if (beam_temp.try_enchant_monster(defender->as_monster(), margin)
-                    == MON_AFFECTED)
-            {
-                obvious_effect = false;
-            }
-        }
-        else if (!x_chance_in_y(melee_confuse_chance(defender->get_hit_dice()),
+        if (!x_chance_in_y(melee_confuse_chance(defender->get_hit_dice()),
                                                      100)
                  || defender->as_monster()->check_clarity(false))
         {
@@ -1801,6 +1790,18 @@ bool attack::apply_damage_brand(const char *what)
 
         if (responsible->is_player())
             did_god_conduct(DID_CHAOS, 2 + random2(3), brand_was_known);
+    }
+    
+    if (attacker->is_player() && you.attribute[ATTR_CONFUSING_TOUCH]
+        && (!weapon || !is_range_weapon(*weapon)))
+    {
+        bolt beam_temp;
+        beam_temp.thrower   = KILL_YOU;
+        beam_temp.flavour   = BEAM_CONFUSION;
+        beam_temp.source_id = attacker->mid;
+        beam_temp.ench_power = calc_spell_power(SPELL_CONFUSING_TOUCH, true);
+        int margin;
+        beam_temp.try_enchant_monster(defender->as_monster(), margin);
     }
 
     if (!obvious_effect)
