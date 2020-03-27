@@ -476,6 +476,20 @@ bool melee_attack::handle_phase_hit()
 #endif
         emit_foul_stench();
     }
+    
+    // apply distracting touch last
+    if (attacker->is_player() && you.attribute[ATTR_DISTRACTING_TOUCH])
+    {
+        // no repeat applications
+        if (defender->alive() && !defender->as_monster()->has_ench(ENCH_DISTRACTED))
+        {
+            if(defender->check_res_magic(calc_spell_power(SPELL_DISTRACTING_TOUCH, true) <= 0))
+            {
+                mprf("%s is distracted.", defender->name(DESC_THE).c_str());
+                defender->as_monster()->add_ench(mon_enchant(ENCH_DISTRACTED, 1, &you, 20));
+            }
+        }
+    }
 
     return true;
 }

@@ -1457,6 +1457,7 @@ void monster::apply_enchantment(const mon_enchant &me)
     case ENCH_STILL_WINDS:
     case ENCH_WHIRLWIND_PINNED:
     case ENCH_PHASE_SHIFT:
+    case ENCH_DISTRACTED:
         decay_enchantment(en);
         break;
 
@@ -2133,7 +2134,7 @@ static const char *enchant_names[] =
 #endif
     "aura_of_brilliance", "empowered_spells", "gozag_incite", "pain_bond",
     "idealised", "bound_soul", "infestation",
-    "stilling the winds", "pinned_by_whirlwind", "phase_shift",
+    "stilling the winds", "pinned_by_whirlwind", "phase_shift", "distracted",
     "buggy",
 };
 

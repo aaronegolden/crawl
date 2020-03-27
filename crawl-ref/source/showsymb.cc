@@ -216,7 +216,7 @@ static int _get_mons_colour(const monster_info& mi)
         col |= COLFLAG_WILLSTAB;
     }
     else if (Options.may_stab_brand != CHATTR_NORMAL
-             && mi.is(MB_DISTRACTED))
+             && (mi.is(MB_DISTRACTED) || mi.is(MB_DTOUCH)))
     {
         col |= COLFLAG_MAYSTAB;
     }

@@ -503,6 +503,7 @@ enum ability_type
     ABIL_END_PPROJ,
 	ABIL_END_PIERCE,
     ABIL_END_CONFUSING_TOUCH,
+    ABIL_END_DISTRACTING_TOUCH,
     NUM_ABILITIES
 };
 
@@ -647,6 +648,7 @@ enum attribute_type
     ATTR_XOM_MUT_XP,           // How much XP before Xom mutates the player again
     ATTR_XOM_GIFT_XP,          // How much XP before Xom gifts the player again
     ATTR_CONFUSING_TOUCH,      // confusing touch
+    ATTR_DISTRACTING_TOUCH,    // distracting touch
     NUM_ATTRIBUTES
 };
 
@@ -2192,6 +2194,7 @@ enum enchant_type
     ENCH_STILL_WINDS,
     ENCH_WHIRLWIND_PINNED,
     ENCH_PHASE_SHIFT,
+    ENCH_DISTRACTED,
     // Update enchant_names[] in mon-ench.cc when adding or removing
     // enchantments.
     NUM_ENCHANTMENTS
@@ -4962,6 +4965,7 @@ enum spell_type : int
     SPELL_ABSOLUTE_ZERO,
     SPELL_ELECTRIC_SURGE,
     SPELL_AMBULATORY_BOMB,
+    SPELL_DISTRACTING_TOUCH,
     NUM_SPELLS
 };
 

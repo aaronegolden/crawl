@@ -1753,6 +1753,8 @@ static spret_type _handle_buff_spells(spell_type spell, int powc, bolt& beam, go
             return cast_infusion(powc, false);
         case SPELL_CONFUSING_TOUCH:
             return cast_confusing_touch(powc, false);
+        case SPELL_DISTRACTING_TOUCH:
+            return cast_distracting_touch(powc, false);
         case SPELL_EXCRUCIATING_WOUNDS:
             return cast_excruciating_wounds(powc, false);
         case SPELL_INFESTATION:

@@ -1281,7 +1281,7 @@ bool MonsterMenuEntry::get_tiles(vector<tile_def>& tileset) const
         tileset.emplace_back(TILEI_FLEEING, TEX_ICONS);
     else if (m->is(MB_STABBABLE))
         tileset.emplace_back(TILEI_STAB_BRAND, TEX_ICONS);
-    else if (m->is(MB_DISTRACTED))
+    else if (m->is(MB_DISTRACTED) || m->is(MB_DTOUCH))
         tileset.emplace_back(TILEI_MAY_STAB_BRAND, TEX_ICONS);
 
     return true;

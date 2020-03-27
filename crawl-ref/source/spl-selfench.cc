@@ -457,6 +457,10 @@ int calculate_frozen_mp()
     {
         frozen_mp += spell_mp_freeze(SPELL_CONFUSING_TOUCH);
     }
+    if (you.attribute[ATTR_DISTRACTING_TOUCH] > 0)
+    {
+        frozen_mp += spell_mp_freeze(SPELL_DISTRACTING_TOUCH);
+    }
     if (you.attribute[ATTR_PORTAL_PROJECTILE] > 0)
     {
 		frozen_mp += spell_mp_freeze(SPELL_PORTAL_PROJECTILE);
@@ -596,6 +600,11 @@ void dispel_permanent_buffs(bool evil_only)
     if(you.attribute[ATTR_CONFUSING_TOUCH] && !evil_only)
     {
         you.attribute[ATTR_CONFUSING_TOUCH] = 0;
+        dispelled = true;
+    }
+    if(you.attribute[ATTR_DISTRACTING_TOUCH] && !evil_only)
+    {
+        you.attribute[ATTR_DISTRACTING_TOUCH] = 0;
         dispelled = true;
     }
     if(you.attribute[ATTR_ANIMATE_DEAD])

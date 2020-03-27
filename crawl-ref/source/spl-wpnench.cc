@@ -119,3 +119,15 @@ spret_type cast_confusing_touch(int power, bool fail)
 
     return SPRET_SUCCESS;
 }
+
+spret_type cast_distracting_touch(int power, bool fail)
+{
+    fail_check();
+    msg::stream << you.hands_act("begin", "to glow ")
+                << "pale yellow"
+                << "." << endl;
+
+    you.attribute[ATTR_DISTRACTING_TOUCH] = 1;
+
+    return SPRET_SUCCESS;
+}

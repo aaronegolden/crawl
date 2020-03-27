@@ -153,7 +153,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Maledictions
-    SPELL_CORONA,
+    SPELL_DISTRACTING_TOUCH,
     SPELL_HIBERNATION,
     SPELL_CONFUSING_TOUCH,
     SPELL_DAZZLING_FLASH,
@@ -272,7 +272,6 @@ static const vector<spell_type> spellbook_templates[] =
 #endif
 
 {   // Book of Arcane Marksmanship
-    SPELL_CORONA,
     SPELL_SLOW,
     SPELL_BLINK,
     SPELL_PORTAL_PROJECTILE,

@@ -3010,6 +3010,14 @@ static vector<string> _get_monster_desc_vector(const monster_info& mi)
 
     _append_container(descs, _get_monster_behaviour_vector(mi));
 
+    if (you.attribute[ATTR_DISTRACTING_TOUCH])
+    {
+        const int pow = calc_spell_power(SPELL_DISTRACTING_TOUCH, true);
+        descs.emplace_back(make_stringf("chance to distracting on hit: %d%%",
+                                        hex_success_chance(mi.res_magic(),
+                                                           pow, 100)));
+    }
+
     if (you.attribute[ATTR_CONFUSING_TOUCH])
     {
         const int pow = calc_spell_power(SPELL_CONFUSING_TOUCH, true);

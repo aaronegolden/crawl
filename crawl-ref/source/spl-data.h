@@ -1317,6 +1317,17 @@ static const struct spell_desc spelldata[] =
     TILEG_CONFUSING_TOUCH,
 },
 
+{
+    SPELL_DISTRACTING_TOUCH, "Distracting Touch",
+    SPTYP_HEXES,
+    SPFLAG_UTILITY | SPFLAG_PERMABUFF,
+    1,
+    25,
+    -1, -1,
+    0, 0,
+    TILEG_CONFUSING_TOUCH,
+},
+
 #if TAG_MAJOR_VERSION == 34
 {
     SPELL_SURE_BLADE, "Sure Blade",
@@ -1512,7 +1523,8 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_CORONA, "Corona",
     SPTYP_HEXES,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NOT_SELF | SPFLAG_NEEDS_TRACER | SPFLAG_MR_CHECK,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NOT_SELF | SPFLAG_NEEDS_TRACER 
+    | SPFLAG_MONSTER | SPFLAG_MR_CHECK,
     1,
     200,
     LOS_RADIUS, LOS_RADIUS,

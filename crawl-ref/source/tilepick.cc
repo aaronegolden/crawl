@@ -1845,7 +1845,8 @@ tileidx_t tileidx_monster(const monster_info& mons)
         ch |= TILE_FLAG_STAB;
     }
     // Should petrify show the '?' symbol?
-    else if (mons.is(MB_DISTRACTED) && !mons.is(MB_PETRIFYING) && !mons.is(MB_PETRIFIED))
+    else if ((mons.is(MB_DISTRACTED) || mons.is(MB_DTOUCH)) 
+        && !mons.is(MB_PETRIFYING) && !mons.is(MB_PETRIFIED))
         ch |= TILE_FLAG_MAY_STAB;
 
     mon_dam_level_type damage_level = mons.dam;
@@ -3222,6 +3223,7 @@ tileidx_t tileidx_ability(const ability_type ability)
     case ABIL_END_ABJURATION:
     case ABIL_END_INFUSION:
     case ABIL_END_CONFUSING_TOUCH:
+    case ABIL_END_DISTRACTING_TOUCH:
     case ABIL_END_PPROJ:
     case ABIL_END_PIERCE:
     case ABIL_END_ANIMATE_DEAD:

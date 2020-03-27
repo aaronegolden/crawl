@@ -748,6 +748,16 @@ bool fill_status_info(int status, status_info* inf)
         }
         break;
     }
+    
+    case STATUS_DISTRACTING_TOUCH:
+    {
+        if(you.attribute[ATTR_DISTRACTING_TOUCH])
+        {
+            inf->light_text = "DTouch";
+            inf->light_colour = WHITE;
+        }
+        break;
+    }
 	
     case STATUS_INFESTATION:
     {

@@ -314,6 +314,8 @@ static const ability_def Ability_List[] =
       0, 0, 0, 0, {}, abflag::NONE },
     { ABIL_END_CONFUSING_TOUCH, "End Confusing Touch",
       0, 0, 0, 0, {}, abflag::NONE },
+    { ABIL_END_DISTRACTING_TOUCH, "End Distracting Touch",
+      0, 0, 0, 0, {}, abflag::NONE },
     { ABIL_END_SPECTRAL_WEAPON, "End Spectral Weapon",
       0, 0, 0, 0, {}, abflag::NONE },
     { ABIL_END_ANIMATE_DEAD, "End Animate Dead",
@@ -2115,6 +2117,11 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         you.attribute[ATTR_CONFUSING_TOUCH] = 0;
         mpr("You stop confusing your enemies.");
         break;
+    case ABIL_END_DISTRACTING_TOUCH:
+        fail_check();
+        you.attribute[ATTR_DISTRACTING_TOUCH] = 0;
+        mpr("You stop distracting your enemies.");
+        break;
     case ABIL_END_PPROJ:
         fail_check();
         you.attribute[ATTR_PORTAL_PROJECTILE] = 0;
@@ -3490,6 +3497,9 @@ vector<talent> your_talents(bool check_confused, bool include_unusable)
     if (you.attribute[ATTR_CONFUSING_TOUCH])
        _add_talent(talents, ABIL_END_CONFUSING_TOUCH, check_confused);
    
+    if (you.attribute[ATTR_DISTRACTING_TOUCH])
+       _add_talent(talents, ABIL_END_DISTRACTING_TOUCH, check_confused);
+   
     if (you.attribute[ATTR_PORTAL_PROJECTILE])
        _add_talent(talents, ABIL_END_PPROJ, check_confused);
    
@@ -3774,6 +3784,7 @@ int find_ability_slot(const ability_type abil, char firstletter)
     case ABIL_END_BATTLESPHERE:
     case ABIL_END_SERVITOR:
     case ABIL_END_CONFUSING_TOUCH:
+    case ABIL_END_DISTRACTING_TOUCH:
     case ABIL_END_PPROJ:
         first_slot = letter_to_index('A');
         break;

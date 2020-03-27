@@ -1511,6 +1511,11 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
         if(temp && you.attribute[ATTR_CONFUSING_TOUCH])
             return "your attacks already confuse your foes.";
         break;
+        
+    case SPELL_DISTRACTING_TOUCH:
+        if(temp && you.attribute[ATTR_DISTRACTING_TOUCH])
+            return "your attacks already distract your foes.";
+        break;
 
     case SPELL_OZOCUBUS_ARMOUR:
         if (temp && !player_effectively_in_light_armour())
