@@ -478,7 +478,8 @@ bool melee_attack::handle_phase_hit()
     }
     
     // apply distracting touch last
-    if (attacker->is_player() && you.attribute[ATTR_DISTRACTING_TOUCH])
+    if (attacker->is_player() && you.attribute[ATTR_DISTRACTING_TOUCH] 
+            && !you.duration[DUR_DISTRACTING_TOUCH_COOLDOWN])
     {
         // no repeat applications
         if (defender->alive() && !defender->as_monster()->has_ench(ENCH_DISTRACTED))
@@ -487,6 +488,7 @@ bool melee_attack::handle_phase_hit()
             {
                 mprf("%s is distracted.", defender->name(DESC_THE).c_str());
                 defender->as_monster()->add_ench(mon_enchant(ENCH_DISTRACTED, 1, &you, 20));
+                you.duration[DUR_DISTRACTING_TOUCH_COOLDOWN] = random_range(30,60);
             }
         }
     }

@@ -882,7 +882,16 @@ static void _decrement_durations()
         do_dragon_call(delay);
 	
     if(you.duration[DUR_SPECTRAL_WEAPON_COOLDOWN])
-        you.duration[DUR_SPECTRAL_WEAPON_COOLDOWN] = max(you.duration[DUR_SPECTRAL_WEAPON_COOLDOWN] - delay, 0);
+        you.duration[DUR_SPECTRAL_WEAPON_COOLDOWN] = 
+            max(you.duration[DUR_SPECTRAL_WEAPON_COOLDOWN] - delay, 0);
+
+    if(you.duration[DUR_CONFUSING_TOUCH_COOLDOWN])
+        you.duration[DUR_CONFUSING_TOUCH_COOLDOWN] = 
+            max(you.duration[DUR_CONFUSING_TOUCH_COOLDOWN] - delay, 0);
+            
+    if(you.duration[DUR_DISTRACTING_TOUCH_COOLDOWN])
+        you.duration[DUR_DISTRACTING_TOUCH_COOLDOWN] = 
+            max(you.duration[DUR_DISTRACTING_TOUCH_COOLDOWN] - delay, 0);
 
     if (you.duration[DUR_DOOM_HOWL])
         doom_howl(min(delay, you.duration[DUR_DOOM_HOWL]));

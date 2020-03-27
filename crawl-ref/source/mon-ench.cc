@@ -141,6 +141,12 @@ bool monster::add_ench(const mon_enchant &ench)
         del_ench(ENCH_LIQUEFYING);
         invalidate_agrid();
     }
+    
+    if (ench.ench == ENCH_DISTRACTED && 
+            (mons_class_is_firewood(type) || mons_is_tentacle_or_tentacle_segment(type)))
+    {
+        return false;
+    }
 
     // If we have never changed shape, mark us as shapeshifter, so that
     // "goblin perm_ench:shapeshifter" reverts on death.

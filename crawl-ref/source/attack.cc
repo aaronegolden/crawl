@@ -1792,8 +1792,9 @@ bool attack::apply_damage_brand(const char *what)
             did_god_conduct(DID_CHAOS, 2 + random2(3), brand_was_known);
     }
     
-    if (attacker->is_player() && you.attribute[ATTR_CONFUSING_TOUCH]
-        && (!weapon || !is_range_weapon(*weapon)))
+    if (attacker->is_player() && you.attribute[ATTR_CONFUSING_TOUCH] && coinflip()
+        && (!weapon || !is_range_weapon(*weapon))
+        && ! you.duration[DUR_CONFUSING_TOUCH_COOLDOWN])
     {
         bolt beam_temp;
         beam_temp.thrower   = KILL_YOU;
@@ -1802,6 +1803,8 @@ bool attack::apply_damage_brand(const char *what)
         beam_temp.ench_power = calc_spell_power(SPELL_CONFUSING_TOUCH, true);
         int margin;
         beam_temp.try_enchant_monster(defender->as_monster(), margin);
+        
+        you.duration[DUR_CONFUSING_TOUCH_COOLDOWN] = random_range(30,60);
     }
 
     if (!obvious_effect)

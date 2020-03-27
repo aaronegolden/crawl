@@ -3023,7 +3023,7 @@ static vector<string> _get_monster_desc_vector(const monster_info& mi)
         const int pow = calc_spell_power(SPELL_CONFUSING_TOUCH, true);
         descs.emplace_back(make_stringf("chance to confuse on hit: %d%%",
                                         hex_success_chance(mi.res_magic(),
-                                                           pow, 100)));
+                                                           pow, 50)));
     }
     else if (you.form == TRAN_FUNGUS
              && !mons_is_unbreathing(mi.type))

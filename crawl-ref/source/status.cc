@@ -744,7 +744,14 @@ bool fill_status_info(int status, status_info* inf)
         if(you.attribute[ATTR_CONFUSING_TOUCH])
         {
             inf->light_text = "CTouch";
-            inf->light_colour = WHITE;
+            if (you.duration[DUR_CONFUSING_TOUCH_COOLDOWN])
+            {
+                inf->short_text   = "confusing touch cooldown";
+                inf->long_text    = "confusing touch on cooldown";
+                inf->light_colour = DARKGREY;
+            }
+            else
+                inf->light_colour = WHITE;
         }
         break;
     }
@@ -754,7 +761,14 @@ bool fill_status_info(int status, status_info* inf)
         if(you.attribute[ATTR_DISTRACTING_TOUCH])
         {
             inf->light_text = "DTouch";
-            inf->light_colour = WHITE;
+            if (you.duration[DUR_DISTRACTING_TOUCH_COOLDOWN])
+            {
+                inf->short_text   = "distracting touch cooldown";
+                inf->long_text    = "distracting touch on cooldown";
+                inf->light_colour = DARKGREY;
+            }
+            else
+                inf->light_colour = WHITE;
         }
         break;
     }
@@ -826,7 +840,7 @@ bool fill_status_info(int status, status_info* inf)
         {
             const item_def* weapon = you.weapon();
             inf->light_text = "Weap";
-            if (!weapon_can_be_spectral(weapon))
+            if (weapon && !weapon_can_be_spectral(weapon))
             {
 			    inf->short_text   = "unsuitable spectral weapon";
                 inf->long_text    = "can't summon spectral weapon";

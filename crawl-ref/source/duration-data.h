@@ -613,6 +613,8 @@ static const duration_def duration_data[] =
     { DUR_HEAVENLY_STORM, 0, "", "", "", "", D_NO_FLAGS,
       {{ "", wu_jian_heaven_tick }}},
     { DUR_SPECTRAL_WEAPON_COOLDOWN, 0, "", "", "spectral weapon cooldown", "", D_NO_FLAGS},
+    { DUR_CONFUSING_TOUCH_COOLDOWN, 0, "", "", "confusing touch cooldown", "", D_NO_FLAGS},
+    { DUR_DISTRACTING_TOUCH_COOLDOWN, 0, "", "", "distracting touch cooldown", "", D_NO_FLAGS},
 
 #if TAG_MAJOR_VERSION == 34
     // And removed ones
