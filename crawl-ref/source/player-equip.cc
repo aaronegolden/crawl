@@ -248,17 +248,14 @@ static void _equip_artefact_effect(item_def &item, bool *show_msgs, bool unmeld,
     if (unknown_proprt(ARTP_CONTAM) && msg)
         mpr("You feel a build-up of mutagenic energy.");
 
-    if (!unmeld && !item.cursed() && proprt[ARTP_CURSE] > 0
-         && one_chance_in(proprt[ARTP_CURSE]))
-    {
-        do_curse_item(item, !msg);
-    }
-
     if (proprt[ARTP_HP])
         _calc_hp_artefact();
 
     // Let's try this here instead of up there.
     if (proprt[ARTP_MAGICAL_POWER])
+        calc_mp();
+    
+    if (proprt[ARTP_INTELLIGENCE])
         calc_mp();
 
     if (!fully_identified(item))

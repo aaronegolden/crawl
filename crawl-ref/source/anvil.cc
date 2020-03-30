@@ -320,6 +320,7 @@ void use_anvil()
     dungeon_terrain_changed(pos, DNGN_DESTROYED_ANVIL);
     view_update_at(pos);
 
+    calc_mp();
     redraw_screen();
     you.turn_is_over = true;
     return;

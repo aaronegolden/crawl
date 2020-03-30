@@ -3623,14 +3623,6 @@ void dec_hp(int hp_loss, bool fatal, const char *aux)
 
 void calc_mp()
 {
-#if TAG_MAJOR_VERSION == 34
-    if (you.species == SP_DJINNI)
-    {
-        you.magic_points = you.max_magic_points = 0;
-        return calc_hp();
-    }
-#endif
-
     you.max_magic_points = get_real_mp(true);
     you.magic_points = min(you.magic_points, you.max_magic_points);
     you.redraw_magic_points = true;
