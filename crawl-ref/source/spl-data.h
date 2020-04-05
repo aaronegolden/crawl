@@ -37,7 +37,7 @@ static const struct spell_desc spelldata[] =
     SPELL_CAUSE_FEAR, "Cause Fear",
     SPTYP_HEXES,
     SPFLAG_AREA | SPFLAG_MR_CHECK,
-    4,
+    5,
     200,
     LOS_RADIUS, LOS_RADIUS,
     3, 0,

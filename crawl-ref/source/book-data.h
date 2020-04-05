@@ -62,8 +62,8 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Enchantments
-    SPELL_CAUSE_FEAR,
     SPELL_SILENCE,
+    SPELL_CAUSE_FEAR,
     SPELL_VIOLENT_UNRAVELLING,
     SPELL_DEFLECT_MISSILES,
     SPELL_DISCORD,
@@ -275,8 +275,8 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SLOW,
     SPELL_BLINK,
     SPELL_PORTAL_PROJECTILE,
-    SPELL_CAUSE_FEAR,
     SPELL_LEDAS_LIQUEFACTION,
+    SPELL_CAUSE_FEAR,
 },
 
 {   // Book of the Dragon
