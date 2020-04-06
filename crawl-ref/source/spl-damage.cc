@@ -2182,7 +2182,7 @@ spret_type directional_lbolt(int pow, bool fail, bool tracer)
         beam.is_tracer = false;
         
         
-       mprf("You unleash a surge of electricity!");
+        mprf("You unleash a surge of electricity!");
         
         coord_def source = you.pos();
         coord_def target;
@@ -2201,6 +2201,46 @@ spret_type directional_lbolt(int pow, bool fail, bool tracer)
             source = target;
             beam.fire();
         }      
+    }
+    
+    return SPRET_SUCCESS;
+}
+
+spret_type cast_mephitic_cloud(int pow, bool fail, bool tracer)
+{
+    monster* target = _closest_target_in_range(min(4, LOS_RADIUS)); 
+    
+    if (tracer)
+    {
+        if (!target)
+            return SPRET_ABORT;
+        else
+            return SPRET_SUCCESS;
+    }
+    
+    targetter_radius hitfunc(&you, LOS_NO_TRANS, min(4,LOS_RADIUS));
+    if (stop_attack_prompt(hitfunc, "mephitic cloud", nullptr))
+        return SPRET_ABORT;
+    
+    fail_check();
+    
+    if(!target)
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        bolt beam_actual;
+        beam_actual.set_agent(&you);
+        beam_actual.flavour       = BEAM_MEPHITIC;
+        beam_actual.real_flavour  = BEAM_MEPHITIC;
+        beam_actual.damage        = calc_dice(1, 0);
+        beam_actual.name          = "mephitic cloud";
+        beam_actual.source        = target->pos();
+        beam_actual.target        = target->pos();
+        beam_actual.ench_power    = pow;
+        beam_actual.colour        = GREEN;
+        beam_actual.ex_size       = 1;
+        beam_actual.is_explosion  = true;
+        beam_actual.explode();
     }
     
     return SPRET_SUCCESS;

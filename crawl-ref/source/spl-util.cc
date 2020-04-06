@@ -1737,6 +1737,9 @@ bool spell_no_hostile_in_range(spell_type spell)
     case SPELL_HIBERNATION:
         return cast_hibernation(-1, false, true) == SPRET_ABORT;
         
+    case SPELL_MEPHITIC_CLOUD:
+        return cast_mephitic_cloud(-1, false, true) == SPRET_ABORT;
+        
     case SPELL_DETONATE:
         return random_fireball(-1, false, true) == SPRET_ABORT;
         

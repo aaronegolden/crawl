@@ -1178,9 +1178,6 @@ static unique_ptr<targetter> _spell_targetter(spell_type spell, int pow,
     case SPELL_HURL_DAMNATION:
         return make_unique<targetter_beam>(&you, range, ZAP_DAMNATION, pow,
                                           1, 1);
-    case SPELL_MEPHITIC_CLOUD:
-        return make_unique<targetter_beam>(&you, range, ZAP_MEPHITIC, pow,
-                                          pow >= 100 ? 1 : 0, 1);
     case SPELL_ISKENDERUNS_MYSTIC_BLAST:
         return make_unique<targetter_imb>(&you, pow, range);
     case SPELL_FIRE_STORM:
@@ -2029,6 +2026,9 @@ static spret_type _do_cast(spell_type spell, int powc,
         
     case SPELL_HIBERNATION:
         return cast_hibernation(powc, fail);
+        
+    case SPELL_MEPHITIC_CLOUD:
+        return cast_mephitic_cloud(powc, fail);
 
     case SPELL_CONTROL_UNDEAD:
         return mass_enchantment(ENCH_CHARM, powc, fail);
