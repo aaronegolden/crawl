@@ -647,7 +647,8 @@ target may have. This may temporarily slow cold-blooded creatures.
 %%%%
 Freezing Cloud spell
 
-Conjures up a large cloud of lethally cold vapour.
+Conjures up a large cloud of lethally cold vapour. The spell requires a visible
+foe in order for the magic to condense.
 %%%%
 Fulminant Prism spell
 

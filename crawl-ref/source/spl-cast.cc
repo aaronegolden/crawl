@@ -1182,7 +1182,6 @@ static unique_ptr<targetter> _spell_targetter(spell_type spell, int pow,
         return make_unique<targetter_imb>(&you, pow, range);
     case SPELL_FIRE_STORM:
         return make_unique<targetter_smite>(&you, range, 2, pow > 76 ? 3 : 2);
-    case SPELL_FREEZING_CLOUD:
     case SPELL_POISONOUS_CLOUD:
     case SPELL_HOLY_BREATH:
         return make_unique<targetter_cloud>(&you, range);
@@ -1850,7 +1849,6 @@ static spret_type _do_cast(spell_type spell, int powc,
     // Clouds and explosions.
     case SPELL_POISONOUS_CLOUD:
     case SPELL_HOLY_BREATH:
-    case SPELL_FREEZING_CLOUD:
         return cast_big_c(powc, spell, &you, beam, fail);
 
     case SPELL_FIRE_STORM:
@@ -1890,6 +1888,9 @@ static spret_type _do_cast(spell_type spell, int powc,
         
     case SPELL_HAILSTORM:
         return cast_hailstorm(powc, fail);
+        
+    case SPELL_FREEZING_CLOUD:
+        return fcloud(powc, fail);
    
     case SPELL_DISCHARGE:
         return cast_discharge(powc, fail);

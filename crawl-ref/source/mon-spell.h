@@ -1261,7 +1261,6 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_BOLT_OF_COLD, 16, MON_SPELL_MAGICAL },
        { SPELL_LIGHTNING_BOLT, 16, MON_SPELL_MAGICAL },
-       { SPELL_FREEZING_CLOUD, 16, MON_SPELL_MAGICAL },
        { SPELL_AIRSTRIKE, 16, MON_SPELL_MAGICAL },
       }
     },
@@ -1408,7 +1407,6 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_BOLT_OF_COLD, 20, MON_SPELL_MAGICAL },
        { SPELL_THROW_ICICLE, 20, MON_SPELL_MAGICAL },
-       { SPELL_FREEZING_CLOUD, 20, MON_SPELL_MAGICAL },
        { SPELL_SUMMON_ICE_BEAST, 40, MON_SPELL_MAGICAL },
       }
     },

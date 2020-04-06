@@ -2246,6 +2246,46 @@ spret_type cast_mephitic_cloud(int pow, bool fail, bool tracer)
     return SPRET_SUCCESS;
 }
 
+spret_type fcloud(int pow, bool fail, bool tracer)
+{
+    monster* closest = _closest_target_in_range(LOS_RADIUS);
+    
+    if (tracer)
+    {
+        if (!closest)
+            return SPRET_ABORT;
+        else
+            return SPRET_SUCCESS;
+    }
+    
+    fail_check();
+    
+    if(!closest)
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        coord_def target = closest->pos();
+        int dist = target.distance_from(you.pos());
+        
+        for (radius_iterator ri(you.pos(), 3, C_SQUARE, LOS_NO_TRANS, true); ri; ++ri)
+        {
+            if ((grid_distance(target, *ri) > dist 
+                    && grid_distance(you.pos(), *ri) <= grid_distance(target, *ri))
+                    || !in_bounds(*ri))
+                continue;
+            
+            if (!cell_is_solid(*ri) && !cloud_at(*ri))
+            {
+                place_cloud(CLOUD_COLD, *ri, 
+                    1 + div_rand_round(pow, 20) + random2(div_rand_round(pow, 20)), &you);
+            }
+        }
+    }
+    
+    return SPRET_SUCCESS;
+    
+}
+
 spret_type random_fireball(int pow, bool fail, bool tracer)
 {
     monster* target = _closest_target_in_range(min(5,LOS_RADIUS));
