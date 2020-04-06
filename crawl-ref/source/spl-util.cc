@@ -1696,7 +1696,6 @@ bool spell_no_hostile_in_range(spell_type spell)
         return minRange > you.current_vision;
 
     // Special handling for cloud spells.
-    case SPELL_FREEZING_CLOUD:
     case SPELL_POISONOUS_CLOUD:
     case SPELL_HOLY_BREATH:
     {
@@ -1745,6 +1744,12 @@ bool spell_no_hostile_in_range(spell_type spell)
         
     case SPELL_HAILSTORM:
         return cast_hailstorm(-1, false, true) == SPRET_ABORT;
+        
+    case SPELL_FREEZING_CLOUD:
+        return fcloud(-1, false, true) == SPRET_ABORT;
+        
+    case SPELL_VIOLENT_UNRAVELLING:
+        return violent_unravelling(-1, false, true) == SPRET_ABORT;
         
     case SPELL_DAZZLING_FLASH:
         return cast_dazzling_flash(calc_spell_power(spell, true, false, true),

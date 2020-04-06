@@ -1206,8 +1206,6 @@ static unique_ptr<targetter> _spell_targetter(spell_type spell, int pow,
         return make_unique<targetter_smite>(&you, range,
                                            gravitas_range(pow, 2),
                                            gravitas_range(pow));
-    case SPELL_VIOLENT_UNRAVELLING:
-        return make_unique<targetter_unravelling>(&you, range, pow);
     case SPELL_RANDOM_BOLT:
         return make_unique<targetter_beam>(&you, range, ZAP_CRYSTAL_BOLT, pow,
                                           0, 0);
@@ -1891,6 +1889,9 @@ static spret_type _do_cast(spell_type spell, int powc,
         
     case SPELL_FREEZING_CLOUD:
         return fcloud(powc, fail);
+   
+    case SPELL_VIOLENT_UNRAVELLING:
+        return violent_unravelling(powc, fail);
    
     case SPELL_DISCHARGE:
         return cast_discharge(powc, fail);

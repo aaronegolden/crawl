@@ -39,6 +39,7 @@
 #include "prompt.h"
 #include "random.h"
 #include "shout.h"
+#include "spl-goditem.h" // monster_is_debuffable
 #include "spl-summoning.h"
 #include "spl-util.h"
 #include "stepdown.h"
@@ -2284,6 +2285,69 @@ spret_type fcloud(int pow, bool fail, bool tracer)
     
     return SPRET_SUCCESS;
     
+}
+
+spret_type violent_unravelling(int pow, bool fail, bool tracer)
+{
+    vector<coord_def> targets;
+    
+    for (actor_near_iterator ai(you.pos(), LOS_NO_TRANS);
+         ai; ++ai)
+    {
+        if (ai->is_monster()
+            && !ai->as_monster()->wont_attack()
+            && monster_is_debuffable(*ai->as_monster())
+            && !mons_is_firewood(*ai->as_monster())
+            && !mons_is_tentacle_segment(ai->as_monster()->type))
+        {
+            targets.push_back(ai->position);
+        }
+    }
+    
+    coord_def target = coord_def(0,0);
+    
+    if (targets.empty())
+    {
+        if (tracer)
+            return SPRET_ABORT;
+    }
+    else
+    {
+        if (tracer)
+            return SPRET_SUCCESS;
+        
+        target = targets[random2(targets.size())];
+        
+        targetter_radius hitfunc(&you, LOS_NO_TRANS, LOS_RADIUS);
+        if (stop_attack_prompt(hitfunc, "violent unravelling", nullptr))
+            return SPRET_ABORT;
+    }
+    
+    fail_check();
+    
+    if (!in_bounds(target))
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        bolt beam_actual;
+        beam_actual.set_agent(&you);
+        beam_actual.thrower       = KILL_YOU_MISSILE;
+        beam_actual.flavour       = BEAM_UNRAVELLING;
+        beam_actual.real_flavour  = BEAM_UNRAVELLING;
+        beam_actual.hit           = AUTOMATIC_HIT;
+        beam_actual.damage        = calc_dice(1, 1);
+        beam_actual.ench_power    = pow;
+        beam_actual.name          = "unravelling";
+        beam_actual.source        = target;
+        beam_actual.target        = target;
+        beam_actual.colour        = ETC_MUTAGENIC;
+        
+        noisy(spell_effect_noise(SPELL_VIOLENT_UNRAVELLING), beam_actual.target);
+
+        beam_actual.fire();
+    }
+    
+    return SPRET_SUCCESS;
 }
 
 spret_type random_fireball(int pow, bool fail, bool tracer)

@@ -87,4 +87,5 @@ spret_type directional_lbolt(int pow, bool fail, bool tracer=false);
 spret_type cast_shock(int pow, bool fail, bool tracer= false);
 spret_type cast_mephitic_cloud(int pow, bool fail, bool tracer = false);
 spret_type fcloud(int pow, bool fail, bool tracer = false);
+spret_type violent_unravelling(int pow, bool fail, bool tracer = false);
 #endif
