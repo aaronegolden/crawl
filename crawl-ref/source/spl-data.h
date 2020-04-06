@@ -1478,7 +1478,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_SILENCE, "Silence",
     SPTYP_HEXES | SPTYP_AIR,
-    SPFLAG_AREA,
+    SPFLAG_AREA | SPFLAG_MONSTER,
     4,
     200,
     -1, -1,
