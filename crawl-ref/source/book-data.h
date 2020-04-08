@@ -6,7 +6,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SHOCK,
     SPELL_BLINK,
     SPELL_PASSWALL,
-    SPELL_SLOW,
     SPELL_SUBLIMATION_OF_BLOOD,
     SPELL_CONJURE_FLAME,
     SPELL_CALL_CANINE_FAMILIAR,
@@ -268,7 +267,6 @@ static const vector<spell_type> spellbook_templates[] =
 #endif
 
 {   // Book of Arcane Marksmanship
-    SPELL_SLOW,
     SPELL_BLINK,
     SPELL_PORTAL_PROJECTILE,
     SPELL_LEDAS_LIQUEFACTION,
