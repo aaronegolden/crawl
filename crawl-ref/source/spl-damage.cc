@@ -2529,7 +2529,7 @@ spret_type cast_ignition(const actor *agent, int pow, bool fail)
     return SPRET_SUCCESS;
 }
 
-int discharge_monsters(coord_def where, int pow, actor *agent)
+int discharge_monsters(coord_def where, int pow, actor *agent, int prior_arcs)
 {
     actor* victim = actor_at(where);
 
@@ -2597,12 +2597,11 @@ int discharge_monsters(coord_def where, int pow, actor *agent)
 
     // Recursion to give us chain-lightning -- bwr
     // Smooth out some of the low end nonsense -- me
-    if (!one_chance_in(4) && x_chance_in_y(pow, 15))
+    if (x_chance_in_y(3, 4 + (2 * prior_arcs)) && prior_arcs < div_rand_round(pow, 20))
     {
         mpr("The lightning arcs!");
-        pow = div_rand_round(pow * 2, 5);
-        damage += apply_random_around_square([pow, agent] (coord_def where2) {
-            return discharge_monsters(where2, pow, agent);
+        damage += apply_random_around_square([pow, agent, prior_arcs] (coord_def where2) {
+            return discharge_monsters(where2, pow, agent, prior_arcs + 1);
         }, where, true, 1);
     }
     else if (damage > 0)
@@ -2649,7 +2648,8 @@ spret_type cast_discharge(int pow, bool fail)
     if (!_safe_discharge(you.pos(), exclude))
         return SPRET_ABORT;
 
-    const int num_targs = 1 + random2(random_range(1, 3) + pow / 20);
+    // this formula is fucking stupid but at least it uses div_rand_round now!
+    const int num_targs = 1 + random2(random_range(1, 3) + div_rand_round(pow, 20));
     const int dam =
         apply_random_around_square([pow] (coord_def where) {
             return discharge_monsters(where, pow, &you);
