@@ -936,39 +936,9 @@ spret_type cast_summon_lightning_spire(int pow, const coord_def& where, god_type
 {
     const int dur = 2;
 
-    if (grid_distance(where, you.pos()) > spell_range(SPELL_SUMMON_LIGHTNING_SPIRE,
-                                                      pow)
-        || !in_bounds(where))
-    {
-        mpr("That's too far away.");
-        return SPRET_ABORT;
-    }
-
-    if (!monster_habitable_grid(MONS_HUMAN, grd(where)))
-    {
-        mpr("You can't construct there.");
-        return SPRET_ABORT;
-    }
-
-    monster* mons = monster_at(where);
-    if (mons)
-    {
-        if (you.can_see(*mons))
-        {
-            mpr("That space is already occupied.");
-            return SPRET_ABORT;
-        }
-
-        fail_check();
-
-        // invisible monster
-        mpr("Something you can't see is blocking your construction!");
-        return SPRET_SUCCESS;
-    }
-
     fail_check();
 
-    mgen_data spire(MONS_LIGHTNING_SPIRE, BEH_FRIENDLY, where, MHITYOU,
+    mgen_data spire(MONS_LIGHTNING_SPIRE, BEH_FRIENDLY, you.pos(), MHITYOU,
                     MG_FORCE_BEH | MG_FORCE_PLACE | MG_AUTOFOE);
     spire.set_summoned(&you, dur, SPELL_SUMMON_LIGHTNING_SPIRE,  god);
     spire.hd = max(1, div_rand_round(pow, 10));
