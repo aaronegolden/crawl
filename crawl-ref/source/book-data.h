@@ -249,12 +249,10 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Cantrips
     SPELL_INFUSION,
     SPELL_SUMMON_SMALL_MAMMAL,
-    SPELL_APPORTATION,
 },
 
 {   // Book of Party Tricks
     SPELL_SUMMON_BUTTERFLIES,
-    SPELL_APPORTATION,
     SPELL_BECKONING,
     SPELL_INTOXICATE,
     SPELL_INVISIBILITY
