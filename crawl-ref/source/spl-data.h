@@ -957,7 +957,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_SUMMON_GREATER_DEMON, "Summon Greater Demon",
     SPTYP_SUMMONING,
-    SPFLAG_UNHOLY | SPFLAG_SELFENCH | SPFLAG_MONS_ABJURE,
+    SPFLAG_UNHOLY | SPFLAG_SELFENCH | SPFLAG_MONS_ABJURE | SPFLAG_MONSTER,
     7,
     200,
     -1, -1,
