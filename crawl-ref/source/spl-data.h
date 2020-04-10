@@ -2682,6 +2682,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_FORCE_QUAKE, "Force Quake",
+    SPTYP_EARTH | SPTYP_TRANSLOCATION,
+    SPFLAG_NO_GHOST,
+    3,
+    100,
+    -1, -1,
+    5, 5,
+    TILEG_FORCE_LANCE,
+},
+
+{
     SPELL_SENTINEL_MARK, "Sentinel's Mark",
     SPTYP_HEXES,
     SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MR_CHECK,

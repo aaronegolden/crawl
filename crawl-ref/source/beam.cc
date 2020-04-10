@@ -4495,12 +4495,12 @@ void bolt::knockback_actor(actor *act, int dam)
         return;
 
     const int distance =
-        (origin_spell == SPELL_FORCE_LANCE)
-            ? 1 + div_rand_round(ench_power, 40) :
+        (origin_spell == SPELL_FORCE_QUAKE)
+            ? 1 + div_rand_round(ench_power, 25) :
         (origin_spell == SPELL_CHILLING_BREATH) ? 2 : 1;
 
-    const int roll = origin_spell == SPELL_FORCE_LANCE
-                     ? 7 + 0.27 * ench_power
+    const int roll = origin_spell == SPELL_FORCE_QUAKE
+                     ? 7 + 0.4 * ench_power
                      : 17;
     const int weight = max_corpse_chunks(act->is_monster() ? act->type :
                                    player_species_to_mons_species(you.species));
@@ -5933,7 +5933,8 @@ bool bolt::explode(bool show_more, bool hole_in_the_middle)
 
         // Not an "explosion", but still a bit noisy at the target location.
         if (origin_spell == SPELL_INFESTATION
-            || origin_spell == SPELL_DAZZLING_FLASH)
+            || origin_spell == SPELL_DAZZLING_FLASH
+            || origin_spell == SPELL_FORCE_QUAKE)
         {
             loudness = spell_effect_noise(origin_spell);
         }
@@ -6474,7 +6475,7 @@ bool bolt::can_knockback(const actor *act, int dam) const
     return flavour == BEAM_WATER && origin_spell == SPELL_PRIMAL_WAVE
            || origin_spell == SPELL_CHILLING_BREATH
               && (!act || act->airborne())
-           || origin_spell == SPELL_FORCE_LANCE && dam;
+           || name == "aftershock" && dam;
 }
 
 void clear_zap_info_on_exit()

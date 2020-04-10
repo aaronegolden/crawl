@@ -205,8 +205,8 @@ const struct coord_def Compass[9] =
 static void _launch_game_loop();
 NORETURN static void _launch_game();
 
+static void _force_quake();
 static void _do_berserk_no_combat_penalty();
-static void _do_searing_ray();
 static void _input();
 
 static void _safe_move_player(coord_def move);
@@ -1422,7 +1422,7 @@ static void _input()
     if (you_are_delayed()
         && !dynamic_cast<MacroProcessKeyDelay*>(current_delay().get()))
     {
-        end_searing_ray();
+        _force_quake();
         handle_delay();
 
         // Some delays reset you.time_taken.
@@ -1544,7 +1544,7 @@ static void _input()
         if (you.apply_berserk_penalty)
             _do_berserk_no_combat_penalty();
 
-        _do_searing_ray();
+        _force_quake();
 
         world_reacts();
     }
@@ -3123,22 +3123,12 @@ static void _do_berserk_no_combat_penalty()
 
 // Fire the next searing ray stage if we have taken no other action this turn,
 // otherwise cancel
-static void _do_searing_ray()
+static void _force_quake()
 {
-    if (you.attribute[ATTR_SEARING_RAY] == 0)
+    if (you.attribute[ATTR_FORCE_QUAKE] == 0)
         return;
 
-    // Convert prepping value into stage one value (so it can fire next turn)
-    if (you.attribute[ATTR_SEARING_RAY] == -1)
-    {
-        you.attribute[ATTR_SEARING_RAY] = 1;
-        return;
-    }
-
-    if (crawl_state.prev_cmd == CMD_WAIT)
-        handle_searing_ray();
-    else
-        end_searing_ray();
+    force_quake();
 }
 
 static void _safe_move_player(coord_def move)

@@ -649,6 +649,7 @@ enum attribute_type
     ATTR_XOM_GIFT_XP,          // How much XP before Xom gifts the player again
     ATTR_CONFUSING_TOUCH,      // confusing touch
     ATTR_DISTRACTING_TOUCH,    // distracting touch
+    ATTR_FORCE_QUAKE,          // Track what hit of force quake we're on
     NUM_ATTRIBUTES
 };
 
@@ -4968,6 +4969,7 @@ enum spell_type : int
     SPELL_ELECTRIC_SURGE,
     SPELL_AMBULATORY_BOMB,
     SPELL_DISTRACTING_TOUCH,
+    SPELL_FORCE_QUAKE,
     NUM_SPELLS
 };
 

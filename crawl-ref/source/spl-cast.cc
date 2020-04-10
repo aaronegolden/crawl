@@ -1896,6 +1896,9 @@ static spret_type _do_cast(spell_type spell, int powc,
     case SPELL_DISCHARGE:
         return cast_discharge(powc, fail);
         
+    case SPELL_FORCE_QUAKE:
+        return cast_force_quake(powc, fail);
+        
     case SPELL_ELECTRIC_SURGE:
         return directional_lbolt(powc, fail);
 

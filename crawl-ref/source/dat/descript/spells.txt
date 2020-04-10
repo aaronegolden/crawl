@@ -479,7 +479,7 @@ creature that resists the effect will still be irresistibly blinked a shorter
 distance, and any monster it affects at all has a chance of being confused by
 the warping of space.
 %%%%
-Confusing Touch spell
+Distracting Touch spell
 
 Imbues the caster's dominant hand with strange energy. A portion of this 
 energy is released when the caster touches a monster with their hand or
@@ -627,6 +627,14 @@ Force Lance spell
 
 Fires a shaft of metal imbued with translocational force. If the impact 
 deals damage, it may knock the target back.
+%%%%
+Force Quake spell
+
+Suffuses translocational energy into the ground at the caster's feet, producing
+a localized earthquake that damages adjacent creatures, moves with the caster,
+and lasts for three actions. The final aftershock releases the translocational 
+energy and may knock back anything it hits. Nearby solid objects, such as walls or
+trees, dampen the shockwave and reduce the damage and knockback of the spell.
 %%%%
 Forceful Invitation spell
 

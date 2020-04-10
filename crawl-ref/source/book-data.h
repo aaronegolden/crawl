@@ -174,7 +174,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of the Warp
-    SPELL_FORCE_LANCE,
+    SPELL_FORCE_QUAKE,
     SPELL_PIERCING_SHOT,
     SPELL_DISPERSAL,
     SPELL_CONTROLLED_BLINK,
@@ -213,7 +213,7 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Geomancy
     SPELL_SANDBLAST,
     SPELL_PASSWALL,
-    SPELL_FORCE_LANCE,
+    SPELL_FORCE_QUAKE,
     SPELL_PETRIFY,
     SPELL_LRD,
 },
@@ -228,7 +228,7 @@ static const vector<spell_type> spellbook_templates[] =
 
 #if TAG_MAJOR_VERSION == 34
 {   // Book of Wizardry
-    SPELL_FORCE_LANCE,
+    SPELL_FORCE_QUAKE,
     SPELL_AGONY,
     SPELL_INVISIBILITY,
     SPELL_SPELLFORGED_SERVITOR,

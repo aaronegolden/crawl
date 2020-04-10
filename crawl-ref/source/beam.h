@@ -276,10 +276,9 @@ private:
     bool misses_player();
 public:
     void affect_player_enchantment(bool resistible = true);
+    void knockback_actor(actor *act, int dam);
 private:
     void internal_ouch(int dam);
-    // for both
-    void knockback_actor(actor *act, int dam);
 
     // tracers
     void tracer_affect_player();

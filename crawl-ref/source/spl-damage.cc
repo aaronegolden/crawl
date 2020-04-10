@@ -3580,6 +3580,90 @@ void end_searing_ray()
     you.props.erase("searing_ray_aimed_at_spot");
 }
 
+static int _quake_cell(coord_def where, int pow, int wall_count, bool knockback)
+{
+    monster *mons = monster_at(where);
+    if (!mons)
+        return 0; 
+   
+    bolt beam;
+    beam.name = knockback ? "aftershock" : "quake";
+    beam.flavour = BEAM_MMISSILE;
+    beam.set_agent(&you);
+    beam.range = LOS_RADIUS;
+    beam.source = you.pos();
+    beam.target = where;
+    beam.ench_power = pow;
+    beam.hit = AUTOMATIC_HIT;
+    beam.damage = calc_dice(1, div_rand_round(8 + div_rand_round(pow,6) * 10, 10 + wall_count));
+    beam.fire();
+
+    if (is_sanctuary(you.pos()))
+        remove_sanctuary(true);
+
+    return 1;
+}
+
+spret_type cast_force_quake(int pow, bool fail)
+{
+    if (you.attribute[ATTR_FORCE_QUAKE] > 0)
+    {
+        mprf("You are already unleashing a force quake!");
+        return SPRET_ABORT;
+    }
+    
+    fail_check();
+    
+    you.attribute[ATTR_FORCE_QUAKE] = 1;
+    
+    return SPRET_SUCCESS;
+}
+
+void force_quake()
+{
+    ASSERT_RANGE(you.attribute[ATTR_FORCE_QUAKE], 1, 4);
+    
+    bool knockback = false;
+    
+    if(++you.attribute[ATTR_FORCE_QUAKE] > 3)
+        knockback = true;
+    
+    int wall_count = 0;
+    
+    //iterate once to get the wall count
+    for (adjacent_iterator ai(you.pos()); ai; ++ai)
+    {
+        if(cell_is_solid(*ai))
+            wall_count++;
+    }
+    
+    bolt beam;
+    beam.name = "force quake";
+    beam.flavour = BEAM_VISUAL;
+    beam.origin_spell = SPELL_FORCE_QUAKE;
+    beam.set_agent(&you);
+    beam.colour = ETC_EARTH;
+    beam.glyph = dchar_glyph(DCHAR_EXPLOSION);
+    beam.range = 1;
+    beam.ex_size = 1;
+    beam.is_explosion = true;
+    beam.explode_delay = beam.explode_delay * 1 / 2;
+    beam.source = you.pos();
+    beam.target = you.pos();
+    beam.hit = AUTOMATIC_HIT;
+    beam.loudness = 0;
+    beam.explode(true, true);
+    
+    int pow = calc_spell_power(SPELL_FORCE_QUAKE, true);
+
+    apply_random_around_square([pow, wall_count, knockback] (coord_def where) {
+        return _quake_cell(where, pow, wall_count, knockback);
+    }, you.pos(), true, 8);
+    
+    if (knockback)
+        you.attribute[ATTR_FORCE_QUAKE] = 0;
+}
+
 /**
  * Can a casting of Glaciate by the player injure the given creature?
  *
