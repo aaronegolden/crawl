@@ -215,6 +215,8 @@ spret_type cast_chain_spell(spell_type spell_cast, int pow,
 
     bool first = true;
     coord_def source, target;
+    
+    int max_arcs = 1 + div_rand_round(pow, 20);
 	
     source = target = caster->pos();
     do
@@ -336,7 +338,7 @@ spret_type cast_chain_spell(spell_type spell_cast, int pow,
             case SPELL_CHAIN_LIGHTNING:
                 beam.colour = LIGHTBLUE;
                 beam.damage = caster->is_player()
-                    ? calc_dice(5, 10 + div_rand_round(pow * 2,3))
+                    ? calc_dice(5, 10 + div_rand_round(pow * 3,5))
                     : calc_dice(5, 46 + div_rand_round(pow,6));
                 break;
             case SPELL_CHAIN_OF_CHAOS:
@@ -359,9 +361,9 @@ spret_type cast_chain_spell(spell_type spell_cast, int pow,
         }
         beam.fire();
 		
-        pow -= 15;
+        max_arcs--;
     }
-    while (pow > random2(20));
+    while (max_arcs > 0);
 
     return SPRET_SUCCESS;
 }
