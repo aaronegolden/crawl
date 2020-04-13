@@ -172,6 +172,13 @@ A pool of cloudy, waist-deep water. It makes movement and combat cumbersome for
 landlubbers — this is sometimes dangerous, but never directly fatal.
 #TODO: explain naga/grey drac/ogre/troll lack of fumbling penalties
 %%%%
+Some quicksand
+
+A pit of quicksand. Wading through quicksand is slow and cumbersome even for
+creatures that can swim, and attacking while standing in it is difficult.
+Additionally, creatures will take damage each turn they remain in the quicksand
+as it tries to pull them under.
+%%%%
 The open sea
 
 An expanse of endless wind and waves, with not a lighthouse in sight. Anyone

@@ -855,11 +855,12 @@ traveled less distance.
 %%%%
 Leda's Liquefaction spell
 
-Liquefies the ground around the caster, making it difficult to move through.
-Any movement through liquefied ground will be slowed.
+Liquefies the ground around the caster, turning it to quicksand for a duration 
+that depends on the caster's spellpower. Creatures attempting to move through 
+quicksand will do so more slowly and will take damage each turn as the quicksand 
+tries to pull them under. Ground adjacent to walls, trees, and other solid 
+objects is too stable to be affected by this spell.
 
-The effect starts out with a radius depending on power, which will then shrink,
-eventually covering only the caster, before it times out.
 %%%%
 Lee's Rapid Deconstruction spell
 

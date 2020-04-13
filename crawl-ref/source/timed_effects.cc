@@ -1686,6 +1686,12 @@ void timeout_terrain_changes(int duration, bool force)
                 env.markers.remove(marker); // deletes `marker`
             continue;
         }
+        
+        if (marker->change_type == TERRAIN_CHANGE_QUICKSAND
+            && !you.see_cell(marker->pos))
+        {
+            marker->duration = 0;
+        }
 
         monster* mon_src = monster_by_mid(marker->mon_num);
         if (marker->duration <= 0

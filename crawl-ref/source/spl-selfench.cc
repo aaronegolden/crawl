@@ -13,6 +13,7 @@
 #include "art-enum.h"
 #include "butcher.h" // butcher_corpse
 #include "coordit.h" // radius_iterator
+#include "env.h"
 #include "godconduct.h"
 #include "godpassive.h"
 #include "hints.h"
@@ -27,6 +28,7 @@
 #include "spl-transloc.h"
 #include "spl-util.h"
 #include "spl-wpnench.h"
+#include "terrain.h"
 #include "transform.h"
 #include "tilepick.h"
 #include "view.h"
@@ -324,17 +326,53 @@ spret_type cast_silence(int pow, bool fail)
     return SPRET_SUCCESS;
 }
 
+bool quicksand_cell(coord_def p, int pow)
+{
+    if (grd(p) == DNGN_DEEP_WATER || grd(p) == DNGN_LAVA)
+        return false;
+
+    const int turns = 5
+                    + random2avg(div_rand_round(pow, 8), 2);
+    temp_change_terrain(p, DNGN_QUICKSAND, turns * BASELINE_DELAY,
+            TERRAIN_CHANGE_QUICKSAND, you.as_monster());
+            
+    return true;
+}
+
+static bool _solid_feature_adjacent(coord_def pos)
+{
+    for (adjacent_iterator ai(pos, false); ai; ++ai)
+    {
+        if(cell_is_solid(*ai))
+            return true;
+    }
+    
+    return false;
+}
+
 spret_type cast_liquefaction(int pow, bool fail)
 {
     fail_check();
     flash_view_delay(UA_PLAYER, BROWN, 80);
     flash_view_delay(UA_PLAYER, YELLOW, 80);
     flash_view_delay(UA_PLAYER, BROWN, 140);
-
-    mpr("The ground around you becomes liquefied!");
-
-    you.increase_duration(DUR_LIQUEFYING, 10 + random2avg(pow, 2), 100);
-    invalidate_agrid(true);
+    
+    bool affected_any = false;
+    
+    for (radius_iterator ri(you.pos(), LOS_NO_TRANS, true); ri; ++ri)
+    {
+        if (_solid_feature_adjacent(*ri))
+            continue;
+        
+        if (quicksand_cell(*ri, pow))
+            affected_any = true;
+    }
+    
+    if (affected_any)
+        mpr("The ground around you becomes liquefied!");
+    else
+        canned_msg(MSG_NOTHING_HAPPENS);
+    
     return SPRET_SUCCESS;
 }
 

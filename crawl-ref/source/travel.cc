@@ -229,6 +229,10 @@ bool feat_is_traversable_now(dungeon_feature_type grid, bool try_fallback)
 {
     if (!ignore_player_traversability)
     {
+        // Don't auto travel through quicksand
+        if (grid == DNGN_QUICKSAND)
+            return false;
+        
         // If the feature is in travel_avoid_terrain, respect that.
         if (forbidden_terrain[grid])
             return false;

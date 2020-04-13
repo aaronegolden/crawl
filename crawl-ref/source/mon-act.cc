@@ -1336,6 +1336,8 @@ void handle_monster_move(monster* mons)
     mons->shield_blocks = 0;
 
     _mons_in_cloud(*mons);
+    actor_apply_quicksand(mons);
+    
 #if TAG_MAJOR_VERSION == 34
     _heated_area(*mons);
 #endif

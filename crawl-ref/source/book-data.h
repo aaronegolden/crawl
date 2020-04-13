@@ -111,8 +111,8 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Fen Folio
-    SPELL_LEDAS_LIQUEFACTION,
     SPELL_SUMMON_FOREST,
+    SPELL_LEDAS_LIQUEFACTION,
     SPELL_HYDRA_FORM,
     SPELL_SUMMON_HYDRA,
 },
@@ -269,7 +269,6 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Arcane Marksmanship
     SPELL_BLINK,
     SPELL_PORTAL_PROJECTILE,
-    SPELL_LEDAS_LIQUEFACTION,
     SPELL_CAUSE_FEAR,
 },
 

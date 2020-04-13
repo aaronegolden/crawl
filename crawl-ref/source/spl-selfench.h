@@ -37,4 +37,5 @@ spret_type cast_piercing_shot(int pow, bool fail);
 int calculate_frozen_mp();
 void dispel_permanent_buffs(bool evil_only = false);
 
+bool quicksand_cell(coord_def p, int pow);
 #endif

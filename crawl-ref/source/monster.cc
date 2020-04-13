@@ -282,6 +282,10 @@ bool monster::extra_balanced() const
 bool monster::floundering_at(const coord_def p) const
 {
     const dungeon_feature_type grid = grd(p);
+    
+    if(ground_level() && grid == DNGN_QUICKSAND)
+        return true;
+    
     return (liquefied(p)
             || (feat_is_water(grid)
                 // Can't use monster_habitable_grid() because that'll return
@@ -2671,6 +2675,8 @@ bool monster::fumbles_attack()
         {
             mprf("%s %s", name(DESC_THE).c_str(), liquefied(pos())
                  ? "becomes momentarily stuck in the liquid earth."
+                 : grd(pos()) == DNGN_QUICKSAND
+                 ? "becomes momentarily stuck in the quicksand."
                  : "splashes around in the water.");
         }
         else if (player_can_hear(pos(), LOS_RADIUS))

@@ -27,6 +27,7 @@
 #include "items.h"
 #include "losglobal.h"
 #include "macro.h"
+#include "mapmark.h"
 #include "message.h"
 #include "mgen_data.h"
 #include "misc.h"
@@ -3963,4 +3964,57 @@ void foxfire_attack(const monster *foxfire, const actor *target)
     beam.aux_source  = beam.name;
     beam.target      = target->pos();
     beam.fire();
+}
+
+void actor_apply_quicksand(actor * act)
+{
+    if (grd(act->pos()) != DNGN_QUICKSAND)
+        return;
+
+    if (!act->ground_level())
+        return;
+
+    const bool player = act->is_player();
+    monster *mons = !player ? act->as_monster() : nullptr;
+
+    actor *oppressor = nullptr;
+
+    for (map_marker *marker : env.markers.get_markers_at(act->pos()))
+    {
+        if (marker->get_type() == MAT_TERRAIN_CHANGE)
+        {
+            map_terrain_change_marker* tmarker =
+                    dynamic_cast<map_terrain_change_marker*>(marker);
+            if (tmarker->change_type == TERRAIN_CHANGE_QUICKSAND)
+                oppressor = actor_by_mid(tmarker->mon_num);
+        }
+    }
+
+    const int damage = dice_def(1, 18).roll();
+
+    const int final_damage = timescale_damage(act, damage);
+
+    if (player && final_damage > 0)
+    {
+        mprf("You are sucked in by the quicksand (%d).",
+                final_damage);
+    }
+    else if (final_damage > 0)
+    {
+        behaviour_event(mons, ME_DISTURB, 0, act->pos());
+        mprf("%s is sucked in by the quicksand (%d).",
+                mons->name(DESC_THE).c_str(),
+                final_damage);
+    }
+
+    if (final_damage)
+    {
+
+        const string oppr_name =
+            oppressor ? " "+apostrophise(oppressor->name(DESC_THE))
+                      : "";
+
+        act->hurt(oppressor, final_damage, BEAM_MISSILE,
+                  KILLED_BY_POISON, "", "quicksand");
+    }
 }
