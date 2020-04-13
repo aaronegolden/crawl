@@ -485,10 +485,14 @@ void moveto_location_effects(dungeon_feature_type old_feat,
 			}
 		}
         
-        if (new_grid == DNGN_QUICKSAND && !old_feat == DNGN_QUICKSAND)
+        if (new_grid == DNGN_QUICKSAND)
         {
-            mprf("You %s the quicksand.",
-                stepped ? "enter" : "fall into");
+            if(old_feat != DNGN_QUICKSAND)
+                mprf("You %s the quicksand.",
+                    stepped ? "enter" : "fall into");
+                    
+            if (stepped)
+                you.time_taken = div_rand_round(you.time_taken * 3, 2);           
         }
 
         if (feat_is_water(new_grid))

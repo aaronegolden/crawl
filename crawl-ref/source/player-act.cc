@@ -133,6 +133,9 @@ bool player::submerged() const
 
 bool player::floundering() const
 {
+    if(grd(pos()) == DNGN_QUICKSAND && !airborne())
+        return true;
+    
     return in_water() && !can_swim() && !extra_balanced();
 }
 
