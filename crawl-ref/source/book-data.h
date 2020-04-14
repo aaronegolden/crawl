@@ -6,7 +6,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SHOCK,
     SPELL_BLINK,
     SPELL_PASSWALL,
-    SPELL_SUBLIMATION_OF_BLOOD,
     SPELL_CONJURE_FLAME,
     SPELL_CALL_CANINE_FAMILIAR,
 },
@@ -135,9 +134,7 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Necromancy
     SPELL_PAIN,
-    SPELL_SUBLIMATION_OF_BLOOD,
     SPELL_VAMPIRIC_DRAINING,
-    SPELL_REGENERATION,
     SPELL_ANIMATE_DEAD,
     SPELL_CONTROL_UNDEAD,
 },
@@ -204,7 +201,6 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Battle (replacing Morphology)
     SPELL_INFUSION,
     SPELL_SONG_OF_SLAYING,
-    SPELL_REGENERATION,
     SPELL_OZOCUBUS_ARMOUR,
     SPELL_SPECTRAL_WEAPON,
 },
@@ -294,7 +290,6 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Alchemy
-    SPELL_SUBLIMATION_OF_BLOOD,
     SPELL_PETRIFY,
     SPELL_INTOXICATE,
     SPELL_IRRADIATE,

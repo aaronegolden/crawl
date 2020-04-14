@@ -862,7 +862,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_REGENERATION, "Regeneration",
     SPTYP_CHARMS | SPTYP_NECROMANCY,
-    SPFLAG_SELFENCH | SPFLAG_UTILITY | SPFLAG_PERMABUFF,
+    SPFLAG_SELFENCH | SPFLAG_UTILITY | SPFLAG_PERMABUFF | SPFLAG_MONSTER,
     3,
     200,
     -1, -1,
@@ -910,7 +910,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_SUBLIMATION_OF_BLOOD, "Sublimation of Blood",
     SPTYP_NECROMANCY,
-    SPFLAG_UTILITY,
+    SPFLAG_UTILITY | SPFLAG_MONSTER,
     2,
     200,
     -1, -1,

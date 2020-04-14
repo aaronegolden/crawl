@@ -451,10 +451,6 @@ int calculate_frozen_mp()
     {
 		frozen_mp += spell_mp_freeze(SPELL_OZOCUBUS_ARMOUR);
 	}
-	if (you.attribute[ATTR_SPELL_REGEN] > 0)
-    {
-		frozen_mp += spell_mp_freeze(SPELL_REGENERATION);
-	}
 	if (you.attribute[ATTR_SONG_OF_SLAYING] > 0)
     {
 		frozen_mp += spell_mp_freeze(SPELL_SONG_OF_SLAYING);
@@ -573,11 +569,6 @@ void dispel_permanent_buffs(bool evil_only)
     if(you.attribute[ATTR_OZO_ARMOUR] && !evil_only)
     {
 	    you.attribute[ATTR_OZO_ARMOUR] = 0;
-        dispelled = true;
-    }
-    if(you.attribute[ATTR_SPELL_REGEN])
-    {
-	    you.attribute[ATTR_SPELL_REGEN] = 0;
         dispelled = true;
     }
     if(you.attribute[ATTR_SONG_OF_SLAYING] && !evil_only)
