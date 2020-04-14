@@ -45,6 +45,7 @@
 #include "misc.h"
 #include "mon-behv.h"
 #include "mon-death.h"
+#include "mon-movetarget.h"
 #include "mon-place.h"
 #include "mon-poly.h"
 #include "mon-util.h"
@@ -2906,6 +2907,29 @@ void bolt::affect_place_explosion_clouds()
             mons_place(mg);
         }
     }
+    
+    if (origin_spell == SPELL_PYROCLASM)
+    {
+        place_cloud(CLOUD_FIRE, p, 2 + random2avg(5,2), agent());
+
+        // XXX: affect other open spaces?
+        if (grd(p) == DNGN_FLOOR && !monster_at(p) && one_chance_in(4))
+        {
+
+            actor* summ = agent();
+            mgen_data mg(MONS_FOXFIRE, BEH_FRIENDLY, p, MHITNOT, MG_NONE, GOD_NO_GOD);
+            mg.set_summoned(summ, 0, SPELL_PYROCLASM);
+            mg.hd = 1 + div_rand_round(ench_power, 5);
+
+            if (monster *foxfire = mons_place(mg))
+            {
+                foxfire->add_ench(ENCH_SHORT_LIVED);
+                foxfire->steps_remaining = you.current_vision +2;
+                set_random_target(foxfire);
+            }
+        }
+    }
+    
 }
 
 // A little helper function to handle the calling of ouch()...
@@ -5934,7 +5958,8 @@ bool bolt::explode(bool show_more, bool hole_in_the_middle)
         // Not an "explosion", but still a bit noisy at the target location.
         if (origin_spell == SPELL_INFESTATION
             || origin_spell == SPELL_DAZZLING_FLASH
-            || origin_spell == SPELL_FORCE_QUAKE)
+            || origin_spell == SPELL_FORCE_QUAKE
+            || origin_spell == SPELL_PYROCLASM)
         {
             loudness = spell_effect_noise(origin_spell);
         }

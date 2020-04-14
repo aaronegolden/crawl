@@ -306,7 +306,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_IOOD,
     SPELL_CHAIN_LIGHTNING,
     SPELL_ABSOLUTE_ZERO,
-    SPELL_FIRE_STORM,
+    SPELL_PYROCLASM,
 },
 
 {   // Grand Grimoire

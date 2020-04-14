@@ -1121,6 +1121,15 @@ Primal Wave spell
 Conjures a great wave of water that may knock back the target, and creates a
 pool of shallow water for a short duration.
 %%%%
+Pyroclasm spell
+
+Calls down a massive explosion of fire on a foe, dealing damage in a large
+area and leaving behind clouds of flame and foxfires. The spell seeks to 
+maximize the number of foes caught in the blast but will avoid injuring its
+caster; if the ideal target is too close, the explosion will contain itself
+to a smaller radius. Pyroclasm cannot directly target an adjacent monster, but
+may engulf it in the resulting explosion.
+%%%%
 Quicksilver Bolt spell
 
 <Breathe Dispelling Energy ability>

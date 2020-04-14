@@ -91,4 +91,5 @@ spret_type violent_unravelling(int pow, bool fail, bool tracer = false);
 void force_quake();
 spret_type cast_force_quake(int pow, bool fail);
 void actor_apply_quicksand(actor *act);
+spret_type cast_pyroclasm(int pow, bool fail, bool tracer = false);
 #endif

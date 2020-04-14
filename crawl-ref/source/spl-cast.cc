@@ -1943,6 +1943,9 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     case SPELL_IGNITION:
         return cast_ignition(&you, powc, fail);
+        
+    case SPELL_PYROCLASM:
+        return cast_pyroclasm(powc, fail);
 
     // Summoning spells, and other spells that create new monsters.
     // If a god is making you cast one of these spells, any monsters

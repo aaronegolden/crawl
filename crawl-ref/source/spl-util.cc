@@ -1182,6 +1182,7 @@ int spell_effect_noise(spell_type spell)
     // worst case scenario for these
     case SPELL_FIRE_STORM:
     case SPELL_CONJURE_BALL_LIGHTNING:
+    case SPELL_PYROCLASM:
         expl_size = 3;
         break;
 
@@ -1763,6 +1764,9 @@ bool spell_no_hostile_in_range(spell_type spell)
        
     case SPELL_ABSOLUTE_ZERO:
         return cast_absolute_zero(-1, false, true) == SPRET_ABORT;
+        
+    case SPELL_PYROCLASM:
+        return cast_pyroclasm(-1, false, true) == SPRET_ABORT;
 
     default:
         break;

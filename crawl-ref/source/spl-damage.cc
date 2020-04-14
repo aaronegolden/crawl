@@ -1048,6 +1048,98 @@ spret_type cast_hailstorm(int pow, bool fail, bool tracer)
     return SPRET_SUCCESS;
 }
 
+static coord_def _pyroclasm_target()
+{
+    
+    coord_def target = you.pos();
+    int num_hit = 0;
+    int denom = 2;
+    
+    for (actor_near_iterator ai(you.pos(), LOS_NO_TRANS);
+         ai; ++ai)
+    {
+        if (ai->is_monster()
+            && !ai->as_monster()->wont_attack()
+            && !mons_is_firewood(*ai->as_monster())
+            && !mons_is_tentacle_segment(ai->as_monster()->type)
+            && grid_distance(you.pos(), ai->pos()) < 6
+            && grid_distance(you.pos(), ai->pos()) > 1)
+        {
+            int hit = 1;
+            int rad = min(3, grid_distance(you.pos(), ai->pos()) - 1);
+            
+            for(radius_iterator ri(ai->pos(),rad, C_SQUARE, LOS_NO_TRANS, true); ri; ++ri)
+            {
+                const monster* mon = monster_at(*ri);
+                if (mon && !mon->wont_attack() && !mons_is_firewood(*mon)
+                    && !mons_is_tentacle_or_tentacle_segment(mon->type))
+                {
+                    hit++;
+                }
+            }
+            
+            if (hit > num_hit)
+            {
+                num_hit = hit;
+                target = ai->pos();
+                denom = 2;
+            }
+            else if (hit == num_hit)
+            {
+                if(one_chance_in(denom))
+                    target = ai->pos();
+                denom++;
+            }
+        }
+    }
+    
+    return target;
+}
+
+spret_type cast_pyroclasm(int pow, bool fail, bool tracer)
+{
+    coord_def target = _pyroclasm_target();
+    
+    if (tracer)
+    {
+        if (target == you.pos())
+            return SPRET_ABORT;
+        else
+            return SPRET_SUCCESS;
+    }
+    
+    const actor* act = actor_at(target);
+    
+    int rad = min(3, grid_distance(you.pos(), target) - 1);
+    
+    targetter_radius hitfunc(act, LOS_NO_TRANS, rad);
+    
+    if (stop_attack_prompt(hitfunc, "pyroclasm", nullptr))
+        return SPRET_ABORT;
+    
+    fail_check();
+    
+    if(target == you.pos())
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        bolt beam;
+        beam.set_agent(&you);
+        beam.flavour            = BEAM_LAVA;
+        beam.real_flavour       = BEAM_LAVA;
+        beam.origin_spell       = SPELL_PYROCLASM;
+        beam.name               = "pyroclasm";
+        beam.target             = target;
+        beam.damage             = calc_dice(8, 5 + pow);
+        beam.colour             = RED;
+        beam.ex_size            = rad;
+        beam.is_explosion       = true;
+        beam.explode(false);
+    }
+    
+    return SPRET_SUCCESS;
+}
+
 spret_type cast_airstrike(int pow, const dist &beam, bool fail)
 {
     if (cell_is_solid(beam.target))

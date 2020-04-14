@@ -498,13 +498,25 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_FIRE_STORM, "Fire Storm",
     SPTYP_FIRE,
-    SPFLAG_TARGET | SPFLAG_AREA | SPFLAG_NEEDS_TRACER,
+    SPFLAG_TARGET | SPFLAG_AREA | SPFLAG_NEEDS_TRACER | SPFLAG_MONSTER,
     9,
     200,
     5, 5,
     9, 0,
     TILEG_FIRE_STORM,
 },
+
+{
+    SPELL_PYROCLASM, "Pyroclasm",
+    SPTYP_FIRE,
+    SPFLAG_AREA,
+    9,
+    200,
+    5, 5,
+    9, 25,
+    TILEG_FIRE_STORM,
+},
+
 
 {
     SPELL_CALL_DOWN_DAMNATION, "Call Down Damnation",
