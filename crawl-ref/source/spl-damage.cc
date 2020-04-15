@@ -1131,6 +1131,7 @@ spret_type cast_pyroclasm(int pow, bool fail, bool tracer)
         beam.name               = "pyroclasm";
         beam.target             = target;
         beam.damage             = calc_dice(8, 5 + pow);
+        beam.ench_power         = pow;
         beam.colour             = RED;
         beam.ex_size            = rad;
         beam.is_explosion       = true;
@@ -3122,13 +3123,42 @@ int wielding_rocks()
         return 0;
 }
 
-spret_type cast_sandblast(int pow, bolt &beam, bool fail)
+spret_type cast_sandblast(int pow, bool fail, bool tracer)
 {
-    zap_type zap = ZAP_SANDBLAST;
+    monster* target = _closest_target_in_range(min(3,LOS_RADIUS));
+    
+    if (tracer)
+    {
+        if (!target)
+            return SPRET_ABORT;
+        else
+            return SPRET_SUCCESS;
+    }
+    
+    fail_check();
 
-    const spret_type ret = zapping(zap, pow, beam, true, nullptr, fail);
-	
-    return ret;
+    if (!target)
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        bolt beam;
+        beam.set_agent(&you);
+        beam.flavour            = BEAM_FRAG;
+        beam.real_flavour       = BEAM_FRAG;
+        beam.hit                = 13 + div_rand_round(pow, 10);
+        beam.damage             = calc_dice(1, 6 + div_rand_round(pow * 2, 3));
+        beam.name               = "rocky blast";
+        beam.origin_spell       = SPELL_SANDBLAST;
+        beam.target             = target->pos();
+        beam.source             = you.pos();
+        beam.range              = min(3,LOS_RADIUS);
+        beam.colour             = BROWN;
+        beam.glyph              = DCHAR_FIRED_BOLT;
+        
+        beam.fire();
+    }
+    
+    return SPRET_SUCCESS;
 }
 
 static bool _elec_not_immune(const actor *act)

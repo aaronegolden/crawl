@@ -1767,6 +1767,9 @@ bool spell_no_hostile_in_range(spell_type spell)
         
     case SPELL_PYROCLASM:
         return cast_pyroclasm(-1, false, true) == SPRET_ABORT;
+        
+    case SPELL_SANDBLAST:
+        return cast_sandblast(-1, false, true) == SPRET_ABORT;
 
     default:
         break;

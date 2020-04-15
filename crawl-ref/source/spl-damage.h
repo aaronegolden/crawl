@@ -40,7 +40,7 @@ bool setup_fragmentation_beam(bolt &beam, int pow, const actor *caster,
 spret_type cast_fragmentation(int powc, const actor *caster,
                               const coord_def target, bool fail);
 int wielding_rocks();
-spret_type cast_sandblast(int powc, bolt &beam, bool fail);
+spret_type cast_sandblast(int pow, bool fail, bool tracer = false);
 spret_type cast_tornado(int powc, bool fail);
 void tornado_damage(actor *caster, int dur);
 void cancel_tornado(bool tloc = false);

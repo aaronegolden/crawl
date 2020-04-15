@@ -1830,7 +1830,7 @@ static spret_type _do_cast(spell_type spell, int powc,
         return cast_foxfire(powc, god, fail);
 
     case SPELL_SANDBLAST:
-        return cast_sandblast(powc, beam, fail);
+        return cast_sandblast(powc, fail);
         
     case SPELL_ABSOLUTE_ZERO:
         return cast_absolute_zero(powc, fail);
