@@ -3110,19 +3110,6 @@ spret_type cast_fragmentation(int pow, const actor *caster,
     return SPRET_SUCCESS;
 }
 
-int wielding_rocks()
-{
-    const item_def* wpn = you.weapon();
-    if (!wpn || wpn->base_type != OBJ_MISSILES)
-        return 0;
-    else if (wpn->sub_type == MI_STONE && wpn->quantity >= 8)
-        return 1;
-    else if (wpn->sub_type == MI_LARGE_ROCK && wpn->quantity >= 8)
-        return 2;
-    else
-        return 0;
-}
-
 spret_type cast_sandblast(int pow, bool fail, bool tracer)
 {
     monster* target = _closest_target_in_range(min(3,LOS_RADIUS));
