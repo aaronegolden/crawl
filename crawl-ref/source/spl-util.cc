@@ -1770,6 +1770,9 @@ bool spell_no_hostile_in_range(spell_type spell)
         
     case SPELL_SANDBLAST:
         return cast_sandblast(-1, false, true) == SPRET_ABORT;
+        
+    case SPELL_IOOD:
+        return untargeted_iood(-1, false, true) == SPRET_ABORT;
 
     default:
         break;

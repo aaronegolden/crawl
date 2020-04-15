@@ -8,6 +8,8 @@
 
 #include "spl-damage.h"
 
+#include <cmath>
+
 #include "act-iter.h"
 #include "areas.h"
 #include "butcher.h"
@@ -34,6 +36,7 @@
 #include "mon-behv.h"
 #include "mon-death.h"
 #include "mon-place.h"
+#include "mon-project.h"
 #include "mon-tentacle.h"
 #include "mutation.h"
 #include "ouch.h"
@@ -4126,4 +4129,68 @@ void actor_apply_quicksand(actor * act)
         act->hurt(oppressor, final_damage, BEAM_MISSILE,
                   KILLED_BY_POISON, "", "quicksand");
     }
+}
+
+spret_type untargeted_iood(int pow, bool fail, bool tracer)
+{
+    coord_def target = random_target_in_range(LOS_RADIUS);
+    
+    if (tracer)
+    {
+        if (!in_bounds(target))
+            return SPRET_ABORT;
+        
+        return SPRET_SUCCESS;
+    }
+
+    fail_check();
+    
+    if (!in_bounds(target))
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        monster *mon = place_monster(mgen_data(MONS_ORB_OF_DESTRUCTION,
+                BEH_FRIENDLY, coord_def(),
+                monster_at(target) ? mgrd(target) :
+                MHITNOT).set_summoned(&you, 0, SPELL_IOOD), true, true);
+                
+        if (!mon)
+        {
+            mprf(MSGCH_ERROR, "Failed to spawn projectile.");
+            return SPRET_ABORT;
+        }
+        
+        // approximate the angle between us and the target
+        double xdist = static_cast<double>(target.x) - static_cast<double>(you.pos().x);
+        double ydist = static_cast<double>(target.y) - static_cast<double>(you.pos().y);
+        xdist += random_choose(-0.1, 0.1);
+        ydist += random_choose(-0.1, 0.1);
+        const double angle = atan2(ydist, xdist);
+        
+        mon->props[IOOD_X].get_float() = you.pos().x + random_choose(-0.1, 0.1);
+        mon->props[IOOD_Y].get_float() = you.pos().y + random_choose(-0.1, 0.1);
+        mon->props[IOOD_VX].get_float() = cos(angle);
+        mon->props[IOOD_VY].get_float() = sin(angle);
+        mprf("%f%f", cos(angle), sin(angle));
+        mon->props[IOOD_KC].get_byte() = KC_YOU;
+        mon->props[IOOD_POW].get_short() = pow;
+        mon->flags &= ~MF_JUST_SUMMONED;
+        mon->props[IOOD_CASTER].get_string() = "you";
+        mon->summoner = you.mid;
+        mon->props[IOOD_FLAWED].get_byte() = true;
+        
+        // Move away from the caster's square.
+        iood_act(*mon, true);
+
+        // If the foe was adjacent to the caster, that might have destroyed it.
+        if (mon->alive())
+        {
+            // We need to take at least one full move (for the above), but let's
+            // randomize it and take more so players won't get guaranteed instant
+            // damage.
+            mon->lose_energy(EUT_MOVE, 2, random2(3)+2);
+        }
+    }
+
+    return SPRET_SUCCESS;
 }

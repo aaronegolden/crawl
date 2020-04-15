@@ -336,12 +336,11 @@ static bool _iood_hit(monster& mon, const coord_def &pos, bool big_boom = false)
     beam.source_name = mon.props[IOOD_CASTER].get_string();
 
     int pow = mon.props[IOOD_POW].get_short();
-    pow = stepdown_value(pow, 30, 30, 200, -1);
     const int dist = mon.props[IOOD_DIST].get_int();
     ASSERT(dist >= 0);
     if (dist < 4)
-        pow = div_rand_round(pow * (dist*2+3), 10);
-    beam.damage = dice_def(9, div_rand_round(pow,4));
+        pow = div_rand_round(pow * (dist + 6), 10);
+    beam.damage = dice_def(1, 9 + div_rand_round(pow * 5, 4));
 
     if (dist < 3)
         beam.name = "wavering " + beam.name;

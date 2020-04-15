@@ -1842,7 +1842,7 @@ static spret_type _do_cast(spell_type spell, int powc,
         return cast_starburst(powc, fail);
 
     case SPELL_IOOD:
-        return cast_iood(&you, powc, &beam, 0, 0, MHITNOT, fail);
+        return untargeted_iood(powc, fail);
 
     // Clouds and explosions.
     case SPELL_POISONOUS_CLOUD:
