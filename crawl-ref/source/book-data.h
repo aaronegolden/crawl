@@ -4,10 +4,10 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Minor Magic
     SPELL_SHOCK,
-    SPELL_BLINK,
     SPELL_PASSWALL,
     SPELL_CONJURE_FLAME,
     SPELL_CALL_CANINE_FAMILIAR,
+    SPELL_BLINK,
 },
 
 #if TAG_MAJOR_VERSION == 34
@@ -53,8 +53,8 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Spatial Translocations
-    SPELL_BLINK,
     SPELL_BECKONING,
+    SPELL_BLINK,
     SPELL_GOLUBRIAS_PASSAGE,
 },
 

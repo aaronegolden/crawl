@@ -544,7 +544,7 @@ static const struct spell_desc spelldata[] =
     SPELL_BLINK, "Blink",
     SPTYP_TRANSLOCATION,
     SPFLAG_ESCAPE | SPFLAG_SELFENCH | SPFLAG_EMERGENCY | SPFLAG_UTILITY,
-    2,
+    3,
     0,
     -1, -1,
     2, 0,
