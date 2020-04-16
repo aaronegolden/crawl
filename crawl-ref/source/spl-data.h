@@ -1026,7 +1026,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_IRON_SHOT, "Iron Shot",
     SPTYP_EARTH,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MONSTER,
     6,
     200,
     4, 4,
