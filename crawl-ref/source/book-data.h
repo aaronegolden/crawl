@@ -157,7 +157,6 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Air
     SPELL_SHOCK,
     SPELL_SWIFTNESS,
-    SPELL_REPEL_MISSILES,
     SPELL_DISCHARGE,
 	SPELL_MEPHITIC_CLOUD,
     SPELL_ELECTRIC_SURGE,
