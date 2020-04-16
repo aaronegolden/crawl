@@ -1776,6 +1776,9 @@ bool spell_no_hostile_in_range(spell_type spell)
         
     case SPELL_STONE_SHARDS:
         return stone_shards(-1, false, true) == SPRET_ABORT;
+        
+    case SPELL_GORGONS_GAZE:
+        return gorgons_gaze(-1, false, true) == SPRET_ABORT;
 
     default:
         break;

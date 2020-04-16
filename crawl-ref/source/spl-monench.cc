@@ -8,6 +8,7 @@
 
 #include "spl-monench.h"
 
+#include "coord.h"
 #include "coordit.h"
 #include "env.h"
 #include "message.h"
@@ -125,6 +126,90 @@ spret_type cast_hibernation(int pow, bool fail, bool tracer)
             mon->put_to_sleep(&you, pow, true);
         }
     }
+    return SPRET_SUCCESS;
+}
+
+static bool _valid_petrify_target(monster* mon)
+{
+    return mon
+            && you.can_see(*mon)
+            && you.see_cell_no_trans(mon->pos())
+            && !mon->wont_attack()
+            && !mons_is_firewood(*mon)
+            && !mons_is_tentacle_or_tentacle_segment(mon->type)
+            && !mon->is_summoned()
+            && !mon->res_petrify();
+}
+
+static monster* _gaze_target()
+{
+    for (distance_iterator di(you.pos(), true, true, 1); di; ++di)
+    {
+        monster *mon = monster_at(*di);
+        if (_valid_petrify_target(mon))
+        { 
+            //valid target obtained
+            return mon;
+        }
+    }
+    
+    return nullptr;
+}
+
+spret_type gorgons_gaze(int pow, bool fail, bool tracer)
+{
+    monster *mon = _gaze_target();
+    
+    if (tracer)
+    {
+        if (!mon)
+            return SPRET_ABORT;
+        else
+            return SPRET_SUCCESS;
+    }
+    
+    fail_check();
+    
+    if (!mon)
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        mprf("You weave a hideous illusion!");
+        int res_margin = mon->check_res_magic(pow);
+        if (res_margin > 0)
+        {
+            simple_monster_message(*mon,
+                    mon->resist_margin_phrase(res_margin).c_str());
+        }
+        else
+        {
+            if (mon->check_res_magic(pow) < 0)
+                mon->fully_petrify(&you);
+            else
+                mon->petrify(&you);
+        }
+        
+        // check for secondary targets
+        for (adjacent_iterator ai(mon->pos()); ai; ++ai)
+        {
+            if (grid_distance(*ai, you.pos()) == 1)
+            {
+                monster* secondary = monster_at(*ai);
+                if (secondary && _valid_petrify_target(secondary))
+                {
+                    int res = secondary->check_res_magic(pow);
+                    if (res > 0)
+                    {
+                        simple_monster_message(*secondary,
+                            secondary->resist_margin_phrase(res).c_str());
+                    }
+                    else
+                        secondary->petrify(&you);
+                }
+            }
+        }
+    }
+    
     return SPRET_SUCCESS;
 }
 

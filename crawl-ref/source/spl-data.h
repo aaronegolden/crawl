@@ -222,6 +222,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_GORGONS_GAZE, "Gorgon's Gaze",
+    SPTYP_HEXES | SPTYP_EARTH,
+    SPFLAG_MR_CHECK,
+    4,
+    200,
+    1, 1,
+    3, 0,
+    TILEG_PETRIFY,
+},
+
+{
     SPELL_CONFUSE, "Confuse",
     SPTYP_HEXES,
     SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MR_CHECK 

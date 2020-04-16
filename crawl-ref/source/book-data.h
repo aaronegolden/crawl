@@ -89,7 +89,7 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Misfortune
     SPELL_CONFUSING_TOUCH,
-    SPELL_PETRIFY,
+    SPELL_GORGONS_GAZE,
     SPELL_ENGLACIATION,
     SPELL_VIOLENT_UNRAVELLING,
 },
@@ -209,7 +209,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SANDBLAST,
     SPELL_PASSWALL,
     SPELL_FORCE_QUAKE,
-    SPELL_PETRIFY,
+    SPELL_GORGONS_GAZE,
     SPELL_STONE_SHARDS,
 },
 
@@ -288,7 +288,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Alchemy
-    SPELL_PETRIFY,
+    SPELL_GORGONS_GAZE,
     SPELL_INTOXICATE,
     SPELL_IRRADIATE,
 },

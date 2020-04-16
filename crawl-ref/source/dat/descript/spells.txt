@@ -694,6 +694,13 @@ caster. Those hit by the blast are encased in ice, slowing their movement, and
 those killed by the blast may be frozen into solid blocks of ice. A significant
 portion of its damage bypasses cold resistance.
 %%%%
+Gorgon's Gaze spell
+
+Weaves the illusion of a hideous monster which attempts to petrify up to three 
+adjacent foes, provided they are also adjacent to one another. The primary target
+may be petrified instantly; otherwise, the affected creatures will be slowed by
+the petrification process until they fully turn to stone.
+%%%%
 Greater Servant of Makhleb spell
 
 <Greater Servant of Makhleb ability>

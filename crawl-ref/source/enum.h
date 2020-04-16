@@ -4974,6 +4974,7 @@ enum spell_type : int
     SPELL_FORCE_QUAKE,
     SPELL_PYROCLASM,
     SPELL_STONE_SHARDS,
+    SPELL_GORGONS_GAZE,
     NUM_SPELLS
 };
 
