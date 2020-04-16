@@ -477,6 +477,7 @@ enum special_armour_type
     SPARM_JUMPING,
 #endif
     SPARM_MAGICAL_POWER,
+    SPARM_REPULSION,
     NUM_REAL_SPECIAL_ARMOURS,
     NUM_SPECIAL_ARMOURS,
 };

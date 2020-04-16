@@ -5691,7 +5691,8 @@ int player::missile_deflection() const
     // non-spell version of rmsl always triggers
     if (you.get_mutation_level(MUT_DISTORTION_FIELD) == 3
         || scan_artefacts(ARTP_RMSL, true)
-        || have_passive(passive_t::upgraded_storm_shield))
+        || have_passive(passive_t::upgraded_storm_shield)
+        || you.wearing_ego(EQ_ALL_ARMOUR, SPARM_REPULSION))
     {
         return 1;
     }

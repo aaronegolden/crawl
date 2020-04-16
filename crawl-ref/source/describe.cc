@@ -1718,6 +1718,11 @@ static string _describe_armour(const item_def &item, bool verbose)
             description += "It improves your effectiveness with ranged "
                            "weaponry, such as bows and javelins (Slay+4).";
             break;
+            
+        // This is only for cloaks
+        case SPARM_REPULSION:
+             description += "It protects its wearer by repelling missiles.";
+            break;
         }
     }
 

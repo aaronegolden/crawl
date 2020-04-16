@@ -1112,6 +1112,8 @@ static void _debug_acquirement_stats(FILE *ostat)
 #if TAG_MAJOR_VERSION == 34
             "jumping",
 #endif
+            "magical power",
+            "repulsion",
         };
 
         const int non_art = acq_calls - num_arts;
