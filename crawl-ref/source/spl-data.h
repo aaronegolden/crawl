@@ -3946,10 +3946,10 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_BECKONING, "Lesser Beckoning",
-    SPTYP_TRANSLOCATION,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NOT_SELF | SPFLAG_NEEDS_TRACER,
-    3,
-    100,
+    SPTYP_TRANSLOCATION | SPTYP_AIR,
+    SPFLAG_NONE,
+    2,
+    50,
     2, LOS_DEFAULT_RANGE,
     2, 0,
     TILEG_BECKONING,

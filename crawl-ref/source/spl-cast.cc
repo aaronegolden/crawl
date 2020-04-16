@@ -2080,6 +2080,9 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     case SPELL_PASSWALL:
         return cast_passwall(spd.delta, powc, fail);
+        
+    case SPELL_BECKONING:
+        return beckoning(powc, fail);
 
     case SPELL_APPORTATION:
         return cast_apportation(powc, beam, fail);

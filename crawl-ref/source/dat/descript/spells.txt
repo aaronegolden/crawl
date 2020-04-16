@@ -896,7 +896,12 @@ Hurls a lethally sharp shard of crystal.
 %%%%
 Lesser Beckoning spell
 
-Beckons the target forward, attempting to place them adjacent to the caster.
+Displaces the air between a nearby foe and the caster, creating a pressure differential
+that causes the foe to hurtle forward. The enemy will land adjacent to the
+caster (if possible), but is not directly harmed by the spell. 
+
+Friendly creatures and those already adjacent to the caster are ignored by 
+Lesser Beckoning.
 %%%%
 Lightning Bolt spell
 

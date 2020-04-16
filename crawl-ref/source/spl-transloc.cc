@@ -15,6 +15,7 @@
 #include "act-iter.h"
 #include "areas.h"
 #include "cloud.h"
+#include "colour.h"
 #include "coordit.h"
 #include "delay.h"
 #include "directn.h"
@@ -1171,4 +1172,49 @@ bool beckon(actor &beckoned, const bolt &path)
         mons_relocated(beckoned.as_monster()); // cleanup tentacle segments
 
     return true;
+}
+
+spret_type beckoning(int pow, bool fail)
+{
+    int range = spell_range(SPELL_BECKONING, pow);
+    monster* check = monster_at(you.pos());
+    
+    for (distance_iterator di(you.pos(), true, true, range); di; ++di)
+    {
+        if(grid_distance(you.pos(), *di) == 1)
+            continue;
+        
+        monster* mon = monster_at(*di);
+        
+        if (mon && !mon->wont_attack())
+        {
+            if(!check)
+            {
+                fail_check();
+                check = monster_at(*di);
+            }
+            
+            bolt beam;
+            beam.source = you.pos();
+            beam.target = mon->pos();
+            beam.range = LOS_RADIUS;
+            beam.flavour = BEAM_VISUAL;
+            beam.colour = ETC_WARP;
+            beam.hit = AUTOMATIC_HIT;
+            beam.choose_ray();
+            beam.fire();
+            
+            if (beckon(*mon, beam))
+                return SPRET_SUCCESS;
+        }
+    }
+    
+    if (check)
+    {
+        mprf("%s refuses your beckoning.", check->name(DESC_THE).c_str());
+        return SPRET_SUCCESS;
+    }
+    
+    mprf("There is nothing in range that you can beckon!");
+    return SPRET_ABORT;
 }
