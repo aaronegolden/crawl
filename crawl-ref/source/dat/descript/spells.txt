@@ -1419,6 +1419,16 @@ Stone Arrow spell
 
 Fires a sharp spine of rock.
 %%%%
+Stone Shards spell
+
+Violently rips shards of rock, stone, or similar material from nearby walls
+and hurls them at any creature unlucky enough to be standing next to them.
+Petrified monsters are also vulnerable to this spell, both as a source of
+shards and as a target.
+
+The total power released by the spell is constant; thus, individual targets
+will take less damage as the number of targets increases. 
+%%%%
 Stoneskin spell
 
 Hardens the caster's skin. It has no effect on the undead or those under the

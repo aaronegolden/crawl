@@ -1578,6 +1578,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_STONE_SHARDS, "Stone Shards",
+    SPTYP_EARTH,
+    SPFLAG_NONE,
+    5,
+    200,
+    4, 4,
+    4, 12,
+    TILEG_LEES_RAPID_DECONSTRUCTION,
+},
+
+{
     SPELL_SANDBLAST, "Sandblast",
     SPTYP_EARTH,
     SPFLAG_NONE,

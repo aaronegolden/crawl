@@ -1843,6 +1843,9 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     case SPELL_IOOD:
         return untargeted_iood(powc, fail);
+        
+    case SPELL_STONE_SHARDS:
+        return stone_shards(powc, fail);
 
     // Clouds and explosions.
     case SPELL_POISONOUS_CLOUD:

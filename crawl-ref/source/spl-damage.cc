@@ -4171,7 +4171,6 @@ spret_type untargeted_iood(int pow, bool fail, bool tracer)
         mon->props[IOOD_Y].get_float() = you.pos().y + random_choose(-0.1, 0.1);
         mon->props[IOOD_VX].get_float() = cos(angle);
         mon->props[IOOD_VY].get_float() = sin(angle);
-        mprf("%f%f", cos(angle), sin(angle));
         mon->props[IOOD_KC].get_byte() = KC_YOU;
         mon->props[IOOD_POW].get_short() = pow;
         mon->flags &= ~MF_JUST_SUMMONED;
@@ -4192,5 +4191,90 @@ spret_type untargeted_iood(int pow, bool fail, bool tracer)
         }
     }
 
+    return SPRET_SUCCESS;
+}
+
+static void _stone_shard_cell(coord_def target, int frags, int pow, int total_frags)
+{
+    bolt beam;
+    beam.name = "stone shards";
+    beam.flavour = BEAM_FRAG;
+    beam.set_agent(&you);
+    beam.colour = BROWN;
+    beam.glyph = dchar_glyph(DCHAR_EXPLOSION);
+    beam.range = 1;
+    beam.source = target;
+    beam.target = target;
+    beam.hit = AUTOMATIC_HIT;
+    beam.loudness = spell_effect_noise(SPELL_STONE_SHARDS);
+    
+    int adjusted_power = div_rand_round(pow * frags, total_frags);
+    
+    beam.damage = calc_dice(1, div_rand_round(adjusted_power * 7, 6));
+    beam.fire();
+    
+    place_cloud(CLOUD_DUST_TRAIL, target, 2, &you);
+}
+
+spret_type stone_shards(int pow, bool fail, bool tracer)
+{
+    int range = spell_range(SPELL_STONE_SHARDS, pow);
+    int total_frags = 0;
+    vector<pair <coord_def, int> > targets;
+    
+    for (actor_near_iterator ai(you.pos(), LOS_NO_TRANS); ai; ++ai)
+    {
+        if (grid_distance(ai->pos(), you.pos()) > range)
+            continue;
+        
+        // don't damage the player
+        if (ai->pos() == you.pos())
+            continue;
+        
+        int frags = 0;
+        if (ai->petrified() || ai->petrifying())
+            frags +=2;
+        
+        for(adjacent_iterator bi(ai->pos()); bi; ++bi)
+        {
+            if (feat_is_wall(env.grid(*bi)) || feat_is_statuelike(env.grid(*bi)))
+                frags++;
+            else
+            {
+                const actor* act = actor_at(*bi);
+                if (act && (act->petrified() || act->petrifying()))
+                    frags++;
+            }
+        }
+        
+        if(frags > 0)
+        {
+            targets.emplace_back(make_pair(ai->pos(), frags));
+            total_frags += frags;
+        }
+    }
+    
+    if (tracer)
+    {
+        if (targets.empty())
+            return SPRET_ABORT;
+        else
+            return SPRET_SUCCESS;
+    }
+    
+    fail_check();
+    
+    if (targets.empty())
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        //need a better visual effect for this
+        flash_view_delay(UA_PLAYER, BROWN, 30);
+        for (int i = 0; i < static_cast<int>(targets.size()); i++)
+        {
+            _stone_shard_cell(targets[i].first, targets[i].second, pow, total_frags);
+        }
+    }
+    
     return SPRET_SUCCESS;
 }

@@ -92,4 +92,5 @@ spret_type cast_force_quake(int pow, bool fail);
 void actor_apply_quicksand(actor *act);
 spret_type cast_pyroclasm(int pow, bool fail, bool tracer = false);
 spret_type untargeted_iood(int pow, bool fail, bool tracer = false);
+spret_type stone_shards(int pow, bool fail, bool tracer = false);
 #endif

@@ -211,7 +211,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_PASSWALL,
     SPELL_FORCE_QUAKE,
     SPELL_PETRIFY,
-    SPELL_LRD,
+    SPELL_STONE_SHARDS,
 },
 
 {   // Book of Earth
@@ -279,7 +279,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SWIFTNESS,
     SPELL_PASSWALL,
     SPELL_GOLUBRIAS_PASSAGE,
-    SPELL_LRD,
+    SPELL_STONE_SHARDS,
     SPELL_INVISIBILITY,
 },
 
