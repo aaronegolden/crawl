@@ -4197,8 +4197,21 @@ spret_type untargeted_iood(int pow, bool fail, bool tracer)
 
 static void _stone_shard_cell(coord_def target, int frags, int pow, int total_frags)
 {
+    bolt beam_visual;
+    beam_visual.set_agent(&you);
+    beam_visual.flavour       = BEAM_VISUAL;
+    beam_visual.glyph         = dchar_glyph(DCHAR_FIRED_BURST);
+    beam_visual.colour        = BROWN;
+    beam_visual.ex_size       = 1;
+    beam_visual.is_explosion  = true;
+    
+    beam_visual.explosion_draw_cell(target);
+    
+    update_screen();
+    scaled_delay(5);
+    
     bolt beam;
-    beam.name = "stone shards";
+    beam.name = "stone shard";
     beam.flavour = BEAM_FRAG;
     beam.set_agent(&you);
     beam.colour = BROWN;
@@ -4211,10 +4224,32 @@ static void _stone_shard_cell(coord_def target, int frags, int pow, int total_fr
     
     int adjusted_power = div_rand_round(pow * frags, total_frags);
     
-    beam.damage = calc_dice(1, div_rand_round(adjusted_power * 7, 6));
+    beam.damage = calc_dice(1, div_rand_round(adjusted_power * 5, 4));
     beam.fire();
     
     place_cloud(CLOUD_DUST_TRAIL, target, 2, &you);
+}
+
+static int _num_stone_shards(const actor* ai)
+{
+    int frags = 0;
+    
+    if (ai->petrified() || ai->petrifying())
+            frags +=2;
+        
+    for(adjacent_iterator bi(ai->pos()); bi; ++bi)
+    {
+        if (feat_is_wall(env.grid(*bi)) || feat_is_statuelike(env.grid(*bi)))
+            frags++;
+        else
+        {
+            const actor* act = actor_at(*bi);
+            if (act && (act->petrified() || act->petrifying()))
+                    frags++;
+        }
+    }
+    
+    return frags;
 }
 
 spret_type stone_shards(int pow, bool fail, bool tracer)
@@ -4232,21 +4267,7 @@ spret_type stone_shards(int pow, bool fail, bool tracer)
         if (ai->pos() == you.pos())
             continue;
         
-        int frags = 0;
-        if (ai->petrified() || ai->petrifying())
-            frags +=2;
-        
-        for(adjacent_iterator bi(ai->pos()); bi; ++bi)
-        {
-            if (feat_is_wall(env.grid(*bi)) || feat_is_statuelike(env.grid(*bi)))
-                frags++;
-            else
-            {
-                const actor* act = actor_at(*bi);
-                if (act && (act->petrified() || act->petrifying()))
-                    frags++;
-            }
-        }
+        int frags = _num_stone_shards(*ai);
         
         if(frags > 0)
         {
@@ -4257,20 +4278,32 @@ spret_type stone_shards(int pow, bool fail, bool tracer)
     
     if (tracer)
     {
-        if (targets.empty())
+        if (total_frags == 0)
             return SPRET_ABORT;
         else
             return SPRET_SUCCESS;
     }
     
+    if (total_frags > 0)
+    {
+        targetter_radius hitfunc(&you, LOS_SOLID_SEE, range);
+        bool (*vulnerable) (const actor *) = [](const actor * act) -> bool
+        {
+        // No fedhas checks needed, plants can't be dazzled
+        return act->is_monster()
+               && _num_stone_shards(act) > 0;
+        };
+        
+        if (stop_attack_prompt(hitfunc, "shard", vulnerable))
+            return SPRET_ABORT;
+    }
+    
     fail_check();
     
-    if (targets.empty())
+    if (total_frags == 0)
         canned_msg(MSG_NOTHING_HAPPENS);
     else
     {
-        //need a better visual effect for this
-        flash_view_delay(UA_PLAYER, BROWN, 30);
         for (int i = 0; i < static_cast<int>(targets.size()); i++)
         {
             _stone_shard_cell(targets[i].first, targets[i].second, pow, total_frags);
