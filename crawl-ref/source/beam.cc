@@ -4385,7 +4385,7 @@ static bool _dazzle_monster(monster* mons, actor* act)
     return false;
 }
 
-static void _glaciate_freeze(monster* mon, killer_type englaciator,
+void glaciate_freeze(monster* mon, killer_type englaciator,
                              int kindex)
 {
     const coord_def where = mon->pos();
@@ -4958,7 +4958,7 @@ void bolt::affect_monster(monster* mon)
             && x_chance_in_y(3, 5))
         {
             // Includes monster_die as part of converting to block of ice.
-            _glaciate_freeze(mon, thrower, kindex);
+            glaciate_freeze(mon, thrower, kindex);
         }
         // Prevent spore explosions killing plants from being registered
         // as a Fedhas misconduct. Deaths can trigger the ally dying or

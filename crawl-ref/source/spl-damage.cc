@@ -20,6 +20,7 @@
 #include "english.h"
 #include "env.h"
 #include "fight.h"
+#include "fineff.h"
 #include "food.h"
 #include "fprop.h"
 #include "godabil.h"
@@ -2489,48 +2490,48 @@ spret_type random_fireball(int pow, bool fail, bool tracer)
 
 spret_type cast_absolute_zero(int pow, bool fail, bool tracer)
 {
-    monster* target = _closest_target_in_range(LOS_RADIUS);
+    monster* mon = _closest_target_in_range(3);
     
     if (tracer)
     {
-        if (!target)
+        if (!mon)
             return SPRET_ABORT;
         else
             return SPRET_SUCCESS;
     }
     
-    coord_def pos = target->pos();
-    
-    if (stop_attack_prompt(target, false, pos))
+    if (mon && you.can_see(*mon) && stop_attack_prompt(mon, false, mon->pos()))
         return SPRET_ABORT;
     
     fail_check();
     
-    if (!target)
+    if (!mon)
         canned_msg(MSG_NOTHING_HAPPENS);
     else
     {
-        monster_type block_type = mons_is_zombified(*target) ? mons_zombie_base(*target)
-                                                    : mons_species(target->type);
-       
-        mprf("You chill %s to absolute zero!", target->name(DESC_THE).c_str());
-        target->hurt(&you, INSTANT_DEATH);
+        targetter_radius hitfunc(&you, LOS_NO_TRANS);
+        flash_view_delay(UA_PLAYER, LIGHTCYAN, 100, &hitfunc);
+
+        god_conduct_trigger conducts[3];
+        set_attack_conducts(conducts, mon, you.can_see(*mon));
         
-        if (monster *pillar = create_monster(
-                        mgen_data(MONS_BLOCK_OF_ICE,
-                                  BEH_HOSTILE,
-                                  pos,
-                                  MHITNOT,
-                                  MG_FORCE_PLACE).set_base(block_type),
-                                  false))
+        if (mon->type == MONS_ROYAL_JELLY && !mon->is_summoned())
         {
-            int time_left = (12 + random2(8)) * BASELINE_DELAY;
-            mon_enchant temp_en(ENCH_SLOWLY_DYING, 1, 0, time_left);
-            pillar->update_ench(temp_en);
+            // need to do this here, because react_to_damage is never called
+            mprf("A cloud of jellies burst out of %s as it chills to"
+                 " absolute zero!", mon->name(DESC_THE, false).c_str());
+            trj_spawn_fineff::schedule(&you, mon, mon->pos(), mon->hit_points);
         }
-        
+        else
+        {
+            mprf("You chill %s to absolute zero!",
+                 you.can_see(*mon) ? mon->name(DESC_THE).c_str() : "something");
+        }
+
+        const coord_def pos = mon->pos();
+        glaciate_freeze(mon, KILL_YOU, actor_to_death_source(&you));
         // extremely loud at low power, zero noise at max power
-        noisy(40 - div_rand_round(pow,5), pos);
+        noisy(40 - div_rand_round(pow, 5), pos, you.mid);
     }
     
     return SPRET_SUCCESS;

@@ -4050,7 +4050,7 @@ static const struct spell_desc spelldata[] =
     SPFLAG_NO_GHOST,
     9,
     200,
-    LOS_RADIUS, LOS_RADIUS, // Range special-cased in describe-spells
+    3, 3,
     4, 0, // effect noise is power dependent; see cast_absolute_zero,
     TILEG_ICE_STORM,
 },
