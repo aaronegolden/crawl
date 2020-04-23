@@ -504,6 +504,7 @@ enum ability_type
 	ABIL_END_PIERCE,
     ABIL_END_CONFUSING_TOUCH,
     ABIL_END_DISTRACTING_TOUCH,
+    ABIL_END_ICHOR,
     NUM_ABILITIES
 };
 
@@ -650,6 +651,7 @@ enum attribute_type
     ATTR_CONFUSING_TOUCH,      // confusing touch
     ATTR_DISTRACTING_TOUCH,    // distracting touch
     ATTR_FORCE_QUAKE,          // Track what hit of force quake we're on
+    ATTR_ELDRITCH_ICHOR,       // eldritch ichor
     NUM_ATTRIBUTES
 };
 
@@ -4976,6 +4978,7 @@ enum spell_type : int
     SPELL_PYROCLASM,
     SPELL_STONE_SHARDS,
     SPELL_GORGONS_GAZE,
+    SPELL_ELDRITCH_ICHOR,
     NUM_SPELLS
 };
 

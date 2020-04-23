@@ -304,7 +304,7 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Grand Grimoire
     SPELL_MALIGN_GATEWAY,
-    SPELL_SUMMON_HORRIBLE_THINGS,
+    SPELL_ELDRITCH_ICHOR,
 },
 
 {   // Necronomicon

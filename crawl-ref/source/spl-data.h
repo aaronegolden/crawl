@@ -613,11 +613,22 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_SUMMON_HORRIBLE_THINGS, "Summon Horrible Things",
     SPTYP_SUMMONING,
-    SPFLAG_UNHOLY | SPFLAG_CHAOTIC | SPFLAG_MONS_ABJURE,
+    SPFLAG_UNHOLY | SPFLAG_CHAOTIC | SPFLAG_MONS_ABJURE | SPFLAG_MONSTER,
     8,
     200,
     -1, -1,
     6, 0,
+    TILEG_SUMMON_HORRIBLE_THINGS,
+},
+
+{
+    SPELL_ELDRITCH_ICHOR, "Eldritch Ichor",
+    SPTYP_SUMMONING,
+    SPFLAG_UNHOLY | SPFLAG_CHAOTIC | SPFLAG_PERMABUFF,
+    8,
+    200,
+    -1, -1,
+    0, 0,
     TILEG_SUMMON_HORRIBLE_THINGS,
 },
 

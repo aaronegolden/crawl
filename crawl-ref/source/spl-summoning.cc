@@ -1313,6 +1313,21 @@ spret_type cast_malign_gateway(actor * caster, int pow, god_type god, bool fail)
     return SPRET_ABORT;
 }
 
+spret_type cast_eldritch_ichor(int pow, god_type god, bool fail)
+{
+    if (is_good_god(you.religion))
+    {
+        mprf("%s forbids you from sustaining this spell.", god_name(you.religion).c_str());
+        return SPRET_ABORT;
+    }
+    fail_check();
+    mpr("You bathe in eldritch energies!");
+    
+    you.attribute[ATTR_ELDRITCH_ICHOR] = 1;
+
+    return SPRET_SUCCESS;
+}
+
 spret_type cast_summon_horrible_things(int pow, god_type god, bool fail)
 {
     fail_check();
@@ -3230,6 +3245,7 @@ static const map<spell_type, summon_cap> summonsdata =
     { SPELL_SUMMON_GREATER_DEMON,       { 3, 2 } },
     // General monsters
     { SPELL_MONSTROUS_MENAGERIE,        { 3, 2 } },
+    { SPELL_ELDRITCH_ICHOR,             { 8, 8 } },
     { SPELL_SUMMON_HORRIBLE_THINGS,     { 8, 8 } },
     { SPELL_SHADOW_CREATURES,           { 4, 2 } },
     { SPELL_SUMMON_LIGHTNING_SPIRE,     { 1, 2 } },

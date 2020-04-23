@@ -1765,6 +1765,8 @@ static spret_type _handle_buff_spells(spell_type spell, int powc, bolt& beam, go
             return cast_portal_projectile(powc, false);
         case SPELL_PIERCING_SHOT:
             return cast_piercing_shot(powc, false);
+        case SPELL_ELDRITCH_ICHOR:
+            return cast_eldritch_ichor(powc, god, false);
         default:
 		    return SPRET_NONE;
     }

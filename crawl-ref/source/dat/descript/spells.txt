@@ -549,6 +549,14 @@ Druid's Call spell
 
 Recalls woodland creatures from elsewhere on the same level.
 %%%%
+Eldritch Ichor spell
+
+Taints the caster with horrible energies from a distant plane. Striking an enemy
+while the spell is active may summon a tentacled monstrosity from this plane to 
+attack the same foe, though these monsters never stick around for very long.
+
+Greater spellpower will increase the chance of a successful summoning on each hit.
+%%%%
 Electrical Bolt spell
 
 Throws a bolt of electricity at the target, with high accuracy.

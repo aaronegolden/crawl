@@ -801,6 +801,16 @@ bool fill_status_info(int status, status_info* inf)
         }
         break;
     }
+    
+    case STATUS_ICHOR:
+    {
+        if(you.attribute[ATTR_ELDRITCH_ICHOR])
+        {
+            inf->light_text = "Ichor";
+            inf->light_colour = LIGHTGREEN;
+        }
+        break;
+    }
 	
     case STATUS_BATTLESPHERE:
     {

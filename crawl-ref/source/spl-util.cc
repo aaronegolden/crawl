@@ -1384,6 +1384,11 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
         if (temp && you.attribute[ATTR_DEFLECT_MISSILES])
             return "you're already deflecting missiles.";
         break;
+        
+    case SPELL_ELDRITCH_ICHOR:
+        if (temp && you.attribute[ATTR_ELDRITCH_ICHOR])
+            return "you're already tainted by eldritch ichor.";
+        break;
 
     case SPELL_STATUE_FORM:
         if (temp && you.attribute[ATTR_OZO_ARMOUR] > 0)

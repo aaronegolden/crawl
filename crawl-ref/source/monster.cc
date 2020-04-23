@@ -5891,6 +5891,19 @@ void monster::react_to_damage(const actor *oppressor, int damage,
 
     if (!alive())
         return;
+    
+    if (oppressor == &you && you.attribute[ATTR_ELDRITCH_ICHOR]
+        && !mons_is_firewood(*this)
+        && !wont_attack()
+        && x_chance_in_y(200 + calc_spell_power(SPELL_ELDRITCH_ICHOR, true), 400))
+    {
+        mgen_data mg(MONS_TENTACLED_MONSTROSITY, BEH_FRIENDLY, pos(), this->mindex(), MG_NONE);
+        mg.set_summoned(&you, 1, SPELL_ELDRITCH_ICHOR);
+        if(create_monster(mg))
+        {
+            mprf("A tentacled monstrosity appears!");
+        }
+    }
 
 
     if (mons_species() == MONS_BUSH
