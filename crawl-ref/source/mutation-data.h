@@ -882,6 +882,17 @@ static const mutation_def mut_data[] =
    ""},
 },
 
+// Beastly Appendage only
+{ MUT_MANA_TUSK, 0, 1, mutflag::GOOD, true,
+    "mana tusk",
+    
+  {"You have a large tusk that expends mp to attack.", "", ""},
+
+  {"A large magical tusk sprouts from your body!", "", ""},
+
+  {"Your tusk disappears.", "", ""},
+},
+
 // Octopode only
 { MUT_TENTACLE_SPIKE, 10, 1, mutflag::GOOD, true,
   "tentacle spike",

@@ -824,12 +824,8 @@ public:
         // ATTR_APPENDAGE must be set earlier!
         switch (you.attribute[ATTR_APPENDAGE])
         {
-            case MUT_HORNS:
-                return "You grow a pair of large bovine horns.";
-            case MUT_TENTACLE_SPIKE:
-                return "One of your tentacles grows a vicious spike.";
-            case MUT_TALONS:
-                return "Your feet morph into talons.";
+            case MUT_MANA_TUSK:
+                return "You grow a large, magical tusk.";
             default:
                  die("Unknown beastly appendage.");
         }
@@ -1407,9 +1403,7 @@ bool feat_dangerous_for_form(transformation_type which_trans,
 
 static mutation_type appendages[] =
 {
-    MUT_TENTACLE_SPIKE,
-    MUT_TALONS,
-    MUT_HORNS,
+    MUT_MANA_TUSK,
 };
 
 static bool _slot_conflict(equipment_type eq)
@@ -1441,8 +1435,6 @@ static mutation_type _beastly_appendage()
 
     for (mutation_type app : appendages)
     {
-        if (_slot_conflict(beastly_slot(app)))
-            continue;
         if (physiology_mutation_conflict(app))
             continue;
         
@@ -1509,11 +1501,7 @@ static int _transform_duration(transformation_type which_trans, int pow)
 
 static int _beastly_appendage_level(int appendage)
 {
-    switch (appendage)
-    {
-    case MUT_HORNS: return 2;
-    default:        return 3;
-    }
+    return 1;
 }
 
 /**
@@ -1843,7 +1831,6 @@ bool transform(int pow, transformation_type which_trans, bool involuntary,
         {
             int app = you.attribute[ATTR_APPENDAGE];
             ASSERT(app != NUM_MUTATIONS);
-            ASSERT(beastly_slot(app) != EQ_NONE);
             you.mutation[app] = _beastly_appendage_level(app);
         }
         break;
@@ -1952,7 +1939,6 @@ void untransform(bool skip_move)
     if (old_form == TRAN_APPENDAGE)
     {
         mutation_type app = static_cast<mutation_type>(you.attribute[ATTR_APPENDAGE]);
-        ASSERT(beastly_slot(app) != EQ_NONE);
         const int levels = you.get_base_mutation_level(app);
         // Preserve extra mutation levels acquired after transforming.
         const int beast_levels = _beastly_appendage_level(app);

@@ -117,7 +117,7 @@ static const vector<spell_type> spellbook_templates[] =
 
 #if TAG_MAJOR_VERSION > 34
 {   // Book of Battle
-    SPELL_INFUSION,
+    SPELL_BEASTLY_APPENDAGE,
     SPELL_SONG_OF_SLAYING,
     SPELL_REGENERATION,
     SPELL_OZOCUBUS_ARMOUR,
@@ -197,7 +197,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Battle (replacing Morphology)
-    SPELL_INFUSION,
+    SPELL_BEASTLY_APPENDAGE,
     SPELL_SONG_OF_SLAYING,
     SPELL_OZOCUBUS_ARMOUR,
     SPELL_SPECTRAL_WEAPON,
@@ -239,7 +239,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Cantrips
-    SPELL_INFUSION,
+    SPELL_BEASTLY_APPENDAGE,
     SPELL_SUMMON_SMALL_MAMMAL,
 },
 

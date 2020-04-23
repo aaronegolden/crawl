@@ -1139,6 +1139,20 @@ public:
     : AuxAttackType(12, "squeeze") { };
 };
 
+class AuxTusk: public AuxAttackType
+{
+public:
+    AuxTusk()
+    : AuxAttackType(6, "gore") { };
+    
+    int get_damage() const override
+    {
+        return damage 
+            + div_rand_round(calc_spell_power(SPELL_BEASTLY_APPENDAGE,true), 8)
+            + div_rand_round(you.max_magic_points, 8);
+    }
+};
+
 static const AuxConstrict   AUX_CONSTRICT = AuxConstrict();
 static const AuxKick        AUX_KICK = AuxKick();
 static const AuxPeck        AUX_PECK = AuxPeck();
@@ -1148,6 +1162,7 @@ static const AuxPunch       AUX_PUNCH = AuxPunch();
 static const AuxBite        AUX_BITE = AuxBite();
 static const AuxPseudopods  AUX_PSEUDOPODS = AuxPseudopods();
 static const AuxTentacles   AUX_TENTACLES = AuxTentacles();
+static const AuxTusk        AUX_TUSK = AuxTusk();
 
 static const AuxAttackType* const aux_attack_types[] =
 {
@@ -1160,6 +1175,7 @@ static const AuxAttackType* const aux_attack_types[] =
     &AUX_BITE,
     &AUX_PSEUDOPODS,
     &AUX_TENTACLES,
+    &AUX_TUSK,
 };
 
 
@@ -1326,6 +1342,12 @@ bool melee_attack::player_aux_apply(unarmed_attack_type atk)
     aux_damage  = player_apply_slaying_bonuses(aux_damage, true);
 
     aux_damage  = player_apply_final_multipliers(aux_damage);
+    
+    if (atk == UNAT_TUSK)
+    {
+        int mp_amount = min(max(1,div_rand_round(you.max_magic_points, 8)), you.magic_points);
+        dec_mp(mp_amount);
+    }
 
     if (atk == UNAT_CONSTRICT)
         aux_damage = 0;
@@ -3409,7 +3431,8 @@ bool melee_attack::_extra_aux_attack(unarmed_attack_type atk)
         return you.has_usable_pseudopods() && !one_chance_in(3);
 
     case UNAT_TENTACLES:
-        return (you.get_mutation_level(MUT_PREHENSILE_TENTACLE) && x_chance_in_y(you.get_mutation_level(MUT_PREHENSILE_TENTACLE) + 2, 8))
+        return (you.get_mutation_level(MUT_PREHENSILE_TENTACLE) 
+                && x_chance_in_y(you.get_mutation_level(MUT_PREHENSILE_TENTACLE) + 2, 8))
             || (you.has_usable_tentacles() && !one_chance_in(3));
 
     case UNAT_BITE:
@@ -3418,6 +3441,10 @@ bool melee_attack::_extra_aux_attack(unarmed_attack_type atk)
                    || you.get_mutation_level(MUT_DRAIN_BITE)
                    || you.get_mutation_level(MUT_ACIDIC_BITE))
                    && x_chance_in_y(2, 5);
+                   
+    case UNAT_TUSK:
+        return you.get_mutation_level(MUT_MANA_TUSK) 
+                && you.magic_points > max(1, you.max_magic_points / 8);
 
     case UNAT_PUNCH:
         return player_gets_aux_punch();

@@ -2603,7 +2603,7 @@ static const struct spell_desc spelldata[] =
 
 {
     SPELL_BEASTLY_APPENDAGE, "Beastly Appendage",
-    SPTYP_TRANSMUTATION,
+    SPTYP_TRANSMUTATION | SPTYP_CHARMS,
     SPFLAG_HELPFUL | SPFLAG_CHAOTIC,
     1,
     50,
@@ -2923,7 +2923,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_INFUSION, "Infusion",
     SPTYP_CHARMS,
-    SPFLAG_UTILITY | SPFLAG_PERMABUFF,
+    SPFLAG_UTILITY | SPFLAG_PERMABUFF | SPFLAG_MONSTER,
     1,
     25,
     -1, -1,

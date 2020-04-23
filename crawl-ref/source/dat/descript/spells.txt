@@ -107,9 +107,14 @@ the strength of their blows.
 %%%%
 Beastly Appendage spell
 
-Temporarily replaces one or a pair of the caster's appendages with an animal
-counterpart, giving them an extra attack. It is not powerful enough to meld
-armour or enhance appendages that are already nonhuman.
+Provides the caster with a massive, magical tusk, giving them an extra attack. 
+The tusk siphons away the caster's magic, draining a portion of their magical 
+reserves with each strike. 
+
+Casters with greater reserves will find that a greater quantity of their magic 
+is used up with each strike. Though they will also notice that the tusk becomes
+slightly more powerful as their reserves grow, most mages will wish to progress 
+to more efficient spells.
 %%%%
 Berserker Rage spell
 
