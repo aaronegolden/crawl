@@ -1687,6 +1687,10 @@ Upheaval spell
 
 Calls on the forces of nature to blast a small area with magma, ice, wind,
 or rubble.
+Vampire's Kiss spell
+
+Steals the life of an adjacent living creature and grants it to the caster.
+Life will not be drained in excess of what the caster can capably absorb.
 %%%%
 Vampiric Draining spell
 

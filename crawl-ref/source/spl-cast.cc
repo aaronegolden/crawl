@@ -1813,11 +1813,6 @@ static spret_type _do_cast(spell_type spell, int powc,
                            bool fail)
 {
     const coord_def target = spd.isTarget ? beam.target : you.pos() + spd.delta;
-    if (spell == SPELL_VAMPIRIC_DRAINING)
-    {
-        if (!adjacent(you.pos(), target))
-            return SPRET_ABORT;
-    }
 	
     if (is_buff_spell(spell))
         return _handle_buff_spells(spell, powc, beam, god, fail);
@@ -1837,8 +1832,8 @@ static spret_type _do_cast(spell_type spell, int powc,
     case SPELL_ABSOLUTE_ZERO:
         return cast_absolute_zero(powc, fail);
 
-    case SPELL_VAMPIRIC_DRAINING:
-        return vampiric_drain(powc, monster_at(target), fail);
+    case SPELL_VAMPIRE_KISS:
+        return vampiric_drain(powc, fail);
         
     case SPELL_STARBURST:
         return cast_starburst(powc, fail);

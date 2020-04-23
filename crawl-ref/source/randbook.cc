@@ -979,7 +979,7 @@ void make_book_kiku_gift(item_def &book, bool first)
     if (first)
     {
         chosen_spells[0] = SPELL_PAIN;
-        chosen_spells[1] = SPELL_VAMPIRIC_DRAINING;
+        chosen_spells[1] = SPELL_VAMPIRE_KISS;
     }
     else
     {

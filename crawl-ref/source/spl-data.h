@@ -712,6 +712,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_VAMPIRE_KISS, "Vampire's Kiss",
+    SPTYP_NECROMANCY,
+    SPFLAG_NONE,
+    3,
+    100,
+    1, 1,
+    3, 0,
+    TILEG_VAMPIRIC_DRAINING,
+},
+
+{
     SPELL_HAUNT, "Haunt",
     SPTYP_SUMMONING | SPTYP_NECROMANCY,
     SPFLAG_TARGET | SPFLAG_NOT_SELF | SPFLAG_MONS_ABJURE,

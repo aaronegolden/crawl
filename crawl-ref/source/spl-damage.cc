@@ -807,89 +807,95 @@ void sonic_damage(bool scream)
     }
 }
 
-spret_type vampiric_drain(int pow, monster* mons, bool fail)
+spret_type vampiric_drain(int pow, bool fail, bool tracer)
 {
-    if (you.hp == you.hp_max)
+    if (!tracer && you.hp == you.hp_max)
     {
         mpr("Your health is already full!");
         return SPRET_ABORT;
     }
-	
-    if (mons == nullptr || mons->submerged())
+    
+    targetter_radius hitfunc(&you, LOS_NO_TRANS, 1);
+    bool (*vulnerable) (const actor *) = [](const actor * act) -> bool
     {
+        return act->is_monster()
+               && !act->wont_attack()
+               && !act->is_summoned()
+               && act->holiness() & MH_NATURAL;
+    };
+    
+    if (!tracer && stop_attack_prompt(hitfunc, "drain", vulnerable))
+        return SPRET_ABORT;
+    
+    monster *target = nullptr;
+    
+    for (distance_iterator di(you.pos(), true, true, 1); di; ++di)
+    {
+        monster *mon = monster_at(*di);
+        if (mon
+            && you.can_see(*mon)
+            && you.see_cell_no_trans(mon->pos())
+            && !mon->wont_attack()
+            && !mons_is_firewood(*mon)
+            &&  mon->holiness() & MH_NATURAL
+            && !mon->is_summoned())
+        { 
+            target = mon;
+        }
+    }
+
+    if (!target && tracer)
+    {
+        // nothing to drain
+        return SPRET_ABORT;
+    }
+    else
+    {
+        if (tracer)
+            return SPRET_SUCCESS;
+        
         fail_check();
-        canned_msg(MSG_NOTHING_CLOSE_ENOUGH);
-        // Cost to disallow freely locating invisible/submerged
-        // monsters.
-        return SPRET_SUCCESS;
+        
+        if (!target)
+        {
+            canned_msg(MSG_NOTHING_HAPPENS);
+            return SPRET_SUCCESS;
+        }
+        else
+        {
+            god_conduct_trigger conducts[3];
+            disable_attack_conducts(conducts);
+            set_attack_conducts(conducts, target);
+            behaviour_event(target, ME_WHACK, &you, you.pos());
+            enable_attack_conducts(conducts);
+            
+            int hp_gain = 2 + random2(7) + random2(1 + div_rand_round(pow, 5));
+
+            hp_gain = min(target->hit_points, hp_gain);
+            hp_gain = min(you.hp_max - you.hp, hp_gain);
+            
+            if (!hp_gain)
+            {
+                canned_msg(MSG_NOTHING_HAPPENS);
+                return SPRET_SUCCESS;
+            }
+            
+            mprf("You drain life from %s (%d)!", target->name(DESC_THE).c_str(), hp_gain);
+
+            target->hurt(&you, hp_gain);
+            
+            if (target->alive())
+                print_wounds(*target);
+            
+            hp_gain = div_rand_round(hp_gain, 2);
+            
+            if (hp_gain && !you.duration[DUR_DEATHS_DOOR])
+            {
+                mpr("You feel life coursing into your body.");
+                inc_hp(hp_gain);
+            }
+        }
     }
-
-    // TODO: check known rN instead of holiness
-    if (mons->observable() && !(mons->holiness() & MH_NATURAL))
-    {
-        mpr("You can't drain life from that!");
-        return SPRET_ABORT;
-    }
-
-    god_conduct_trigger conducts[3];
-    disable_attack_conducts(conducts);
-
-    const bool abort = stop_attack_prompt(mons, false, you.pos());
-
-    if (!abort && !fail)
-    {
-        set_attack_conducts(conducts, mons);
-
-        behaviour_event(mons, ME_WHACK, &you, you.pos());
-    }
-
-    enable_attack_conducts(conducts);
-
-    if (abort)
-    {
-        canned_msg(MSG_OK);
-        return SPRET_ABORT;
-    }
-
-    fail_check();
-
-    if (!mons->alive())
-    {
-        canned_msg(MSG_NOTHING_HAPPENS);
-        return SPRET_SUCCESS;
-    }
-
-    // The practical maximum of this is about 25 (pow @ 100). - bwr
-    int hp_gain = 3 + random2avg(9, 2) + random2(pow) / 7;
-
-    hp_gain = min(mons->hit_points, hp_gain);
-    hp_gain = min(you.hp_max - you.hp, hp_gain);
-
-    hp_gain = resist_adjust_damage(mons, BEAM_NEG, hp_gain);
-
-    if (!hp_gain)
-    {
-        canned_msg(MSG_NOTHING_HAPPENS);
-        return SPRET_SUCCESS;
-    }
-
-    const bool mons_was_summoned = mons->is_summoned();
-	
-	mprf("You drain life from %s (%d)!", mons->name(DESC_THE).c_str(), hp_gain);
-
-    mons->hurt(&you, hp_gain);
-
-    if (mons->alive())
-        print_wounds(*mons);
-
-    hp_gain = div_rand_round(hp_gain, 2);
-
-    if (hp_gain && !mons_was_summoned && !you.duration[DUR_DEATHS_DOOR])
-    {
-        mpr("You feel life coursing into your body.");
-        inc_hp(hp_gain);
-    }
-
     return SPRET_SUCCESS;
 }
 
@@ -914,13 +920,13 @@ spret_type cast_freeze(int pow, bool fail, bool tracer)
         if(tracer)
             return SPRET_SUCCESS;
         
+        fail_check();
+        
         if(!in_bounds(target))
         {
             canned_msg(MSG_NOTHING_HAPPENS);
             return SPRET_SUCCESS;
         }
-        
-        fail_check();
         
         monster* mons = monster_at(target);
         
@@ -4289,7 +4295,6 @@ spret_type stone_shards(int pow, bool fail, bool tracer)
         targetter_radius hitfunc(&you, LOS_SOLID_SEE, range);
         bool (*vulnerable) (const actor *) = [](const actor * act) -> bool
         {
-        // No fedhas checks needed, plants can't be dazzled
         return act->is_monster()
                && _num_stone_shards(act) > 0;
         };

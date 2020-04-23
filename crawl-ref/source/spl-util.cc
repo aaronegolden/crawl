@@ -1784,6 +1784,9 @@ bool spell_no_hostile_in_range(spell_type spell)
         
     case SPELL_GORGONS_GAZE:
         return gorgons_gaze(-1, false, true) == SPRET_ABORT;
+        
+    case SPELL_VAMPIRE_KISS:
+        return vampiric_drain(-1, false, true) == SPRET_ABORT;
 
     default:
         break;
