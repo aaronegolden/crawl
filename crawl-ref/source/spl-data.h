@@ -670,7 +670,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_CONTROL_UNDEAD, "Control Undead",
     SPTYP_NECROMANCY,
-    SPFLAG_MR_CHECK,
+    SPFLAG_MR_CHECK | SPFLAG_MONSTER,
     4,
     200,
     -1, -1,

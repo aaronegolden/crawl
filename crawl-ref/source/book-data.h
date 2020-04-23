@@ -135,7 +135,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_PAIN,
     SPELL_VAMPIRIC_DRAINING,
     SPELL_ANIMATE_DEAD,
-    SPELL_CONTROL_UNDEAD,
 },
 
 {   // Book of Callings
@@ -185,14 +184,12 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Unlife
     SPELL_ANIMATE_DEAD,
-    SPELL_CONTROL_UNDEAD,
     SPELL_CIGOTUVIS_EMBRACE,
     SPELL_DEATH_CHANNEL,
 },
 
 #if TAG_MAJOR_VERSION == 34
 {   // Book of Control
-    SPELL_CONTROL_UNDEAD,
     SPELL_ENGLACIATION,
 },
 
