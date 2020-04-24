@@ -2087,7 +2087,7 @@ static spret_type _do_cast(spell_type spell, int powc,
     case SPELL_RECALL:
         return cast_recall(fail);
 
-    case SPELL_DISJUNCTION:
+    case SPELL_FIERY_DISJUNCTION:
         return cast_disjunction(powc, fail);
 
     case SPELL_GOLUBRIAS_PASSAGE:

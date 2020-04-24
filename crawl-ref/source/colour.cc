@@ -218,9 +218,9 @@ static int _etc_disjunction(int, const coord_def& loc)
     switch (get_disjunct_phase(loc))
     {
     case 1:
-        return LIGHTBLUE;
+        return LIGHTRED;
     case 2:
-        return BLUE;
+        return RED;
     case 3:
         return MAGENTA;
     default:

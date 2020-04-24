@@ -66,8 +66,8 @@ static void _place_tloc_cloud(const coord_def &origin)
 spret_type cast_disjunction(int pow, bool fail)
 {
     fail_check();
-    int rand = random_range(35, 45) + random2(pow / 12);
-    you.duration[DUR_DISJUNCTION] = min(90 + pow / 12,
+    int rand = random_range(35, 45) + random2(div_rand_round(pow, 12));
+    you.duration[DUR_DISJUNCTION] = min(90 + div_rand_round(pow, 12),
         max(you.duration[DUR_DISJUNCTION] + rand,
         30 + rand));
     contaminate_player(1000, true);
@@ -105,7 +105,11 @@ void disjunction()
             int decay = max(1, (dist - 1) * (dist + 1));
             int chance = pow(0.8, 1.0 / decay) * 1000;
             if (!x_chance_in_y(chance, 1000))
+            {
+                place_cloud(CLOUD_FIRE, mons->pos(), 1 + random2(9), &you);
+                mons->add_ench(mon_enchant(ENCH_INNER_FLAME, 0, &you, 30 + random2(70)));
                 blink_away(mons, &you, false);
+            }
         }
     }
 }

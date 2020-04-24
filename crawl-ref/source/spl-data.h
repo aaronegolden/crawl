@@ -291,14 +291,14 @@ static const struct spell_desc spelldata[] =
 },
 
 {
-    SPELL_DISJUNCTION, "Disjunction",
-    SPTYP_TRANSLOCATION,
+    SPELL_FIERY_DISJUNCTION, "Fiery Disjunction",
+    SPTYP_TRANSLOCATION | SPTYP_FIRE,
     SPFLAG_ESCAPE | SPFLAG_UTILITY,
-    8,
+    7,
     200,
     -1, -1,
     6, 0,
-    TILEG_DISJUNCTION,
+    TILEG_FIERY_DISJUNCTION,
 },
 
 {

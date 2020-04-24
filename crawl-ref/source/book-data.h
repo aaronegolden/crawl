@@ -171,8 +171,8 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_FORCE_QUAKE,
     SPELL_PIERCING_SHOT,
     SPELL_DISPERSAL,
+    SPELL_FIERY_DISJUNCTION,
     SPELL_CONTROLLED_BLINK,
-    SPELL_DISJUNCTION,
 },
 
 #if TAG_MAJOR_VERSION == 34
@@ -251,7 +251,7 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Akashic Record
     SPELL_DISPERSAL,
     SPELL_MALIGN_GATEWAY,
-    SPELL_DISJUNCTION,
+    SPELL_FIERY_DISJUNCTION,
     SPELL_CONTROLLED_BLINK,
 },
 #endif
