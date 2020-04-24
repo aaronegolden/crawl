@@ -1045,9 +1045,8 @@ static const mon_spellbook mspell_list[] =
 
     {  MST_DRYAD,
       {
-       { SPELL_AWAKEN_VINES, 23, MON_SPELL_WIZARD },
-       { SPELL_AWAKEN_FOREST, 23, MON_SPELL_WIZARD },
-       { SPELL_MINOR_HEALING, 11, MON_SPELL_WIZARD | MON_SPELL_EMERGENCY },
+       { SPELL_AWAKEN_VINES, 33, MON_SPELL_WIZARD },
+       { SPELL_AWAKEN_FOREST, 33, MON_SPELL_WIZARD },
       }
     },
 

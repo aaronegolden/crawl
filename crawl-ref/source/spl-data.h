@@ -3255,7 +3255,7 @@ static const struct spell_desc spelldata[] =
     SPELL_SUMMON_FOREST, "Summon Forest",
     SPTYP_SUMMONING | SPTYP_TRANSLOCATION,
     SPFLAG_NONE,
-    5,
+    6,
     200,
     -1, -1,
     4, 10,
