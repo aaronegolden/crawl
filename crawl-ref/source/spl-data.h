@@ -625,7 +625,7 @@ static const struct spell_desc spelldata[] =
     SPELL_ELDRITCH_ICHOR, "Eldritch Ichor",
     SPTYP_SUMMONING,
     SPFLAG_UNHOLY | SPFLAG_CHAOTIC | SPFLAG_PERMABUFF,
-    8,
+    9,
     200,
     -1, -1,
     0, 0,
