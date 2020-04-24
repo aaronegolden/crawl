@@ -250,7 +250,6 @@ static const vector<spell_type> spellbook_templates[] =
 #if TAG_MAJOR_VERSION == 34
 {   // Akashic Record
     SPELL_DISPERSAL,
-    SPELL_MALIGN_GATEWAY,
     SPELL_FIERY_DISJUNCTION,
     SPELL_CONTROLLED_BLINK,
 },
@@ -302,7 +301,6 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Grand Grimoire
-    SPELL_MALIGN_GATEWAY,
     SPELL_ELDRITCH_ICHOR,
 },
 

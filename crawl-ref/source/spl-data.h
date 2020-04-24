@@ -635,7 +635,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_MALIGN_GATEWAY, "Malign Gateway",
     SPTYP_SUMMONING | SPTYP_TRANSLOCATION,
-    SPFLAG_UNHOLY | SPFLAG_CHAOTIC,
+    SPFLAG_UNHOLY | SPFLAG_CHAOTIC | SPFLAG_MONSTER,
     7,
     200,
     -1, -1,
