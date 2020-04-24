@@ -266,7 +266,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_CAUSE_FEAR,
     SPELL_STARBURST,
     SPELL_DRAGON_FORM,
-    SPELL_DRAGON_CALL,
 },
 
 {   // Book of Burglary
