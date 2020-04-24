@@ -1544,7 +1544,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_DISPERSAL, "Dispersal",
     SPTYP_TRANSLOCATION,
-    SPFLAG_AREA | SPFLAG_ESCAPE,
+    SPFLAG_AREA | SPFLAG_ESCAPE | SPFLAG_MONSTER,
     6,
     200,
     1, 4,

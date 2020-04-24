@@ -170,7 +170,6 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of the Warp
     SPELL_FORCE_QUAKE,
     SPELL_PIERCING_SHOT,
-    SPELL_DISPERSAL,
     SPELL_FIERY_DISJUNCTION,
     SPELL_CONTROLLED_BLINK,
 },
@@ -249,7 +248,6 @@ static const vector<spell_type> spellbook_templates[] =
 
 #if TAG_MAJOR_VERSION == 34
 {   // Akashic Record
-    SPELL_DISPERSAL,
     SPELL_FIERY_DISJUNCTION,
     SPELL_CONTROLLED_BLINK,
 },
