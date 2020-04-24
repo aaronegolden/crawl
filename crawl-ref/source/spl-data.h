@@ -326,7 +326,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_RING_OF_FLAMES, "Ring of Flames",
     SPTYP_CHARMS | SPTYP_FIRE,
-    SPFLAG_AREA | SPFLAG_PERMABUFF,
+    SPFLAG_AREA | SPFLAG_MONSTER,
     7,
     200,
     -1, -1,
