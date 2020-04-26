@@ -1237,9 +1237,9 @@ corpse_effect_type mons_corpse_effect(monster_type mc)
 int derived_undead_avg_hp(monster_type mtype, int hd, int scale)
 {
     static const map<monster_type, int> hp_per_hd_by_type = {
-        { MONS_ZOMBIE,          85 },
-        { MONS_SKELETON,        70 },
-        { MONS_SPECTRAL_THING,  60 },
+        { MONS_ZOMBIE,          50 },
+        { MONS_SKELETON,        50 },
+        { MONS_SPECTRAL_THING,  50 },
         // Simulacra aren't tough, but you can create piles of them. - bwr
         { MONS_SIMULACRUM,      30 },
     };
