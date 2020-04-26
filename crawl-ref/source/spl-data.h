@@ -1092,7 +1092,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_SWIFTNESS, "Swiftness",
     SPTYP_CHARMS | SPTYP_AIR,
-    SPFLAG_HASTY | SPFLAG_SELFENCH | SPFLAG_UTILITY,
+    SPFLAG_HASTY | SPFLAG_SELFENCH | SPFLAG_UTILITY | SPFLAG_MONSTER,
     2,
     100,
     -1, -1,

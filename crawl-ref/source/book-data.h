@@ -152,7 +152,6 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Air
     SPELL_SHOCK,
-    SPELL_SWIFTNESS,
     SPELL_DISCHARGE,
 	SPELL_MEPHITIC_CLOUD,
     SPELL_ELECTRIC_SURGE,
@@ -264,7 +263,6 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Burglary
-    SPELL_SWIFTNESS,
     SPELL_PASSWALL,
     SPELL_GOLUBRIAS_PASSAGE,
     SPELL_STONE_SHARDS,
