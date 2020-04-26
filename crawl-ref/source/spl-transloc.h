@@ -32,4 +32,5 @@ spret_type cast_gravitas(int pow, const coord_def& where, bool fail);
 
 bool beckon(actor &beckoned, const bolt &path);
 spret_type beckoning(int pow, bool fail);
+spret_type warp_gravity(int pow, bool fail, bool tracer=false);
 #endif

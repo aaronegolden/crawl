@@ -33,6 +33,7 @@
 #include "spl-damage.h"
 #include "spl-monench.h"
 #include "spl-summoning.h"
+#include "spl-transloc.h"
 #include "spl-wpnench.h"
 #include "spl-zap.h"
 #include "stringutil.h"
@@ -1784,6 +1785,9 @@ bool spell_no_hostile_in_range(spell_type spell)
         
     case SPELL_GORGONS_GAZE:
         return gorgons_gaze(-1, false, true) == SPRET_ABORT;
+        
+    case SPELL_WARP_GRAVITY:
+        return warp_gravity(-1, false, true) == SPRET_ABORT;
         
     case SPELL_VAMPIRE_KISS:
         return vampiric_drain(-1, false, true) == SPRET_ABORT;

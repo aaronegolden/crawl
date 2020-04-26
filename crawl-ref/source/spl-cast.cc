@@ -1916,6 +1916,9 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     case SPELL_IRRADIATE:
         return cast_irradiate(powc, &you, fail);
+        
+    case SPELL_WARP_GRAVITY:
+        return warp_gravity(powc, fail);
 
     case SPELL_LEDAS_LIQUEFACTION:
         return cast_liquefaction(powc, fail);

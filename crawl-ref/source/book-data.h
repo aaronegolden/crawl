@@ -101,7 +101,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Transfigurations
-    SPELL_IRRADIATE,
+    SPELL_WARP_GRAVITY,
     SPELL_STATUE_FORM,
     SPELL_HYDRA_FORM,
     SPELL_DRAGON_FORM,
@@ -279,7 +279,7 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Alchemy
     SPELL_GORGONS_GAZE,
     SPELL_INTOXICATE,
-    SPELL_IRRADIATE,
+    SPELL_WARP_GRAVITY,
 },
 
 {   // Book of Beasts

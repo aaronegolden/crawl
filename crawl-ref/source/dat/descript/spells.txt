@@ -1721,6 +1721,14 @@ Warning Cry spell
 
 Generates a loud noise, alerting nearby enemies.
 %%%%
+Warp Gravity spell
+
+Momentarily increases gravity at the caster' location, drawing in all
+nearby creatures. Anything adjacent to the caster will be severely damaged and
+deformed by the intense gravitational force.
+
+Casting this spell successfully will cause a small amount of magical contamination.
+%%%%
 Waterstrike spell
 
 Causes the water around or under the target to violently swirl, dealing damage.

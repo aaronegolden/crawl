@@ -3779,6 +3779,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_WARP_GRAVITY, "Warp Gravity",
+    SPTYP_EARTH | SPTYP_TRANSLOCATION,
+    SPFLAG_NONE,
+    5,
+    200,
+    3, 7,
+    3, 0,
+    TILEG_GRAVITAS,
+},
+
+{
     SPELL_CHANT_FIRE_STORM, "Chant Fire Storm",
     SPTYP_FIRE,
     SPFLAG_UTILITY,
