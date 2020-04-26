@@ -1186,10 +1186,22 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_AGONY, "Agony",
     SPTYP_NECROMANCY,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NOT_SELF | SPFLAG_NEEDS_TRACER | SPFLAG_MR_CHECK,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NOT_SELF | SPFLAG_NEEDS_TRACER 
+        | SPFLAG_MR_CHECK | SPFLAG_MONSTER,
     5,
     200,
     LOS_RADIUS, LOS_RADIUS,
+    4, 0,
+    TILEG_AGONY,
+},
+
+{
+    SPELL_AFFLICTION, "Affliction",
+    SPTYP_NECROMANCY,
+    SPFLAG_MR_CHECK,
+    5,
+    200,
+    1, 1,
     4, 0,
     TILEG_AGONY,
 },

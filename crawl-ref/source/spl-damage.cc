@@ -4317,3 +4317,63 @@ spret_type stone_shards(int pow, bool fail, bool tracer)
     
     return SPRET_SUCCESS;
 }
+
+spret_type cast_affliction(int pow, bool fail, bool tracer)
+{
+    if (tracer)
+    {
+        for (adjacent_iterator ai(you.pos()); ai; ++ai) 
+        {
+            if (cell_is_solid(*ai))
+                continue;
+
+            actor *act = actor_at(*ai);
+
+            if (act
+                && act->is_monster()
+                && !act->wont_attack()
+                && !act->res_torment()
+                && act->res_magic() != MAG_IMMUNE)
+            {
+                // at least one valid target
+                return SPRET_SUCCESS;    
+            }
+        }
+        return SPRET_ABORT;
+    }
+    
+    targetter_radius hitfunc(&you, LOS_NO_TRANS, 1);
+    bool (*vulnerable) (const actor *) = [](const actor * act) -> bool
+    {
+        return act->is_monster()
+               && !act->wont_attack()
+               && !act->res_torment()
+               && act->res_magic() != MAG_IMMUNE;
+    };
+    
+    if (stop_attack_prompt(hitfunc, "afflict", vulnerable))
+        return SPRET_ABORT;
+    
+    
+    mprf("You unleash a malevolent force.");
+    
+    for (fair_adjacent_iterator ai(you.pos()); ai; ++ai) 
+    {
+        if (cell_is_solid(*ai))
+            continue;
+
+        actor *act = actor_at(*ai);
+
+        if (act && act->is_monster()
+                && !act->as_monster()->wont_attack()
+                && !act->res_torment()
+                && act->check_res_magic(div_rand_round(pow * 4, 3)) < 0)
+        {
+            torment_cell(act->pos(), &you, TORMENT_AGONY);
+            return SPRET_SUCCESS;
+        }
+    }
+    
+    mprf("The malevolent force dissipates harmlessly.");
+    return SPRET_SUCCESS;
+}

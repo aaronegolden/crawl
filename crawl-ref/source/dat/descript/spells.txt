@@ -14,6 +14,13 @@ Acid Splash spell
 Spits a glob of acid at a nearby creature, covering it in corrosive slime
 for a short time. It may also splash onto other nearby creatures on impact.
 %%%%
+Affliction spell
+
+Releases a malevolent spirit that halves the health of an adjacent foe,
+provided it can overcome the target's magic resistance. If the first enemy resists, 
+the spirit will seek another adjacent foe until it succeeds or all
+possible targets have resisted.
+%%%%
 Agony spell
 
 Cuts the resilience of a target creature in half. This damage is never directly

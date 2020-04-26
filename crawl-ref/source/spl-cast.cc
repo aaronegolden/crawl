@@ -1835,6 +1835,9 @@ static spret_type _do_cast(spell_type spell, int powc,
     case SPELL_VAMPIRE_KISS:
         return vampiric_drain(powc, fail);
         
+    case SPELL_AFFLICTION:
+        return cast_affliction(powc, fail);
+        
     case SPELL_STARBURST:
         return cast_starburst(powc, fail);
 

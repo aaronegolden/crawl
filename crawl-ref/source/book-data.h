@@ -81,7 +81,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Death
-    SPELL_AGONY,
+    SPELL_AFFLICTION,
     SPELL_EXCRUCIATING_WOUNDS,
 },
 
@@ -215,7 +215,7 @@ static const vector<spell_type> spellbook_templates[] =
 #if TAG_MAJOR_VERSION == 34
 {   // Book of Wizardry
     SPELL_FORCE_QUAKE,
-    SPELL_AGONY,
+    SPELL_AFFLICTION,
     SPELL_INVISIBILITY,
     SPELL_SPELLFORGED_SERVITOR,
     SPELL_HASTE,
