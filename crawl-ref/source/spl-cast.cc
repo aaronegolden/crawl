@@ -2027,6 +2027,9 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     case SPELL_HAUNT:
         return cast_haunt(powc, beam.target, god, fail);
+        
+    case SPELL_GHOSTLY_LEGION:
+        return cast_ghostly_legion(powc, fail);
 
     // Enchantments.
     case SPELL_CAUSE_FEAR:

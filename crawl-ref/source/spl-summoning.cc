@@ -46,6 +46,7 @@
 #include "mon-movetarget.h"
 #include "mon-place.h"
 #include "mon-speak.h"
+#include "mon-tentacle.h"
 #include "options.h"
 #include "player-equip.h"
 #include "player-stats.h"
@@ -2306,6 +2307,72 @@ spret_type cast_haunt(int pow, const coord_def& where, god_type god, bool fail)
     {
         canned_msg(MSG_NOTHING_HAPPENS);
         return SPRET_SUCCESS;
+    }
+
+    return SPRET_SUCCESS;
+}
+
+spret_type cast_ghostly_legion(int pow, bool fail, bool tracer)
+{
+    vector<actor *> targets;
+    
+    for (actor_near_iterator ai(you.pos(), LOS_NO_TRANS); ai; ++ai)
+    {
+        if (ai->is_monster()
+            && !ai->as_monster()->wont_attack()
+            && !mons_is_firewood(*ai->as_monster())
+            && !mons_is_tentacle_or_tentacle_segment(ai->as_monster()->type))
+        {
+            targets.emplace_back(*ai);   
+        }
+    }
+    
+    if (tracer)
+    {
+        return targets.empty() ? SPRET_ABORT : SPRET_SUCCESS;
+    }
+    
+    fail_check();
+    
+    if (targets.empty())
+        canned_msg(MSG_NOTHING_HAPPENS);
+    else
+    {
+        int success = 0;
+        int to_summon = min(2 + random2avg(2 + div_rand_round(pow, 20), 2),
+                            static_cast<int>(targets.size()));
+        
+        shuffle_array(targets);
+        
+        for (int i = 0; i < to_summon; i++)
+        {
+            const monster_type mon = pick_random_wraith();
+            int mi = targets[i]->mindex();
+            
+            if (monster *mons = create_monster(
+                mgen_data(mon, BEH_FRIENDLY, targets[i]->pos(),
+                mi, MG_FORCE_BEH)
+                .set_summoned(&you, 3, SPELL_HAUNT)))
+            {
+                success++;
+                mons->add_ench(mon_enchant(ENCH_HAUNTING, 1, 
+                    targets[i], INFINITE_DURATION));
+                mons->foe = mi;
+            }
+        }
+        
+            if (success > 1)
+        {
+            mpr("Insubstantial figures form in the air.");
+        }
+        else if (success)
+        {
+            mpr("An insubstantial figure forms in the air.");
+        }
+        else
+        {
+            canned_msg(MSG_NOTHING_HAPPENS);
+        }
     }
 
     return SPRET_SUCCESS;

@@ -734,6 +734,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_GHOSTLY_LEGION, "Ghostly Legion",
+    SPTYP_SUMMONING | SPTYP_NECROMANCY,
+    SPFLAG_NONE,
+    7,
+    200,
+    -1, -1,
+    6, 0,
+    TILEG_HAUNT,
+},
+
+{
     SPELL_BORGNJORS_REVIVIFICATION, "Borgnjor's Revivification",
     SPTYP_NECROMANCY,
     SPFLAG_UTILITY,
