@@ -238,7 +238,7 @@ NAME:  portal_elf_entry_guppyfry_elf_altar
 MONS:  deep elf knight w:5 / deep elf archer w:5 / deep elf mage
 MONS:  deep elf high priest
 SUBST: F = G:6 F:1
-KMONS: F = obsidian statue / ice statue
+KMONS: F = obsidian statue
 SUBST: ? = .1$%*
 : elf_portal(_G)
 MAP

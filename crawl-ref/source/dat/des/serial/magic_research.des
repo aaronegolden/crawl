@@ -77,7 +77,7 @@ MONS:   troll simulacrum / elephant simulacrum / \
 MONS:   hydra simulacrum / fire dragon simulacrum / \
         harpy simulacrum / anaconda simulacrum
 MONS:   azure jelly
-KMONS:  4D = ice statue
+KMONS:  4D = freezing wraith
 COLOUR: .01234D = white
 FTILE:  .w+01234D = floor_ice
 : init_research(_G, 'ice')

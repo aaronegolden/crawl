@@ -3101,36 +3101,6 @@ vGvGvv...vvGvGv
 vvvvvvvvvvvvvvv
 ENDMAP
 
-NAME: cheibrodos_frozen_isle
-DEPTH: D:8-
-TAGS: no_item_gen no_monster_gen no_pool_fixup
-ORIENT: float
-MONS: ice statue, ice devil, ufetubus
-KPROP: 1-' = no_tele_into
-NSUBST: ' = 5=*$ / *:%
-NSUBST: - = 4:2 / 4:3 / 4=23 / *:.
-MAP
-        ...
-       ..x..
-  ......xxx......
-  .xx..wwwww..xx.
-  .xxxwwWWWwwxxx.
-  ..xxWW---WWxx..
-  ..wWW-----WWw..
- ..wwW-mm-mm-Www..
-..xwW--m'''m--Wwx..
-@xxwW---'1'---Wwxx@
-..xwW--m'''m--Wwx..
- ..wwW-mm-mm-Www..
-  ..wWW-----WWw..
-  ..xxWW---WWxx..
-  .xxxwwWWWwwxxx.
-  .xx..wwwww..xx.
-  ......xxx......
-       ..x..
-        ...
-ENDMAP
-
 NAME: cheibrodos_quashed
 DEPTH: D:4-8
 TAGS: no_item_gen no_monster_gen
@@ -3429,7 +3399,7 @@ ENDMAP
 NAME:    minmay_statue_hallways
 DEPTH:   D:8-
 ORIENT:  float
-MONS:    obsidian statue / ice statue
+MONS:    obsidian statue
 MAP
            xxx
            x1x
@@ -3514,37 +3484,6 @@ bbbbbb.bbb.....bbb.bb
 ............b........
 @.........bbbbb.....@
 bbbbbbbbbbbbbbbbbbbbb
-ENDMAP
-
-##############################################################################
-# An Ice Statue vault
-NAME:    lemuel_ice_statue
-MONS:    ice statue
-TAGS:    no_pool_fixup
-ORIENT:  float
-DEPTH:   D:7-
-SUBST:   * : *$
-SUBST:   * = |:5 * .
-SUBST:   T = TU
-SHUFFLE: xb/cc, ABC
-: if crawl.coinflip() then
-KFEAT:   X = < / >
-KITEM:   X = nothing
-SUBST:   A=., B=., C=.
-: else
-SUBST:   X=*, B=., C=.
-KFEAT:   A = known teleport trap
-: end
-MAP
-xxxxxxxxxxxxxxxxx
-xbbbbbbbbbbbbbbbb
-xb**....www.....T
-xb**..A.www......
-xbX*..B.w1w.....@
-xb**..C.www......
-xb**....www.....T
-xbbbbbbbbbbbbbbbb
-xxxxxxxxxxxxxxxxx
 ENDMAP
 
 #############################################################################

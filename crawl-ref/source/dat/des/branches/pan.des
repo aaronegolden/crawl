@@ -2673,36 +2673,6 @@ ENDMAP
 
 ########################################
 
-NAME:   grunt_pan_frozen_over
-TAGS:   pan_fixed_rune_frozen pan_fixed_lure_frozen
-TAGS:   no_pool_fixup no_monster_gen transparent
-ORIENT: float
-MONS:   blizzard demon, blizzard demon
-MONS:   juggernaut simulacrum, ice devil
-KMONS:  56 = ice statue
-KMONS:  P = pandemonium lord
-: if demonic_rune_vault_is_decoy() then
-KITEM:  O = nothing
-: else
-KITEM:  O = demonic rune of zot
-: end
-KFEAT: 5 = W
-KFEAT: 6 = w
-KFEAT: { = {
-SUBST: A : wWW., B : wWW., C : WW., D : WW.
-MAP
-ccccccccccccccccccc
-.AwcwA1*1O1*1AwcwA.
-4AwcwB%12P21%BwcwA4
-.AwccwB%1.1%BwccwA.
- .BwccwA%1%AwccwB.
- .Bwwcc65556ccwwB.
-  3CCwDDwwwDDwCC3
-   ..CwwwwwwwC.
-     ..DDDDD..
-       .4.4.
-ENDMAP
-
 NAME:   serial_pan_frozen_one
 TAGS:   no_pool_fixup
 MONS:   any demon

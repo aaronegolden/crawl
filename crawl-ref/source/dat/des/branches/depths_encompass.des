@@ -473,7 +473,7 @@ NSUBST: 4 = 8:4 / *:., 5 = 1:6 / *:5
 KMONS: 4 = ice devil / ettin simulacrum w:20 / freezing wraith
 KMONS: 5 = quicksilver dragon simulacrum
 KMONS: 6 = blizzard demon
-KMONS: 8 = ice statue
+KMONS: 8 = obsidian statue
 KFEAT: A = stone_arch
 MARKER: A = lua:props_marker { portal=1 }
 KMASK: 12345 = !no_monster_gen

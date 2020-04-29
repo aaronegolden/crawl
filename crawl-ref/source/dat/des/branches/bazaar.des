@@ -320,7 +320,7 @@ ENDMAP
 NAME:   statue_bzr
 KPROP:  O = no_tele_into
 SUBST:  G = G111
-MONS:   obsidian statue / ice statue
+MONS:   obsidian statue
 : place_bazaar_portal(_G, true)
 MAP
  @

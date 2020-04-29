@@ -167,7 +167,7 @@ function ice_cave_caverns_undead_demon_monster_set(e)
   cruel_simulacrum(e)
   e.mons("white imp / ufetubus / " .. mocking_ice)
   e.mons(savage_ice .. " / freezing wraith / nothing w:1")
-  e.mons("ice statue")
+  e.mons("freezing wraith")
   e.mons("ice devil")
   e.mons(cruel_ice)
   e.mons("freezing wraith / ice devil / white ugly thing w:1")
@@ -180,7 +180,7 @@ end
 function ice_cave_caverns_natural_giant_monster_set(e)
   e.mons("wolf w:5 / yak w:3 / nothing w:1")
   e.mons("polar bear / nothing w:5")
-  e.mons("ice statue")
+  e.mons("death yak")
   e.mons("polar bear w:8 / death yak w:4 / rime drake w:2")
   e.mons("polar bear / yak")
   e.mons("wolf / nothing w:3")
@@ -388,7 +388,7 @@ NAME:   portal_ice_cave_entry_ice_statue_one
 TAGS:   no_pool_fixup
 DEPTH:  Swamp, Shoals, Snake, Spider
 : ice_cave_portal(_G)
-MONS:   ice statue
+MONS:   ice dragon
 KFEAT:  ^ = known web trap
 : if you.in_branch("Swamp") then
 SUBST:  + = ., x = t
@@ -413,7 +413,7 @@ NAME:   portal_ice_cave_entry_ice_statue_two
 DEPTH:  Swamp, Snake, Shoals, Spider
 WEIGHT: 6
 : ice_cave_portal(_G)
-MONS:   ice statue, patrolling ice dragon
+MONS:   ice dragon, patrolling ice dragon
 SUBST:  2 = 1:9 2:1
 MAP
    .....
@@ -537,7 +537,7 @@ MONS:    polar bear w:3 generate_awake / wolf generate_awake / \
          yak generate_awake
 MONS:    polar bear, rime drake
 MONS:    frost giant
-MONS:    ice statue
+MONS:    polar bear
 KFEAT: Z = armour shop / weapon shop / jewellery shop
 KFEAT: Y = distillery shop / book shop
 SHUFFLE: ZY
@@ -599,7 +599,7 @@ SHUFFLE: "'
 SUBST:   " = . , ' : x .:1
 : ice_cave_appearance(_G)
 MONS:    ice beast, ice beast generate_awake, rime drake
-MONS:    ice dragon, ice statue
+MONS:    ice dragon, rime drake
 ITEM:    any jewellery
 ITEM:    any jewellery good_item
 NSUBST:  d = 1:d / * = d $:15 .:5, e = 1:e / * = e $:5 .:5
@@ -670,7 +670,7 @@ MONS:    freezing wraith
 : mons("necromancer / necromancer w:30")
 : savage_simulacrum(_G)
 : mons(savage_ice)
-MONS:    ice statue
+MONS:    freezing wraith
 KFEAT: Z = armour shop / weapon shop / jewellery shop
 KFEAT: Y = distillery shop / book shop
 SHUFFLE: ZY
@@ -741,7 +741,7 @@ dgn.set_random_mon_list("white imp w:35 / ufetubus w:35 / ice devil w:30")
 }}
 MONS:    white imp / ufetubus
 MONS:    ice devil
-MONS:    ice statue
+MONS:    freezing wraith
 MONS:    patrolling reaper
 MONS:    blizzard demon
 MONS:    ice fiend
@@ -800,11 +800,10 @@ TAGS:   no_item_gen no_monster_gen
 ORIENT: encompass
 WEIGHT: 6
 # S is either an ice statue or a granite statue.
-SUBST:  S = GGS
-KMONS:  S = ice statue
+SUBST:  S = G
 # I is an ice statue with loot underneath.
 KITEM:  I = nothing
-KMONS:  I = ice statue
+KMONS:  I = freezing wraith
 : if dgn.persist.ice_cave_hard then
 MONS:   ice devil w:20 / nothing w:7
 : cruel_simulacrum(_G)
@@ -1104,7 +1103,7 @@ veto {{ return dgn.persist.ice_cave_hard }}
 TAGS:   no_item_gen no_monster_gen no_pool_fixup
 WEIGHT: 5
 ORIENT: encompass
-MONS:   ice beast, ice statue
+MONS:   ice beast, freezing wraith
 KMONS:  34 = white ugly thing
 KITEM:  *! = nothing
 {{
@@ -1151,7 +1150,7 @@ NAME:   ice_cave_statue_garden_chambered
 TAGS:   no_item_gen no_monster_gen no_pool_fixup
 WEIGHT: 5
 ORIENT: encompass
-MONS:   ice beast, white ugly thing, ice statue, white very ugly thing
+MONS:   ice beast, white ugly thing, freezing wraith, white very ugly thing
 : cruel_simulacrum(_G)
 : mons(cruel_ice)
 : if dgn.persist.ice_cave_hard then

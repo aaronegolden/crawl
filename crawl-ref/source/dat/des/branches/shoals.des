@@ -253,7 +253,7 @@ NAME:   overgrown_statue
 DEPTH:  Shoals
 WEIGHT: 1
 MONS:   plant
-MONS:   ice statue / obsidian statue
+MONS:   obsidian statue
 SUBST:  . = 1:1 .:30
 SUBST:  p = 1:2 .
 SUBST:  P = 1:20 .

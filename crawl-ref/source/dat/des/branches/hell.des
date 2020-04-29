@@ -958,7 +958,7 @@ ENDMAP
 NAME: vestibule_coc_old
 TAGS: vestibule_coc
 KFEAT: C = enter_cocytus
-KMONS: C = blizzard demon / ice statue
+KMONS: C = blizzard demon
 : hell_water_spawns(_G)
 MAP
 wwwwwwwwwwwwwwwwCwwwwwwwwww......
@@ -983,7 +983,7 @@ NAME: vestibule_coc_mu
 TAGS: vestibule_coc
 KFEAT:  C=enter_cocytus
 SUBST:  8 = 8 .:59
-KMONS:  8 = ice statue
+KMONS:  8 = freezing wraith
 KMONS:  3 = ice devil
 : hell_water_spawns(_G)
 MAP
@@ -1010,7 +1010,7 @@ TAGS:    vestibule_coc no_pool_fixup
 KFEAT:   C = enter_cocytus
 SHUFFLE: ab
 SUBST:   a = I, b : w., W = w.
-KMONS:   I = ice statue
+KMONS:   I = freezing wraith
 KMONS:   3 = blizzard demon
 KMONS:   2 = ice devil / freezing wraith / white imp / nothing
 : hell_water_spawns(_G)
@@ -1035,7 +1035,7 @@ ENDMAP
 
 NAME: vestibule_coc_grunt_go_with_the_floe
 TAGS: vestibule_coc no_pool_fixup
-MONS: frost giant / blizzard demon / ice statue
+MONS: frost giant / blizzard demon
 MONS: blizzard demon, ice devil / freezing wraith
 NSUBST: 3 = 3:3 / *:.
 SUBST: W = wW.
@@ -1280,7 +1280,7 @@ ENDMAP
 NAME: vestibule_empty_coc_old
 TAGS: vestibule_coc_empty
 KFEAT: C = stone_arch
-KMONS: C = blizzard demon / ice statue
+KMONS: C = blizzard demon
 : hell_water_spawns(_G)
 MAP
 wwwwwwwwwwwwwwwwCwwwwwwwwww......
@@ -1305,7 +1305,7 @@ NAME: vestibule_empty_coc_mu
 TAGS: vestibule_coc_empty
 KFEAT:  C=stone_arch
 SUBST:  8 = 8 .:59
-KMONS:  8 = ice statue
+KMONS:  8 = freezing wraith
 KMONS:  3 = ice devil
 : hell_water_spawns(_G)
 MAP
@@ -1332,7 +1332,7 @@ TAGS:    vestibule_coc_empty no_pool_fixup
 KFEAT:   C = stone_arch
 SHUFFLE: ab
 SUBST:   a = I, b : w., W = w.
-KMONS:   I = ice statue
+KMONS:   I = freezing wraith
 KMONS:   3 = blizzard demon
 KMONS:   2 = ice devil / freezing wraith / white imp / nothing
 : hell_water_spawns(_G)
@@ -1357,7 +1357,7 @@ ENDMAP
 
 NAME: vestibule_empty_coc_grunt_go_with_the_floe
 TAGS: vestibule_coc_empty no_pool_fixup
-MONS: frost giant / blizzard demon / ice statue
+MONS: frost giant / blizzard demon
 MONS: blizzard demon, ice devil / freezing wraith
 NSUBST: 3 = 3:3 / *:.
 SUBST: W = wW.

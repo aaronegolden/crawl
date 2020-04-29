@@ -88,7 +88,7 @@ DEPTH:   D:7-, Lair, Crypt:1-4
 : if you.in_branch("Crypt") then
 MONS:    obsidian statue
 : else
-MONS:    ice statue / obsidian statue
+MONS:    obsidian statue
 : end
 SHUFFLE: 1|/!*
 SUBST:   *:*$, ?:x., !:., '=w.
@@ -328,7 +328,7 @@ TAGS:   no_rotate no_pool_fixup no_monster_gen no_tele_into
 ORIENT: north
 DEPTH:  D:11-, !D:$
 WEIGHT: 5
-MONS:   ice beast / nothing w:3, ice statue, ice dragon / nothing
+MONS:   ice beast / nothing w:3, ice dragon / nothing
 SUBST:  y : y:48 w:1 W:1, Y : Y:48 W:1 .:1, y = wwW, Y = WW.
 MAP
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -813,7 +813,7 @@ NAME:   minmay_twisted_water
 ORIENT: north
 DEPTH:  D:9-
 SUBST:  W = wW
-MONS:   ice statue, patrolling ice dragon, patrolling frost giant, ice beast
+MONS:   patrolling ice dragon, patrolling frost giant, ice beast
 KMONS:  w = w:490 nothing / ice beast
 KFEAT:  w = w
 MAP

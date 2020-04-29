@@ -31,7 +31,7 @@ TAGS:   transparent
 DEPTH:  Coc:1-6
 COLOUR: c = blue
 MONS:   Ice Fiend, blizzard demon, ice devil, white imp
-KMONS:  H = ice statue
+KMONS:  H = blizzard demon
 MAP
 xwww..3......
 xwwwwww..4...
@@ -358,7 +358,7 @@ NAME:    coc_mu
 ORIENT:  encompass
 MONS:    patrolling Antaeus, ice fiend
 MONS:    ice devil, ice devil, white imp, ice dragon, freezing wraith
-KMONS:   8 = ice statue
+KMONS:   8 = freezing wraith
 KMONS:   9 = frost giant
 KMONS:   0 = blizzard demon
 KMONS:   e = water elemental
@@ -452,7 +452,7 @@ ORIENT:  encompass
 MONS:    patrolling Antaeus, Ice Fiend, ice dragon / nothing
 MONS:    ice devil / bog body w:4 / ice dragon w:3 / \
          freezing wraith w:2 / frost giant w:1
-KMONS:   8 = ice statue
+KMONS:   8 = freezing wraith
 KMONS:   9 = elemental wellspring
 KMONS:   de = Ice Fiend
 KMONS:   fg = blizzard demon
@@ -551,7 +551,7 @@ MONS:    patrolling Antaeus, ice fiend, blizzard demon
 MONS:    ice devil w:22 / bog body
 MONS:    anaconda simulacrum / titan simulacrum / \
          hydra simulacrum / storm dragon simulacrum
-KMONS:   6 = ice statue
+KMONS:   6 = freezing wraith
 KMONS:   7 = patrolling iron troll simulacrum / \
              patrolling elemental wellspring
 KMONS:   89 = ice dragon / frost giant w:4
@@ -648,7 +648,7 @@ MONS:     ice dragon / nothing
 MONS:     ice devil / bog body w:4 / ice dragon w:3 / \
           freezing wraith w:2 / frost giant w:1
 MONS:     patrolling Ice Fiend, patrolling blizzard demon
-KMONS:    8 = ice statue
+KMONS:    8 = freezing wraith
 KMONS:    9 = elemental wellspring
 KFEAT:    9 = w
 KFEAT:   P = exit_dungeon

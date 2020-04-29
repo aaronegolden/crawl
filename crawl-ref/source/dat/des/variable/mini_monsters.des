@@ -2273,7 +2273,7 @@ ENDMAP
 
 NAME:  minmay_statue_bubble
 DEPTH: D:9-
-MONS:  obsidian statue / ice statue w:5
+MONS:  obsidian statue
 SUBST: ? = bbb.
 MAP
  .......
@@ -2309,7 +2309,7 @@ ENDMAP
 
 NAME:   minmay_statue_crystal_thing
 DEPTH:  D:9-
-MONS:   obsidian statue / ice statue w:5
+MONS:   obsidian statue
 MAP
       .....
     ...b=b...
@@ -2334,7 +2334,7 @@ ENDMAP
 NAME:  ice2_lemuel
 TAGS:  no_pool_fixup no_monster_gen
 DEPTH: D:12-, Depths, !Depths:$, Lair:2-, Coc, !Coc:$
-KMONS: 1 = ice statue
+KMONS: 1 = freezing wraith
 KMONS: 2 = white imp / ice beast w:30 / polar bear / nothing w:50
 KMONS: 3 = ice devil / ice dragon / freezing wraith
 KMONS: 4 = ice fiend / blizzard demon
@@ -2400,7 +2400,7 @@ DEPTH:  D:9-, Depths, Orc, Elf, Snake, Swamp
 : if you.in_branch("Depths") or you.in_branch("Elf") then
 KMONS:  1 = obsidian statue
 : else
-KMONS:  1 = obsidian statue / ice statue
+KMONS:  1 = obsidian statue
 : end
 KITEM:  1 = nothing
 MARKER: G = lua:fog_machine { cloud_type= "grey smoke", \
@@ -2420,7 +2420,7 @@ WEIGHT:  4
 : if you.in_branch("Elf") then
 MONS:    obsidian statue
 : else
-MONS:    obsidian statue / ice statue
+MONS:    obsidian statue
 : end
 ITEM:    nothing / any good_item
 SHUFFLE: d|
@@ -2438,7 +2438,7 @@ ENDMAP
 
 NAME:  minmay_more_statues
 DEPTH: D:12-
-MONS:  ice statue w:5 / obsidian statue
+MONS:  obsidian statue
 MAP
 cccbcccccbcccccbccc
 c.....c%*|*%c.....c
@@ -2523,7 +2523,7 @@ WEIGHT:   10 (Lair:1, Shoals:1, Snake:1, Depths:1)
 MONS:     oklob plant, electric eel
 SHUFFLE:  1" / 22
 : elseif you.in_branch("Snake") or you.in_branch("Shoals") then
-MONS:     oklob plant / obsidian statue / ice statue /\
+MONS:     oklob plant / obsidian statue /\
           w:1 Roxanne
 : else
 MONS:     obsidian statue / w:1 Roxanne
@@ -5828,7 +5828,7 @@ NAME: minivault_8
 DEPTH: D:9-, Elf:1-2
 MONS: patrolling molten gargoyle
 SUBST: F = G:99 F:1
-KMONS: F = obsidian statue / obsidian statue / ice statue
+KMONS: F = obsidian statue / obsidian statue
 MAP
 x.x.x.x.x.x.
 .c.c.c.c.c.x
@@ -5908,7 +5908,7 @@ DEPTH: D:9-
 SHUFFLE: AB, CD, EH/FG
 KITEM: ABCD = nothing
 SUBST: F = G:99 F:1
-KMONS: F = obsidian statue / ice statue
+KMONS: F = obsidian statue
 MAP
 ............
 .xxxxxxxxxx.
@@ -5928,7 +5928,7 @@ ENDMAP
 NAME:  minivault_15
 TAGS:  extra
 : if you.in_branch("D") then
-KMONS: 1 = obsidian statue / ice statue
+KMONS: 1 = obsidian statue
 : else
 KMONS: 1 = obsidian statue
 : end
@@ -5950,7 +5950,7 @@ TAGS:   allow_dup extra luniq
 WEIGHT: 40
 # as this replaces the former statue only minivaults
 : if you.in_branch("D") then
-MONS:   obsidian statue / ice statue
+MONS:   obsidian statue
 : else
 MONS:   obsidian statue
 : end
