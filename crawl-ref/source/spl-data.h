@@ -670,10 +670,21 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_PAIN, "Pain",
     SPTYP_NECROMANCY,
-    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MR_CHECK,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MR_CHECK | SPFLAG_MONSTER,
     1,
     25,
     5, 5,
+    1, 0,
+    TILEG_PAIN,
+},
+
+{
+    SPELL_ESSENCE_SPRAY, "Essence Spray",
+    SPTYP_NECROMANCY,
+    SPFLAG_MR_CHECK,
+    1,
+    25,
+    1, 1,
     1, 0,
     TILEG_PAIN,
 },

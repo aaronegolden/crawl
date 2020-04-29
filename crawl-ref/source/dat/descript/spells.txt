@@ -598,6 +598,12 @@ Entropic Weave spell
 
 Corrodes the target, with no direct line of fire required.
 %%%%
+Essence Spray spell
+
+Offers up a small portion of the caster's lifeforce (or unlife-force) 
+to inflict pain on all living beings adjacent to the caster. Creatures
+with high magic resistance are more capable of resisting this spell.
+%%%%
 Excruciating Wounds spell
 
 Infuses the weapon held by the caster with the essence of pain
@@ -723,7 +729,7 @@ portion of its damage bypasses cold resistance.
 %%%%
 Gorgon's Gaze spell
 
-Weaves the illusion of a hideous monster which attempts to petrify up to three 
+Weaves an illusion of a hideous monster which attempts to petrify up to three 
 adjacent foes, provided they are also adjacent to one another. The primary target
 may be petrified instantly; otherwise, the affected creatures will be slowed by
 the petrification process until they fully turn to stone.

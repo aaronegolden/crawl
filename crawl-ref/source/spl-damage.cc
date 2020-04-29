@@ -3786,6 +3786,70 @@ void force_quake()
         you.attribute[ATTR_FORCE_QUAKE] = 0;
 }
 
+spret_type cast_essence_spray(int pow, bool fail, bool tracer)
+{
+    targetter_radius hitfunc(&you, LOS_NO_TRANS, 1);
+    bool (*vulnerable) (const actor *) = [](const actor * act) -> bool
+    {
+        return act->is_monster()
+               && !act->wont_attack()
+               && !act->res_torment()
+               && act->res_magic() != MAG_IMMUNE;
+    };
+    
+    if (stop_attack_prompt(hitfunc, "essence spray", vulnerable))
+        return SPRET_ABORT;
+    
+    bool success = false;
+    
+    bolt beam;
+    beam.name = "essence_spray";
+    beam.flavour = BEAM_PAIN;
+    beam.set_agent(&you);
+    beam.colour = BLACK;
+    beam.range = 1;
+    beam.hit = AUTOMATIC_HIT;
+    beam.source = you.pos();
+    beam.ench_power = div_rand_round(pow * 7, 2);
+    
+    for (adjacent_iterator ai(you.pos()); ai; ++ai) 
+    {
+        if (cell_is_solid(*ai))
+            continue;
+
+        actor *act = actor_at(*ai);
+
+        if (act
+            && act->is_monster()
+            && !act->wont_attack()
+            && !act->res_torment()
+            && act->res_magic() != MAG_IMMUNE)
+        {
+            // at least one valid target
+            if (tracer)
+                return SPRET_SUCCESS;
+            else
+            {
+                beam.target = act->pos();
+                beam.damage = calc_dice(1, 4 + div_rand_round(pow, 5));
+                beam.fire();
+                
+                success = true;
+            }
+        }
+    }
+    // no valid targets
+    if (tracer)
+        return SPRET_ABORT;
+    
+    if (success)
+        dec_hp(1, false);
+    else
+        canned_msg(MSG_NOTHING_HAPPENS);
+    
+    return SPRET_SUCCESS;
+}
+
 /**
  * Can a casting of Glaciate by the player injure the given creature?
  *

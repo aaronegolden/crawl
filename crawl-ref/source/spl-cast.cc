@@ -2030,6 +2030,9 @@ static spret_type _do_cast(spell_type spell, int powc,
         
     case SPELL_GHOSTLY_LEGION:
         return cast_ghostly_legion(powc, fail);
+        
+    case SPELL_ESSENCE_SPRAY:
+        return cast_essence_spray(powc, fail);
 
     // Enchantments.
     case SPELL_CAUSE_FEAR:

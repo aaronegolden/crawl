@@ -1797,6 +1797,9 @@ bool spell_no_hostile_in_range(spell_type spell)
         
     case SPELL_GHOSTLY_LEGION:
         return cast_ghostly_legion(-1, false, true) == SPRET_ABORT;
+    
+    case SPELL_ESSENCE_SPRAY:
+        return cast_essence_spray(-1, false, true) == SPRET_ABORT;
 
     default:
         break;
