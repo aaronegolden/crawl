@@ -249,7 +249,7 @@ static const struct spell_desc spelldata[] =
     SPTYP_HEXES,
     SPFLAG_HELPFUL | SPFLAG_SELFENCH
         | SPFLAG_EMERGENCY | SPFLAG_NEEDS_TRACER | SPFLAG_PERMABUFF,
-    7,
+    8,
     200,
     LOS_RADIUS, LOS_RADIUS,
     0, 0,
@@ -3059,7 +3059,7 @@ static const struct spell_desc spelldata[] =
     SPELL_DISCORD, "Discord",
     SPTYP_HEXES,
     SPFLAG_AREA | SPFLAG_HASTY,
-    8,
+    7,
     200,
     -1, -1,
     6, 0,
