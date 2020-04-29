@@ -1532,7 +1532,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_SUMMON_BUTTERFLIES, "Summon Butterflies",
     SPTYP_SUMMONING,
-    SPFLAG_NONE,
+    SPFLAG_MONSTER,
     1,
     100,
     -1, -1,

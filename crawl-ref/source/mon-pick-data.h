@@ -218,7 +218,6 @@ static const pop_entry pop_lair[] =
   { -1,  4,   52, SEMI, MONS_BLACK_BEAR },
   {  0,  5,   25, PEAK, MONS_SCORPION },
   {  0,  6,  260, SEMI, MONS_BASILISK },
-  {  0,  6,  260, SEMI, MONS_WOLF },
   {  1,  5, 1000, FLAT, MONS_BULLFROG },
   {  1,  5, 1000, FLAT, MONS_PORCUPINE },
   {  1,  6,  880, FLAT, MONS_SPINY_FROG },
@@ -657,7 +656,6 @@ static const pop_entry pop_zot[] =
 #if TAG_MAJOR_VERSION == 34
 static const pop_entry pop_forest[] =
 { // Forest
-  {  1,  5,  120, FALL, MONS_WOLF },
   {  1,  5,   35, FALL, MONS_BLACK_BEAR },
   {  1,  5,   50, FLAT, MONS_YAK },
   {  1,  7,  145, SEMI, MONS_DIRE_ELEPHANT },
