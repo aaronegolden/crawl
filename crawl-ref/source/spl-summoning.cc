@@ -227,23 +227,17 @@ spret_type cast_sticks_to_snakes(int pow, god_type god, bool fail)
     return SPRET_SUCCESS;
 }
 
-spret_type cast_call_canine_familiar(int pow, god_type god, bool fail)
+spret_type cast_ice_statue(int pow, god_type god, bool fail)
 {
     fail_check();
-    monster_type mon = MONS_PROGRAM_BUG;
+    monster_type mon = MONS_ICE_STATUE;
 
-    const int chance = pow + random_range(-10, 10);
+    const int dur =1;
+    
+    mgen_data mg = _pal_data(mon, dur, god, SPELL_ICE_STATUE);
+    mg.hd = 3 + div_rand_round(pow, 13);
 
-    if (chance > 59)
-        mon = MONS_WARG;
-    else if (chance > 39)
-        mon = MONS_WOLF;
-    else
-        mon = MONS_HOUND;
-
-    const int dur = min(2 + (random2(pow) / 4), 6);
-
-    if (!create_monster(_pal_data(mon, dur, god, SPELL_CALL_CANINE_FAMILIAR)))
+    if (!create_monster(mg))
         canned_msg(MSG_NOTHING_HAPPENS);
 
     return SPRET_SUCCESS;
@@ -3301,7 +3295,7 @@ static const map<spell_type, summon_cap> summonsdata =
     // Beasts
     { SPELL_SUMMON_BUTTERFLIES,         { 8, 5 } },
     { SPELL_SUMMON_SMALL_MAMMAL,        { 4, 2 } },
-    { SPELL_CALL_CANINE_FAMILIAR,       { 1, 2 } },
+    { SPELL_ICE_STATUE,                 { 1, 2 } },
     { SPELL_SUMMON_ICE_BEAST,           { 3, 3 } },
     { SPELL_SUMMON_HYDRA,               { 3, 2 } },
     { SPELL_SUMMON_MANA_VIPER,          { 1, 2 } },

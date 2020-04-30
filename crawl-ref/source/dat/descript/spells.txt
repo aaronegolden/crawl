@@ -811,6 +811,12 @@ Transforms the caster into a frozen ice-creature, light enough to float on
 water. The caster becomes incredibly resistant to cold, and resistant to
 poison, but vulnerable to fire and unable to evoke wands.
 %%%%
+Ice Statue spell
+
+Summons a short-lived, fragile sculpture of ice. Though the statue's base renders
+it incapable of locomotion, it will attack the caster's enemies if they are
+close enough.
+%%%%
 Ignite Poison spell
 
 Converts all nearby poison into liquid flame, burning poisoned creatures from

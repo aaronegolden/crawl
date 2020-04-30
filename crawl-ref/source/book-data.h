@@ -6,7 +6,7 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SHOCK,
     SPELL_PASSWALL,
     SPELL_CONJURE_FLAME,
-    SPELL_CALL_CANINE_FAMILIAR,
+    SPELL_ICE_STATUE,
     SPELL_BLINK,
 },
 
@@ -138,7 +138,7 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Callings
     SPELL_SUMMON_SMALL_MAMMAL,
     SPELL_CALL_IMP,
-    SPELL_CALL_CANINE_FAMILIAR,
+    SPELL_ICE_STATUE,
     SPELL_AMBULATORY_BOMB,
     SPELL_SUMMON_LIGHTNING_SPIRE,
 },
@@ -280,7 +280,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Beasts
-    SPELL_CALL_CANINE_FAMILIAR,
+    SPELL_ICE_STATUE,
     SPELL_SUMMON_MANA_VIPER,
     SPELL_SUMMON_HYDRA,
 },

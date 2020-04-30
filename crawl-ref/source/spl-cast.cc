@@ -1968,8 +1968,8 @@ static spret_type _do_cast(spell_type spell, int powc,
     case SPELL_STICKS_TO_SNAKES:
         return cast_sticks_to_snakes(powc, god, fail);
 
-    case SPELL_CALL_CANINE_FAMILIAR:
-        return cast_call_canine_familiar(powc, god, fail);
+    case SPELL_ICE_STATUE:
+        return cast_ice_statue(powc, god, fail);
 
     case SPELL_SUMMON_ICE_BEAST:
         return cast_summon_ice_beast(powc, god, fail);

@@ -1462,14 +1462,14 @@ static const struct spell_desc spelldata[] =
 },
 
 {
-    SPELL_CALL_CANINE_FAMILIAR, "Call Canine Familiar",
-    SPTYP_SUMMONING,
+    SPELL_ICE_STATUE, "Ice Statue",
+    SPTYP_SUMMONING | SPTYP_ICE,
     SPFLAG_NONE,
     3,
     100,
     -1, -1,
     3, 0,
-    TILEG_CALL_CANINE_FAMILIAR,
+    TILEG_SUMMON_ICE_BEAST,
 },
 
 {
