@@ -28,28 +28,16 @@ int englaciate(coord_def where, int pow, actor *agent)
 
     monster* mons = victim->as_monster();
 
-    if (victim->res_cold() > 0
-        || victim->is_stationary())
+    if (victim->is_stationary() || victim->check_res_magic(pow) > 0)
     {
         if (!mons)
             canned_msg(MSG_YOU_UNAFFECTED);
         else if (!mons_is_firewood(*mons))
-            simple_monster_message(*mons, " is unaffected.");
-        return 0;
-    }
-
-    int duration = (roll_dice(3, pow) / 6
-                    - random2(victim->get_hit_dice()))
-                    * BASELINE_DELAY;
-
-    if (duration <= 0)
-    {
-        if (!mons)
-            canned_msg(MSG_YOU_RESIST);
-        else
             simple_monster_message(*mons, " resists.");
         return 0;
     }
+
+    int duration = (1 + random2(2 + div_rand_round(pow, 6))) * BASELINE_DELAY;
 
     if ((!mons && you.get_mutation_level(MUT_COLD_BLOODED))
         || (mons && mons_class_flag(mons->type, M_COLD_BLOOD)))
