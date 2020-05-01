@@ -129,5 +129,6 @@ int count_summons(const actor *summoner, spell_type spell);
 spret_type cast_foxfire(int pow, god_type god, bool fail);
 spret_type cast_eldritch_ichor(int pow, god_type god, bool fail);
 spret_type cast_ghostly_legion(int pow, bool fail, bool tracer = false);
+spret_type cast_phase_bug(int pow, god_type god, bool fail);
 
 #endif

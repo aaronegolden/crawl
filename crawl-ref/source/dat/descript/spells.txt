@@ -1155,6 +1155,12 @@ Porkalator spell
 Transforms the target into a pig. The target moves swiftly but cannot evoke
 wands or cast spells. The caster's demise will cause the transformation to end.
 %%%%
+Phase Bug spell
+
+Summons an extradimensional insect to aid the caster. Due to its weak ties to
+this world, the bug will vanish instantly if a hostile creature moves to its
+location.
+%%%%
 Piercing Shot spell
 
 Imbues the caster's thrown or fired missiles with translocational energy, causing

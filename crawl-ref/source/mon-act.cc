@@ -222,7 +222,8 @@ static bool _swap_monsters(monster& mover, monster& moved)
     // Don't swap places if the player explicitly ordered their pet to
     // attack monsters.
     if ((mover.friendly() || moved.friendly())
-        && you.pet_target != MHITYOU && you.pet_target != MHITNOT)
+        && you.pet_target != MHITYOU && you.pet_target != MHITNOT
+        && moved.type != MONS_PHASE_BUG)
     {
         return false;
     }
@@ -1663,7 +1664,8 @@ void handle_monster_move(monster* mons)
         if (targ
             && targ != mons
             && mons->behaviour != BEH_WITHDRAW
-            && (!(mons_aligned(mons, targ) || targ->type == MONS_FOXFIRE)
+            && (!(mons_aligned(mons, targ) || targ->type == MONS_FOXFIRE
+                || targ->type == MONS_PHASE_BUG)
                 || mons->has_ench(ENCH_INSANE))
             && monster_can_hit_monster(mons, targ))
         {
@@ -2323,6 +2325,9 @@ static bool _mons_can_displace(const monster* mpusher,
     
     if (mpushee->type == MONS_FOXFIRE)
         return !mons_aligned(mpushee, mpusher); // But allies won't do it
+    
+    if (mpushee->type == MONS_PHASE_BUG && !mpushee->has_action_energy())
+        return !mons_aligned(mpushee, mpusher);
 
     if (!mpushee->has_action_energy()
         && !_same_tentacle_parts(mpusher, mpushee))
@@ -2563,7 +2568,8 @@ bool mon_can_move_to_pos(const monster* mons, const coord_def& delta,
             return false;
 
         if ((mons_aligned(mons, targmonster)
-             || targmonster->type == MONS_FOXFIRE)
+             || targmonster->type == MONS_FOXFIRE
+             || targmonster->type == MONS_PHASE_BUG)
             && !mons->has_ench(ENCH_INSANE)
             && !_mons_can_displace(mons, targmonster))
         {
@@ -2831,6 +2837,10 @@ bool monster_swaps_places(monster* mon, const coord_def& delta,
     if (m2->type == MONS_FOXFIRE)
     {
         foxfire_attack(m2, mon);
+        monster_die(m2, KILL_DISMISSED, NON_MONSTER, true);
+    }
+    if (m2->type == MONS_PHASE_BUG && !mons_aligned(mon, m2))
+    {
         monster_die(m2, KILL_DISMISSED, NON_MONSTER, true);
     }
 
@@ -3239,7 +3249,8 @@ static bool _monster_move(monster* mons)
         // Check for attacking another monster.
         if (monster* targ = monster_at(mons->pos() + mmov))
         {
-            if ((mons_aligned(mons, targ) || targ->type == MONS_FOXFIRE)
+            if ((mons_aligned(mons, targ) || targ->type == MONS_FOXFIRE
+                || targ->type == MONS_PHASE_BUG)
                 && !mons->has_ench(ENCH_INSANE))
             {
                 bool takes_time = !(mons->type == MONS_WANDERING_MUSHROOM

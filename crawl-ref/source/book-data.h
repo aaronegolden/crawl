@@ -136,7 +136,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Callings
-    SPELL_SUMMON_SMALL_MAMMAL,
+    SPELL_PHASE_BUG,
     SPELL_CALL_IMP,
     SPELL_ICE_STATUE,
     SPELL_AMBULATORY_BOMB,
@@ -233,7 +233,7 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Cantrips
     SPELL_BEASTLY_APPENDAGE,
-    SPELL_SUMMON_SMALL_MAMMAL,
+    SPELL_PHASE_BUG,
 },
 
 {   // Book of Party Tricks

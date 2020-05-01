@@ -3721,6 +3721,7 @@ MONS_ANTIMATTER_ELF,
     MONS_SPITTING_COBRA,
     MONS_ENCHANTER,
     MONS_FOXFIRE,
+    MONS_PHASE_BUG,
 #endif
 
     NUM_MONSTERS,               // used for polymorph
@@ -4984,6 +4985,7 @@ enum spell_type : int
     SPELL_AFFLICTION,
     SPELL_GHOSTLY_LEGION,
     SPELL_ESSENCE_SPRAY,
+    SPELL_PHASE_BUG,
     NUM_SPELLS
 };
 

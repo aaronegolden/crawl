@@ -1964,6 +1964,9 @@ static spret_type _do_cast(spell_type spell, int powc,
 
     case SPELL_SUMMON_SMALL_MAMMAL:
         return cast_summon_small_mammal(powc, god, fail);
+        
+    case SPELL_PHASE_BUG:
+        return cast_phase_bug(powc, god, fail);
 
     case SPELL_STICKS_TO_SNAKES:
         return cast_sticks_to_snakes(powc, god, fail);

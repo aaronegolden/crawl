@@ -413,6 +413,17 @@ static const struct spell_desc spelldata[] =
     TILEG_SUMMON_SMALL_MAMMAL,
 },
 
+{
+    SPELL_PHASE_BUG, "Phase Bug",
+    SPTYP_SUMMONING | SPTYP_TRANSLOCATION,
+    SPFLAG_NONE,
+    1,
+    25,
+    -1, -1,
+    1, 0,
+    TILEG_SUMMON_SMALL_MAMMAL,
+},
+
 // Used indirectly, by monsters abjuring via other summon spells.
 {
     SPELL_ABJURATION, "Abjuration",

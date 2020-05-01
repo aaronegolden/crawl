@@ -130,6 +130,19 @@ spret_type cast_summon_small_mammal(int pow, god_type god, bool fail)
     return SPRET_SUCCESS;
 }
 
+spret_type cast_phase_bug(int pow, god_type god, bool fail)
+{
+    fail_check();
+
+    mgen_data mg = _pal_data(MONS_PHASE_BUG, 3, god, SPELL_PHASE_BUG);
+    mg.hd = 1 + div_rand_round(pow, 13);
+
+    if (!create_monster(mg))
+        canned_msg(MSG_NOTHING_HAPPENS);
+
+    return SPRET_SUCCESS;
+}
+
 spret_type cast_sticks_to_snakes(int pow, god_type god, bool fail)
 {
     // The first items placed into this list will be the first
@@ -3295,6 +3308,7 @@ static const map<spell_type, summon_cap> summonsdata =
     // Beasts
     { SPELL_SUMMON_BUTTERFLIES,         { 8, 5 } },
     { SPELL_SUMMON_SMALL_MAMMAL,        { 4, 2 } },
+    { SPELL_PHASE_BUG,                  { 4, 2 } },
     { SPELL_ICE_STATUE,                 { 1, 2 } },
     { SPELL_SUMMON_ICE_BEAST,           { 3, 3 } },
     { SPELL_SUMMON_HYDRA,               { 3, 2 } },

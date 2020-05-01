@@ -737,7 +737,7 @@ ITEM:   any potion
 ITEM:   book of Changes / \
         randbook disc:Hexes disc2:Transmutation slevels:8 w:5 / \
         randbook numspells:3 title:Nature \
-        spells:beastly_appendage&summon_small_mammal&ice_statue / \
+        spells:beastly_appendage&phase_bug&ice_statue / \
         randbook numspells:3 title:Nature \
         spells:beastly_appendage&sticks_to_snakes&spider_form
 KITEM:  f = nothing
@@ -788,7 +788,7 @@ ITEM:   any potion
 ITEM:   book of Changes / \
         randbook disc:Hexes disc2:Transmutation slevels:8 w:5 / \
         randbook numspells:5 title:Nature \
-        spells:beastly_appendage&summon_small_mammal&ice_statue / \
+        spells:beastly_appendage&phase_bug&ice_statue / \
         randbook numspells:5 title:Nature \
         spells:beastly_appendage&sticks_to_snakes&spider_form
 KITEM:  f = nothing
