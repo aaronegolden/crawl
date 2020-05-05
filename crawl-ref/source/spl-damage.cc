@@ -373,139 +373,6 @@ spret_type cast_chain_spell(spell_type spell_cast, int pow,
     return SPRET_SUCCESS;
 }
 
-static counted_monster_list _counted_monster_list_from_vector(
-    vector<monster *> affected_monsters)
-{
-    counted_monster_list mons;
-    for (auto mon : affected_monsters)
-        mons.add(mon);
-    return mons;
-}
-
-static bool _refrigerateable(const actor *agent, const actor *act)
-{
-    // Inconsistency: monsters suffer no damage at rC+++, players suffer
-    // considerable damage.
-    return act->is_player() || act->res_cold() < 3;
-}
-
-static bool _refrigerateable_hitfunc(const actor *act)
-{
-    return _refrigerateable(&you, act);
-}
-
-static void _pre_refrigerate(const actor* agent, bool player,
-                             vector<monster *> affected_monsters)
-{
-    if (!affected_monsters.empty())
-    {
-        // Filter out affected monsters that we don't know for sure are there
-        vector<monster*> seen_monsters;
-        for (monster *mon : affected_monsters)
-            if (you.can_see(*mon))
-                seen_monsters.push_back(mon);
-
-        if (!seen_monsters.empty())
-        {
-            counted_monster_list mons_list =
-                _counted_monster_list_from_vector(seen_monsters);
-            const string message =
-                make_stringf("%s %s frozen.",
-                            mons_list.describe(DESC_THE, true).c_str(),
-                            conjugate_verb("be", mons_list.count() > 1).c_str());
-            if (strwidth(message) < get_number_of_cols() - 2)
-                mpr(message);
-            else
-            {
-                // Exclamation mark to suggest that a lot of creatures were
-                // affected.
-                mprf("The monsters around %s are frozen!",
-                    agent && agent->is_monster() && you.can_see(*agent)
-                    ? agent->as_monster()->name(DESC_THE).c_str()
-                    : "you");
-            }
-        }
-    }
-}
-
-static const dice_def _refrigerate_damage(int pow)
-{
-    return dice_def(3, 5 + pow / 5);
-}
-
-static int _refrigerate_player(const actor* agent, int pow, int avg,
-                               bool actual)
-{
-    const dice_def dam_dice = _refrigerate_damage(pow);
-
-    int hurted = check_your_resists((actual) ? dam_dice.roll() : avg,
-                                    BEAM_COLD, "refrigeration", 0, actual);
-    if (actual && hurted > 0)
-    {
-        mpr("You feel very cold.");
-        if (agent && !agent->is_player())
-        {
-            ouch(hurted, KILLED_BY_BEAM, agent->mid,
-                 "by Ozocubu's Refrigeration", true,
-                 agent->as_monster()->name(DESC_A).c_str());
-            you.expose_to_element(BEAM_COLD, 5);
-        }
-        else
-        {
-            //halve the self damage for players casting fridge on themselves
-            hurted = hurted / 2;
-            ouch(hurted, KILLED_BY_FREEZING);
-            you.expose_to_element(BEAM_COLD, 5);
-            you.increase_duration(DUR_NO_POTIONS, 7 + random2(9), 15);
-        }
-    }
-
-    return hurted;
-}
-
-static int _refrigerate_monster(const actor* agent, monster* target, int pow,
-                                int avg, bool actual)
-{
-    const dice_def dam_dice = _refrigerate_damage(pow);
-
-    bolt beam;
-    beam.flavour = BEAM_COLD;
-    beam.thrower = (agent && agent->is_player()) ? KILL_YOU :
-                   (agent)                       ? KILL_MON
-                                                 : KILL_MISC;
-
-    int hurted = mons_adjust_flavoured(target, beam,
-                                       (actual) ? dam_dice.roll() : avg,
-                                       actual);
-    dprf("damage done: %d", hurted);
-
-    if (actual)
-    {
-        target->hurt(agent, hurted, BEAM_COLD);
-
-        if (target->alive())
-        {
-            behaviour_event(target, ME_ANNOY, agent, // ME_WHACK?
-                            agent ? agent->pos() : coord_def(0, 0));
-        }
-
-        if (target->alive() && you.can_see(*target))
-            print_wounds(*target);
-
-        if (agent && agent->is_player()
-            && (is_sanctuary(you.pos()) || is_sanctuary(target->pos())))
-        {
-            remove_sanctuary(true);
-        }
-
-        // Cold-blooded creatures can be slowed.
-        if (target->alive())
-            target->expose_to_element(BEAM_COLD, 5);
-    }
-
-    return hurted;
-}
-
 static bool _drain_lifeable(const actor* agent, const actor* act)
 {
     if (act->res_negative_energy() >= 3)
@@ -605,21 +472,6 @@ static spret_type _cast_los_attack_spell(spell_type spell, int pow, const
 
     switch (spell)
     {
-        case SPELL_OZOCUBUS_REFRIGERATION:
-            player_msg = "The heat is drained from your surroundings.";
-            global_msg = "Something drains the heat from around you.";
-            mons_vis_msg = " drains the heat from the surrounding"
-                           " environment!";
-            mons_invis_msg = "The ambient heat is drained!";
-            flash_colour = LIGHTCYAN;
-            vulnerable = &_refrigerateable;
-            vul_hitfunc = &_refrigerateable_hitfunc;
-            damage_player = &_refrigerate_player;
-            damage_monster = &_refrigerate_monster;
-            pre_hook = &_pre_refrigerate;
-            hurted = (3 + (5 + pow / 10)) / 2; // average
-            break;
-
         case SPELL_DRAIN_LIFE:
             player_msg = "You draw life from your surroundings.";
             global_msg = "Something draws the life force from your"
@@ -707,8 +559,6 @@ static spret_type _cast_los_attack_spell(spell_type spell, int pow, const
 
     for (auto m : affected_monsters)
     {
-        // Watch out for invalidation. Example: Ozocubu's refrigeration on
-        // a bunch of ballistomycete spores that blow each other up.
         if (!m->alive())
             continue;
 
@@ -992,8 +842,8 @@ static void _hailstorm_cell(coord_def where, int pow, actor *agent)
     beam.draw_delay = 10;
     beam.source     = where;
     beam.target     = where;
-    beam.damage     = calc_dice(3, 10 + pow / 2);
-    beam.hit        = 18 + pow / 6;
+    beam.damage     = calc_dice(1, 10 + div_rand_round(pow, 2));
+    beam.hit        = 18 + div_rand_round(pow, 6);
     beam.name       = "hail";
     beam.hit_verb   = "pelts";
 
@@ -1056,6 +906,85 @@ spret_type cast_hailstorm(int pow, bool fail, bool tracer)
     }
 
     return SPRET_SUCCESS;
+}
+
+//Handle Winter's Embrace at a given cell
+static void _embrace_cell(coord_def where, int pow, actor *agent)
+{
+    bolt beam;
+    beam.flavour    = BEAM_ICE;
+    beam.thrower    = agent->is_player() ? KILL_YOU : KILL_MON;
+    beam.source_id  = agent->mid;
+    beam.attitude   = agent->temp_attitude();
+    beam.glyph      = dchar_glyph(DCHAR_FIRED_BURST);
+    beam.colour     = BLUE;
+#ifdef USE_TILE
+    beam.tile_beam  = -1;
+#endif
+    beam.draw_delay = 10;
+    beam.source     = where;
+    beam.target     = where;
+    beam.damage     = calc_dice(1, 20 + div_rand_round(pow * 2, 3));
+    beam.hit        = AUTOMATIC_HIT;
+    beam.loudness   = 0;
+    beam.name       = "cold";
+    beam.hit_verb   = "envelops";
+
+    monster *mons = monster_at(where);
+    if (mons && mons->is_icy())
+    {
+        string msg = "%s is unaffected.";
+        mprf(msg.c_str(), mons->name(DESC_THE).c_str());
+
+        beam.draw(where);
+        return;
+    }
+
+    beam.fire();
+}
+
+spret_type cast_winters_embrace(int pow, bool fail, bool tracer)
+{
+    targetter_radius hitfunc(&you, LOS_NO_TRANS, min(4,LOS_RADIUS));
+    bool (*vulnerable) (const actor *) = [](const actor * act) -> bool
+    {
+        return !act->is_icy();
+    };
+    
+    if (tracer)
+    {
+        for (radius_iterator ri(you.pos(), 4, C_SQUARE, LOS_NO_TRANS, true); ri; ++ri)
+        {
+            const monster* mon = monster_at(*ri);
+            if(mon && you.can_see(*mon) && !mon->friendly() && (*vulnerable)(mon))
+                return SPRET_SUCCESS;
+        }
+        return SPRET_ABORT;
+    }
+    
+    if (stop_attack_prompt(hitfunc, "winter's embrace", vulnerable))
+        return SPRET_ABORT;
+    
+    fail_check();
+    
+    mprf("You drain the heat from your surroundings.");
+    noisy(spell_effect_noise(SPELL_WINTERS_EMBRACE), you.pos());
+    
+    for (radius_iterator ri(you.pos(), 4, C_SQUARE, LOS_NO_TRANS, true); ri; ++ri)
+    {
+        _embrace_cell(*ri, pow, &you);
+        if (grid_distance(*ri, you.pos()) == 1)
+        {
+            monster* mons = monster_at(*ri);
+            if(mons && mons->check_res_magic(div_rand_round(pow * 2, 3)) < 0)
+            {
+                mprf("%s falls asleep.", mons->name(DESC_THE).c_str());
+                mons->put_to_sleep(&you, pow, true);
+            }
+        }
+    }
+   
+   return SPRET_SUCCESS;
 }
 
 static coord_def _pyroclasm_target()

@@ -1696,7 +1696,6 @@ bool spell_no_hostile_in_range(spell_type spell)
         return false;
 
     case SPELL_CHAIN_LIGHTNING:
-    case SPELL_OZOCUBUS_REFRIGERATION:
     case SPELL_OLGREBS_TOXIC_RADIANCE:
     case SPELL_INTOXICATE:
     case SPELL_IGNITION:
@@ -1751,6 +1750,9 @@ bool spell_no_hostile_in_range(spell_type spell)
         
     case SPELL_HAILSTORM:
         return cast_hailstorm(-1, false, true) == SPRET_ABORT;
+        
+    case SPELL_WINTERS_EMBRACE:
+        return cast_winters_embrace(-1, false, true) == SPRET_ABORT;
         
     case SPELL_FREEZING_CLOUD:
         return fcloud(-1, false, true) == SPRET_ABORT;

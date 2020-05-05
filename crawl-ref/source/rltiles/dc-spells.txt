@@ -80,7 +80,7 @@ ice_form ICE_FORM
 ice_storm ICE_STORM
 metabolic_englaciation METABOLIC_ENGLACIATION
 ozocubus_armour OZOCUBUS_ARMOUR
-ozocubus_refrigeration OZOCUBUS_REFRIGERATION
+winters_embrace WINTERS_EMBRACE
 throw_frost THROW_FROST
 hailstorm HAILSTORM
 

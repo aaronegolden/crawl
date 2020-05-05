@@ -269,19 +269,6 @@ static const map<spell_type, mons_spell_logic> spell_to_logic = {
         MSPELL_NO_AUTO_NOISE,
         1,
     } },
-    { SPELL_OZOCUBUS_REFRIGERATION, {
-        [](const monster &caster) {
-            return _los_spell_worthwhile(caster, SPELL_OZOCUBUS_REFRIGERATION)
-                   && (!caster.friendly() || !you.visible_to(&caster));
-        },
-        [](monster &caster, mon_spell_slot slot, bolt&) {
-            const int splpow = _mons_spellpower(slot.spell, caster);
-            fire_los_attack_spell(slot.spell, splpow, &caster, false);
-        },
-        nullptr,
-        MSPELL_LOGIC_NONE,
-        5,
-    } },
     { SPELL_TROGS_HAND, {
         [](const monster &caster) {
             return !caster.has_ench(ENCH_RAISED_MR)

@@ -95,4 +95,5 @@ spret_type untargeted_iood(int pow, bool fail, bool tracer = false);
 spret_type stone_shards(int pow, bool fail, bool tracer = false);
 spret_type cast_affliction(int pow, bool fail, bool tracer = false);
 spret_type cast_essence_spray(int pow, bool fail, bool tracer = false);
+spret_type cast_winters_embrace(int pow, bool fail, bool tracer = false);
 #endif

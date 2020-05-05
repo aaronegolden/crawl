@@ -1767,6 +1767,12 @@ Wind Blast spell
 
 Causes a strong gust of wind, pushing away creatures and clouds in a cone.
 %%%%
+Winter's Embrace spell
+
+Drains heat from the caster's surroundings, causing harm to all
+creatures within range 4. Additionally, creatures adjacent to 
+the caster may fall asleep.
+%%%%
 Word of Recall spell
 
 Recalls intelligent allies from elsewhere on the same level to the caster,

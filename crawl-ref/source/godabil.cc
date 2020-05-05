@@ -1442,7 +1442,7 @@ bool vehumet_supports_spell(spell_type spell)
         || spell == SPELL_SANDBLAST
         || spell == SPELL_TORNADO
         || spell == SPELL_FREEZE
-        || spell == SPELL_OZOCUBUS_REFRIGERATION
+        || spell == SPELL_WINTERS_EMBRACE
         || spell == SPELL_VIOLENT_UNRAVELLING
         || spell == SPELL_IGNITION
         || spell == SPELL_CONJURE_FLAME      

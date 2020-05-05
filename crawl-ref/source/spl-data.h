@@ -802,14 +802,14 @@ static const struct spell_desc spelldata[] =
 #endif
 
 {
-    SPELL_OZOCUBUS_REFRIGERATION, "Ozocubu's Refrigeration",
+    SPELL_WINTERS_EMBRACE, "Winter's Embrace",
     SPTYP_ICE,
-    SPFLAG_AREA,
+    SPFLAG_NONE,
     7,
     200,
-    -1, -1,
+    4, 4,
     5, 0,
-    TILEG_OZOCUBUS_REFRIGERATION,
+    TILEG_WINTERS_EMBRACE,
 },
 
 {

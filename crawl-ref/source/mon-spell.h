@@ -1463,7 +1463,7 @@ static const mon_spellbook mspell_list[] =
     {  MST_FANNAR,
       {
        { SPELL_BOLT_OF_COLD, 10, MON_SPELL_WIZARD },
-       { SPELL_OZOCUBUS_REFRIGERATION, 20, MON_SPELL_WIZARD },
+       { SPELL_SLEEP,        20, MON_SPELL_WIZARD },
        { SPELL_SUMMON_ICE_BEAST, 20, MON_SPELL_WIZARD },
        { SPELL_OZOCUBUS_ARMOUR, 10, MON_SPELL_WIZARD },
       }
