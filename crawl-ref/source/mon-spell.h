@@ -1007,7 +1007,6 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_LIGHTNING_BOLT, 19, MON_SPELL_WIZARD },
        { SPELL_FORCE_LANCE, 19, MON_SPELL_WIZARD },
-       { SPELL_BATTLESPHERE, 19, MON_SPELL_WIZARD },
       }
     },
 
@@ -1015,7 +1014,6 @@ static const mon_spellbook mspell_list[] =
       {
        { SPELL_FIREBALL, 17, MON_SPELL_WIZARD },
        { SPELL_CORROSIVE_BOLT, 17, MON_SPELL_WIZARD },
-       { SPELL_BATTLESPHERE, 34, MON_SPELL_WIZARD },
       }
     },
 

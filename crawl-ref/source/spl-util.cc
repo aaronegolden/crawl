@@ -491,13 +491,6 @@ static void _remove_spell_attributes(spell_type spell)
             mprf(MSGCH_DURATION, "You are no longer ready to summon your battlesphere.");
         }
         break;
-    case SPELL_SPELLFORGED_SERVITOR:
-        if (you.attribute[ATTR_SERVITOR])
-        {
-            you.attribute[ATTR_SERVITOR] = 0;
-            mprf(MSGCH_DURATION, "You are no longer ready to summon your spellforged servitor.");
-        }
-        break;
     // Forms
     case SPELL_SPIDER_FORM:
         if (you.form && !you.transform_uncancellable && you.form == TRAN_SPIDER)
@@ -1458,14 +1451,6 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
             return "you already have your battlesphere prepared";
         }
         break;
-		
-    case SPELL_SPELLFORGED_SERVITOR:
-        if(temp && you.attribute[ATTR_SERVITOR])
-        {
-            return "you already have your spellforged servitor prepared";
-        }
-        break;
-
     case SPELL_LEDAS_LIQUEFACTION:
         if (temp && (!you.stand_on_solid_ground()
                      || you.duration[DUR_LIQUEFYING]

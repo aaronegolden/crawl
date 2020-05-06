@@ -749,16 +749,12 @@ spret_type vampiric_drain(int pow, bool fail, bool tracer)
     return SPRET_SUCCESS;
 }
 
-spret_type cast_freeze(int pow, bool fail, bool tracer)
+spret_type cast_freeze(int pow, bool fail, bool tracer, bool battlesphere)
 {
-    targetter_radius hitfunc(&you, LOS_NO_TRANS, 1);
+    monster* avatar = find_battlesphere(&you);
+    coord_def source = avatar && battlesphere ? avatar->pos() : you.pos();
     
-    if (stop_attack_prompt(hitfunc, "freeze", nullptr))
-        return SPRET_ABORT;
-    
-    pow = min(25, pow);
-    
-    coord_def target = random_target_in_range(1);
+    coord_def target = random_target_in_range(1, source);
     
     if(!in_bounds(target) && tracer)
     {
@@ -770,11 +766,22 @@ spret_type cast_freeze(int pow, bool fail, bool tracer)
         if(tracer)
             return SPRET_SUCCESS;
         
+        targetter_radius hitfunc(&you, LOS_NO_TRANS, 1);
+        bool (*vulnerable) (const actor *) = [](const actor * act) -> bool
+        {
+            return act->is_monster()
+                && !act->wont_attack();
+        };
+        if (!battlesphere && stop_attack_prompt(hitfunc, "freeze", vulnerable))
+            return SPRET_ABORT;
+        
         fail_check();
         
         if(!in_bounds(target))
         {
-            canned_msg(MSG_NOTHING_HAPPENS);
+            if (!battlesphere)
+                canned_msg(MSG_NOTHING_HAPPENS);
+            
             return SPRET_SUCCESS;
         }
         
@@ -794,14 +801,16 @@ spret_type cast_freeze(int pow, bool fail, bool tracer)
         beam.flavour = BEAM_COLD;
         beam.thrower = KILL_YOU;
 	
-        const int orig_hurted = roll_dice(1, 3 + pow / 3);
+        const int orig_hurted = roll_dice(1, 3 + div_rand_round(pow, 3));
         int hurted = mons_adjust_flavoured(mons, beam, orig_hurted);
 	
         if (!fail)
         {
             set_attack_conducts(conducts, mons);
 
-            mprf("You freeze %s (%d).", mons->name(DESC_THE).c_str(), hurted);
+            mprf("You%s freeze%s %s (%d).", battlesphere ? "r battlesphere" : "",
+                    battlesphere ? "s" : "",
+                    mons->name(DESC_THE).c_str(), hurted);
 
             behaviour_event(mons, ME_ANNOY, &you);
         }
@@ -863,7 +872,7 @@ static void _hailstorm_cell(coord_def where, int pow, actor *agent)
     beam.fire();
 }
 
-spret_type cast_hailstorm(int pow, bool fail, bool tracer)
+spret_type cast_hailstorm(int pow, bool fail, bool tracer, bool battlesphere)
 {
     targetter_radius hitfunc(&you, LOS_NO_TRANS, 3, 0, 2);
     bool (*vulnerable) (const actor *) = [](const actor * act) -> bool
@@ -871,7 +880,7 @@ spret_type cast_hailstorm(int pow, bool fail, bool tracer)
         return !act->is_icy();
     };
 
-    if (tracer)
+    if (tracer && !battlesphere)
     {
         for (radius_iterator ri(you.pos(), 3, C_SQUARE, LOS_NO_TRANS, true); ri; ++ri)
         {
@@ -890,16 +899,20 @@ spret_type cast_hailstorm(int pow, bool fail, bool tracer)
         return SPRET_ABORT;
     }
 
-    if (stop_attack_prompt(hitfunc, "hailstorm", vulnerable))
+    if (!battlesphere && stop_attack_prompt(hitfunc, "hailstorm", vulnerable))
         return SPRET_ABORT;
 
     fail_check();
+    
+    monster* avatar = find_battlesphere(&you);
+    if (battlesphere && !avatar)
+        return SPRET_SUCCESS;
 
-    mpr("A cannonade of hail descends around you!");
-
-    for (radius_iterator ri(you.pos(), 3, C_SQUARE, LOS_NO_TRANS, true); ri; ++ri)
+    mprf("A cannonade of hail descends around you%s!", battlesphere ? "r battlesphere" : "");
+    coord_def pos = battlesphere ? avatar->pos() : you.pos();
+    for (radius_iterator ri(pos, 3, C_SQUARE, LOS_NO_TRANS, true); ri; ++ri)
     {
-        if (grid_distance(you.pos(), *ri) == 1 || !in_bounds(*ri))
+        if (grid_distance(pos, *ri) == 1 || !in_bounds(*ri))
             continue;
 
         _hailstorm_cell(*ri, pow, &you);
@@ -930,11 +943,11 @@ static void _embrace_cell(coord_def where, int pow, actor *agent)
     beam.name       = "cold";
     beam.hit_verb   = "envelops";
 
-    monster *mons = monster_at(where);
-    if (mons && mons->is_icy())
+    actor *act = actor_at(where);
+    if (act && act->is_monster() && act->as_monster()->is_icy())
     {
         string msg = "%s is unaffected.";
-        mprf(msg.c_str(), mons->name(DESC_THE).c_str());
+        mprf(msg.c_str(), act->name(DESC_THE).c_str());
 
         beam.draw(where);
         return;
@@ -943,8 +956,13 @@ static void _embrace_cell(coord_def where, int pow, actor *agent)
     beam.fire();
 }
 
-spret_type cast_winters_embrace(int pow, bool fail, bool tracer)
+spret_type cast_winters_embrace(int pow, bool fail, bool tracer, bool battlesphere)
 {
+    monster* avatar = find_battlesphere(&you);
+    
+    if (!avatar && battlesphere)
+        return SPRET_SUCCESS;
+    
     targetter_radius hitfunc(&you, LOS_NO_TRANS, min(4,LOS_RADIUS));
     bool (*vulnerable) (const actor *) = [](const actor * act) -> bool
     {
@@ -962,24 +980,40 @@ spret_type cast_winters_embrace(int pow, bool fail, bool tracer)
         return SPRET_ABORT;
     }
     
-    if (stop_attack_prompt(hitfunc, "winter's embrace", vulnerable))
-        return SPRET_ABORT;
+    if(!battlesphere)
+    {
+        if (stop_attack_prompt(hitfunc, "winter's embrace", vulnerable))
+            return SPRET_ABORT;
+    }
     
     fail_check();
     
-    mprf("You drain the heat from your surroundings.");
-    noisy(spell_effect_noise(SPELL_WINTERS_EMBRACE), you.pos());
+    coord_def source = battlesphere ? avatar->pos() : you.pos();
     
-    for (radius_iterator ri(you.pos(), 4, C_SQUARE, LOS_NO_TRANS, true); ri; ++ri)
+    mprf("You%s drain%s the heat from %s surroundings.",
+            battlesphere ? "r battlesphere" : "",
+            battlesphere ? "s" : "",
+            battlesphere ? "its" : "your");
+    noisy(spell_effect_noise(SPELL_WINTERS_EMBRACE), source);
+    
+    for (radius_iterator ri(source, 4, C_SQUARE, LOS_NO_TRANS, true); ri; ++ri)
     {
         _embrace_cell(*ri, pow, &you);
-        if (grid_distance(*ri, you.pos()) == 1)
+        if (grid_distance(*ri, source) == 1)
         {
-            monster* mons = monster_at(*ri);
-            if(mons && mons->check_res_magic(div_rand_round(pow * 2, 3)) < 0)
+            actor* act = actor_at(*ri);
+            if(act && act->check_res_magic(div_rand_round(pow * 2, 3)) < 0)
             {
-                mprf("%s falls asleep.", mons->name(DESC_THE).c_str());
-                mons->put_to_sleep(&you, pow, true);
+                if(act->is_player())
+                {
+                    mpr("You fall asleep.");
+                    you.put_to_sleep(&you, pow, true);
+                }
+                else
+                {
+                    mprf("%s falls asleep.", act->as_monster()->name(DESC_THE).c_str());
+                    act->as_monster()->put_to_sleep(&you, pow, true);
+                }
             }
         }
     }
@@ -2040,19 +2074,21 @@ static void _ignition_square(const actor *agent, bolt beam, coord_def square, bo
         noisy(spell_effect_noise(SPELL_IGNITION),square);
 }
 
-coord_def random_target_in_range(int radius)
+coord_def random_target_in_range(int radius, coord_def center)
 {
+    if (!in_bounds(center))
+        center = you.pos();
     
     vector<coord_def> targets;
     
-    for (actor_near_iterator ai(you.pos(), LOS_NO_TRANS);
+    for (actor_near_iterator ai(center, LOS_NO_TRANS);
          ai; ++ai)
     {
         if (ai->is_monster()
             && !ai->as_monster()->wont_attack()
             && !mons_is_firewood(*ai->as_monster())
             && !mons_is_tentacle_segment(ai->as_monster()->type)
-            && ai->pos().distance_from(you.pos()) <= radius)
+            && ai->pos().distance_from(center) <= radius)
         {
             targets.push_back(ai->position);
         }
@@ -2064,10 +2100,10 @@ coord_def random_target_in_range(int radius)
     return targets[random2(targets.size())];
 }
 
-static monster* _closest_target_in_range(int radius)
+static monster* _closest_target_in_range(int radius, coord_def source = you.pos())
 {
     
-    for (distance_iterator di(you.pos(), true, true, radius); di; ++di)
+    for (distance_iterator di(source, true, true, radius); di; ++di)
     {
         monster *mon = monster_at(*di);
         if (mon
@@ -2084,11 +2120,14 @@ static monster* _closest_target_in_range(int radius)
     return nullptr;
 }
 
-static vector<coord_def> _directional_bolt_targets(int radius, int max_targets = 3)
+static vector<coord_def> _directional_bolt_targets(int radius, int max_targets = 3, bool battlesphere = false)
 {
     vector<coord_def> targets;
     
-    monster* first = _closest_target_in_range(radius);
+    monster* avatar = find_battlesphere(&you);
+    coord_def source = avatar && battlesphere ? avatar->pos() : you.pos();
+    
+    monster* first = _closest_target_in_range(radius, source);
     
     if(!first)
         return targets;
@@ -2111,8 +2150,8 @@ static vector<coord_def> _directional_bolt_targets(int radius, int max_targets =
                 && !mons_is_tentacle_or_tentacle_segment(mon->type)
                 && cell_see_cell(you.pos(), mon->pos(), LOS_SOLID)
                 && cell_see_cell(current, mon->pos(), LOS_SOLID_SEE)
-                && mon->pos().distance_from(you.pos()) > current.distance_from(you.pos())
-                && mon->pos().distance_from(current) < mon->pos().distance_from(you.pos()))
+                && mon->pos().distance_from(source) > current.distance_from(source)
+                && mon->pos().distance_from(current) < mon->pos().distance_from(source))
             {
                 targets.push_back(mon->pos());
                 current = mon->pos();
@@ -2126,26 +2165,39 @@ static vector<coord_def> _directional_bolt_targets(int radius, int max_targets =
     return targets;
 }
 
-spret_type cast_shock(int pow, bool fail, bool tracer)
+spret_type cast_shock(int pow, bool fail, bool tracer, bool battlesphere)
 {
-    monster* closest = _closest_target_in_range(min(3, LOS_RADIUS));
+    monster* avatar = find_battlesphere(&you);
+    
+    if (!avatar && battlesphere)
+        return SPRET_SUCCESS;
+    
+    coord_def center = battlesphere ? avatar->pos() : you.pos();
+    
+    monster* closest = _closest_target_in_range(min(3, LOS_RADIUS), center);
     
     if (tracer)
     {
-        if (!closest)
+        if (!closest && !battlesphere)
             return SPRET_ABORT;
         else
             return SPRET_SUCCESS;
     }
     
-    targetter_radius hitfunc(&you, LOS_NO_TRANS, LOS_RADIUS);
-    if (stop_attack_prompt(hitfunc, "shock", nullptr))
-        return SPRET_ABORT;
+    if(!battlesphere)
+    {
+        targetter_radius hitfunc(&you, LOS_NO_TRANS, LOS_RADIUS);
+        if (stop_attack_prompt(hitfunc, "shock", nullptr))
+            return SPRET_ABORT;
+    }
     
     fail_check();
 
     if (!closest)
-        canned_msg(MSG_NOTHING_HAPPENS);
+    {
+        if(!battlesphere)
+            canned_msg(MSG_NOTHING_HAPPENS);
+    }
     else
     {
         coord_def close = closest->pos();
@@ -2185,9 +2237,14 @@ spret_type cast_shock(int pow, bool fail, bool tracer)
     return SPRET_SUCCESS;
 }
 
-spret_type directional_lbolt(int pow, bool fail, bool tracer)
+spret_type directional_lbolt(int pow, bool fail, bool tracer, bool battlesphere)
 {
-    vector<coord_def> targets = _directional_bolt_targets(3, 2 + div_rand_round(pow, 50));
+    monster* avatar = find_battlesphere(&you);
+    
+    if (!avatar && battlesphere)
+        return SPRET_SUCCESS;
+    
+    vector<coord_def> targets = _directional_bolt_targets(3, 3 + div_rand_round(pow, 50), battlesphere);
     
     if (tracer)
     {
@@ -2197,14 +2254,20 @@ spret_type directional_lbolt(int pow, bool fail, bool tracer)
             return SPRET_SUCCESS;
     }
     
-    targetter_radius hitfunc(&you, LOS_NO_TRANS, LOS_RADIUS);
-    if(stop_attack_prompt(hitfunc, "electric surge", nullptr))
-        return SPRET_ABORT;
+    if(!battlesphere)
+    {
+        targetter_radius hitfunc(&you, LOS_NO_TRANS, LOS_RADIUS);
+        if(stop_attack_prompt(hitfunc, "electric surge", nullptr))
+            return SPRET_ABORT;
+    }
     
     fail_check();
     
     if (targets.empty())
-        canned_msg(MSG_NOTHING_HAPPENS);
+    {
+        if (!battlesphere)
+            canned_msg(MSG_NOTHING_HAPPENS);
+    }
     else
     {
         bolt beam;
@@ -2217,10 +2280,11 @@ spret_type directional_lbolt(int pow, bool fail, bool tracer)
         beam.is_explosion = false;
         beam.is_tracer = false;
         
+        mprf("You%s unleash%s a surge of electricity!", 
+                battlesphere ? "r battlesphere" : "",
+                battlesphere ? "es" : "");
         
-        mprf("You unleash a surge of electricity!");
-        
-        coord_def source = you.pos();
+        coord_def source = battlesphere ? avatar->pos() : you.pos();
         coord_def target;
         
         for (int i = 0; i < static_cast<int>(targets.size()); i++)
@@ -2322,11 +2386,14 @@ spret_type fcloud(int pow, bool fail, bool tracer)
     
 }
 
-spret_type violent_unravelling(int pow, bool fail, bool tracer)
+spret_type violent_unravelling(int pow, bool fail, bool tracer, bool battlesphere)
 {
     vector<coord_def> targets;
     
-    for (actor_near_iterator ai(you.pos(), LOS_NO_TRANS);
+    monster* avatar = find_battlesphere(&you);
+    coord_def center = avatar && battlesphere ? avatar->pos() : you.pos();
+    
+    for (actor_near_iterator ai(center, LOS_NO_TRANS);
          ai; ++ai)
     {
         if (ai->is_monster()
@@ -2353,15 +2420,21 @@ spret_type violent_unravelling(int pow, bool fail, bool tracer)
         
         target = targets[random2(targets.size())];
         
-        targetter_radius hitfunc(&you, LOS_NO_TRANS, LOS_RADIUS);
-        if (stop_attack_prompt(hitfunc, "violent unravelling", nullptr))
-            return SPRET_ABORT;
+        if (!battlesphere)
+        {
+            targetter_radius hitfunc(&you, LOS_NO_TRANS, LOS_RADIUS);
+            if (stop_attack_prompt(hitfunc, "violent unravelling", nullptr))
+                return SPRET_ABORT;
+        }
     }
     
     fail_check();
     
     if (!in_bounds(target))
-        canned_msg(MSG_NOTHING_HAPPENS);
+    {
+        if (!battlesphere)
+            canned_msg(MSG_NOTHING_HAPPENS);
+    }
     else
     {
         bolt beam_actual;
@@ -2385,11 +2458,17 @@ spret_type violent_unravelling(int pow, bool fail, bool tracer)
     return SPRET_SUCCESS;
 }
 
-spret_type random_fireball(int pow, bool fail, bool tracer)
+spret_type random_fireball(int pow, bool fail, bool tracer, bool battlesphere)
 {
-    monster* target = _closest_target_in_range(min(5,LOS_RADIUS));
+
+    monster* avatar = find_battlesphere(&you);
+    if (battlesphere && !avatar)
+        return SPRET_SUCCESS;
+
+    coord_def source = battlesphere ? avatar->pos() : you.pos();
+    monster* target = _closest_target_in_range(min(5,LOS_RADIUS), source);
     
-    if (tracer)
+    if (tracer && !battlesphere)
     {
         if (!target)
             return SPRET_ABORT;
@@ -2397,21 +2476,27 @@ spret_type random_fireball(int pow, bool fail, bool tracer)
             return SPRET_SUCCESS;
     }
     
-    targetter_radius hitfunc(&you, LOS_NO_TRANS, min(5,LOS_RADIUS));
-    if (stop_attack_prompt(hitfunc, "detonate", nullptr))
-        return SPRET_ABORT;
+    if(!battlesphere)
+    {
+        targetter_radius hitfunc(&you, LOS_NO_TRANS, min(5,LOS_RADIUS));
+        if (stop_attack_prompt(hitfunc, "detonate", nullptr))
+            return SPRET_ABORT;
+    }
     
     fail_check();
 
     if (!target)
-        canned_msg(MSG_NOTHING_HAPPENS);
+    {
+        if (!battlesphere)
+            canned_msg(MSG_NOTHING_HAPPENS);
+    }
     else
     {
         bolt beam_actual;
         beam_actual.set_agent(&you);
         beam_actual.flavour       = BEAM_FIRE;
         beam_actual.real_flavour  = BEAM_FIRE;
-        beam_actual.damage        = calc_dice(3, 10 + pow/2);
+        beam_actual.damage        = calc_dice(1, 10 + div_rand_round(pow * 3, 5));
         beam_actual.name          = "fireball";
         beam_actual.target        = target->pos();
         beam_actual.colour        = RED;
@@ -2675,12 +2760,15 @@ static bool _safe_discharge(coord_def where, vector<const monster *> &exclude)
     return true;
 }
 
-spret_type cast_discharge(int pow, bool fail)
+spret_type cast_discharge(int pow, bool fail, bool battlesphere)
 {
     fail_check();
+    
+    monster* avatar = find_battlesphere(&you);
+    coord_def pos = avatar && battlesphere ? avatar->pos() : you.pos();
 
     vector<const monster *> exclude;
-    if (!_safe_discharge(you.pos(), exclude))
+    if (!battlesphere && !_safe_discharge(you.pos(), exclude))
         return SPRET_ABORT;
 
     // this formula is fucking stupid but at least it uses div_rand_round now!
@@ -2688,7 +2776,7 @@ spret_type cast_discharge(int pow, bool fail)
     const int dam =
         apply_random_around_square([pow] (coord_def where) {
             return discharge_monsters(where, pow, &you);
-        }, you.pos(), true, num_targs);
+        }, pos, true, num_targs);
 
     dprf("Arcs: %d Damage: %d", num_targs, dam);
 
@@ -2696,18 +2784,7 @@ spret_type cast_discharge(int pow, bool fail)
         scaled_delay(100);
     else
     {
-        if (coinflip())
-            mpr("The air around you crackles with electrical energy.");
-        else
-        {
-            const bool plural = coinflip();
-            mprf("%s blue arc%s ground%s harmlessly %s you.",
-                 plural ? "Some" : "A",
-                 plural ? "s" : "",
-                 plural ? " themselves" : "s itself",
-                 plural ? "around" : (coinflip() ? "beside" :
-                                      coinflip() ? "behind" : "before"));
-        }
+        mpr("The air crackles with electrical energy.");
     }
     return SPRET_SUCCESS;
 }
@@ -3049,9 +3126,16 @@ spret_type cast_fragmentation(int pow, const actor *caster,
     return SPRET_SUCCESS;
 }
 
-spret_type cast_sandblast(int pow, bool fail, bool tracer)
+spret_type cast_sandblast(int pow, bool fail, bool tracer, bool battlesphere)
 {
-    monster* target = _closest_target_in_range(min(3,LOS_RADIUS));
+    monster* avatar = find_battlesphere(&you);
+    
+    if(!avatar && battlesphere)
+        return SPRET_SUCCESS;
+    
+    coord_def source = battlesphere ? avatar->pos() : you.pos();
+    
+    monster* target = _closest_target_in_range(min(3,LOS_RADIUS), source);
     
     if (tracer)
     {
@@ -3064,7 +3148,10 @@ spret_type cast_sandblast(int pow, bool fail, bool tracer)
     fail_check();
 
     if (!target)
-        canned_msg(MSG_NOTHING_HAPPENS);
+    {
+        if (!battlesphere)
+            canned_msg(MSG_NOTHING_HAPPENS);
+    }
     else
     {
         bolt beam;
@@ -3076,7 +3163,7 @@ spret_type cast_sandblast(int pow, bool fail, bool tracer)
         beam.name               = "rocky blast";
         beam.origin_spell       = SPELL_SANDBLAST;
         beam.target             = target->pos();
-        beam.source             = you.pos();
+        beam.source             = source;
         beam.range              = min(3,LOS_RADIUS);
         beam.colour             = BROWN;
         beam.glyph              = DCHAR_FIRED_BOLT;
@@ -3611,9 +3698,7 @@ void handle_searing_ray()
 
     zappy(zap, pow, false, beam);
 
-    aim_battlesphere(&you, SPELL_SEARING_RAY, pow, beam);
     beam.fire();
-    trigger_battlesphere(&you, beam);
 
     dec_mp(1);
 
@@ -3993,7 +4078,7 @@ spret_type cast_scattershot(const actor *caster, int pow, const coord_def &pos,
     return SPRET_SUCCESS;
 }
 
-spret_type cast_starburst(int pow, bool fail, bool tracer)
+spret_type cast_starburst(int pow, bool fail, bool tracer, bool battlesphere)
 {
     int range = spell_range(SPELL_STARBURST, pow);
 
@@ -4006,12 +4091,16 @@ spret_type cast_starburst(int pow, bool fail, bool tracer)
                                 coord_def(0, -range),
                                 coord_def(range, -range) };
 
+    monster* avatar = find_battlesphere(&you);
+    if (battlesphere && !avatar)
+        return SPRET_SUCCESS;
+
     bolt beam;
     beam.range        = range;
-    beam.source       = you.pos();
+    beam.source       = battlesphere ? avatar->pos() : you.pos();
     beam.source_id    = MID_PLAYER;
-    beam.is_tracer    = tracer;
-    beam.is_targeting = tracer;
+    beam.is_tracer    = tracer && !battlesphere;
+    beam.is_targeting = tracer && !battlesphere;
     beam.dont_stop_player = true;
     beam.friend_info.dont_stop = true;
     beam.foe_info.dont_stop = true;
@@ -4024,7 +4113,7 @@ spret_type cast_starburst(int pow, bool fail, bool tracer)
     for (const coord_def & offset : offsets)
     {
         beam.target = you.pos() + offset;
-        if (!tracer && !player_tracer(ZAP_BOLT_OF_FIRE, pow, beam))
+        if (!tracer && !battlesphere && !player_tracer(ZAP_BOLT_OF_FIRE, pow, beam))
             return SPRET_ABORT;
 
         if (tracer)
@@ -4045,7 +4134,7 @@ spret_type cast_starburst(int pow, bool fail, bool tracer)
     shuffle_array(offsets);
     for (auto & offset : offsets)
     {
-        beam.target = you.pos() + offset;
+        beam.target = beam.source + offset;
         beam.fire();
     }
 
@@ -4251,19 +4340,26 @@ static int _num_stone_shards(const actor* ai)
     return frags;
 }
 
-spret_type stone_shards(int pow, bool fail, bool tracer)
+spret_type stone_shards(int pow, bool fail, bool tracer, bool battlesphere)
 {
+    monster* avatar = find_battlesphere(&you);
+    
+    if(!avatar && battlesphere)
+        return SPRET_SUCCESS;
+    
     int range = spell_range(SPELL_STONE_SHARDS, pow);
     int total_frags = 0;
     vector<pair <coord_def, int> > targets;
     
-    for (actor_near_iterator ai(you.pos(), LOS_NO_TRANS); ai; ++ai)
+    coord_def center = battlesphere ? avatar->pos() : you.pos();
+    
+    for (actor_near_iterator ai(center, LOS_NO_TRANS); ai; ++ai)
     {
-        if (grid_distance(ai->pos(), you.pos()) > range)
+        if (grid_distance(ai->pos(), center) > range)
             continue;
         
-        // don't damage the player
-        if (ai->pos() == you.pos())
+        // don't damage the source tile
+        if (ai->pos() == center)
             continue;
         
         int frags = _num_stone_shards(*ai);
@@ -4283,7 +4379,7 @@ spret_type stone_shards(int pow, bool fail, bool tracer)
             return SPRET_SUCCESS;
     }
     
-    if (total_frags > 0)
+    if (total_frags > 0 && !battlesphere)
     {
         targetter_radius hitfunc(&you, LOS_SOLID_SEE, range);
         bool (*vulnerable) (const actor *) = [](const actor * act) -> bool
@@ -4299,7 +4395,10 @@ spret_type stone_shards(int pow, bool fail, bool tracer)
     fail_check();
     
     if (total_frags == 0)
-        canned_msg(MSG_NOTHING_HAPPENS);
+    {
+        if (!battlesphere)
+            canned_msg(MSG_NOTHING_HAPPENS);
+    }
     else
     {
         for (int i = 0; i < static_cast<int>(targets.size()); i++)

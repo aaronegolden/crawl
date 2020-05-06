@@ -2718,7 +2718,7 @@ static const struct spell_desc spelldata[] =
     SPELL_BATTLESPHERE, "Iskenderun's Battlesphere",
     SPTYP_CHARMS | SPTYP_SUMMONING,
     SPFLAG_UTILITY | SPFLAG_PERMABUFF,
-    5,
+    6,
     100,
     -1, -1,
     0, 5,
@@ -3422,7 +3422,7 @@ static const struct spell_desc spelldata[] =
 {
     SPELL_SPELLFORGED_SERVITOR, "Spellforged Servitor",
     SPTYP_SUMMONING,
-    SPFLAG_PERMABUFF,
+    SPFLAG_PERMABUFF | SPFLAG_MONSTER,
     7,
     200,
     -1, -1,

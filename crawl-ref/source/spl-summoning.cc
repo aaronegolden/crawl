@@ -54,6 +54,7 @@
 #include "religion.h"
 #include "rot.h"
 #include "shout.h"
+#include "spl-damage.h"
 #include "spl-util.h"
 #include "spl-wpnench.h"
 #include "spl-zap.h"
@@ -2691,24 +2692,20 @@ void end_battlesphere(monster* mons, bool killed)
 
 bool battlesphere_can_mirror(spell_type spell)
 {
-    return spell == SPELL_SANDBLAST
-        || spell == SPELL_AIRSTRIKE
-        || spell == SPELL_FREEZE
-        || spell == SPELL_FIREBALL     
-        || spell == SPELL_BOLT_OF_FIRE
-        || spell == SPELL_MEPHITIC_CLOUD
-        || spell == SPELL_BOLT_OF_DRAINING
-        || spell == SPELL_LEHUDIBS_CRYSTAL_SPEAR
-        || spell == SPELL_STICKY_FLAME
-        || spell == SPELL_IRON_SHOT
-        || spell == SPELL_THROW_ICICLE
-        || spell == SPELL_FLAME_TONGUE
-        || spell == SPELL_FORCE_LANCE
-        || spell == SPELL_MAGIC_DART
-        || spell == SPELL_SEARING_RAY;
+    return spell == SPELL_DETONATE
+            || spell == SPELL_STARBURST
+            || spell == SPELL_HAILSTORM
+            || spell == SPELL_FREEZE
+            || spell == SPELL_DISCHARGE
+            || spell == SPELL_VIOLENT_UNRAVELLING
+            || spell == SPELL_SHOCK
+            || spell == SPELL_ELECTRIC_SURGE
+            || spell == SPELL_SANDBLAST
+            || spell == SPELL_STONE_SHARDS
+            || spell == SPELL_WINTERS_EMBRACE;
 }
 
-bool aim_battlesphere(actor* agent, spell_type spell, int powc, bolt& beam)
+bool aim_battlesphere(actor* agent, spell_type spell)
 {
     //Is this spell something that will trigger the battlesphere?
     if (battlesphere_can_mirror(spell))
@@ -2728,60 +2725,6 @@ bool aim_battlesphere(actor* agent, spell_type spell, int powc, bolt& beam)
         // target
         reset_battlesphere(battlesphere);
 
-        // Don't try to fire at ourselves
-        if (beam.target == battlesphere->pos())
-            return false;
-
-        // If the player beam is targeted at a creature, aim at this creature.
-        // Otherwise, aim at the furthest creature in the player beam path
-        bolt testbeam = beam;
-
-        if (agent->is_player())
-            testbeam.thrower = KILL_YOU_MISSILE;
-        else
-        {
-            testbeam.thrower = KILL_MON_MISSILE;
-            testbeam.source_id = agent->mid;
-        }
-
-        testbeam.is_tracer = true;
-        zap_type ztype = spell_to_zap(spell);
-
-        // Fallback for non-standard spell zaps
-        if (ztype == NUM_ZAPS)
-            ztype = ZAP_MAGIC_DART;
-
-        // This is so that reflection and pathing rules for the parent beam
-        // will be obeyed when figuring out what is being aimed at
-        zappy(ztype, powc, false, testbeam);
-
-        battlesphere->props["firing_target"] = beam.target;
-        battlesphere->props.erase("foe");
-        if (!actor_at(beam.target))
-        {
-            testbeam.fire();
-
-            for (const coord_def c : testbeam.path_taken)
-            {
-                if (c != battlesphere->pos() && monster_at(c))
-                {
-                    battlesphere->props["firing_target"] = c;
-                    battlesphere->foe = actor_at(c)->mindex();
-                    battlesphere->props["foe"] = battlesphere->foe;
-                    break;
-                }
-            }
-
-            // If we're firing at empty air, lose any prior target lock
-            if (!battlesphere->props.exists("foe"))
-                battlesphere->foe = agent->mindex();
-        }
-        else
-        {
-            battlesphere->foe = actor_at(beam.target)->mindex();
-            battlesphere->props["foe"] = battlesphere->foe;
-        }
-
         battlesphere->props["ready"] = true;
 
         return true;
@@ -2790,7 +2733,7 @@ bool aim_battlesphere(actor* agent, spell_type spell, int powc, bolt& beam)
     return false;
 }
 
-bool trigger_battlesphere(actor* agent, bolt& beam)
+bool trigger_battlesphere(actor* agent, spell_type spell)
 {
     monster* battlesphere = find_battlesphere(agent);
     if (!battlesphere)
@@ -2798,35 +2741,9 @@ bool trigger_battlesphere(actor* agent, bolt& beam)
 
     if (battlesphere->props.exists("ready"))
     {
-        // If the battlesphere is aiming at empty air but the triggering
-        // conjuration is an explosion, try to find something to shoot within
-        // the blast
-        if (!battlesphere->props.exists("foe") && beam.is_explosion)
-        {
-            explosion_map exp_map;
-            exp_map.init(INT_MAX);
-            beam.determine_affected_cells(exp_map, coord_def(), 0,
-                                          beam.ex_size, true, true);
-
-            for (radius_iterator ri(beam.target, beam.ex_size, C_SQUARE);
-                 ri; ++ri)
-            {
-                if (exp_map(*ri - beam.target + coord_def(9,9)) < INT_MAX)
-                {
-                    const actor *targ = actor_at(*ri);
-                    if (targ && targ != battlesphere)
-                    {
-                        battlesphere->props["firing_target"] = *ri;
-                        battlesphere->foe = targ->mindex();
-                        battlesphere->props["foe"] = battlesphere->foe;
-                        continue;
-                    }
-                }
-            }
-        }
 
         battlesphere->props.erase("ready");
-        battlesphere->props["firing"] = true;
+        battlesphere->props["firing"] = spell;
 
         // Since monsters may be acting out of sequence, give the battlesphere
         // enough energy to attempt to fire this round, and requeue if it's
@@ -2880,125 +2797,65 @@ bool fire_battlesphere(monster* mons)
 
     if (mons->props.exists("firing") && mons->battlecharge > 0)
     {
-        if (mons->props.exists("tracking"))
+        spell_type spell = static_cast<spell_type>(mons->props["firing"].get_int());
+        int pow = min(calc_spell_power(SPELL_BATTLESPHERE, true), spell_power_cap(spell));
+        if(battlesphere_can_mirror(spell))
+            mprf("Your battlesphere fires!");
+        
+        switch(spell)
         {
-            if (mons->pos() == mons->props["tracking_target"].get_coord())
-            {
-                mons->props.erase("tracking");
-                if (mons->props.exists("foe"))
-                    mons->foe = mons->props["foe"].get_int();
-                mons->behaviour = BEH_SEEK;
-            }
-            else // Currently tracking, but have not reached target pos
-            {
-                mons->target = mons->props["tracking_target"].get_coord();
-                return false;
-            }
+            case SPELL_DETONATE:
+                random_fireball(pow, false, false, true);
+                break;
+                
+            case SPELL_STARBURST:
+                cast_starburst(pow, false, false, true);
+                break;
+                
+            case SPELL_HAILSTORM:
+                cast_hailstorm(pow, false, false, true);
+                break;
+                
+            case SPELL_FREEZE:
+                cast_freeze(pow, false, false, true);
+                break;
+                
+            case SPELL_DISCHARGE:
+                cast_discharge(pow, false, true);
+                break;
+                
+            case SPELL_VIOLENT_UNRAVELLING:
+                violent_unravelling(pow, false, false, true);
+                break;
+                
+            case SPELL_SHOCK:
+                cast_shock(pow, false, false, true);
+                break;
+                
+            case SPELL_ELECTRIC_SURGE:
+                directional_lbolt(pow, false, false, true);
+                break;
+            
+            case SPELL_SANDBLAST:
+                cast_sandblast(pow, false, false, true);
+                break;
+            
+            case SPELL_STONE_SHARDS:
+                stone_shards(pow, false, false, true);
+                break;
+                
+            case SPELL_WINTERS_EMBRACE:
+                cast_winters_embrace(pow, false, false, true);
+                break;
+            
+            default:
+                break;
         }
-        else
-        {
-            // If the battlesphere forgot its foe (due to being out of los),
-            // remind it
-            if (mons->props.exists("foe"))
-                mons->foe = mons->props["foe"].get_int();
-        }
-
-        // Set up the beam.
-        bolt beam;
-        beam.source_name = "battlesphere";
-
-        // If we are locked onto a foe, use its current position
-        if (!invalid_monster_index(mons->foe) && menv[mons->foe].alive())
-            beam.target = menv[mons->foe].pos();
-        else
-            beam.target = mons->props["firing_target"].get_coord();
-
-        // Sanity check: if we have somehow ended up targeting ourselves, bail
-        if (beam.target == mons->pos())
-        {
-            mprf(MSGCH_ERROR, "Battlesphere targeting itself? Fixing.");
-            mons->props.erase("firing");
-            mons->props.erase("firing_target");
-            mons->props.erase("foe");
-            return false;
-        }
-
-        beam.name       = "barrage of energy";
-        beam.range      = LOS_RADIUS;
-        beam.hit        = AUTOMATIC_HIT;
-        beam.damage     = dice_def(2, 5 + mons->get_hit_dice());
-        beam.glyph      = dchar_glyph(DCHAR_FIRED_ZAP);
-        beam.colour     = MAGENTA;
-        beam.flavour    = BEAM_MMISSILE;
-        beam.pierce     = false;
-
-        // Fire tracer.
-        fire_tracer(mons, beam);
-
-        // Never fire if we would hurt the caster, and ensure that the beam
-        // would hit at least SOMETHING, unless it was targeted at empty space
-        // in the first place
-        if (beam.friend_info.count == 0
-            && (monster_at(beam.target) ? beam.foe_info.count > 0 :
-                find(beam.path_taken.begin(), beam.path_taken.end(),
-                     beam.target)
-                    != beam.path_taken.end()))
-        {
-            beam.thrower = (agent->is_player()) ? KILL_YOU : KILL_MON;
-            simple_monster_message(*mons, " fires!");
-            beam.fire();
-
-            used = true;
-            // Decrement # of volleys left and possibly expire the battlesphere.
-            if (--mons->battlecharge == 0)
+        
+        if (--mons->battlecharge == 0)
                 end_battlesphere(mons, false);
 
-            mons->props.erase("firing");
-        }
-        // If we are firing at something, try to find a nearby position
-        // from which we could safely fire at it
-        else
-        {
-            const bool empty_beam = (beam.foe_info.count == 0);
-            for (distance_iterator di(mons->pos(), true, true, 2); di; ++di)
-            {
-                if (*di == beam.target || actor_at(*di)
-                    || cell_is_solid(*di)
-                    || !agent->see_cell(*di))
-                {
-                    continue;
-                }
-
-                beam.source = *di;
-                beam.is_tracer = true;
-                beam.friend_info.reset();
-                beam.foe_info.reset();
-                beam.fire();
-                if (beam.friend_info.count == 0
-                    && (beam.foe_info.count > 0 || empty_beam))
-                {
-                    if (empty_beam
-                        && find(beam.path_taken.begin(), beam.path_taken.end(),
-                                beam.target) == beam.path_taken.end())
-                    {
-                        continue;
-                    }
-
-                    mons->firing_pos = coord_def(0, 0);
-                    mons->target = *di;
-                    mons->behaviour = BEH_WANDER;
-                    mons->props["foe"] = mons->foe;
-                    mons->props["tracking"] = true;
-                    mons->foe = MHITNOT;
-                    mons->props["tracking_target"] = *di;
-                    break;
-                }
-            }
-
-            // If we didn't find a better firing position nearby, cancel firing
-            if (!mons->props.exists("tracking"))
-                mons->props.erase("firing");
-        }
+        mons->props.erase("firing");
     }
 
     // If our last target is dead, or the player wandered off, resume

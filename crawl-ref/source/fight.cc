@@ -1031,6 +1031,8 @@ bool stop_attack_prompt(targetter &hitfunc, const char* verb,
             continue;
         if (affects && !affects(mon))
             continue;
+        if (mon->type == MONS_BATTLESPHERE)
+            continue;
         string adjn, suffixn;
         bool penancen = false;
         if (bad_attack(mon, adjn, suffixn, penancen))

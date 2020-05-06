@@ -1561,9 +1561,8 @@ spret_type your_spells(spell_type spell, int powc, bool allow_fail,
     if (crawl_state.prev_cmd == CMD_CAST_SPELL && god == GOD_NO_GOD)
         _maybe_cancel_repeat(spell);
 
-    // Have to set aim first, in case the spellcast kills its first target
     if (you.props.exists("battlesphere") && allow_fail)
-        aim_battlesphere(&you, spell, powc, beam);
+        aim_battlesphere(&you, spell);
 
     const bool old_target = actor_at(beam.target);
 	
@@ -1596,7 +1595,10 @@ spret_type your_spells(spell_type spell, int powc, bool allow_fail,
     case SPRET_SUCCESS:
     {
         if (you.props.exists("battlesphere") && allow_fail)
-            trigger_battlesphere(&you, beam);
+        {
+            redraw_screen();
+            trigger_battlesphere(&you, spell);
+        }
         actor* victim = actor_at(beam.target);
         if (will_have_passive(passive_t::shadow_spells)
             && allow_fail

@@ -216,7 +216,6 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Wizardry
     SPELL_FORCE_QUAKE,
     SPELL_AFFLICTION,
-    SPELL_SPELLFORGED_SERVITOR,
     SPELL_INVISIBILITY,
     SPELL_HASTE,
 },
@@ -228,7 +227,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_STARBURST,
     SPELL_WINTERS_EMBRACE,
     SPELL_IOOD,
-    SPELL_SPELLFORGED_SERVITOR,
 },
 
 {   // Book of Cantrips
