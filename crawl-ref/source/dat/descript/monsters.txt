@@ -594,9 +594,9 @@ skilled with both conjurations and melee combat.
 %%%%
 battlesphere
 
-A small globe of magical energy that follows a spellcaster. It cannot operate
-on its own, yet it will provide fire support, assaulting whatever its conjurer
-casts at with magical missiles that never miss.
+A small globe of magical energy that follows a mage. It cannot operate
+on its own, yet it will provide fire support, duplicating offensive spells
+cast by the mage who controls it.
 %%%%
 bennu
 
