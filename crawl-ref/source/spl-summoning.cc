@@ -994,16 +994,16 @@ spret_type cast_ambulatory_bomb(int pow, god_type god, bool fail)
  */
 static monster_type _get_imp_type(int pow)
 {
-    // Proportion of white imps is independent of spellpower.
-    if (x_chance_in_y(5, 18))
-        return MONS_WHITE_IMP;
+    if (random2(50 + pow) >= 50)
+    {
+        if (one_chance_in(5))
+            return MONS_IRON_IMP;
+        else if (one_chance_in(3))
+            return MONS_SHADOW_IMP;
+        else 
+            return MONS_WHITE_IMP;
+    }
 
-    // 3/13 * 13/18 = 1/6 chance of one of these two at 0-46 spellpower,
-    // increasing up to about 4/9 at max spellpower.
-    if (random2(pow) >= 46 || x_chance_in_y(3, 13))
-        return one_chance_in(3) ? MONS_IRON_IMP : MONS_SHADOW_IMP;
-
-    // 5/9 crimson at 0-46 spellpower, about half that at max power.
     return MONS_CRIMSON_IMP;
 }
 
@@ -1029,7 +1029,7 @@ spret_type cast_call_imp(int pow, god_type god, bool fail)
 
     const monster_type imp_type = _get_imp_type(pow);
 
-    const int dur = min(2 + (random2(pow) / 4), 6);
+    const int dur = 1 + random2(50) < pow ? 1 : 0;
 
     mgen_data imp_data = _pal_data(imp_type, dur, god, SPELL_CALL_IMP);
     imp_data.flags |= MG_FORCE_BEH; // disable player_angers_monster()
