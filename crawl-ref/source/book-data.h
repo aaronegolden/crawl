@@ -68,7 +68,6 @@ static const vector<spell_type> spellbook_templates[] =
 #if TAG_MAJOR_VERSION == 34
 {   // Young Poisoner's Handbook
     SPELL_MEPHITIC_CLOUD,
-    SPELL_INTOXICATE,
 },
 #endif
 
@@ -174,7 +173,6 @@ static const vector<spell_type> spellbook_templates[] =
 #if TAG_MAJOR_VERSION == 34
 {   // Book of Envenomations
     SPELL_SPIDER_FORM,
-    SPELL_INTOXICATE,
 },
 #endif
 
@@ -236,7 +234,6 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Party Tricks
     SPELL_BECKONING,
-    SPELL_INTOXICATE,
     SPELL_INVISIBILITY
 },
 
@@ -273,7 +270,6 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Alchemy
     SPELL_GORGONS_GAZE,
-    SPELL_INTOXICATE,
     SPELL_WARP_GRAVITY,
 },
 
