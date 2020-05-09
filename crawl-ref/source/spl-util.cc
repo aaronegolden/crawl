@@ -512,8 +512,8 @@ static void _remove_spell_attributes(spell_type spell)
         if (you.form && !you.transform_uncancellable && you.form == TRAN_LICH)
             untransform();
         break;
-    case SPELL_HYDRA_FORM:
-        if (you.form && !you.transform_uncancellable && you.form == TRAN_HYDRA)
+    case SPELL_DEVOURER_FORM:
+        if (you.form && !you.transform_uncancellable && you.form == TRAN_DEVOURER)
             untransform();
         break;
     case SPELL_DRAGON_FORM:
@@ -1203,11 +1203,10 @@ bool spell_is_form(spell_type spell)
         case SPELL_BEASTLY_APPENDAGE:
         case SPELL_BLADE_HANDS:
         case SPELL_DRAGON_FORM:
-        case SPELL_HYDRA_FORM:
+        case SPELL_DEVOURER_FORM:
         case SPELL_ICE_FORM:
         case SPELL_SPIDER_FORM:
         case SPELL_STATUE_FORM:
-        case SPELL_NECROMUTATION:
             return true;
         default:
             return false;
@@ -1229,8 +1228,8 @@ bool already_in_form(spell_type spell)
         case SPELL_DRAGON_FORM:
             return you.form == TRAN_DRAGON;
             break;
-        case SPELL_HYDRA_FORM:
-            return you.form == TRAN_HYDRA;
+        case SPELL_DEVOURER_FORM:
+            return you.form == TRAN_DEVOURER;
             break;
         case SPELL_ICE_FORM:
             return you.form == TRAN_ICE_BEAST;
@@ -1240,9 +1239,6 @@ bool already_in_form(spell_type spell)
             break;
         case SPELL_STATUE_FORM:
             return you.form == TRAN_STATUE;
-            break;
-        case SPELL_NECROMUTATION:
-            return you.form == TRAN_LICH;
             break;
         default:
             return false;
@@ -1396,7 +1392,7 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
     case SPELL_BEASTLY_APPENDAGE:
     case SPELL_BLADE_HANDS:
     case SPELL_DRAGON_FORM:
-    case SPELL_HYDRA_FORM:
+    case SPELL_DEVOURER_FORM:
     case SPELL_ICE_FORM:
     case SPELL_SPIDER_FORM:
         if (you.undead_state(temp) == US_UNDEAD

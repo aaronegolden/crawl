@@ -664,6 +664,12 @@ incoming attack. However, your ability to deal damage in melee and with ranged
 attacks is halved, your spellcasting power is greatly hampered, and your skills
 are further drained when taking damage.
 %%%%
+Devourer status
+
+You have been transformed into an insatiable maw of malice and evil. You lash
+out in all directions when attacking. Living beings slain by your attacks are
+instantly consumed to restore your health.
+%%%%
 Hydra status
 
 You have been transformed into an amphibious, many-headed hydra. Your multiple

@@ -231,14 +231,14 @@ static const form_entry formdata[] =
 },
 
 {
-    TRAN_HYDRA, MONS_HYDRA, "Hydra", "hydra-form", "hydra",
-    "",
-    EQF_PHYSICAL, MR_RES_POISON,
-    FormDuration(10, PS_SINGLE, 100), 0, 0, SIZE_BIG, 13,
-    6, 5, 0, true, 0, 10, -1,
-    SPWPN_NORMAL, GREEN, "", { "nip at", "bite", "gouge", "chomp" },
-    FC_DEFAULT, FC_ENABLE, FC_ENABLE, true, false,
-    "roar", 4, "foreclaw", "", "bow your heads before", "flesh"
+    TRAN_DEVOURER, MONS_PROGRAM_BUG, "Devourer", "devourer-form", "devourer",
+    "an insatiable maw of evil.",
+    EQF_NONE, MR_NO_FLAGS,
+    DEFAULT_DURATION, 0, 0, SIZE_CHARACTER, 10,
+    0, 0, 0, true, 0, 0, 12,
+    SPWPN_DRAINING, BLACK, "", { "nip at", "bite", "gouge", "chomp" },
+    FC_DEFAULT, FC_DEFAULT, FC_ENABLE, true, false,
+    "roar", 4, "foreclaw", "", "bow your head before", "flesh"
 }
 };
 COMPILE_CHECK(ARRAYSZ(formdata) == NUM_TRANSFORMS);

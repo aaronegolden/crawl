@@ -102,14 +102,14 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Transfigurations
     SPELL_WARP_GRAVITY,
     SPELL_STATUE_FORM,
-    SPELL_HYDRA_FORM,
+    SPELL_DEVOURER_FORM,
     SPELL_DRAGON_FORM,
 },
 
 {   // Fen Folio
     SPELL_SUMMON_FOREST,
     SPELL_LEDAS_LIQUEFACTION,
-    SPELL_HYDRA_FORM,
+    SPELL_DEVOURER_FORM,
     SPELL_SUMMON_HYDRA,
 },
 

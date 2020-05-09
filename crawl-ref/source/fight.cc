@@ -709,7 +709,7 @@ void get_cleave_targets(const actor &attacker, const coord_def& def,
     if (weap && item_attack_skill(*weap) == SK_AXES
 			|| attacker.type == MONS_JUGGERNAUT //ugly hack to give juggs cleave
             || attacker.is_player()
-               && (you.form == TRAN_HYDRA && you.heads() > 1
+               && (you.form == TRAN_DEVOURER
                    || you.duration[DUR_CLEAVE]))
     {
         const coord_def atk = attacker.pos();

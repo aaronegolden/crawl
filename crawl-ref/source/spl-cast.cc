@@ -1794,8 +1794,8 @@ static spret_type _handle_form_spells(spell_type spell, int powc, bolt& beam, go
         case SPELL_ICE_FORM:
             return cast_transform(powc, TRAN_ICE_BEAST, false);
 
-        case SPELL_HYDRA_FORM:
-            return cast_transform(powc, TRAN_HYDRA, false);
+        case SPELL_DEVOURER_FORM:
+            return cast_transform(powc, TRAN_DEVOURER, false);
 
         case SPELL_DRAGON_FORM:
             return cast_transform(powc, TRAN_DRAGON, false);

@@ -551,8 +551,8 @@ int calculate_frozen_mp()
             case TRAN_LICH:
                 frozen_mp += spell_mp_freeze(SPELL_NECROMUTATION);
                 break;
-            case TRAN_HYDRA:
-                frozen_mp += spell_mp_freeze(SPELL_HYDRA_FORM);
+            case TRAN_DEVOURER:
+                frozen_mp += spell_mp_freeze(SPELL_DEVOURER_FORM);
                 break;
             case TRAN_DRAGON:
                 frozen_mp += spell_mp_freeze(SPELL_DRAGON_FORM);

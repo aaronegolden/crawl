@@ -675,7 +675,7 @@ enum transformation_type
 #endif
     TRAN_FUNGUS,
     TRAN_SHADOW,
-    TRAN_HYDRA,
+    TRAN_DEVOURER,
     NUM_TRANSFORMS,
 };
 
@@ -4632,7 +4632,7 @@ enum spell_type : int
     SPELL_ICE_FORM,
     SPELL_DRAGON_FORM,
 #if TAG_MAJOR_VERSION > 34
-    SPELL_HYDRA_FORM,
+    SPELL_DEVOURER_FORM,
     SPELL_IRRADIATE,
 #endif
     SPELL_NECROMUTATION,
@@ -4900,7 +4900,7 @@ enum spell_type : int
 #endif
     SPELL_SUMMON_EMPEROR_SCORPIONS,
 #if TAG_MAJOR_VERSION == 34
-    SPELL_HYDRA_FORM,
+    SPELL_DEVOURER_FORM,
     SPELL_IRRADIATE,
 #endif
     SPELL_SPIT_LAVA,

@@ -1961,7 +1961,7 @@ int player_movement_speed()
         mv = 7;
     else if (you.form == TRAN_PORCUPINE)
         mv = 8;
-    else if (you.fishtail || you.form == TRAN_HYDRA && you.in_water())
+    else if (you.fishtail && you.in_water())
         mv = 6;
 
     // moving on liquefied ground takes longer
@@ -6247,8 +6247,7 @@ int player::res_water_drowning() const
     if (is_unbreathing()
         || species == SP_MERFOLK && !form_changed_physiology()
         || species == SP_OCTOPODE && !form_changed_physiology()
-        || form == TRAN_ICE_BEAST
-        || form == TRAN_HYDRA)
+        || form == TRAN_ICE_BEAST)
     {
         rw++;
     }
@@ -7258,7 +7257,7 @@ bool player::polymorph(int pow)
              20, TRAN_SPIDER,
              20, TRAN_ICE_BEAST,
               5, TRAN_STATUE,
-              2, TRAN_HYDRA,
+              2, TRAN_DEVOURER,
               1, TRAN_DRAGON);
         // need to do a dry run first, as Zin's protection has a random factor
         if (transform(pow, f, true, true))

@@ -1176,6 +1176,7 @@ tree_form TRAN_TREE
 %rim 0
 mushroom_form TRAN_MUSHROOM
 shadow_form TRAN_SHADOW
+devourer_form TRAN_DEVOURER
 %rim 1
 
 %sdir misc

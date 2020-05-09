@@ -573,43 +573,22 @@ bool melee_attack::handle_phase_aux()
  *
  * @param defender  The monster in question.
  */
-static void _hydra_devour(monster &victim)
+static void _devour(monster &victim)
 {
-    // what's the highest hunger level this lets the player get to?
-    const hunger_state_t max_hunger =
-        static_cast<hunger_state_t>(HS_SATIATED + player_likes_chunks());
-
-    // will eating this actually fill the player up?
-    const bool filling = !have_passive(passive_t::goldify_corpses)
-                          && you.get_mutation_level(MUT_HERBIVOROUS, false) < 3
-                          && you.hunger_state <= max_hunger
-                          && you.hunger_state < HS_ENGORGED;
-
-    mprf("You %sdevour %s!",
-         filling ? "hungrily " : "",
+    mprf("You devour %s!",
          victim.name(DESC_THE).c_str());
-
-    // give a clearer message for eating invisible things
-    if (!you.can_see(victim))
-    {
-        mprf("It tastes like %s.",
-             mons_type_name(mons_genus(victim.type), DESC_PLAIN).c_str());
-        // this could be the actual creature name, but it feels more
-        // 'flavourful' this way??
-        // feel free to just use the actual creature name if this has buggy
-        // edge cases or such
-    }
-    if (victim.has_ench(ENCH_STICKY_FLAME))
-        mprf("Spicy!");
 
     // healing
     if (!you.duration[DUR_DEATHS_DOOR])
     {
         const int healing = 1 + victim.get_experience_level() * 3 / 4
                               + random2(victim.get_experience_level() * 3 / 4);
+        int hp = you.hp;
         you.heal(healing);
         calc_hp();
-        canned_msg(MSG_GAIN_HEALTH);
+        if (you.hp > hp)
+            canned_msg(MSG_GAIN_HEALTH);
+        
         dprf("healed for %d (%d hd)", healing, victim.get_experience_level());
     }
 
@@ -622,29 +601,11 @@ static void _hydra_devour(monster &victim)
  *
  * @param defender  The defender in question.
  */
-static void _hydra_consider_devouring(monster &defender)
+static void _consider_devouring(monster &defender)
 {
     ASSERT(!crawl_state.game_is_arena());
 
     dprf("considering devouring");
-
-    // shapeshifters are mutagenic
-    if (defender.is_shapeshifter())
-    {
-        // handle this carefully, so the player knows what's going on
-        mprf("You spit out %s as %s twists & changes in your mouth!",
-             defender.name(DESC_THE).c_str(),
-             defender.pronoun(PRONOUN_SUBJECTIVE).c_str());
-        return;
-    }
-
-    dprf("shifter ok");
-
-    // or food that would incur divine penance...
-    if (god_hates_eating(you.religion, defender.type))
-        return;
-
-    dprf("god ok");
 
     // can't eat enemies that leave no corpses...
     if (!mons_class_can_leave_corpse(mons_species(defender.type))
@@ -657,7 +618,7 @@ static void _hydra_consider_devouring(monster &defender)
     dprf("corpse ok");
 
     // chow down.
-    _hydra_devour(defender);
+    _devour(defender);
 }
 
 /**
@@ -668,11 +629,11 @@ static void _hydra_consider_devouring(monster &defender)
  */
 bool melee_attack::handle_phase_killed()
 {
-    if (attacker->is_player() && you.form == TRAN_HYDRA
+    if (attacker->is_player() && you.form == TRAN_DEVOURER
         && defender->is_monster() // better safe than sorry
         && defender->type != MONS_NO_MONSTER) // already reset
     {
-        _hydra_consider_devouring(*defender->as_monster());
+        _consider_devouring(*defender->as_monster());
     }
 
     // Wyrmbane needs to be notified of deaths, including ones due to aux

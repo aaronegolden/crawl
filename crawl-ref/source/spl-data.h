@@ -1306,10 +1306,10 @@ static const struct spell_desc spelldata[] =
 },
 
 {
-    SPELL_HYDRA_FORM, "Hydra Form",
-    SPTYP_TRANSMUTATION,
+    SPELL_DEVOURER_FORM, "Devourer Form",
+    SPTYP_TRANSMUTATION | SPTYP_NECROMANCY,
     SPFLAG_HELPFUL | SPFLAG_CHAOTIC | SPFLAG_UTILITY,
-    6,
+    7,
     200,
     -1, -1,
     6, 0,

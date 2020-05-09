@@ -928,13 +928,13 @@ void set_hydra_form_heads(int heads)
     you.wield_change = true;
 }
 
-class FormHydra : public Form
+class FormDevourer : public Form
 {
 private:
-    FormHydra() : Form(TRAN_HYDRA) { }
-    DISALLOW_COPY_AND_ASSIGN(FormHydra);
+    FormDevourer() : Form(TRAN_DEVOURER) { }
+    DISALLOW_COPY_AND_ASSIGN(FormDevourer);
 public:
-    static const FormHydra &instance() { static FormHydra inst; return inst; }
+    static const FormDevourer &instance() { static FormDevourer inst; return inst; }
 
     /**
      * Get a string describing the form you're turning into.
@@ -1006,7 +1006,7 @@ static const Form* forms[] =
 #endif
     &FormFungus::instance(),
     &FormShadow::instance(),
-    &FormHydra::instance(),
+    &FormDevourer::instance(),
 };
 
 const Form* get_form(transformation_type form)
@@ -1143,7 +1143,7 @@ bool form_can_use_wand(transformation_type form)
 {
     return form_can_wield(form) || form == TRAN_DRAGON
         || form == TRAN_BLADE_HANDS || form == TRAN_ICE_BEAST
-        || form == TRAN_SPIDER || form == TRAN_HYDRA;
+        || form == TRAN_SPIDER || form == TRAN_DEVOURER;
 }
 
 // Used to mark forms which keep most form-based mutations.
@@ -1406,29 +1406,6 @@ static mutation_type appendages[] =
     MUT_MANA_TUSK,
 };
 
-static bool _slot_conflict(equipment_type eq)
-{
-    // Choose uncovered slots only. Melding could make people re-cast
-    // until they get something that doesn't conflict with their randart
-    // of überness.
-    if (you.equip[eq] != -1)
-    {
-        // Horns + hat is fine.
-        if (eq != EQ_HELMET
-            || you.melded[eq]
-            || is_hard_helmet(*(you.slot_item(eq))))
-        {
-            return true;
-        }
-    }
-
-    for (int mut = 0; mut < NUM_MUTATIONS; mut++)
-        if (you.has_mutation(static_cast<mutation_type>(mut)) && eq == beastly_slot(mut))
-            return true;
-
-    return false;
-}
-
 static mutation_type _beastly_appendage()
 {
     mutation_type chosen = NUM_MUTATIONS;
@@ -1641,13 +1618,6 @@ bool transform(int pow, transformation_type which_trans, bool involuntary,
             you.redraw_armour_class = true;
             // ^ could check more carefully for the exact cases, but I'm
             // worried about making the code too fragile
-
-            if (which_trans == TRAN_HYDRA)
-            {
-                const int heads = you.heads();
-                set_hydra_form_heads(1 + pow / 10);
-                print_head_change_message(heads, you.heads());
-            }
         }
 
         int dur = _transform_duration(which_trans, pow);
@@ -1737,9 +1707,6 @@ bool transform(int pow, transformation_type which_trans, bool involuntary,
     you.wield_change        = true;
     if (form_changed_physiology(which_trans))
         merfolk_stop_swimming();
-
-    if (which_trans == TRAN_HYDRA)
-        set_hydra_form_heads(1 + pow / 10);
 
     // Give the transformation message.
     mpr(get_form(which_trans)->transform_message(previous_trans));
