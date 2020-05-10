@@ -18,7 +18,9 @@ static int mapgrd_get(lua_State *ls)
 {
     // Return a metatable for this column in the map grid.
     map_def *map = *(map_def **) luaL_checkudata(ls, 1, MAPGRD_METATABLE);
-
+    if (!map)
+        return 0;
+    
     int column = luaL_checkint(ls, 2);
 
     mapcolumn *mapref = clua_new_userdata<mapcolumn>(ls, MAPGRD_COL_METATABLE);

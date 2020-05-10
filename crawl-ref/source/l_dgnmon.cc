@@ -32,7 +32,7 @@ static mons_list _lua_get_mlist(lua_State *ls, int ndx)
     {
         mons_list **mlist =
         clua_get_userdata<mons_list*>(ls, MONSLIST_METATABLE, ndx);
-        if (mlist)
+        if (mlist && *mlist)
             return **mlist;
 
         luaL_argerror(ls, ndx, "Expected monster list object or string");
@@ -65,7 +65,11 @@ static int dgn_set_random_mon_list(lua_State *ls)
     {
         map_def **_map =
         clua_get_userdata<map_def*>(ls, MAP_METATABLE, 1);
-        map = *_map;
+        if (!_map || !*_map)
+        {
+            luaL_error(ls, "Invalid map object");
+            return 0;
+        }
     }
 
     int       list_pos = (map != nullptr) ? 2 : 1;
