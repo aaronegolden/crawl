@@ -1593,8 +1593,8 @@ static set<spell_type> _vehumet_eligible_gift_spells(set<spell_type> excluded_sp
     if (gifts >= NUM_VEHUMET_GIFTS)
         return eligible_spells;
 
-    const int min_lev[] = {3,3,3,3,4,4,4,5,5,6,6,7,9};
-    const int max_lev[] = {3,3,4,5,6,7,7,7,7,8,8,8,9};
+    const int min_lev[] = {3,3,4,5,6,7,9};
+    const int max_lev[] = {3,4,6,7,8,8,9};
     COMPILE_CHECK(ARRAYSZ(min_lev) == NUM_VEHUMET_GIFTS);
     COMPILE_CHECK(ARRAYSZ(max_lev) == NUM_VEHUMET_GIFTS);
     int min_level = min_lev[gifts];
@@ -1632,7 +1632,7 @@ static set<spell_type> _vehumet_eligible_gift_spells(set<spell_type> excluded_sp
         {
             // This is quite improbable to happen, but in this case just
             // skip the gift and increment the gift counter.
-            if (gifts <= 12)
+            if (gifts <= 6)
             {
                 you.num_current_gifts[you.religion]++;
                 you.num_total_gifts[you.religion]++;
@@ -1668,7 +1668,7 @@ static spell_type _vehumet_find_spell_gift(set<spell_type> excluded_spells)
 static set<spell_type> _vehumet_get_spell_gifts()
 {
     set<spell_type> offers;
-    unsigned int num_offers = you.num_total_gifts[you.religion] == 12 ? 3 : 1;
+    unsigned int num_offers = you.num_total_gifts[you.religion] == 6 ? 3 : 1;
     while (offers.size() < num_offers)
     {
         spell_type offer = _vehumet_find_spell_gift(offers);
@@ -1881,9 +1881,9 @@ bool do_god_gift(bool forced)
             const int gifts = you.num_total_gifts[you.religion];
             if (forced || !you.duration[DUR_VEHUMET_GIFT]
                           && (you.piety >= piety_breakpoint(0) && gifts == 0
-                              || you.piety >= piety_breakpoint(0) + random2(6) + 18 * gifts && gifts <= 5
-                              || you.piety >= piety_breakpoint(4) && gifts <= 11 && one_chance_in(20)
-                              || you.piety >= piety_breakpoint(5) && gifts <= 12 && one_chance_in(20)))
+                              || you.piety >= piety_breakpoint(0) + random2(6) + 27 * gifts && gifts <= 3
+                              || you.piety >= piety_breakpoint(4) && gifts <= 5 && one_chance_in(20)
+                              || you.piety >= piety_breakpoint(5) && gifts <= 6 && one_chance_in(20)))
             {
                 set<spell_type> offers = _vehumet_get_spell_gifts();
                 if (!offers.empty())
