@@ -37,11 +37,12 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Summonings
     SPELL_SUMMON_MANA_VIPER,
     SPELL_SUMMON_FOREST,
+    SPELL_SUMMON_HYDRA,
 },
 
 {   // Book of Fire
-    SPELL_DETONATE,
     SPELL_STARBURST,
+    SPELL_FIERY_DISJUNCTION,
     SPELL_IGNITION,
 },
 
@@ -52,6 +53,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Spatial Translocations
+    SPELL_PHASE_BUG,
     SPELL_BECKONING,
     SPELL_BLINK,
     SPELL_GOLUBRIAS_PASSAGE,
@@ -59,7 +61,6 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Enchantments
     SPELL_CAUSE_FEAR,
-    SPELL_VIOLENT_UNRAVELLING,
     SPELL_DEFLECT_MISSILES,
     SPELL_DISCORD,
     SPELL_HASTE,
@@ -72,8 +73,6 @@ static const vector<spell_type> spellbook_templates[] =
 #endif
 
 {   // Book of the Tempests
-    SPELL_DISCHARGE,
-    SPELL_ELECTRIC_SURGE,
     SPELL_IGNITION,
     SPELL_TORNADO,
     SPELL_SHATTER,
@@ -82,6 +81,7 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Death
     SPELL_AFFLICTION,
     SPELL_EXCRUCIATING_WOUNDS,
+    SPELL_DEATH_CHANNEL,
 },
 
 {   // Book of Misfortune
@@ -100,16 +100,14 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Transfigurations
-    SPELL_WARP_GRAVITY,
     SPELL_STATUE_FORM,
-    SPELL_DEVOURER_FORM,
     SPELL_DRAGON_FORM,
+    SPELL_DEVOURER_FORM,
 },
 
 {   // Fen Folio
     SPELL_SUMMON_FOREST,
     SPELL_LEDAS_LIQUEFACTION,
-    SPELL_DEVOURER_FORM,
     SPELL_SUMMON_HYDRA,
 },
 
@@ -117,7 +115,6 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Battle
     SPELL_BEASTLY_APPENDAGE,
     SPELL_SONG_OF_SLAYING,
-    SPELL_REGENERATION,
     SPELL_OZOCUBUS_ARMOUR,
     SPELL_SPECTRAL_WEAPON,
 },
@@ -138,7 +135,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_PHASE_BUG,
     SPELL_CALL_IMP,
     SPELL_ICE_STATUE,
-    SPELL_AMBULATORY_BOMB,
     SPELL_SUMMON_LIGHTNING_SPIRE,
 },
 
@@ -150,7 +146,7 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Book of Air
-    SPELL_SHOCK,
+    SPELL_BECKONING,
     SPELL_DISCHARGE,
 	SPELL_MEPHITIC_CLOUD,
     SPELL_ELECTRIC_SURGE,
@@ -178,6 +174,7 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Unlife
     SPELL_ANIMATE_DEAD,
+    SPELL_EXCRUCIATING_WOUNDS,
     SPELL_CIGOTUVIS_EMBRACE,
     SPELL_DEATH_CHANNEL,
 },
@@ -214,7 +211,6 @@ static const vector<spell_type> spellbook_templates[] =
 {   // Book of Wizardry
     SPELL_FORCE_QUAKE,
     SPELL_AFFLICTION,
-    SPELL_INVISIBILITY,
     SPELL_HASTE,
 },
 #endif
@@ -229,12 +225,14 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Cantrips
     SPELL_BEASTLY_APPENDAGE,
+    SPELL_DISTRACTING_TOUCH,
     SPELL_PHASE_BUG,
 },
 
 {   // Book of Party Tricks
     SPELL_BECKONING,
-    SPELL_INVISIBILITY
+    SPELL_AMBULATORY_BOMB,
+    SPELL_INVISIBILITY,
 },
 
 #if TAG_MAJOR_VERSION == 34
@@ -245,6 +243,7 @@ static const vector<spell_type> spellbook_templates[] =
 #endif
 
 {   // Book of Arcane Marksmanship
+    SPELL_SONG_OF_SLAYING,
     SPELL_BLINK,
     SPELL_PORTAL_PROJECTILE,
     SPELL_CAUSE_FEAR,
@@ -265,10 +264,12 @@ static const vector<spell_type> spellbook_templates[] =
 
 {   // Book of Dreams
     SPELL_HIBERNATION,
+    SPELL_WARP_GRAVITY,
     SPELL_INVISIBILITY,
 },
 
 {   // Book of Alchemy
+    SPELL_DAZZLING_FLASH,
     SPELL_GORGONS_GAZE,
     SPELL_WARP_GRAVITY,
 },
@@ -287,11 +288,12 @@ static const vector<spell_type> spellbook_templates[] =
 },
 
 {   // Grand Grimoire
+    SPELL_GHOSTLY_LEGION,
     SPELL_ELDRITCH_ICHOR,
 },
 
 {   // Necronomicon
-    SPELL_GHOSTLY_LEGION,
+    SPELL_DEVOURER_FORM,
     SPELL_INFESTATION,
     SPELL_BORGNJORS_REVIVIFICATION,
     SPELL_DEATHS_DOOR,
