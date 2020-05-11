@@ -3799,31 +3799,32 @@ void get_monster_db_desc(const monster_info& mi, describe_info &inf,
         inf.body << "\n";
     }
 
-    if (mi.is(MB_SUMMONED))
+    if (mi.is(MB_SUMMONED) || mi.is(MB_PERM_SUMMON))
     {
-        inf.body << "\nThis monster has been summoned, and is thus only "
-                    "temporary. Killing " << it_o << " yields no experience, "
-                    "nutrition or items";
+        inf.body << "\nThis monster has been summoned"
+                 << (mi.is(MB_SUMMONED) ? ", and is thus only temporary. "
+                                        : " in a durable way. ");
+                    
+        if (!mi.pos.origin() && monster_at(mi.pos)
+                                && monster_at(mi.pos)->angered_by_attacks()
+                                && mi.attitude == ATT_FRIENDLY)
+        {
+            inf.body << "If angered " << it_o
+                                      << " will immediately vanish, yielding ";                         
+        }
+        else
+            inf.body << "Killing " << it_o << " yields ";
+        inf.body << "no experience.";
+        
         if (!stair_use)
-            inf.body << ", and " << it << " is incapable of using stairs";
-        inf.body << ".\n";
-    }
-    else if (mi.is(MB_PERM_SUMMON))
-    {
-        inf.body << "\nThis monster has been summoned in a durable way. "
-                    "Killing " << it_o << " yields no experience, nutrition "
-                    "or items, but " << it_o << " cannot be abjured.\n";
+            inf.body << "; " << it << " is incapable of using stairs";
+
+        if (mi.is(MB_PERM_SUMMON))
+            inf.body << ", and " << it << " cannot be abjured";
     }
     else if (mi.is(MB_NO_REWARD))
     {
-        inf.body << "\nKilling this monster yields no experience, nutrition or"
-                    " items.";
-    }
-    else if (mons_class_leaves_hide(mi.type))
-    {
-        inf.body << "\nIf " << it << " is slain, it may be possible to "
-                    "recover " << mi.pronoun(PRONOUN_POSSESSIVE)
-                 << " hide, which can be used as armour.\n";
+        inf.body << "\nKilling this monster yields no experience.";
     }
 
     if (mi.is(MB_SUMMONED_CAPPED))

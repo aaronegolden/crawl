@@ -4995,6 +4995,12 @@ bool monster::can_go_frenzy() const
     if (!mons_has_attacks(*this))
         return false;
 
+    if (mons_is_hepliaklqana_ancestor(type)
+        || testbits(flags, MF_DEMONIC_GUARDIAN))
+    {
+        return false;
+    }
+
     return true;
 }
 
@@ -6515,5 +6521,6 @@ bool monster::angered_by_attacks() const
             && type != MONS_SPELLFORGED_SERVITOR
             && !testbits(flags, MF_DEMONIC_GUARDIAN)
             && !mons_is_hepliaklqana_ancestor(type)
+            && !mons_is_conjured(type)
             && !testbits(flags, MF_ENSLAVED_SOUL);
 }
