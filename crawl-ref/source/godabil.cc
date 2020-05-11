@@ -1437,39 +1437,37 @@ void elyvilon_remove_divine_vigour()
 bool vehumet_supports_spell(spell_type spell)
 {
     // Vehumet loves all direct physical destruction.
-    if (spell == SPELL_SHATTER
-        || spell == SPELL_LRD
-        || spell == SPELL_SANDBLAST
-        || spell == SPELL_TORNADO
-        || spell == SPELL_FREEZE
-        || spell == SPELL_WINTERS_EMBRACE
-        || spell == SPELL_VIOLENT_UNRAVELLING
-        || spell == SPELL_IGNITION
-        || spell == SPELL_CONJURE_FLAME      
-        || spell == SPELL_STARBURST
-        || spell == SPELL_FREEZING_CLOUD
-        || spell == SPELL_MEPHITIC_CLOUD
-        || spell == SPELL_FIRE_STORM
-        || spell == SPELL_IRON_SHOT
-        || spell == SPELL_HAILSTORM
-        || spell == SPELL_FOXFIRE
-        || spell == SPELL_DISCHARGE
-        || spell == SPELL_CONJURE_BALL_LIGHTNING
-        || spell == SPELL_CHAIN_LIGHTNING
-        || spell == SPELL_BATTLESPHERE
-        || spell == SPELL_FORCE_LANCE
-        || spell == SPELL_SPELLFORGED_SERVITOR
-        || spell == SPELL_IRRADIATE
-        || spell == SPELL_SHOCK
-        || spell == SPELL_IOOD
-        || spell == SPELL_DETONATE
-        || spell == SPELL_ABSOLUTE_ZERO
-        || spell == SPELL_ELECTRIC_SURGE
-        || spell == SPELL_AMBULATORY_BOMB)
+    if (spell == SPELL_SHOCK
+            || spell == SPELL_CONJURE_FLAME
+            || spell == SPELL_DISCHARGE
+            || spell == SPELL_MEPHITIC_CLOUD
+            || spell == SPELL_ELECTRIC_SURGE
+            || spell == SPELL_FREEZING_CLOUD
+            || spell == SPELL_CONJURE_BALL_LIGHTNING
+            || spell == SPELL_CHAIN_LIGHTNING
+            || spell == SPELL_TORNADO
+            || spell == SPELL_SANDBLAST
+            || spell == SPELL_FORCE_QUAKE
+            || spell == SPELL_STONE_SHARDS
+            || spell == SPELL_WARP_GRAVITY
+            || spell == SPELL_IOOD
+            || spell == SPELL_SHATTER
+            || spell == SPELL_FOXFIRE
+            || spell == SPELL_AMBULATORY_BOMB
+            || spell == SPELL_DETONATE
+            || spell == SPELL_VIOLENT_UNRAVELLING
+            || spell == SPELL_STARBURST
+            || spell == SPELL_IGNITION
+            || spell == SPELL_PYROCLASM
+            || spell == SPELL_FREEZE
+            || spell == SPELL_HAILSTORM
+            || spell == SPELL_WINTERS_EMBRACE
+            || spell == SPELL_ABSOLUTE_ZERO
+            || spell == SPELL_BATTLESPHERE)
     {
         return true;
     }
-
+    
     return false;
 }
 
