@@ -514,16 +514,12 @@ struct item_def
         monster_type mon_type:16;   ///< corpse/chunk monster type
         skill_type skill:16;        ///< the skill provided by a manual
         short charges;              ///< # of charges held by a wand, etc
-        short initial_cards;        ///< the # of cards a deck *started* with
         short net_durability;       ///< damage dealt to a net
     };
     union
     {
         // These must all be the same size!
         short plus2;        ///< legacy/generic name for this union
-        short used_count;   ///< the # of known times it was used (decks, wands)
-                            // for wands, may hold negative ZAPCOUNT knowledge
-                            // info (e.g. "recharged", "empty", "unknown")
         short net_placed;   ///< is this throwing net trapping something?
         short skill_points; ///< # of skill points a manual gives
         short stash_freshness; ///< where stash.cc stores corpse freshness
@@ -534,7 +530,6 @@ struct item_def
         // These must all be the same size!
         int special;            ///< legacy/generic name
         int unrand_idx;         ///< unrandart index (for get_unrand_entry)
-        deck_rarity_type deck_rarity;    ///< plain, ornate, legendary
         uint32_t subtype_rnd;   ///< appearance of un-ID'd items, by subtype.
                                 /// jewellery, scroll, staff, wand, potions
                                 // see comment in item_colour()

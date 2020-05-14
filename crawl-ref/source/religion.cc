@@ -178,8 +178,11 @@ const vector<god_power> god_powers[NUM_GODS] =
     },
 
     // Nemelex
-    { { 3, ABIL_NEMELEX_TRIPLE_DRAW, "choose one out of three cards" },
+    { { 0, "draw from decks of power" },
+      { 3, ABIL_NEMELEX_TRIPLE_DRAW, "choose one out of three cards" },
       { 4, ABIL_NEMELEX_DEAL_FOUR, "deal four cards at a time" },
+      { 5, ABIL_NEMELEX_STACK_FIVE, "stack five cards from your decks",
+                                    "stack cards" },
     },
 
     // Elyvilon
@@ -909,50 +912,23 @@ static bool _need_missile_gift(bool forced)
 
 static bool _give_nemelex_gift(bool forced = false)
 {
-    // But only if you're not flying over deep water.
-    if (!(feat_has_solid_floor(grd(you.pos()))
-          || feat_is_watery(grd(you.pos())) && species_likes_water(you.species)))
-    {
-        return false;
-    }
-
     // Nemelex will give at least one gift early.
     if (forced
         || !you.num_total_gifts[GOD_NEMELEX_XOBEH]
            && x_chance_in_y(you.piety + 1, piety_breakpoint(1))
         || one_chance_in(3) && x_chance_in_y(you.piety + 1, MAX_PIETY))
     {
-
-        misc_item_type gift_type = random_choose_weighted(
-                                        5, MISC_DECK_OF_DESTRUCTION,
-                                        4, MISC_DECK_OF_SUMMONING,
-                                        2, MISC_DECK_OF_ESCAPE);
-
-        int thing_created = items(true, OBJ_MISCELLANY, gift_type, 1, 0,
-                                  GOD_NEMELEX_XOBEH);
-
-        if (thing_created != NON_ITEM)
+       if (gift_cards())
         {
-            const deck_rarity_type rarity = DECK_RARITY_RARE;
-
-            item_def &deck(mitm[thing_created]);
-
-            deck.deck_rarity = rarity;
-            deck.flags |= ISFLAG_KNOW_TYPE;
-
-            simple_god_message(" grants you a gift!");
-            if(move_item_to_inv(deck))
-            {
-				_inc_gift_timeout(5 + random2avg(6, 2));
-				you.num_current_gifts[you.religion]++;
-				you.num_total_gifts[you.religion]++;
-				take_note(Note(NOTE_GOD_GIFT, you.religion));
-			}
-			else
-				mprf("...but your inventory is too cluttered to receive it.");
+            simple_god_message(" deals you some cards!");
+            mprf(MSGCH_GOD, "You now have %s", deck_summary().c_str());
         }
-		
-		destroy_item(thing_created);
+        else
+            simple_god_message(" goes to deal, but finds you have enough cards.");
+        _inc_gift_timeout(5 + random2avg(9, 2));
+        you.num_current_gifts[you.religion]++;
+        you.num_total_gifts[you.religion]++;
+        take_note(Note(NOTE_GOD_GIFT, you.religion));
         return true;
     }
 
@@ -1938,7 +1914,7 @@ bool do_god_gift(bool forced)
     }                           // End of gift giving.
 
     if (success)
-        you.running.stop();
+        stop_running(false);
 
 #if defined(DEBUG_DIAGNOSTICS) || defined(DEBUG_GIFTS)
     if (old_num_current_gifts < you.num_current_gifts[you.religion])
@@ -2680,7 +2656,9 @@ void excommunication(bool voluntary, god_type new_god)
         break;
 
     case GOD_NEMELEX_XOBEH:
-        nemelex_shuffle_decks();
+        reset_cards();
+        mprf(MSGCH_GOD, old_god, "Your access to %s's decks is revoked.",
+             god_name(old_god).c_str());
         _set_penance(old_god, 150); // Nemelex penance is special
         break;
 

@@ -24,7 +24,9 @@ enum object_selector
     OSEL_RECHARGE                =  -5,
     OSEL_ENCHANTABLE_ARMOUR      =  -6,
     OSEL_BEOGH_GIFT              =  -7,
+#if TAG_MAJOR_VERSION == 34
     OSEL_DRAW_DECK               =  -8,
+#endif
     OSEL_THROWABLE               =  -9,
     OSEL_EVOKABLE                = -10,
     OSEL_WORN_ARMOUR             = -11,

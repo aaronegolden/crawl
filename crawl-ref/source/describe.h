@@ -11,6 +11,7 @@
 #include <string>
 
 #include "enum.h"
+#include "decks.h"
 #include "mon-util.h"
 
 struct monster_info;
@@ -98,7 +99,7 @@ int str_to_trap(const string &s);
 int count_desc_lines(const string& _desc, const int width);
 
 string extra_cloud_info(cloud_type cloud_type);
-
+string describe_deck(deck_type deck);
 
 class alt_desc_proc
 {

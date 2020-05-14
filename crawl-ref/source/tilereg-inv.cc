@@ -421,25 +421,10 @@ bool InventoryRegion::update_tip_text(string& tip)
                 }
                 break;
             case OBJ_MISCELLANY:
-                if (item.sub_type >= MISC_FIRST_DECK
-                    && item.sub_type <= MISC_LAST_DECK)
-                {
-                    _handle_wield_tip(tmp, cmd);
-                    break;
-                }
                 tmp += "Evoke (V)";
                 cmd.push_back(CMD_EVOKE);
                 break;
             case OBJ_MISCELLANY + EQUIP_OFFSET:
-                if (item.sub_type >= MISC_FIRST_DECK
-                    && item.sub_type <= MISC_LAST_DECK)
-                {
-                    tmp += "Draw a card (%)";
-                    cmd.push_back(CMD_EVOKE_WIELDED);
-                    _handle_wield_tip(tmp, cmd, "\n[Ctrl + L-Click] ", true);
-                    break;
-                }
-                // else fall-through
             case OBJ_RODS + EQUIP_OFFSET:
                 tmp += "Evoke (%)";
                 cmd.push_back(CMD_EVOKE_WIELDED);
@@ -640,8 +625,7 @@ static void _fill_item_info(InventoryTile &desc, const item_info &item)
         desc.quantity = (item.quantity == 1) ? -1 : item.quantity;
     }
     else if (type == OBJ_WANDS
-             && ((item.flags & ISFLAG_KNOW_PLUSES)
-                 || item.used_count == ZAPCOUNT_EMPTY))
+             && (item.flags & ISFLAG_KNOW_PLUSES))
     {
         desc.quantity = item.charges;
     }

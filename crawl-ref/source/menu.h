@@ -274,6 +274,7 @@ enum MenuFlag
     MF_QUIET_SELECT     = 0x8000,   ///< No selection box and no count.
 
     MF_USE_TWO_COLUMNS  = 0x10000,  ///< Only valid for tiles menus
+    MF_UNCANCEL         = 0x20000,  ///< Menu is uncancellable
 };
 
 class MenuDisplay;

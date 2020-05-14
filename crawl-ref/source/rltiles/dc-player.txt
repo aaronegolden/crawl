@@ -752,7 +752,6 @@ fan FAN
 bottle BOTTLE
 box BOX
 crystal CRYSTAL
-deck DECK
 disc DISC
 horn HORN
 lantern LANTERN

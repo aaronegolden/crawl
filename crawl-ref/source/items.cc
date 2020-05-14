@@ -30,7 +30,6 @@
 #include "coordit.h"
 #include "dactions.h"
 #include "dbg-util.h"
-#include "decks.h"
 #include "defines.h"
 #include "delay.h"
 #include "describe.h"
@@ -1504,10 +1503,7 @@ bool is_stackable_item(const item_def &item)
     if (item.is_type(OBJ_MISCELLANY, MISC_PHANTOM_MIRROR)
         || item.is_type(OBJ_MISCELLANY, MISC_ZIGGURAT)
         || item.is_type(OBJ_MISCELLANY, MISC_SACK_OF_SPIDERS)
-        || item.is_type(OBJ_MISCELLANY, MISC_BOX_OF_BEASTS)
-	    || item.is_type(OBJ_MISCELLANY, MISC_DECK_OF_DESTRUCTION)
-		|| item.is_type(OBJ_MISCELLANY, MISC_DECK_OF_ESCAPE)
-		|| item.is_type(OBJ_MISCELLANY, MISC_DECK_OF_SUMMONING))
+        || item.is_type(OBJ_MISCELLANY, MISC_BOX_OF_BEASTS))
     {
         return true;
     }
@@ -1591,17 +1587,10 @@ void merge_item_stacks(const item_def &source, item_def &dest, int quant)
 		if(source.charges >0)
 		{
 			//it's otherwise treated as empty despite having charges
-			dest.used_count = 0;
+			dest.plus2 = 0;
 			dest.charges += source.charges;
 		}
     }
-	if ((source.is_type(OBJ_MISCELLANY, MISC_DECK_OF_DESTRUCTION) && dest.is_type(OBJ_MISCELLANY, MISC_DECK_OF_DESTRUCTION))
-	    || (source.is_type(OBJ_MISCELLANY, MISC_DECK_OF_ESCAPE) && dest.is_type(OBJ_MISCELLANY, MISC_DECK_OF_ESCAPE))
-	    || (source.is_type(OBJ_MISCELLANY, MISC_DECK_OF_SUMMONING) && dest.is_type(OBJ_MISCELLANY, MISC_DECK_OF_SUMMONING)))
-    {
-		merge_decks(source, dest);
-		dest.used_count = -cards_in_deck(dest);
-	}
     if (is_perishable_stack(source) && is_perishable_stack(dest))
         merge_perishable_stacks(source, dest, quant);
 }
@@ -1968,33 +1957,21 @@ static bool _merge_stackable_item_into_inv(const item_def &it, int quant_got,
 		
         merge_item_stacks(it, you.inv[inv_slot], quant_got);
 		
-		if (it.base_type != OBJ_WANDS && !is_deck(it))
+		if (it.base_type != OBJ_WANDS)
 		{
 			inc_inv_item_quantity(inv_slot, quant_got);
-		}
-		if(is_deck(it))
-		{
-			you.inv[inv_slot].used_count = -cards_in_deck(you.inv[inv_slot]);
 		}
 		
 		you.last_pickup[inv_slot] = quant_got;
 
         if (!quiet)
         {
-			if(!is_deck(it))
-			{
-				mprf_nocap("%s (gained %d%s)",
-                        get_menu_colour_prefix_tags(you.inv[inv_slot],
-                                                    DESC_INVENTORY).c_str(),
-                        quant,
-						it.base_type == OBJ_WANDS ? " charges" : "");
-			}
-			else
-			{
-				mprf_nocap("%s",
-				        get_menu_colour_prefix_tags(you.inv[inv_slot],
-                                                    DESC_INVENTORY).c_str());
-			}
+            mprf_nocap("%s (gained %d%s)",
+                get_menu_colour_prefix_tags(you.inv[inv_slot],
+                DESC_INVENTORY).c_str(),
+                quant,
+                it.base_type == OBJ_WANDS ? " charges" : "");
+			
         }
 
         return true;
@@ -2088,10 +2065,7 @@ static int _place_item_in_free_slot(item_def &it, int quant_got,
     item.flags &= ~ISFLAG_UNOBTAINABLE;
 
     god_id_item(item);
-    if (item.base_type == OBJ_WANDS
-	    || item.is_type(OBJ_MISCELLANY, MISC_DECK_OF_DESTRUCTION)
-		|| item.is_type(OBJ_MISCELLANY, MISC_DECK_OF_ESCAPE)
-		|| item.is_type(OBJ_MISCELLANY, MISC_DECK_OF_SUMMONING))
+    if (item.base_type == OBJ_WANDS)
     {
 		item.quantity = 1;
         set_ident_type(item, true);
@@ -2282,7 +2256,7 @@ bool move_item_to_grid(int *const obj, const coord_def& p, bool silent)
                 // of obj, while returning the found item. -- bwr
                 merge_item_stacks(item, *si);
 				
-				if (item.base_type != OBJ_WANDS && !is_deck(item))
+				if (item.base_type != OBJ_WANDS)
 					inc_mitm_item_quantity(si->index(), item.quantity);
 				
                 destroy_item(ob);
@@ -2381,7 +2355,7 @@ bool copy_item_to_grid(item_def &item, const coord_def& p,
     if (!silenced(p) && !silent)
         feat_splash_noise(grd(p));
 
-    if (feat_destroys_items(grd(p)) || is_deck(item))
+    if (feat_destroys_items(grd(p)))
     {
         if (item_is_spellbook(item))
             destroy_spellbook(item);
@@ -2592,10 +2566,6 @@ bool drop_item(int item_dropped, int quant_drop)
     }
 
     ASSERT(item.defined());
-
-	bool deck = false;
-	if(is_deck(item))
-		deck = true;
 	
     if (!copy_item_to_grid(item, you.pos(), quant_drop, true, true))
     {
@@ -2619,12 +2589,7 @@ bool drop_item(int item_dropped, int quant_drop)
     }
 
     dec_inv_item_quantity(item_dropped, quant_drop);
-	
-	if (deck)
-	{
-		mprf("Nemelex Xobeh reclaims the deck.");
-	}
-	
+    
     you.turn_is_over = true;
 
     you.last_pickup.erase(item_dropped);
@@ -2820,12 +2785,6 @@ static void _autoinscribe_item(item_def& item)
         else
             item.inscription = old_inscription + ", " + item.inscription;
     }
-	
-	if (is_deck(item))
-	{
-		item.inscription += "!d";
-	}
-
 }
 
 static void _autoinscribe_floor_items()
@@ -3156,9 +3115,6 @@ static bool _interesting_explore_pickup(const item_def& item)
         return _item_different_than_inv(item, _edible_food);
 
     case OBJ_MISCELLANY:
-        // Decks always start out unidentified.
-        if (is_deck(item))
-            return true;
 
         // Intentional fall-through.
     case OBJ_SCROLLS:
@@ -3943,9 +3899,6 @@ colour_t item_def::miscellany_colour() const
 {
     ASSERT(base_type == OBJ_MISCELLANY);
 
-    if (is_deck(*this, true))
-        return deck_rarity_to_colour(deck_rarity);
-
     switch (sub_type)
     {
         case MISC_FAN_OF_GALES:
@@ -4233,151 +4186,6 @@ static void _rune_from_specs(const char* _specs, item_def &item)
     }
 }
 
-static void _deck_from_specs(const char* _specs, item_def &item,
-                             bool create_for_real)
-{
-    string specs    = _specs;
-    string type_str = "";
-
-    trim_string(specs);
-
-    if (specs.find(" of ") != string::npos)
-    {
-        type_str = specs.substr(specs.find(" of ") + 4);
-
-        if (type_str.find("card") != string::npos
-            || type_str.find("deck") != string::npos)
-        {
-            type_str = "";
-        }
-
-        trim_string(type_str);
-    }
-
-    item.deck_rarity = DECK_RARITY_COMMON;
-    item.sub_type    = MISC_DECK_UNKNOWN;
-
-    if (!type_str.empty())
-    {
-        for (auto type : deck_types)
-        {
-            item.sub_type = type;
-            item.initial_cards = 1;
-            init_deck(item);
-            // Remove "plain " from front.
-            string name = item.name(DESC_PLAIN).substr(6);
-            item.props.clear();
-
-            if (name.find(type_str) != string::npos)
-                break;
-        }
-    }
-
-    if (item.sub_type == MISC_DECK_UNKNOWN && !create_for_real)
-    {
-        // bail
-        item.base_type = OBJ_UNASSIGNED;
-        return;
-    }
-
-    while (item.sub_type == MISC_DECK_UNKNOWN)
-    {
-        mprf(MSGCH_PROMPT, "[a] escape [b] destruction [c] summoning? "
-                           "(ESC to exit)");
-
-        const int keyin = toalower(get_ch());
-
-        if (key_is_escape(keyin) || keyin == ' '
-            || keyin == '\r' || keyin == '\n')
-        {
-            canned_msg(MSG_OK);
-            item.base_type = OBJ_UNASSIGNED;
-            return;
-        }
-
-        static const map<char, misc_item_type> deckmap =
-        {
-            { 'a', MISC_DECK_OF_ESCAPE },
-            { 'b', MISC_DECK_OF_DESTRUCTION },
-            { 'c', MISC_DECK_OF_SUMMONING },
-        };
-
-        const misc_item_type *deck_type = map_find(deckmap, keyin);
-        if (deck_type)
-            item.sub_type = *deck_type;
-    }
-
-    const char* rarities[] =
-    {
-        "plain",
-        "ornate",
-        "legendary",
-        nullptr
-    };
-
-    int rarity_val = -1;
-
-    for (int i = 0; rarities[i] != nullptr; ++i)
-        if (specs.find(rarities[i]) != string::npos)
-        {
-            rarity_val = i;
-            break;
-        }
-
-    if (rarity_val == -1 && !create_for_real)
-        rarity_val = 0;
-
-    if (rarity_val == -1)
-    {
-        while (true)
-        {
-            mprf(MSGCH_PROMPT, "[a] plain [b] ornate [c] legendary? (ESC to exit)");
-
-            int keyin = toalower(get_ch());
-
-            if (key_is_escape(keyin) || keyin == ' '
-                || keyin == '\r' || keyin == '\n')
-            {
-                canned_msg(MSG_OK);
-                item.base_type = OBJ_UNASSIGNED;
-                return;
-            }
-
-            switch (keyin)
-            {
-            case 'p': keyin = 'a'; break;
-            case 'o': keyin = 'b'; break;
-            case 'l': keyin = 'c'; break;
-            }
-
-            if (keyin < 'a' || keyin > 'c')
-                continue;
-
-            rarity_val = keyin - 'a';
-            break;
-        }
-    }
-
-    const deck_rarity_type rarity =
-        static_cast<deck_rarity_type>(DECK_RARITY_COMMON + rarity_val);
-    item.deck_rarity = rarity;
-
-    const int num_cards =
-        create_for_real ? prompt_for_int("How many cards? ", false)
-                        : 1;
-
-    if (num_cards <= 0)
-    {
-        canned_msg(MSG_OK);
-        item.base_type = OBJ_UNASSIGNED;
-        return;
-    }
-
-    item.initial_cards = num_cards;
-
-    init_deck(item);
-}
-
 static bool _book_from_spell(const char* specs, item_def &item)
 {
     spell_type type = spell_by_name(specs, true);
@@ -4414,16 +4222,6 @@ bool get_item_by_name(item_def *item, const char* specs,
     item->quantity  = 1;
     // Don't use set_ident_flags(), to avoid getting a spurious ID note.
     item->flags    |= ISFLAG_IDENT_MASK;
-
-    if (class_wanted == OBJ_MISCELLANY
-        && (strstr(specs, "deck") || strstr(specs, "card")))
-    {
-        _deck_from_specs(specs, *item, create_for_real);
-
-        // deck creation cancelled, clean up item->
-        if (item->base_type == OBJ_UNASSIGNED)
-            return false;
-    }
 
     if (class_wanted == OBJ_RUNES && strstr(specs, "rune"))
     {
@@ -4656,18 +4454,7 @@ bool get_item_by_exact_name(item_def &item, const char* name)
 
         item.base_type = static_cast<object_class_type>(i);
         item.sub_type = 0;
-
-        // _deck_from_specs doesn't use exact matches, but it's close enough
-        if (item.base_type == OBJ_MISCELLANY && starts_with(name_lc, "deck of"))
-        {
-            _deck_from_specs(name, item, false);
-
-            // deck creation cancelled, clean up item.
-            if (item.base_type == OBJ_UNASSIGNED)
-                return false;
-            return item.sub_type != 0;
-        }
-
+        
         if (!item.sub_type)
         {
             for (int j = 0; j < get_max_subtype(item.base_type); ++j)
@@ -4785,7 +4572,7 @@ item_info get_item_info(const item_def& item)
         ii.subtype_rnd = item.subtype_rnd;
         if (item_ident(ii, ISFLAG_KNOW_PLUSES))
             ii.charges = item.charges;
-        ii.used_count = item.used_count; // num zapped/recharged or empty
+        ii.plus2 = item.plus2; // num zapped/recharged or empty
         break;
     case OBJ_POTIONS:
         if (item_type_known(item))
@@ -4842,61 +4629,7 @@ item_info get_item_info(const item_def& item)
         ii.subtype_rnd = item.subtype_rnd;
         break;
     case OBJ_MISCELLANY:
-        if (item_type_known(item))
-            ii.sub_type = item.sub_type;
-        else
-        {
-            if (item.sub_type >= MISC_FIRST_DECK
-                 && item.sub_type <= MISC_LAST_DECK)
-            {
-                // Needs to be changed if we add other miscellaneous items
-                // that can be non-identified.
-                ii.sub_type = MISC_DECK_UNKNOWN;
-            }
-            else
-                ii.sub_type = item.sub_type;
-        }
-
-        if (ii.sub_type == MISC_DECK_UNKNOWN)
-            ii.deck_rarity = item.deck_rarity;
-
-        if (is_deck(item))
-        {
-            ii.deck_rarity = item.deck_rarity;
-
-            const int num_cards = cards_in_deck(item);
-            CrawlVector info_cards (SV_BYTE);
-            CrawlVector info_card_flags (SV_BYTE);
-
-            // TODO: this leaks both whether the seen cards are still there
-            // and their order: the representation needs to be fixed
-
-            // The above comment seems obsolete now that Mark Four is gone.
-
-            // I don't think so... Stack Five has a quite similar effect
-            // if you abanadon Nemelex and get the card shuffled.
-            for (int i = 0; i < num_cards; ++i)
-            {
-                uint8_t flags;
-                const card_type card = get_card_and_flags(item, -i-1, flags);
-                if (flags & CFLAG_SEEN)
-                {
-                    info_cards.push_back((char)card);
-                    info_card_flags.push_back((char)flags);
-                }
-            }
-
-            if (info_cards.empty())
-            {
-                // An empty deck would display as BUGGY, so fake a card.
-                info_cards.push_back((char) 0);
-                info_card_flags.push_back((char) 0);
-            }
-            ii.props[CARD_KEY] = info_cards;
-            ii.props[CARD_FLAG_KEY] = info_card_flags;
-			
-			ii.used_count = -cards_in_deck(item);
-        }
+        ii.sub_type = item.sub_type;  
         break;
     case OBJ_GOLD:
         ii.sub_type = item.sub_type;
@@ -4922,7 +4655,7 @@ item_info get_item_info(const item_def& item)
     static const char* copy_props[] =
     {
         ARTEFACT_APPEAR_KEY, KNOWN_PROPS_KEY, CORPSE_NAME_KEY,
-        CORPSE_NAME_TYPE_KEY, DRAWN_CARD_KEY, "item_tile", "item_tile_name",
+        CORPSE_NAME_TYPE_KEY, "item_tile", "item_tile_name",
         "worn_tile", "worn_tile_name", "needs_autopickup",
         FORCED_ITEM_COLOUR_KEY,
     };

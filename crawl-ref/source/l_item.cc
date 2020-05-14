@@ -43,7 +43,8 @@
 struct item_wrapper
 {
     item_def *item;
-    bool temp; // Does item need to be freed when the wrapper is GCed?
+    bool temp; // whether `item` is being memory managed by this object or
+               // elsewhere; if true, will be deleted on gc.
     int turn;
 
     bool valid() const { return turn == you.num_turns; }

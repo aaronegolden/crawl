@@ -365,13 +365,19 @@ enum ability_type
     ABIL_LUGONU_ABYSS_ENTER,
     ABIL_LUGONU_BLESS_WEAPON,
     // Nemelex
-#if TAG_MAJOR_VERSION == 34
     ABIL_NEMELEX_DRAW_ONE = 1110,
+#if TAG_MAJOR_VERSION == 34
     ABIL_NEMELEX_PEEK_TWO,
 #endif
     ABIL_NEMELEX_TRIPLE_DRAW = 1112,
     ABIL_NEMELEX_DEAL_FOUR,
     ABIL_NEMELEX_STACK_FIVE,
+    ABIL_NEMELEX_DRAW_STACK,
+    ABIL_NEMELEX_DRAW_ESCAPE,
+    ABIL_NEMELEX_FIRST_DECK = ABIL_NEMELEX_DRAW_ESCAPE,
+    ABIL_NEMELEX_DRAW_DESTRUCTION,
+    ABIL_NEMELEX_DRAW_SUMMONING,
+    ABIL_NEMELEX_LAST_DECK = ABIL_NEMELEX_DRAW_SUMMONING,
     // Beogh
     ABIL_BEOGH_SMITING = 1120,
     ABIL_BEOGH_RECALL_ORCISH_FOLLOWERS,
@@ -5313,8 +5319,8 @@ enum ac_type
 enum uncancellable_type
 {
     UNC_ACQUIREMENT,           // arg is AQ_SCROLL
-    UNC_DRAW_THREE,            // arg is inv slot of the deck
-    UNC_STACK_FIVE,            // arg is inv slot of the deck
+    UNC_DRAW_THREE,            // arg is ignored
+    UNC_STACK_FIVE,            // arg is number of cards in the stack
 #if TAG_MAJOR_VERSION == 34
     UNC_MERCENARY,             // arg is mid of the monster
 #endif
@@ -5532,14 +5538,6 @@ enum wizard_option_type
 };
 
 #endif
-
-enum deck_rarity_type
-{
-    DECK_RARITY_RANDOM,
-    DECK_RARITY_COMMON,
-    DECK_RARITY_RARE,
-    DECK_RARITY_LEGENDARY,
-};
 
 enum wu_jian_attack_type
 {

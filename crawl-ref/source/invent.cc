@@ -17,7 +17,6 @@
 #include "artefact.h"
 #include "colour.h"
 #include "command.h"
-#include "decks.h"
 #include "describe.h"
 #include "env.h"
 #include "food.h"
@@ -419,8 +418,6 @@ string no_selectables_message(int item_selector)
         return "You aren't carrying any armour which can be enchanted further.";
     case OBJ_CORPSES:
         return "You don't have any corpses.";
-    case OSEL_DRAW_DECK:
-        return "You aren't carrying any decks from which to draw.";
     case OBJ_FOOD:
         return "There is no food.";
     case OBJ_POTIONS:
@@ -1054,9 +1051,6 @@ bool item_is_selected(const item_def &i, int selector)
     case OBJ_FOOD:
         return itype == OBJ_FOOD && !is_inedible(i);
 
-    case OSEL_DRAW_DECK:
-        return is_deck(i);
-
     case OSEL_CURSED_WORN:
         return i.cursed() && item_is_equipped(i)
                && (&i != you.weapon() || is_weapon(i));
@@ -1574,7 +1568,7 @@ bool needs_handle_warning(const item_def &item, operation_types oper,
     
     // The consequences of evokables are generally known unless it's a deck
     // and you don't know what kind of a deck it is.
-    if (item.base_type == OBJ_MISCELLANY && !is_deck(item)
+    if (item.base_type == OBJ_MISCELLANY
         && oper == OPER_EVOKE && god_hates_item(item))
     {
         penance = true;
@@ -2010,8 +2004,7 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
     if (no_evocables
         && item.base_type != OBJ_WEAPONS // reaching is ok.
         && !(item.base_type == OBJ_MISCELLANY
-             && (item.sub_type == MISC_ZIGGURAT
-                 || is_deck(item)))) // decks and zigfigs are OK.
+             && (item.sub_type == MISC_ZIGGURAT))) // zigfigs are OK.
     {
         // the rest are forbidden under sac evocables.
         if (msg)
@@ -2028,7 +2021,7 @@ bool item_is_evokable(const item_def &item, bool reach, bool known,
         if (all_wands)
             return true;
 
-        if (item.used_count == ZAPCOUNT_EMPTY)
+        if (item.plus2 == ZAPCOUNT_EMPTY)
         {
             if (msg)
                 mpr("This wand has no charges.");

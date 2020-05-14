@@ -105,6 +105,7 @@ enum class abflag
     GOLD                = 0x00100000, // costs gold
     SACRIFICE           = 0x00200000, // sacrifice (Ru)
     HOSTILE             = 0x00400000, // failure summons a hostile (Makhleb)
+    CARD                = 0x00800000, // deck drawing (Nemelex)
 };
 DEF_BITFIELD(ability_flags, abflag);
 
@@ -480,6 +481,14 @@ static const ability_def Ability_List[] =
       {FAIL_INVO}, abflag::NONE },
 
     // Nemelex
+    { ABIL_NEMELEX_DRAW_DESTRUCTION, "Draw Destruction",
+      0, 0, 0, 0, {FAIL_INVO}, abflag::CARD },
+    { ABIL_NEMELEX_DRAW_ESCAPE, "Draw Escape",
+      0, 0, 0, 0, {FAIL_INVO}, abflag::CARD },
+    { ABIL_NEMELEX_DRAW_SUMMONING, "Draw Summoning",
+      0, 0, 0, 0, {FAIL_INVO}, abflag::CARD },
+    { ABIL_NEMELEX_DRAW_STACK, "Draw Stack",
+      0, 0, 0, 0, {FAIL_INVO}, abflag::CARD },
     { ABIL_NEMELEX_TRIPLE_DRAW, "Triple Draw",
       2, 0, 0, 4, {FAIL_INVO, 60, 5, 20}, abflag::NONE },
     { ABIL_NEMELEX_DEAL_FOUR, "Deal Four",
@@ -744,6 +753,16 @@ int get_gold_cost(ability_type ability)
     default:
         return 0;
     }
+}
+
+static string _nemelex_card_text(ability_type ability)
+{
+    int cards = deck_cards(ability_deck(ability));
+
+    if (ability == ABIL_NEMELEX_DRAW_STACK)
+        return make_stringf("(next: %s)", stack_top().c_str());
+    else
+        return make_stringf("(%d in deck)", cards);
 }
 
 static const int _pakellas_quick_charge_mp_cost()
@@ -1089,12 +1108,31 @@ static string _sacrifice_desc(const ability_type ability)
             + ".\n" + desc;
 }
 
+static string _nemelex_desc(ability_type ability)
+{
+    ostringstream desc;
+    deck_type deck = ability_deck(ability);
+
+    desc << "Draw a card from " << (deck == DECK_STACK ? "your " : "the ");
+    desc << deck_name(deck) << "; " << lowercase_first(deck_description(deck));
+
+    return desc.str();
+}
+
 // XXX: should this be in describe.cc?
 string get_ability_desc(const ability_type ability)
 {
     const string& name = ability_name(ability);
 
-    string lookup = getLongDescription(name + " ability");
+    string lookup;
+
+    if ((ABIL_NEMELEX_FIRST_DECK <= ability && ability <= ABIL_NEMELEX_LAST_DECK)
+        || ability == ABIL_NEMELEX_DRAW_STACK)
+    {
+        lookup = _nemelex_desc(ability);
+    }
+    else
+        lookup = getLongDescription(name + " ability");
 
     if (lookup.empty()) // Nothing found?
         lookup = "No description found.\n";
@@ -2697,6 +2735,27 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         if (!bless_weapon(GOD_LUGONU, SPWPN_DISTORTION, MAGENTA))
             return SPRET_ABORT;
         break;
+    
+    case ABIL_NEMELEX_DRAW_DESTRUCTION:
+        fail_check();
+        if (!deck_draw(DECK_OF_DESTRUCTION))
+            return SPRET_ABORT;
+        break;
+    case ABIL_NEMELEX_DRAW_ESCAPE:
+        fail_check();
+        if (!deck_draw(DECK_OF_ESCAPE))
+            return SPRET_ABORT;
+        break;
+    case ABIL_NEMELEX_DRAW_SUMMONING:
+        fail_check();
+        if (!deck_draw(DECK_OF_SUMMONING))
+            return SPRET_ABORT;
+        break;
+    case ABIL_NEMELEX_DRAW_STACK:
+        fail_check();
+        if (!deck_draw(DECK_STACK))
+            return SPRET_ABORT;
+        break;
 
     case ABIL_NEMELEX_TRIPLE_DRAW:
         fail_check();
@@ -3078,7 +3137,6 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
 
         set_ident_flags(wand, ISFLAG_KNOW_PLUSES);
         wand.charges = 9 * wand_charge_value(wand.sub_type) / 2;
-        wand.used_count = ZAPCOUNT_RECHARGED;
 
         wand.props[PAKELLAS_SUPERCHARGE_KEY].get_bool() = true;
         you.wield_change = true;
@@ -3862,6 +3920,17 @@ vector<ability_type> get_god_abilities(bool ignore_silence, bool ignore_piety,
     if (!ignore_silence && silenced(you.pos()))
         return abilities;
     // Remaining abilities are unusable if silenced.
+    if (you_worship(GOD_NEMELEX_XOBEH))
+    {
+        for (int deck = ABIL_NEMELEX_FIRST_DECK;
+             deck <= ABIL_NEMELEX_LAST_DECK;
+             ++deck)
+        {
+            abilities.push_back(static_cast<ability_type>(deck));
+        }
+        if (!you.props[NEMELEX_STACK_KEY].get_vector().empty())
+            abilities.push_back(ABIL_NEMELEX_DRAW_STACK);
+    }
 
     for (const auto& power : get_god_powers(you.religion))
     {

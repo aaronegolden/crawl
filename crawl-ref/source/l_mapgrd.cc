@@ -36,6 +36,8 @@ static int mapgrd_set(lua_State *ls)
 static char* mapgrd_glyph(lua_State *ls, int &col, int &row)
 {
     mapcolumn *mapc = (mapcolumn *)luaL_checkudata(ls, 1, MAPGRD_COL_METATABLE);
+    if (!mapc)
+        return nullptr;
     row = luaL_checkint(ls, 2);
     col = mapc->col;
 

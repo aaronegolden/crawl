@@ -507,21 +507,25 @@ distortion. This blessing may only be used once, and it cannot be used on
 artefact weapons.
 %%%%
 # Nemelex Xobeh
+Draw ability
+
+Draws a card from a deck of power.
+%%%%
 Triple Draw ability
 
-Draws three cards from any deck in your inventory, and allows you to choose one
-to keep, discarding the other two.
+Draws three cards from any deck, and allows you to choose one to play,
+discarding the other two.
 %%%%
 Deal Four ability
 
-Deals four cards from any unmarked deck in the time it normally takes to draw a
-single card. If the deck does not contain enough cards, Nemelex will give you 
-one extra card, but you might not like it.
+Deals four cards from a deck in the time it normally takes to draw a
+single card.
 %%%%
 Stack Five ability
 
-Shows you five cards from any unmarked deck in your inventory and allows you to sort 
-them into any order. Subsequently, you can draw these cards in the order you chose.
+Draws five cards from your choice of decks, and allows you to sort them into
+any order. Subsequently, you can draw these cards in the order you chose.
+Re-using this ability will discard the current stack.
 %%%%
 # Beogh
 Smiting ability

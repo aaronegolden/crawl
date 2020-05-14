@@ -1831,94 +1831,22 @@ static string _describe_jewellery(const item_def &item, bool verbose)
     return description;
 }
 
-static bool _compare_card_names(card_type a, card_type b)
-{
-    return string(card_name(a)) < string(card_name(b));
-}
-
-static bool _check_buggy_deck(const item_def &deck, string &desc)
-{
-    if (!is_deck(deck))
-    {
-        desc += "This isn't a deck at all!\n";
-        return true;
-    }
-
-    const CrawlHashTable &props = deck.props;
-
-    if (!props.exists(CARD_KEY)
-        || props[CARD_KEY].get_type() != SV_VEC
-        || props[CARD_KEY].get_vector().get_type() != SV_BYTE
-        || cards_in_deck(deck) == 0)
-    {
-        return true;
-    }
-
-    return false;
-}
-
-static string _describe_deck(const item_def &item)
+string describe_deck(deck_type deck)
 {
     string description;
 
     description.reserve(100);
 
     description += "\n";
-
-    if (_check_buggy_deck(item, description))
-        return "";
-
-    if (item_type_known(item))
-        description += deck_contents(item.sub_type) + "\n";
-
-    description += make_stringf("\nMost decks begin with %d to %d cards and can contain no more than 127 cards.",
-                                MIN_STARTING_CARDS,
-                                MAX_STARTING_CARDS);
-								
-	description += "\nNemelex Xobeh will take the deck from you if you drop it.";
-
-    const int num_cards = cards_in_deck(item);
-    // The list of known cards, ending at the first one not known to be at the
-    // top.
-    vector<card_type> seen_top_cards;
-    // Seen cards in the deck not necessarily contiguous with the start. (If
-    // Nemelex wrath shuffled a deck that you stacked, for example.)
-    vector<card_type> other_seen_cards;
-    bool still_contiguous = true;
-    for (int i = 0; i < num_cards; ++i)
-    {
-        uint8_t flags;
-        const card_type card = get_card_and_flags(item, -i-1, flags);
-        if (flags & CFLAG_SEEN)
-        {
-            if (still_contiguous)
-                seen_top_cards.push_back(card);
-            else
-                other_seen_cards.push_back(card);
-        }
-        else
-            still_contiguous = false;
-    }
-
-    if (!seen_top_cards.empty())
-    {
-        description += "\n";
-        description += "Next card(s): ";
-        description += comma_separated_fn(seen_top_cards.begin(),
-                                          seen_top_cards.end(),
-                                          card_name);
-    }
-    if (!other_seen_cards.empty())
-    {
-        description += "\n";
-        sort(other_seen_cards.begin(), other_seen_cards.end(),
-             _compare_card_names);
-
-        description += "Seen card(s): ";
-        description += comma_separated_fn(other_seen_cards.begin(),
-                                          other_seen_cards.end(),
-                                          card_name);
-    }
+    
+    if (deck == DECK_STACK)
+        description += "A stacked deck";
+    else
+        description += "The " + deck_name(deck);
+    
+    description += "\n";
+    description += "A deck of magical cards, ";
+    description += deck_description(deck);
 
     return description;
 }
@@ -2133,8 +2061,6 @@ string get_item_description(const item_def &item, bool verbose,
         break;
 
     case OBJ_MISCELLANY:
-        if (is_deck(item))
-            description << _describe_deck(item);
         if (is_xp_evoker(item))
         {
             description << "\n\nOnce activated, this device "

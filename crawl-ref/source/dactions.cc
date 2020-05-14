@@ -325,7 +325,6 @@ static void _apply_daction(daction_type act)
         break;
 
     case DACT_SHUFFLE_DECKS:
-        shuffle_all_decks_on_level();
         break;
     case DACT_REAUTOMAP:
         reautomap_level();

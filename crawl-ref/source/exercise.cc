@@ -259,10 +259,3 @@ void practise_evoking(int amount)
     exercise(SK_EVOCATIONS, amount);
     you.props[USKAYAW_DID_DANCE_ACTION] = true;
 }
-
-/// Skill training while using one of Nemelex's decks.
-void practise_using_deck()
-{
-    exercise(SK_INVOCATIONS, 1);
-    you.props[USKAYAW_DID_DANCE_ACTION] = true;
-}

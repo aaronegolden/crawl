@@ -13,6 +13,7 @@
 #include "branch.h"
 #include "cio.h"
 #include "database.h"
+#include "decks.h"
 #include "describe.h"
 #include "english.h"
 #include "food.h"
@@ -606,6 +607,20 @@ static void _god_wrath_description(god_type which_god)
                           width);
 }
 
+static string _describe_deck_summary()
+{
+    ostringstream desc;
+    desc << "Decks of power:\n";
+    for (int i = FIRST_PLAYER_DECK; i <= LAST_PLAYER_DECK; i++)
+        desc << " " << deck_status((deck_type) i) << "\n";
+
+    string stack = stack_contents();
+    if (!stack.empty())
+        desc << "\n stacked deck: " << stack << "\n";
+
+    return desc.str();
+}
+
 /**
  * Describe miscellaneous information about the given god.
  *
@@ -656,6 +671,9 @@ static string _get_god_misc_info(god_type which_god)
         case GOD_HEPLIAKLQANA:
             return _describe_ancestor_upgrades();
 
+        case GOD_NEMELEX_XOBEH:
+            return _describe_deck_summary();
+        
         default:
             return "";
     }

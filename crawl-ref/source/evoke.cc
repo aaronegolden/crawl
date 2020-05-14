@@ -19,7 +19,6 @@
 #include "chardump.h"
 #include "cloud.h"
 #include "coordit.h"
-#include "decks.h"
 #include "delay.h"
 #include "directn.h"
 #include "dungeon.h"
@@ -519,7 +518,7 @@ void zap_wand(int slot)
         you.wield_change = true;
 
     const bool has_charges = wand.charges > 0;
-    if (!has_charges && wand.used_count == ZAPCOUNT_EMPTY)
+    if (!has_charges && wand.plus2 == ZAPCOUNT_EMPTY)
     {
         mpr("This wand has no charges.");
         return;
@@ -543,7 +542,7 @@ void zap_wand(int slot)
         {
             canned_msg(MSG_NOTHING_HAPPENS);
             // It's an empty wand; inscribe it that way.
-            wand.used_count = ZAPCOUNT_EMPTY;
+            wand.plus2 = ZAPCOUNT_EMPTY;
             you.turn_is_over = true;
             return;
         }
@@ -609,7 +608,7 @@ void zap_wand(int slot)
         {
             canned_msg(MSG_NOTHING_HAPPENS);
             // It's an empty wand; inscribe it that way.
-            wand.used_count = ZAPCOUNT_EMPTY;
+            wand.plus2 = ZAPCOUNT_EMPTY;
             you.turn_is_over = true;
             return;
         }
@@ -677,14 +676,14 @@ void zap_wand(int slot)
     }
 
     // Zap counts count from the last recharge.
-    if (wand.used_count == ZAPCOUNT_RECHARGED)
-        wand.used_count = 0;
+    if (wand.plus2 == ZAPCOUNT_RECHARGED)
+        wand.plus2 = 0;
     // Increment zap count.
-    if (wand.used_count >= 0)
+    if (wand.plus2 >= 0)
     {
-        wand.used_count++;
+        wand.plus2++;
         if (wasteful)
-            wand.used_count += wasted_charges;
+            wand.plus2 += wasted_charges;
     }
 
     if (item_type_known(wand)
@@ -705,7 +704,7 @@ void zap_wand(int slot)
     // Mark as empty if necessary.
     if (wand.charges == 0 && wand.flags & ISFLAG_KNOW_PLUSES)
     {
-        wand.used_count = ZAPCOUNT_EMPTY;
+        wand.plus2 = ZAPCOUNT_EMPTY;
         mpr("The wand breaks as it expends its last charge.");
 		dec_inv_item_quantity(wand.link, 1);
     }
@@ -799,7 +798,7 @@ int recharge_wand(bool known, const string &pre_msg, int num, int den)
 
         // Reinitialise zap counts.
         wand.charges  = new_charges;
-        wand.used_count = ZAPCOUNT_RECHARGED;
+        wand.plus2 = ZAPCOUNT_RECHARGED;
 
         you.wield_change = true;
         return 1;
@@ -1831,7 +1830,6 @@ bool evoke_item(int slot, bool check_range)
 
         if ((you.get_mutation_level(MUT_NO_ARTIFICE)
              || player_under_penance(GOD_PAKELLAS))
-            && !is_deck(item)
             && item.sub_type != MISC_ZIGGURAT)
         {
             if (you.get_mutation_level(MUT_NO_ARTIFICE))
@@ -1842,14 +1840,6 @@ bool evoke_item(int slot, bool check_range)
                                    "devices!", GOD_PAKELLAS);
             }
             return false;
-        }
-
-        if (is_deck(item))
-        {
-            evoke_deck(item);
-            practise_using_deck();
-            count_action(CACT_EVOKE, EVOC_DECK);
-            break;
         }
 
         switch (item.sub_type)
