@@ -1831,7 +1831,7 @@ static string _describe_jewellery(const item_def &item, bool verbose)
     return description;
 }
 
-string describe_deck(deck_type deck)
+int describe_deck(deck_type deck)
 {
     string description;
 
@@ -1848,7 +1848,24 @@ string describe_deck(deck_type deck)
     description += "A deck of magical cards, ";
     description += deck_description(deck);
 
-    return description;
+    formatted_scroller desc_fs;
+    int flags = MF_NOSELECT | MF_ALWAYS_SHOW_MORE;
+    desc_fs.set_flags(flags, false);
+    desc_fs.set_more();
+    desc_fs.add_text(description, false, get_number_of_cols());
+    
+    while (true)
+    {
+        desc_fs.show();
+        int keyin = desc_fs.getkey();
+        if(keyin == ESCAPE)
+        {
+            clrscr();
+            return keyin;
+        }
+    }
+
+    return 0;
 }
 
 bool is_dumpable_artefact(const item_def &item)

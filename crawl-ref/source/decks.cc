@@ -280,6 +280,7 @@ const char* card_name(card_type card)
     case CARD_FAMINE:          return "Famine";
 
     case NUM_CARDS:            return "a buggy card";
+    default: return "a very buggy card";
     }
     return "a very buggy card";
 }
@@ -474,25 +475,23 @@ bool deck_stack()
     return true;
 }
 
-class StackFiveMenu : public Menu
+class StackFiveMenu : public ToggleableMenu
 {
     virtual bool process_key(int keyin) override;
     CrawlVector& draws;
 public:
     StackFiveMenu(CrawlVector& d)
-        : Menu(MF_NOSELECT | MF_UNCANCEL | MF_ALWAYS_SHOW_MORE), draws(d) {};
+        : ToggleableMenu(MF_NOSELECT | MF_UNCANCEL | MF_ALWAYS_SHOW_MORE), draws(d) {};
 };
 
-static void _describe_cards(CrawlVector& cards)
+static int _describe_cards(CrawlVector& cards)
 {
     ASSERT(!cards.empty());
 
-    formatted_string description;
-    description.textcolour(WHITE);
-    description.cprintf("\n Card            Effect");
+    string description;
+    description += ("\n Card            Effect");
 
     bool seen[NUM_CARDS] = {0};
-    ostringstream data;
     bool first = true;
     for (auto& val : cards)
     {
@@ -502,7 +501,7 @@ static void _describe_cards(CrawlVector& cards)
             continue;
         seen[card] = true;
         
-        description.cprintf(" ");
+        description += ("\n");
 
         string name = card_name(card);
         string desc = getLongDescription(name + " card");
@@ -513,8 +512,26 @@ static void _describe_cards(CrawlVector& cards)
         name = uppercase_first(name);
         desc = desc + decks;
 
-        description.cprintf(name + "     " + desc + "\n");
+        description += (name + "     " + desc + "\n");
     }
+    
+    formatted_scroller desc_fs;
+    int flags = MF_NOSELECT | MF_ALWAYS_SHOW_MORE;
+    desc_fs.set_flags(flags, false);
+    desc_fs.set_more();
+    desc_fs.add_text(description, false, get_number_of_cols());
+    
+    while (true)
+    {
+        desc_fs.show();
+        int keyin = desc_fs.getkey();
+        if(keyin == ESCAPE)
+        {
+            clrscr();
+            return keyin;
+        }
+    }
+    return 0;   
 }
 
 bool StackFiveMenu::process_key(int keyin)
@@ -523,10 +540,11 @@ bool StackFiveMenu::process_key(int keyin)
     {
         return false;
     }
-    else if (keyin == '?')
+    else if (keyin == '?' || keyin == '!')
     {
         _describe_cards(draws);
-        return true;
+        show();
+        return false;
     }
     else if (keyin >= '1' && keyin <= '0' + static_cast<int>(draws.size()))
     {
@@ -711,8 +729,10 @@ static void _draw_stack(int to_stack)
             static_cast<ToggleableMenuEntry*>(deck_menu.selected_entries()[0]);
 
         if (deck_menu.menu_action == Menu::ACT_EXAMINE)
+        {
             describe_deck(selected);
-        else
+        }
+        else if (you.props[deck_name(selected)].get_int() > 0)
         {
             you.props[deck_name(selected)]--;
             me->text = deck_status(selected);
@@ -747,14 +767,20 @@ bool stack_five(int to_stack)
     StackFiveMenu menu(stack);
     MenuEntry *const title = new MenuEntry("Select two cards to swap them:", MEL_TITLE);
     menu.set_title(title);
+    menu.add_toggle_key('?');
+    menu.menu_action = Menu::ACT_EXECUTE;
     for (unsigned int i = 0; i < stack.size(); i++)
     {
-        MenuEntry * const entry =
-            new MenuEntry(card_name((card_type)stack[i].get_int()),
+        ToggleableMenuEntry * const entry =
+            new ToggleableMenuEntry(card_name((card_type)stack[i].get_int()),
+            card_name((card_type)stack[i].get_int()),
                           MEL_ITEM, 1, '1'+i);
 #ifdef USE_TILE
         entry->add_tile(tile_def(TILEG_NEMELEX_CARD, TEX_GUI));
 #endif
+        string name = card_name((card_type)stack[i].get_int());
+        string desc = getLongDescription(name + " card");
+        entry->alt_text = desc;
         menu.add_entry(entry);
     }
     menu.set_more(formatted_string::parse_string(
@@ -1803,6 +1829,7 @@ void card_effect(card_type which_card,
         break;
 
     case NUM_CARDS:
+    default:
         // The compiler will complain if any card remains unhandled.
         mprf("You have %s a buggy card!", participle);
         break;
