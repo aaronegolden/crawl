@@ -522,15 +522,12 @@ bool StackFiveMenu::process_key(int keyin)
     if (keyin == CK_ENTER)
     {
         return false;
-        formatted_string old_more = more;
-        set_more(formatted_string::parse_string(
-                "Are you done? (press y or Y to confirm)"));
-        if (yesno(nullptr, true, 'n', false, false, true))
-            return false;
-        set_more(old_more);
     }
     else if (keyin == '?')
+    {
         _describe_cards(draws);
+        return true;
+    }
     else if (keyin >= '1' && keyin <= '0' + static_cast<int>(draws.size()))
     {
         const unsigned int i = keyin - '1';

@@ -2773,6 +2773,7 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         fail_check();
         if (!deck_stack())
             return SPRET_ABORT;
+        redraw_screen();
         break;
 
     case ABIL_BEOGH_SMITING:
