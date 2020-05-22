@@ -2686,12 +2686,6 @@ TAGS:    pan_fixed_rune_pain pan_fixed_lure_pain
 ORIENT:  float
 MONS:    pandemonium lord, brimstone fiend
 MONS:    tormentor, smoke demon, any demon
-<<<<<<< HEAD
-: if demonic_rune_vault_is_decoy() then
-KITEM:   O = superb_item / demonic rune of zot mimic
-: else
-=======
->>>>>>> Add Pan exit to a few more vaults.
 KITEM:   O = demonic rune of zot
 KFEAT:   m = iron_grate
 KFEAT:   { = {
@@ -2755,12 +2749,6 @@ MONS:   blizzard demon, nonbase gelid demonspawn
 MONS:   juggernaut simulacrum, ice devil
 KMONS:  56 = ice statue
 KMONS:  P = pandemonium lord
-<<<<<<< HEAD
-: if demonic_rune_vault_is_decoy() then
-KITEM:  O = superb_item / demonic rune of zot mimic
-: else
-=======
->>>>>>> Guarantee the demonic rune and exit non unique Pan floors.
 KITEM:  O = demonic rune of zot
 KFEAT:  Q = exit_pandemonium
 KFEAT: 5 = W
@@ -2847,12 +2835,6 @@ MONS:    brimstone fiend / ice fiend / tzitzimitl / hell sentinel
 KMONS:   p = demonic plant
 KMONS:   P = pandemonium lord
 ITEM:    any potion
-<<<<<<< HEAD
-: if demonic_rune_vault_is_decoy() then
-KITEM:   O = superb_item / demonic rune of zot mimic
-: else
-=======
->>>>>>> Add Pan exit to a few more vaults.
 KITEM:   O = demonic rune of zot
 KFEAT:   Q = exit_pandemonium
 KFEAT:   D = granite_statue
