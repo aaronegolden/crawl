@@ -844,6 +844,13 @@ const string make_cost_description(ability_type ability)
         ret += string(ability_name(ability)).substr(prefix.size());
         ret += ru_sac_text(ability);
     }
+    
+    if (abil.flags & abflag::CARD)
+    {
+        ret += ", ";
+        ret += "A Card ";
+        ret += _nemelex_card_text(ability);
+    }
 
     // If we haven't output anything so far, then the effect has no cost
     if (ret.empty())
@@ -1318,6 +1325,13 @@ static bool _check_ability_possible(const ability_def& abil,
                 canned_msg(MSG_TOO_HUNGRY);
             return false;
         }
+    }
+    
+    if (testbits(abil.flags, abflag::CARD) && !deck_cards(ability_deck(abil.ability)))
+    {
+        if (!quiet)
+            mpr("That deck is empty!");
+        return false;
     }
 
     // in case of mp rot ability, check is the player have enough natural MP
