@@ -202,7 +202,7 @@ void mons_summon_illusion_from(monster* mons, actor *foe,
         if (card_power >= 0)
         {
           // card effect
-          abj = 2 + random2(card_power);
+          abj = 1 + div_rand_round(random2(card_power + 1), 5000);
         }
 
         if (monster *clone = create_monster(

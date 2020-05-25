@@ -343,6 +343,14 @@ bool fill_status_info(int status, status_info* inf)
         inf->long_text += "You are immune to clouds of flame.";
         break;
     }
+    
+    case DUR_SQUID:
+    {
+        const bool exp = dur_expiring(DUR_SQUID);
+        if (exp)
+            inf->long_text += "Expiring: ";
+        inf->long_text += "You are surrounded by thick clouds of smoke.\n";
+    }
 
     case DUR_POISONING:
         _describe_poison(inf);

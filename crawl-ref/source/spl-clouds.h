@@ -15,6 +15,7 @@ spret_type cast_big_c(int pow, spell_type spl, const actor *caster, bolt &beam,
 
 spret_type cast_ring_of_flames(int power, bool fail);
 void manage_fire_shield(int delay);
+void manage_squid_card(int delay);
 
 spret_type cast_corpse_rot(bool fail);
 void corpse_rot(actor* caster);

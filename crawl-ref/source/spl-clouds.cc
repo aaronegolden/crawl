@@ -161,6 +161,15 @@ void manage_fire_shield(int delay)
             place_cloud(CLOUD_FIRE, *ai, 1 + random2(6), &you);
 }
 
+void manage_squid_card(int delay)
+{
+    ASSERT(you.duration[DUR_SQUID]);
+    
+    for (adjacent_iterator ai(you.pos()); ai; ++ai)
+        if (!cell_is_solid(*ai) && !cloud_at(*ai))
+            place_cloud(CLOUD_BLACK_SMOKE, *ai, 1 + random2(6), &you);
+}
+
 spret_type cast_corpse_rot(bool fail)
 {
     if (!you.res_rotting())

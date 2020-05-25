@@ -508,6 +508,9 @@ void player_reacts_to_monsters()
 
     if (you.attribute[ATTR_FIRE_SHIELD] || you.duration[DUR_FIRE_SHIELD] > 0)
         manage_fire_shield(you.time_taken);
+    
+    if (you.duration[DUR_SQUID] > 0)
+        manage_squid_card(you.time_taken);
 
     check_monster_detect();
 

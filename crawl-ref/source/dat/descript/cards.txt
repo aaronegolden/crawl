@@ -2,26 +2,15 @@
 # Escape
 Velocity card
 
-The card depicts an empty, well-worn pair of boots. Sand, ashes, and turf
-coat the boots' soles.
-
-Drawing this card can grant great speed or terrible slowness to foes and allies
-alike. The beneficial aspects depend on card power.
+This card makes the user swift and may haste them at high power.
 %%%%
 the Tomb card
 
-The card depicts a royal crypt, its entrance sealed by a heavy stone slab.
-
-Drawing this card entombs its user in protective, temporary walls of solid rock.
-At lower power levels or with adjacent creatures, the tomb may be imperfect.
+This card entombs its user in temporary rock walls.
 %%%%
 Exile card
 
-The card depicts ceaseless hands from a yawning portal overcoming a panicked
-figure.
-
-Drawing this card will banish one or more nearby creatures to the Abyss,
-possibly including the user.
+This card attempts to banish hostile monsters, checking magic resistance.
 %%%%
 the Shaft card
 
@@ -31,12 +20,17 @@ them.
 Drawing this card will create a shaft beneath the user, and possibly beneath
 their enemies.
 %%%%
+Famine card
+
+This card inflicts a terrible hunger, paralyzing or weakening enemies.
+%%%%
 the Elixir card
 
-The card depicts a smug smile formed out of nine chalices.
+This card restores the user's health and magic for a duration dependent on power.
+%%%%
+The Squid card
 
-This card rapidly restores the user's health or magic, or both at high power
-levels. It will also heal their allies.
+This card wreaths the user in thick, sight-obscuring smoke for a duration.
 %%%%
 the Cloud card
 
@@ -48,15 +42,11 @@ produced will improve with card power.
 # Destruction
 Vitriol card
 
-The card depicts an oklob plant, dripping with its distinctive corrosive sap.
-
-Drawing this card will unleash a corrosive attack spell.
+This card corrodes hostile monsters and unleashes a corrosive bolt.
 %%%%
 the Storm card
 
-The card depicts a ship at sea sinking in a thunderstorm.
-
-Drawing it unleashes a bolt of lightning and possibly some orbs of electricity.
+This card unleashes a blast of wind and several electrical explosions.
 %%%%
 Pain card
 
@@ -64,40 +54,30 @@ The card depicts an iron wheel, menacing with spikes and rusted with blood.
 
 Drawing this card unleashes a necromantic attack spell.
 %%%%
+the Leech card
+
+This card drains life from an enemy, restoring health to the user.
+%%%%
 the Orb card
 
-The card depicts a figure surrounded by floating, glowing orbs of energy.
-
-Drawing this card unleashes one or possibly more destructive orbs of pure magic.
+This card unleashes multiple orbs of destructive magic.
 %%%%
 Degeneration card
 
-The card depicts a dragon whose scales are sloughing off, revealing a sheep
-underneath.
-
-Drawing this card will attempt to polymorph and malmutate nearby enemies into
-weaker forms, and will briefly daze those that cannot be polymorphed.
+This card tries to polymorph hostile monsters, halving their health if it succeeds.
 %%%%
 Wild Magic card
 
-The card depicts a pointy wizard's hat, scorched and resting on a pile of ashes.
-
-Drawing this card causes wild magic (as if from miscasting a spell) to act upon
-its user's enemies. Each creature affected will restore some of the user's
-magic.
+This card causes miscasts on foes and restores the user's magic for each foe hit.
 # Summoning
 %%%%
 the Elements card
 
-The card depicts the figures of great beasts lurking in a sandstorm.
-
-Drawing this card will summon three beasts of the four elements.
+This card summons between one and five elementals of the same type.
 %%%%
 the Pentagram card
 
-The card depicts cultists marking out a ritual pentagram on the floor.
-
-Drawing this card will summon a pair of demons to the user's aid.
+This card summons a demon or, with sufficient power, pandemonium lord.
 %%%%
 the Dance card
 
@@ -109,25 +89,19 @@ friendliness are all affected by card power.
 %%%%
 Foxfire card
 
-The card depicts a swamp at night, suffused with an eerie glow.
-
-Drawing this card will summon forth flying swarms. Some of their members may
-be hostile.
+This card summons a horde of killer bees.
 %%%%
 the Rangers card
 
-The card depicts an arrow in a bull's-eye, which has been split by a second
-arrow.
-
-Drawing this card will summon several archers.
+This card summons two archers. The quality of the summons increases with power.
 %%%%
 the Illusion card
 
-The card depicts someone standing in a hall of mirrors, surrounded by their own
-reflections.
+This card summons an illusion of the user. Its duration improves with power.
+%%%%
+The Garden card
 
-Drawing this card will summon an illusion of the user. Its power will depend
-upon one's own.
+This card summons numerous briar patches and, occasionally, oklob plants. 
 %%%%
 # Punishment
 Wrath card
@@ -136,14 +110,6 @@ The card depicts the hand of the divine, reaching down from the heavens to hurl
 furious lightning.
 
 Drawing this card will draw a god's wrath against the user.
-%%%%
-Famine card
-
-The card depicts a gaunt figure crawling along an expanse of dry, cracked
-earth.
-
-Drawing this card will inflict enemies with a terrible hunger that may cause
-weakness, insanity, or paralysis.
 %%%%
 the Wraith card
 

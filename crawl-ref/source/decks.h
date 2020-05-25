@@ -30,23 +30,23 @@ enum deck_type
 
 enum card_type
 {
-    CARD_VELOCITY,            // remove slow, alter others' speeds
+    CARD_VELOCITY,            // alter your speed
 
     CARD_TOMB,                // a ring of rock walls
-    CARD_EXILE,               // banish others, maybe self
+    CARD_EXILE,               // banish others
     CARD_SHAFT,               // under the user, maybe others
 
     CARD_VITRIOL,             // acid damage
-    CARD_CLOUD,               // encage enemies in rings of clouds
-    CARD_STORM,               // wind and rain
-    CARD_PAIN,                // necromancy, manipulating life itself
+    CARD_SQUID,               // encage enemies in rings of clouds
+    CARD_STORM,               // wind and lightning
+    CARD_LEECH,               // necromancy, manipulating life itself
     CARD_TORMENT,             // symbol of
     CARD_ORB,                 // pure bursts of energy
 
     CARD_ELIXIR,              // restoration of hp and mp
-    CARD_SUMMON_DEMON,        // dual demons
-    CARD_SUMMON_WEAPON,       // a dance partner
-    CARD_SUMMON_FLYING,       // swarms from the swamp
+    CARD_SUMMON_DEMON,        // demon
+    CARD_GARDEN,              // plants
+    CARD_SUMMON_FLYING,       // Nicholas_Cage.jpg
     CARD_WILD_MAGIC,          // miscasts for everybody
     CARD_STAIRS,              // moves stairs around
     CARD_WRATH,               // random godly wrath
@@ -57,8 +57,8 @@ enum card_type
     CARD_SWINE,               // *oink*
 
     CARD_ILLUSION,            // a copy of the player
-    CARD_DEGEN,               // polymorph hostiles down hd, malmutate
-    CARD_ELEMENTS,            // primal animals of the elements
+    CARD_DEGEN,               // polymorph hostiles down hd, halve their hp
+    CARD_ELEMENTS,            // elementals
     CARD_RANGERS,             // sharpshooting
 
     NUM_CARDS
