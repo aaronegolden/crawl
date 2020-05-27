@@ -369,7 +369,8 @@ void handle_behaviour(monster* mon)
                  || mon->type == MONS_BALLISTOMYCETE_SPORE
                  || mon->type == MONS_BALL_LIGHTNING
                  || mon->type == MONS_FOXFIRE
-                 || mon->type == MONS_GUARDIAN_GOLEM)
+                 || mon->type == MONS_GUARDIAN_GOLEM
+                 || mon->type == MONS_BATTLESPHERE)
                 && (mon->foe == MHITNOT
                     || isFriendly && mon->foe == MHITYOU))))
     {
@@ -943,7 +944,7 @@ void set_nearest_monster_foe(monster* mon, bool near_player)
     // These don't look for foes.
     if (mon->good_neutral() || mon->strict_neutral()
         || mon->behaviour == BEH_WITHDRAW
-        || mons_is_avatar(mon->type)
+        || (mons_is_avatar(mon->type) && mon->type != MONS_BATTLESPHERE)
         || mon->has_ench(ENCH_HAUNTING))
     {
         return;

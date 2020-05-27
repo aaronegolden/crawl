@@ -2643,8 +2643,7 @@ spret_type cast_battlesphere(actor* agent, int pow, god_type god, bool fail)
                 battlesphere->props["band_leader"].get_int() = agent->mid;
             }
             battlesphere->battlecharge = 4 + random2(pow + 20) / 10;
-            battlesphere->foe = agent->mindex();
-            battlesphere->target = agent->pos();
+            battlesphere->foe = MHITNOT;
         }
         else if (agent->is_player() || you.can_see(*agent))
             canned_msg(MSG_NOTHING_HAPPENS);
