@@ -1202,7 +1202,6 @@ static vector<equipment_type> _current_ring_types()
     {
         if (you.get_mutation_level(MUT_MISSING_HAND) == 0)
             ret.push_back(EQ_LEFT_RING);
-        ret.push_back(EQ_RIGHT_RING);
     }
     if (player_equip_unrand(UNRAND_FINGER_AMULET))
         ret.push_back(EQ_RING_AMULET);
@@ -1582,9 +1581,7 @@ static equipment_type _choose_ring_slot()
             msg += "</w> - no ring";
 
         if (eq == EQ_LEFT_RING)
-            msg += " (left)";
-        else if (eq == EQ_RIGHT_RING)
-            msg += " (right)";
+            msg += " (hand)";
         else if (eq == EQ_RING_AMULET)
             msg += " (amulet)";
         mprf_nocap("%s", msg.c_str());

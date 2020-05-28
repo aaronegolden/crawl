@@ -276,7 +276,7 @@ string item_def::name(description_level_type descrip, bool terse, bool ident,
                 case EQ_RING_ONE:
                 case EQ_RING_TWO:
                     buff << " (";
-                    buff << ((eq == EQ_LEFT_RING || eq == EQ_RING_ONE)
+                    buff << ((eq == EQ_RING_ONE)
                              ? "left" : "right");
                     buff << " ";
                     buff << you.hand_name(false);

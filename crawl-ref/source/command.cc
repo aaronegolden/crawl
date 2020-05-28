@@ -247,7 +247,7 @@ void list_jewellery()
         int       colour       = MSGCOL_BLACK;
 
         const char *slot =
-                 (i == EQ_LEFT_RING)   ? "Left ring" :
+                 (i == EQ_LEFT_RING)   ? "Ring" :
                  (i == EQ_RIGHT_RING)  ? "Right ring" :
                  (i == EQ_AMULET)      ? "Amulet" :
                  (i == EQ_RING_ONE)    ? "1st ring" :

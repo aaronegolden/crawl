@@ -5659,14 +5659,6 @@ static void _extra_sacrifice_code(ability_type sac)
                     }
                 }
             }
-            else
-            {
-                if (!you.slot_item(static_cast<equipment_type>(
-                    EQ_RIGHT_RING), true))
-                {
-                    open_ring_slot = true;
-                }
-            }
 
             mprf("You can no longer wear %s!",
                 ring->name(DESC_YOUR).c_str());
