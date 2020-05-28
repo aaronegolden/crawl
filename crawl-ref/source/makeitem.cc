@@ -785,6 +785,7 @@ static special_armour_type _generate_armour_type_ego(armour_type type,
     case ARM_ROBE:
         return random_choose_weighted(1, SPARM_ARCHMAGI,
                                       2, SPARM_NORMAL,
+                                      2, SPARM_MAGICAL_POWER,
                                       4, SPARM_MAGIC_RESISTANCE);
 
     case ARM_PLATE_ARMOUR:
@@ -858,7 +859,8 @@ bool is_armour_brand_ok(int type, int brand, bool strict)
 		return slot == EQ_BOOTS || slot == EQ_CLOAK;
 		
     case SPARM_MAGICAL_POWER:
-        return slot == EQ_CLOAK || type == ARM_HAT;
+        return slot == EQ_CLOAK || type == ARM_HAT
+            || type == ARM_ROBE;
 		
     case SPARM_ARCHMAGI:
         return !strict || type == ARM_ROBE;
@@ -880,6 +882,13 @@ bool is_armour_brand_ok(int type, int brand, bool strict)
     case SPARM_REFLECTION:
     case SPARM_PROTECTION:
         return slot == EQ_SHIELD;
+
+    case SPARM_COLD_RESISTANCE:
+    case SPARM_FIRE_RESISTANCE:
+    case SPARM_POISON_RESISTANCE:
+    case SPARM_RESISTANCE:
+    case SPARM_POSITIVE_ENERGY:
+        return false;
 
     case SPARM_STRENGTH:
         if (!strict)
@@ -907,6 +916,8 @@ bool is_armour_brand_ok(int type, int brand, bool strict)
     case NUM_SPECIAL_ARMOURS:
     case NUM_REAL_SPECIAL_ARMOURS:
         die("invalid armour brand");
+    default:
+        break;
     }
 
     return true;
