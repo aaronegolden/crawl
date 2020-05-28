@@ -736,6 +736,9 @@ const set<pair<object_class_type, int> > removed_items =
     { OBJ_JEWELLERY, RING_FLIGHT },
     { OBJ_JEWELLERY, RING_MAGICAL_POWER },
     { OBJ_JEWELLERY, RING_SEE_INVISIBLE },
+    { OBJ_JEWELLERY, RING_LIFE_PROTECTION },
+    { OBJ_JEWELLERY, RING_RESIST_CORROSION },
+    { OBJ_JEWELLERY, RING_POISON_RESISTANCE },
 	{ OBJ_STAVES, 	 STAFF_POISON },
     { OBJ_STAVES,    STAFF_ENCHANTMENT },
     { OBJ_STAVES,    STAFF_CHANNELING },
@@ -2236,7 +2239,6 @@ bool ring_has_stackable_effect(const item_def &item)
 
     switch (item.sub_type)
     {
-    case RING_LIFE_PROTECTION:
     case RING_WIZARDRY:
     case RING_FIRE:
     case RING_ICE:
