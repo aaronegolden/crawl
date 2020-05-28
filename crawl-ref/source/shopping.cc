@@ -343,10 +343,12 @@ unsigned int item_value(item_def item, bool ident)
                 valued += 250;
                 break;
 
-            case SPARM_COLD_RESISTANCE:
-            case SPARM_DEXTERITY:
-            case SPARM_FIRE_RESISTANCE:
 #if TAG_MAJOR_VERSION == 34
+            case SPARM_COLD_RESISTANCE:
+#endif
+            case SPARM_DEXTERITY:
+#if TAG_MAJOR_VERSION == 34
+            case SPARM_FIRE_RESISTANCE:
             case SPARM_SEE_INVISIBLE:
 #endif
             case SPARM_INTELLIGENCE:

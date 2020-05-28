@@ -576,9 +576,11 @@ const char* armour_ego_name(const item_def& item, bool terse)
         {
         case SPARM_NORMAL:            return "";
         case SPARM_RUNNING:           return "run";
+#if TAG_MAJOR_VERSION == 34
         case SPARM_FIRE_RESISTANCE:   return "rF+";
         case SPARM_COLD_RESISTANCE:   return "rC+";
         case SPARM_POISON_RESISTANCE: return "rPois";
+#endif
         case SPARM_SEE_INVISIBLE:     return "SInv";
 #if TAG_MAJOR_VERSION == 34
         case SPARM_INVISIBILITY:      return "obsolete";

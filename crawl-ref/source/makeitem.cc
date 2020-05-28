@@ -754,17 +754,11 @@ static special_armour_type _generate_armour_type_ego(armour_type type,
     case ARM_SHIELD:
     case ARM_LARGE_SHIELD:
     case ARM_BUCKLER:
-        return random_choose_weighted(1, SPARM_RESISTANCE,
-                                      3, SPARM_FIRE_RESISTANCE,
-                                      3, SPARM_COLD_RESISTANCE,
-                                      3, SPARM_POISON_RESISTANCE,
-                                      3, SPARM_POSITIVE_ENERGY,
-                                      6, SPARM_REFLECTION,
+        return random_choose_weighted(6, SPARM_REFLECTION,
                                       12, SPARM_PROTECTION);
 
     case ARM_CLOAK:
-        return random_choose(SPARM_POISON_RESISTANCE,
-                             SPARM_MAGIC_RESISTANCE,
+        return random_choose(SPARM_MAGIC_RESISTANCE,
 							 SPARM_STEALTH,
                              SPARM_MAGICAL_POWER,
                              SPARM_REPULSION);
@@ -786,24 +780,15 @@ static special_armour_type _generate_armour_type_ego(armour_type type,
         return random_choose(SPARM_DEXTERITY, SPARM_RUNNING, SPARM_FLYING, SPARM_STEALTH);
 
     case ARM_NAGA_BARDING:
-        return random_choose(SPARM_FLYING, SPARM_STEALTH,
-                             SPARM_COLD_RESISTANCE, SPARM_FIRE_RESISTANCE);
+        return random_choose(SPARM_FLYING, SPARM_STEALTH);
 
     case ARM_ROBE:
-        return random_choose_weighted(1, SPARM_RESISTANCE,
-                                      1, SPARM_ARCHMAGI,
+        return random_choose_weighted(1, SPARM_ARCHMAGI,
                                       2, SPARM_NORMAL,
-                                      2, SPARM_COLD_RESISTANCE,
-                                      2, SPARM_FIRE_RESISTANCE,
-                                      2, SPARM_POSITIVE_ENERGY,
                                       4, SPARM_MAGIC_RESISTANCE);
 
     case ARM_PLATE_ARMOUR:
-        return random_choose_weighted(26, SPARM_FIRE_RESISTANCE,
-                                      26, SPARM_COLD_RESISTANCE,
-                                      19, SPARM_POISON_RESISTANCE,
-                                      15, SPARM_MAGIC_RESISTANCE,
-                                       7, SPARM_POSITIVE_ENERGY,
+        return random_choose_weighted(15, SPARM_MAGIC_RESISTANCE,
                                        7, SPARM_PONDEROUSNESS);
 
     // other body armour
@@ -820,11 +805,7 @@ static special_armour_type _generate_armour_type_ego(armour_type type,
         return SPARM_NORMAL;
     }
 
-    return random_choose_weighted(7, SPARM_FIRE_RESISTANCE,
-                                  7, SPARM_COLD_RESISTANCE,
-                                  5, SPARM_POISON_RESISTANCE,
-                                  4, SPARM_MAGIC_RESISTANCE,
-                                  2, SPARM_POSITIVE_ENERGY);
+    return random_choose_weighted(4, SPARM_MAGIC_RESISTANCE);
 }
 
 /**
@@ -916,34 +897,12 @@ bool is_armour_brand_ok(int type, int brand, bool strict)
     case SPARM_INTELLIGENCE:
         return slot == EQ_HELMET;
 
-    case SPARM_FIRE_RESISTANCE:
-    case SPARM_COLD_RESISTANCE:
-    case SPARM_RESISTANCE:
-        if (type == ARM_FIRE_DRAGON_ARMOUR
-            || type == ARM_ICE_DRAGON_ARMOUR
-            || type == ARM_GOLD_DRAGON_ARMOUR)
-        {
-            return false; // contradictory or redundant
-        }
-        return true; // in portal vaults, these can happen on every slot
-
     case SPARM_MAGIC_RESISTANCE:
         if (type == ARM_HAT || type == ARM_HELMET)
             return true;
-        // deliberate fall-through
-    case SPARM_POISON_RESISTANCE:
-    case SPARM_POSITIVE_ENERGY:
-        if (type == ARM_PEARL_DRAGON_ARMOUR && brand == SPARM_POSITIVE_ENERGY)
-            return false; // contradictory or redundant
-
-        return slot == EQ_BODY_ARMOUR || slot == EQ_SHIELD || slot == EQ_CLOAK
-               || !strict;
-
+        
     case SPARM_SPIRIT_SHIELD:
         return type == ARM_HAT ||
-#if TAG_MAJOR_VERSION == 34
-               type == ARM_CAP ||
-#endif
                slot == EQ_SHIELD || !strict;
     case NUM_SPECIAL_ARMOURS:
     case NUM_REAL_SPECIAL_ARMOURS:

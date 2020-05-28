@@ -2345,7 +2345,7 @@ int get_armour_res_fire(const item_def &arm, bool check_artp)
 
     // check ego resistance
     const int ego = get_armour_ego_type(arm);
-    if (ego == SPARM_FIRE_RESISTANCE || ego == SPARM_RESISTANCE)
+    if (ego == SPARM_RESISTANCE)
         res += 1;
 
     if (check_artp && is_artefact(arm))

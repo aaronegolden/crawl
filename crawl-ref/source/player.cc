@@ -1364,49 +1364,9 @@ int player_res_fire(bool calc_unid, bool temp, bool items)
 #endif
     int rf = 0;
 
-    if (items)
-    {
-        // rings of fire resistance/fire
-        rf += you.wearing(EQ_RINGS, RING_FIRE, calc_unid);
-
-        // Staves
-        rf += you.wearing(EQ_SHIELD, STAFF_FIRE, calc_unid);
-
-        // body armour:
-        const item_def *body_armour = you.slot_item(EQ_BODY_ARMOUR);
-        if (body_armour)
-            rf += armour_type_prop(body_armour->sub_type, ARMF_RES_FIRE);
-
-        // ego armours
-        rf += you.wearing_ego(EQ_ALL_ARMOUR, SPARM_FIRE_RESISTANCE);
-        rf += you.wearing_ego(EQ_ALL_ARMOUR, SPARM_RESISTANCE);
-
-        // randart weapons:
-        rf += you.scan_artefacts(ARTP_FIRE, calc_unid);
-
-        // dragonskin cloak: 0.5 to draconic resistances
-        if (calc_unid && player_equip_unrand(UNRAND_DRAGONSKIN)
-            && coinflip())
-        {
-            rf++;
-        }
-    }
-
     // species:
     if (you.species == SP_MUMMY)
         rf--;
-
-#if TAG_MAJOR_VERSION == 34
-    if (you.species == SP_LAVA_ORC)
-    {
-        if (temperature_effect(LORC_FIRE_RES_I))
-            rf++;
-        if (temperature_effect(LORC_FIRE_RES_II))
-            rf++;
-        if (temperature_effect(LORC_FIRE_RES_III))
-            rf++;
-    }
-#endif
 
     // mutations:
     rf += you.get_mutation_level(MUT_HEAT_RESISTANCE, temp);
@@ -1481,43 +1441,8 @@ int player_res_cold(bool calc_unid, bool temp, bool items)
             rc++;
 
         rc += get_form()->res_cold();
-
-#if TAG_MAJOR_VERSION == 34
-        if (you.species == SP_LAVA_ORC && temperature_effect(LORC_COLD_VULN))
-            rc--;
-#endif
     }
 
-    if (items)
-    {
-        // rings of cold resistance/ice
-        rc += you.wearing(EQ_RINGS, RING_ICE, calc_unid);
-
-        // Staves
-        rc += you.wearing(EQ_SHIELD, STAFF_COLD, calc_unid);
-
-        // body armour:
-        const item_def *body_armour = you.slot_item(EQ_BODY_ARMOUR);
-        if (body_armour)
-            rc += armour_type_prop(body_armour->sub_type, ARMF_RES_COLD);
-
-        // ego armours
-        rc += you.wearing_ego(EQ_ALL_ARMOUR, SPARM_COLD_RESISTANCE);
-        rc += you.wearing_ego(EQ_ALL_ARMOUR, SPARM_RESISTANCE);
-
-        // randart weapons:
-        rc += you.scan_artefacts(ARTP_COLD, calc_unid);
-
-        // dragonskin cloak: 0.5 to draconic resistances
-        if (calc_unid && player_equip_unrand(UNRAND_DRAGONSKIN) && coinflip())
-            rc++;
-    }
-
-#if TAG_MAJOR_VERSION == 34
-    // species:
-    if (you.species == SP_DJINNI)
-        rc--;
-#endif
     // mutations:
     rc += you.get_mutation_level(MUT_COLD_RESISTANCE, temp);
     rc -= you.get_mutation_level(MUT_COLD_VULNERABILITY, temp);
@@ -1568,24 +1493,6 @@ int player_res_electricity(bool calc_unid, bool temp, bool items)
 {
     int re = 0;
 
-    if (items)
-    {
-        // staff
-        re += you.wearing(EQ_SHIELD, STAFF_AIR, calc_unid);
-
-        // body armour:
-        const item_def *body_armour = you.slot_item(EQ_BODY_ARMOUR);
-        if (body_armour)
-            re += armour_type_prop(body_armour->sub_type, ARMF_RES_ELEC);
-
-        // randart weapons:
-        re += you.scan_artefacts(ARTP_ELECTRICITY, calc_unid);
-
-        // dragonskin cloak: 0.5 to draconic resistances
-        if (calc_unid && player_equip_unrand(UNRAND_DRAGONSKIN) && coinflip())
-            re++;
-    }
-
     // mutations:
     re += you.get_mutation_level(MUT_THIN_METALLIC_SCALES, temp) == 3 ? 1 : 0;
     re += you.get_mutation_level(MUT_SHOCK_RESISTANCE, temp);
@@ -1623,11 +1530,7 @@ bool player_res_torment(bool random)
         return true;
 
     return get_form()->res_neg() == 3
-           || you.petrified()
-#if TAG_MAJOR_VERSION == 34
-           || player_equip_unrand(UNRAND_ETERNAL_TORMENT)
-#endif
-           ;
+           || you.petrified();
 }
 
 // Kiku protects you from torment to a degree.
@@ -1654,34 +1557,12 @@ int player_res_poison(bool calc_unid, bool temp, bool items)
 
     if (you.is_nonliving(temp)
         || temp && get_form()->res_pois() == 3
-        || items && player_equip_unrand(UNRAND_OLGREB)
         || temp && you.duration[DUR_DIVINE_STAMINA])
     {
         return 3;
     }
 
     int rp = 0;
-
-    if (items)
-    {
-        // rings of poison resistance
-        rp += you.wearing(EQ_RINGS, RING_POISON_RESISTANCE, calc_unid);
-
-        // ego armour:
-        rp += you.wearing_ego(EQ_ALL_ARMOUR, SPARM_POISON_RESISTANCE);
-
-        // body armour:
-        const item_def *body_armour = you.slot_item(EQ_BODY_ARMOUR);
-        if (body_armour)
-            rp += armour_type_prop(body_armour->sub_type, ARMF_RES_POISON);
-
-        // rPois+ artefacts
-        rp += you.scan_artefacts(ARTP_POISON, calc_unid);
-
-        // dragonskin cloak: 0.5 to draconic resistances
-        if (calc_unid && player_equip_unrand(UNRAND_DRAGONSKIN) && coinflip())
-            rp++;
-    }
 
     // mutations:
     rp += you.get_mutation_level(MUT_POISON_RESISTANCE, temp);
@@ -1719,13 +1600,6 @@ int player_res_poison(bool calc_unid, bool temp, bool items)
 int player_res_sticky_flame(bool calc_unid, bool temp, bool items)
 {
     int rsf = 0;
-
-    // dragonskin cloak: 0.5 to draconic resistances
-    if (items && calc_unid
-        && player_equip_unrand(UNRAND_DRAGONSKIN) && coinflip())
-    {
-        rsf++;
-    }
 
     if (get_form()->res_sticky_flame())
         rsf++;
@@ -1910,29 +1784,6 @@ int player_prot_life(bool calc_unid, bool temp, bool items)
 		
         if (you.duration[DUR_RESISTANCE])
             pl++;
-    }
-
-    if (items)
-    {
-        // rings
-        pl += you.wearing(EQ_RINGS, RING_LIFE_PROTECTION, calc_unid);
-
-        // armour (checks body armour only)
-        pl += you.wearing_ego(EQ_ALL_ARMOUR, SPARM_POSITIVE_ENERGY);
-
-        // pearl dragon counts
-        const item_def *body_armour = you.slot_item(EQ_BODY_ARMOUR);
-        if (body_armour)
-            pl += armour_type_prop(body_armour->sub_type, ARMF_RES_NEG);
-
-        // randart wpns
-        pl += you.scan_artefacts(ARTP_NEGATIVE_ENERGY, calc_unid);
-
-        // dragonskin cloak: 0.5 to draconic resistances
-        if (calc_unid && player_equip_unrand(UNRAND_DRAGONSKIN) && coinflip())
-            pl++;
-
-        pl += you.wearing(EQ_SHIELD, STAFF_DEATH, calc_unid);
     }
 
     // undead/demonic power
@@ -7081,20 +6932,6 @@ bool player::can_see_invisible(bool calc_unid) const
 /// Can the player see invisible things without needing items' help?
 bool player::innate_sinv() const
 {
-    // Possible to have both with a temp mutation.
-    if (has_mutation(MUT_ACUTE_VISION)
-        && !has_mutation(MUT_BLURRY_VISION))
-    {
-        return true;
-    }
-
-    // antennae give sInvis at 3
-    if (get_mutation_level(MUT_ANTENNAE) == 3)
-        return true;
-
-    if (have_passive(passive_t::sinv))
-        return true;
-
     return false;
 }
 
