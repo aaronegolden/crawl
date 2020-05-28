@@ -2334,6 +2334,13 @@ bool is_fruit(const item_def & item)
 //
 // Generic item functions:
 //
+bool shield_is_adamant(const item_def &shield)
+{
+    ASSERT(is_shield(shield));
+
+    return get_armour_ego_type(shield) == SPARM_ADAMANT;
+}
+
 int get_armour_res_fire(const item_def &arm, bool check_artp)
 {
     ASSERT(arm.base_type == OBJ_ARMOUR);

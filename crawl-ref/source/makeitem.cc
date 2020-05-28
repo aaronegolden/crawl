@@ -754,7 +754,8 @@ static special_armour_type _generate_armour_type_ego(armour_type type,
     case ARM_SHIELD:
     case ARM_LARGE_SHIELD:
     case ARM_BUCKLER:
-        return random_choose_weighted(6, SPARM_REFLECTION,
+        return random_choose_weighted( 3, SPARM_ADAMANT,
+                                       6, SPARM_REFLECTION,
                                       12, SPARM_PROTECTION);
 
     case ARM_CLOAK:
@@ -881,6 +882,7 @@ bool is_armour_brand_ok(int type, int brand, bool strict)
 
     case SPARM_REFLECTION:
     case SPARM_PROTECTION:
+    case SPARM_ADAMANT:
         return slot == EQ_SHIELD;
 
     case SPARM_COLD_RESISTANCE:
@@ -907,8 +909,8 @@ bool is_armour_brand_ok(int type, int brand, bool strict)
         return slot == EQ_HELMET;
 
     case SPARM_MAGIC_RESISTANCE:
-        if (type == ARM_HAT || type == ARM_HELMET)
-            return true;
+        return slot == EQ_BODY_ARMOUR || slot == EQ_SHIELD || slot == EQ_CLOAK
+               || slot == EQ_HELMET || !strict;
         
     case SPARM_SPIRIT_SHIELD:
         return type == ARM_HAT ||

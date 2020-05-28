@@ -200,6 +200,7 @@ int food_turns(const item_def &item) PURE;
 bool is_fruit(const item_def &item) PURE;
 
 // generic item property functions:
+bool shield_is_adamant(const item_def &shield) PURE;
 int armour_type_prop(const uint8_t arm, const armour_flag prop) PURE;
 
 int get_armour_res_fire(const item_def &arm, bool check_artp) PURE;

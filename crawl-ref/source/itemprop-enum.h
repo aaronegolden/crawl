@@ -443,6 +443,7 @@ enum special_armour_type
 #endif
     SPARM_MAGICAL_POWER,
     SPARM_REPULSION,
+    SPARM_ADAMANT,
     NUM_REAL_SPECIAL_ARMOURS,
     NUM_SPECIAL_ARMOURS,
 };

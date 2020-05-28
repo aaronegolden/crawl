@@ -1690,6 +1690,10 @@ static string _describe_armour(const item_def &item, bool verbose)
             description += "It reflects blocked things back in the "
                 "direction they came from.";
             break;
+            
+        case SPARM_ADAMANT:
+            description += "It can block penetrating spells and projectiles.";
+            break;
 
         case SPARM_SPIRIT_SHIELD:
             description += "It shields its wearer from harm at the cost "
