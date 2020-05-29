@@ -754,8 +754,8 @@ static special_armour_type _generate_armour_type_ego(armour_type type,
     case ARM_SHIELD:
     case ARM_LARGE_SHIELD:
     case ARM_BUCKLER:
-        return random_choose_weighted( 3, SPARM_ADAMANT,
-                                       6, SPARM_REFLECTION,
+        return random_choose_weighted( 6, SPARM_ADAMANT,
+                                      12, SPARM_REFLECTION,
                                       12, SPARM_PROTECTION);
 
     case ARM_CLOAK:
