@@ -1381,12 +1381,6 @@ int player_res_fire(bool calc_unid, bool temp, bool items)
         if (you.duration[DUR_RESISTANCE])
             rf++;
 
-        if (you.duration[DUR_FIRE_SHIELD])
-            rf += 2;
-		
-        if (you.attribute[ATTR_FIRE_SHIELD])
-            rf += 2;
-
         if (you.duration[DUR_QAZLAL_FIRE_RES])
             rf++;
 
@@ -1434,9 +1428,6 @@ int player_res_cold(bool calc_unid, bool temp, bool items)
     {
         if (you.duration[DUR_RESISTANCE])
             rc++;
-
-        if (you.duration[DUR_FIRE_SHIELD])
-            rc -= 2;
 
         if (you.duration[DUR_QAZLAL_COLD_RES])
             rc++;
@@ -1638,17 +1629,6 @@ int player_spec_fire()
     // rings of fire:
     sf += you.wearing(EQ_RINGS, RING_FIRE);
 
-#if TAG_MAJOR_VERSION == 34
-    if (you.species == SP_LAVA_ORC && temperature_effect(LORC_FIRE_BOOST))
-        sf++;
-#endif
-
-    if (you.duration[DUR_FIRE_SHIELD])
-        sf++;
-	
-    if (you.attribute[ATTR_FIRE_SHIELD])
-        sf++;
-
     return sf;
 }
 
@@ -1664,15 +1644,6 @@ int player_spec_cold()
 
     // rings of ice:
     sc += you.wearing(EQ_RINGS, RING_ICE);
-
-#if TAG_MAJOR_VERSION == 34
-    if (you.species == SP_LAVA_ORC
-        && (temperature_effect(LORC_LAVA_BOOST)
-            || temperature_effect(LORC_FIRE_BOOST)))
-    {
-        sc--;
-    }
-#endif
 
     return sc;
 }
