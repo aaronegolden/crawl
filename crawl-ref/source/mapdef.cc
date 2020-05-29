@@ -4804,7 +4804,7 @@ static int _str_to_ego(item_spec &spec, string ego_str)
 #endif
         "magical_power",
         "repulsion",
-        "adamant",
+        "impenetrability",
         nullptr
     };
     COMPILE_CHECK(ARRAYSZ(armour_egos) == NUM_REAL_SPECIAL_ARMOURS);
