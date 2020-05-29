@@ -1164,7 +1164,8 @@ static int _player_bonus_regen()
     rr += REGEN_PIP * you.scan_artefacts(ARTP_REGENERATION);
 
     // Troll leather
-    if (you.wearing(EQ_BODY_ARMOUR, ARM_TROLL_LEATHER_ARMOUR))
+    if (you.wearing(EQ_BODY_ARMOUR, ARM_TROLL_LEATHER_ARMOUR)
+        || you.wearing(EQ_BODY_ARMOUR, ARM_GOLD_DRAGON_ARMOUR))
         rr += REGEN_PIP;
 
     // Fast heal mutation.
@@ -1398,14 +1399,7 @@ int player_res_steam(bool calc_unid, bool temp, bool items)
 
     if (you.species == SP_PALE_DRACONIAN)
         res += 2;
-
-    if (items)
-    {
-        const item_def *body_armour = you.slot_item(EQ_BODY_ARMOUR);
-        if (body_armour)
-            res += armour_type_prop(body_armour->sub_type, ARMF_RES_STEAM) * 2;
-    }
-
+    
     res += rf * 2;
 
     if (res > 2)
@@ -5643,26 +5637,53 @@ int player::skill(skill_type sk, int scale, bool real, bool drained) const
     else if (have_passive(passive_t::heroism) && sk <= SK_LAST_MUNDANE && sk != SK_STEALTH)
         level = min(level + (piety_rank() - 1) * scale, 27 * scale);
     
+    const item_def *body_armour = you.slot_item(EQ_BODY_ARMOUR);
+            
     switch (sk)
     {
     case SK_FIRE_MAGIC:
+    {
+        if(body_armour)
+            level = min(level + armour_type_prop(body_armour->sub_type, 
+                            ARMF_SKILL_FIRE) * scale, 27 * scale);
         level = min(level + scan_artefacts(ARTP_FIRE_SKILL) * scale, 27 * scale);
         break;
+    }
     case SK_EARTH_MAGIC:
+    {
+        if(body_armour)
+            level = min(level + armour_type_prop(body_armour->sub_type, 
+                            ARMF_SKILL_EARTH) * scale, 27 * scale);
         level = min(level + scan_artefacts(ARTP_EARTH_SKILL) * scale, 27 * scale);
         break;
+    }
     case SK_AIR_MAGIC:
+    {
+        if(body_armour)
+            level = min(level + armour_type_prop(body_armour->sub_type, 
+                            ARMF_SKILL_AIR) * scale, 27 * scale);
         level = min(level + scan_artefacts(ARTP_AIR_SKILL) * scale, 27 * scale);
         break;
+    }
     case SK_ICE_MAGIC:
+    {
+        if(body_armour)
+            level = min(level + armour_type_prop(body_armour->sub_type, 
+                            ARMF_SKILL_ICE) * scale, 27 * scale);
         level = min(level + scan_artefacts(ARTP_ICE_SKILL) * scale, 27 * scale);
         break;
+    }
     case SK_HEXES:
         level = min(level + scan_artefacts(ARTP_HEX_SKILL) * scale, 27 * scale);
         break;
     case SK_CHARMS:
+    {
+        if(body_armour)
+            level = min(level + armour_type_prop(body_armour->sub_type, 
+                            ARMF_SKILL_CHARM) * scale, 27 * scale);
         level = min(level + scan_artefacts(ARTP_CHARM_SKILL) * scale, 27 * scale);
         break;
+    }
     case SK_SUMMONINGS:
         level = min(level + scan_artefacts(ARTP_SUMMON_SKILL) * scale, 27 * scale);
         break;

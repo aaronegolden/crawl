@@ -21,25 +21,20 @@ typedef uint32_t armflags_t;
 enum armour_flag
 {
     ARMF_NO_FLAGS           = 0,
-    // multilevel resistances
-    ARMF_RES_FIRE           = 1 << 0,
-    ARMF_RES_COLD           = 1 << 3,
-    ARMF_RES_NEG            = 1 << 6,
+    // skill boosts
+    ARMF_SKILL_FIRE         = 1 << 0,
+    ARMF_SKILL_ICE          = 1 << 3,
+    ARMF_SKILL_CHARM        = 1 << 6,
+    ARMF_SKILL_AIR          = 1 << 9,
+    ARMF_SKILL_EARTH        = 1 << 12,
     // misc (multilevel)
-    ARMF_STEALTH            = 1 << 9,
-    ARMF_REGENERATION       = 1 << 13,
-
+    ARMF_STEALTH            = 1 << 15,
+    ARMF_REGENERATION       = 1 << 19,
+    
     ARMF_LAST_MULTI, // must be >= any multi, < any boolean, exact value doesn't matter
 
     // boolean resists
-    ARMF_RES_MAGIC          = 1 << 17,
-    ARMF_RES_ELEC           = 1 << 18,
-    ARMF_RES_POISON         = 1 << 19,
-    ARMF_RES_CORR           = 1 << 20,
-    ARMF_RES_STEAM          = 1 << 21,
-    // vulnerabilities
-    ARMF_VUL_FIRE           = ard(ARMF_RES_FIRE, -1),
-    ARMF_VUL_COLD           = ard(ARMF_RES_COLD, -1),
+    ARMF_RES_MAGIC          = 1 << 23,
 };
 
 /// Removed items that have item knowledge.
