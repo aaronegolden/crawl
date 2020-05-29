@@ -3632,28 +3632,6 @@ int monster::res_fire() const
 {
     int u = get_mons_resist(*this, MR_RES_FIRE);
 
-    if (mons_itemuse(*this) >= MONUSE_STARTING_EQUIPMENT)
-    {
-        u += scan_artefacts(ARTP_FIRE);
-
-        const int armour    = inv[MSLOT_ARMOUR];
-        const int shld      = inv[MSLOT_SHIELD];
-        const int jewellery = inv[MSLOT_JEWELLERY];
-
-        if (armour != NON_ITEM && mitm[armour].base_type == OBJ_ARMOUR)
-            u += get_armour_res_fire(mitm[armour], false);
-
-        if (shld != NON_ITEM && mitm[shld].base_type == OBJ_ARMOUR)
-            u += get_armour_res_fire(mitm[shld], false);
-
-        if (jewellery != NON_ITEM && mitm[jewellery].base_type == OBJ_JEWELLERY)
-            u += get_jewellery_res_fire(mitm[jewellery], false);
-
-        const item_def *w = primary_weapon();
-        if (w && w->is_type(OBJ_STAVES, STAFF_FIRE))
-            u++;
-    }
-
     if (has_ench(ENCH_FIRE_VULN))
         u--;
 
@@ -3686,28 +3664,6 @@ int monster::res_cold() const
 {
     int u = get_mons_resist(*this, MR_RES_COLD);
 
-    if (mons_itemuse(*this) >= MONUSE_STARTING_EQUIPMENT)
-    {
-        u += scan_artefacts(ARTP_COLD);
-
-        const int armour    = inv[MSLOT_ARMOUR];
-        const int shld      = inv[MSLOT_SHIELD];
-        const int jewellery = inv[MSLOT_JEWELLERY];
-
-        if (armour != NON_ITEM && mitm[armour].base_type == OBJ_ARMOUR)
-            u += get_armour_res_cold(mitm[armour], false);
-
-        if (shld != NON_ITEM && mitm[shld].base_type == OBJ_ARMOUR)
-            u += get_armour_res_cold(mitm[shld], false);
-
-        if (jewellery != NON_ITEM && mitm[jewellery].base_type == OBJ_JEWELLERY)
-            u += get_jewellery_res_cold(mitm[jewellery], false);
-
-        const item_def *w = primary_weapon();
-        if (w && w->is_type(OBJ_STAVES, STAFF_COLD))
-            u++;
-    }
-
     if (has_ench(ENCH_RESISTANCE))
         u++;
 
@@ -3725,28 +3681,6 @@ int monster::res_elec() const
     int u = 0;
 
     u += get_mons_resist(*this, MR_RES_ELEC);
-
-    // Don't bother checking equipment if the monster can't use it.
-    if (mons_itemuse(*this) >= MONUSE_STARTING_EQUIPMENT)
-    {
-        u += scan_artefacts(ARTP_ELECTRICITY);
-
-        // No ego armour, but storm dragon.
-        // Also no non-artefact rings at present,
-        // but it doesn't hurt to be thorough.
-        const int armour    = inv[MSLOT_ARMOUR];
-        const int jewellery = inv[MSLOT_JEWELLERY];
-
-        if (armour != NON_ITEM && mitm[armour].base_type == OBJ_ARMOUR)
-            u += get_armour_res_elec(mitm[armour], false);
-
-        if (jewellery != NON_ITEM && mitm[jewellery].base_type == OBJ_JEWELLERY)
-            u += get_jewellery_res_elec(mitm[jewellery], false);
-
-        const item_def *w = primary_weapon();
-        if (w && w->is_type(OBJ_STAVES, STAFF_AIR))
-            u++;
-    }
 
     if (has_ench(ENCH_RESISTANCE))
         u++;
@@ -3782,24 +3716,6 @@ int monster::res_poison(bool temp) const
 
     if (u > 0)
         return u;
-
-    if (mons_itemuse(*this) >= MONUSE_STARTING_EQUIPMENT)
-    {
-        u += scan_artefacts(ARTP_POISON);
-
-        const int armour    = inv[MSLOT_ARMOUR];
-        const int shld      = inv[MSLOT_SHIELD];
-        const int jewellery = inv[MSLOT_JEWELLERY];
-
-        if (armour != NON_ITEM && mitm[armour].base_type == OBJ_ARMOUR)
-            u += get_armour_res_poison(mitm[armour], false);
-
-        if (shld != NON_ITEM && mitm[shld].base_type == OBJ_ARMOUR)
-            u += get_armour_res_poison(mitm[shld], false);
-
-        if (jewellery != NON_ITEM && mitm[jewellery].base_type == OBJ_JEWELLERY)
-            u += get_jewellery_res_poison(mitm[jewellery], false);
-    }
 
     if (has_ench(ENCH_RESISTANCE))
         u++;
@@ -3869,28 +3785,6 @@ int monster::res_negative_energy(bool intrinsic_only) const
         return 3;
 
     int u = get_mons_resist(*this, MR_RES_NEG);
-
-    if (mons_itemuse(*this) >= MONUSE_STARTING_EQUIPMENT && !intrinsic_only)
-    {
-        u += scan_artefacts(ARTP_NEGATIVE_ENERGY);
-
-        const int armour    = inv[MSLOT_ARMOUR];
-        const int shld      = inv[MSLOT_SHIELD];
-        const int jewellery = inv[MSLOT_JEWELLERY];
-
-        if (armour != NON_ITEM && mitm[armour].base_type == OBJ_ARMOUR)
-            u += get_armour_life_protection(mitm[armour], false);
-
-        if (shld != NON_ITEM && mitm[shld].base_type == OBJ_ARMOUR)
-            u += get_armour_life_protection(mitm[shld], false);
-
-        if (jewellery != NON_ITEM && mitm[jewellery].base_type == OBJ_JEWELLERY)
-            u += get_jewellery_life_protection(mitm[jewellery], false);
-
-        const item_def *w = primary_weapon();
-        if (w && w->is_type(OBJ_STAVES, STAFF_DEATH))
-            u++;
-    }
 
     if (u > 3)
         u = 3;
@@ -5649,21 +5543,7 @@ void monster::gain_energy(energy_use_type et, int div, int mult)
  */
 bool monster::can_drink() const
 {
-    if (mons_class_is_stationary(type))
-        return false;
-
-    if (mons_itemuse(*this) < MONUSE_STARTING_EQUIPMENT)
-        return false;
-
-    // These monsters cannot drink.
-    if (is_skeletal() || is_insubstantial()
-        || mons_species() == MONS_LICH || mons_genus(type) == MONS_MUMMY
-        || mons_species() == MONS_WIGHT || type == MONS_GASTRONOK)
-    {
-        return false;
-    }
-
-    return true;
+    return false;
 }
 
 bool monster::can_drink_potion(potion_type ptype) const
@@ -5820,35 +5700,11 @@ bool monster::drink_potion_effect(potion_type pot_eff, bool card)
 
 bool monster::can_evoke_jewellery(jewellery_type jtype) const
 {
-    if (mons_class_is_stationary(type))
-        return false;
-
-    if (mons_itemuse(*this) < MONUSE_STARTING_EQUIPMENT)
-        return false;
-
-    switch (jtype)
-    {
-        case AMU_RAGE:
-            return can_go_berserk();
-        default:
-            break;
-    }
-
     return false;
 }
 
 bool monster::should_evoke_jewellery(jewellery_type jtype) const
 {
-    switch (jtype)
-    {
-    case AMU_RAGE:
-        // this implies !berserk()
-        return !has_ench(ENCH_MIGHT) && !has_ench(ENCH_HASTE)
-               && needs_berserk();
-    default:
-        break;
-    }
-
     return false;
 }
 
