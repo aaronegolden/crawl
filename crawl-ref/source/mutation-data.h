@@ -56,7 +56,7 @@ static const mutation_def mut_data[] =
   {"", "", ""},
 },
 
-{ MUT_POISON_RESISTANCE, 4, 1, mutflag::GOOD, true,
+{ MUT_POISON_RESISTANCE, 0, 1, mutflag::GOOD, true,
   "poison resistance",
 
   {"Your system is resistant to poisons. (rPois)", "", ""},
@@ -96,7 +96,7 @@ static const mutation_def mut_data[] =
    "You feel able to eat a more balanced diet."},
 },
 
-{ MUT_HEAT_RESISTANCE, 4, 3, mutflag::GOOD, true,
+{ MUT_HEAT_RESISTANCE, 0, 3, mutflag::GOOD, true,
   "fire resistance",
 
   {"Your flesh is heat resistant. (rF+)",
@@ -112,7 +112,7 @@ static const mutation_def mut_data[] =
    "You feel less heat resistant."},
 },
 
-{ MUT_COLD_RESISTANCE, 4, 3, mutflag::GOOD, true,
+{ MUT_COLD_RESISTANCE, 0, 3, mutflag::GOOD, true,
   "cold resistance",
 
   {"Your flesh is cold resistant. (rC+)",
@@ -179,7 +179,7 @@ static const mutation_def mut_data[] =
    "Your demonic guardian is weakened."},
 },
 
-{ MUT_SHOCK_RESISTANCE, 3, 1, mutflag::GOOD, true,
+{ MUT_SHOCK_RESISTANCE, 0, 1, mutflag::GOOD, true,
   "electricity resistance",
 
   {"You are resistant to electric shocks. (rElec)", "", ""},
