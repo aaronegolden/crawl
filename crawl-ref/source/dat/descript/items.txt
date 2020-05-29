@@ -3,13 +3,12 @@ acid dragon scales
 
 The scales of an acid dragon. Although it does not provide its wearer with as
 much protection as the armour made from the scales of some larger dragons, it is
-somewhat lighter and less encumbering. It is also remarkably smooth, letting
-corrosive slime flow off it like water.
+somewhat lighter and less encumbering.
 %%%%
 amulet of darkness
 
-An amulet attuned to the shadows. It reduces the wearer's range of vision, lowering
-the distance at which they can be seen.
+An amulet attuned to the shadows. It reduces the wearer's range of vision and
+lowers the distance at which they can be seen.
 %%%%
 amulet of destruction
 
@@ -423,8 +422,8 @@ smaller than a human hand.
 %%%%
 fire dragon scales
 
-The scales of a fire-breathing dragon. It provides great protection from fire,
-while rendering its wearer more susceptible to cold.
+The scales of a fire-breathing dragon. It enhances its wearer's skill with
+fire magic.
 %%%%
 flail
 
@@ -461,7 +460,7 @@ A pole with a large, heavy blade on one end.
 gold dragon scales
 
 The scales of a gold dragon. It is much heavier than most dragon scale armours,
-and grants its wearer resistance to poison, fire and cold.
+and enhances the regeneration rate of its wearer.
 %%%%
 gold piece
 
@@ -518,8 +517,8 @@ ammunition, rather than rocks found on the floor.
 %%%%
 ice dragon scales
 
-The scales of a cold-breathing dragon. It provides great protection from cold,
-while rendering its wearer more susceptible to fire.
+The scales of a cold-breathing dragon. It enhances its wearer's skill with ice
+magic.
 %%%%
 inedible chunk of flesh
 
@@ -622,8 +621,8 @@ claws.
 %%%%
 pearl dragon scales
 
-The nacreous scales of a pearl dragon. It grants its wearer resistance to
-negative energies.
+The nacreous scales of a pearl dragon. It grants its wearer enhanced ability
+with charms.
 %%%%
 phantom mirror
 
@@ -1030,8 +1029,8 @@ A staff that increases the ability of its wielder to use magical spells.
 steam dragon scales
 
 The scales of a steam-breathing dragon. Unlike the scales of some larger
-dragons, it does not provide its wearer with much protection (beyond a
-resistance to scalding steam), but it is extremely light and supple.
+dragons, it does not provide its wearer with much protection, but it is 
+extremely light and supple.
 %%%%
 stone
 
@@ -1047,11 +1046,11 @@ substantial benefit to the wearer's stealth.
 storm dragon scales
 
 The scales of a lightning-breathing dragon. It is heavier than most dragon
-scale armours, and gives its wearer resistance to electrical discharges.
+scale armours, and enhances its wearer's skill in air magic.
 %%%%
 swamp dragon scales
 
-The scales of a swamp dragon. It confers resistance to poison on its wearer.
+The scales of a swamp dragon. It enhances its wearer's skill in earth magic.
 %%%%
 tomahawk
 
