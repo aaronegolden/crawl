@@ -1358,11 +1358,6 @@ int player_likes_chunks(bool permanently)
 // If temp is set to false, temporary sources or resistance won't be counted.
 int player_res_fire(bool calc_unid, bool temp, bool items)
 {
-#if TAG_MAJOR_VERSION == 34
-    if (you.species == SP_DJINNI)
-        return 4; // full immunity
-
-#endif
     int rf = 0;
 
     // species:
@@ -1373,7 +1368,6 @@ int player_res_fire(bool calc_unid, bool temp, bool items)
     rf += you.get_mutation_level(MUT_HEAT_RESISTANCE, temp);
     rf -= you.get_mutation_level(MUT_HEAT_VULNERABILITY, temp);
     rf -= you.get_mutation_level(MUT_TEMPERATURE_SENSITIVITY, temp);
-    rf += you.get_mutation_level(MUT_MOLTEN_SCALES, temp) == 3 ? 1 : 0;
 
     // spells:
     if (temp)
@@ -1439,7 +1433,6 @@ int player_res_cold(bool calc_unid, bool temp, bool items)
     rc += you.get_mutation_level(MUT_COLD_RESISTANCE, temp);
     rc -= you.get_mutation_level(MUT_COLD_VULNERABILITY, temp);
     rc -= you.get_mutation_level(MUT_TEMPERATURE_SENSITIVITY, temp);
-    rc += you.get_mutation_level(MUT_ICY_BLUE_SCALES, temp) == 3 ? 1 : 0;
 
     if (rc < -3)
         rc = -3;
@@ -1486,7 +1479,6 @@ int player_res_electricity(bool calc_unid, bool temp, bool items)
     int re = 0;
 
     // mutations:
-    re += you.get_mutation_level(MUT_THIN_METALLIC_SCALES, temp) == 3 ? 1 : 0;
     re += you.get_mutation_level(MUT_SHOCK_RESISTANCE, temp);
     re -= you.get_mutation_level(MUT_SHOCK_VULNERABILITY, temp);
 
@@ -1558,7 +1550,6 @@ int player_res_poison(bool calc_unid, bool temp, bool items)
 
     // mutations:
     rp += you.get_mutation_level(MUT_POISON_RESISTANCE, temp);
-    rp += you.get_mutation_level(MUT_SLIMY_GREEN_SCALES, temp) == 3 ? 1 : 0;
 
     if (temp)
     {
