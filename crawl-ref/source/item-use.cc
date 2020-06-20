@@ -2206,7 +2206,8 @@ void prompt_inscribe_item()
 
 void drink(item_def* potion)
 {
-    if (you_foodless() && you.species != SP_VAMPIRE)
+    if ((you.undead_state() == US_UNDEAD || you.undead_state() == US_SEMI_UNDEAD)
+        && you.species != SP_VAMPIRE)
     {
         mpr("You can't drink.");
         return;
