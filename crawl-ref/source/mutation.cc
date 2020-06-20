@@ -1418,6 +1418,9 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
             bool force_mutation, bool god_gift, bool beneficial,
             mutation_permanence_class mutclass)
 {
+    if (mutclass == MUTCLASS_NORMAL)
+        mutclass = MUTCLASS_TEMPORARY;
+
     if (which_mutation == RANDOM_BAD_MUTATION
         && mutclass == MUTCLASS_NORMAL
         && crawl_state.disables[DIS_AFFLICTIONS])
