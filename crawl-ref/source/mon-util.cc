@@ -2303,7 +2303,13 @@ int exper_value(const monster& mon, bool real)
 
     // These four are the original arguments.
     const monster_type mc = mon.type;
-    int hd                = mon.get_experience_level();
+
+    // In quick crawl we need to gain XP faster to offset the fact that
+    // there are fewer monsters to kill, etc. Treat all monsters as if they
+    // are roughly 3x more powerful than they really are, but we still max
+    // out at OOF level.
+    int hd                = min(mon.get_experience_level() * 10, 30);
+
     int maxhp             = mon.max_hit_points;
 
     // pghosts and pillusions have no reasonable base values, and you can look
