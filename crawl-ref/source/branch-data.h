@@ -28,7 +28,7 @@ const Branch branches[NUM_BRANCHES] =
       LIGHTGREY, BROWN,
       'T', {}, branch_noise::normal },
 
-    { BRANCH_ORC, BRANCH_DUNGEON, 2, 2, 1, 10,
+    { BRANCH_ORC, BRANCH_DUNGEON, 4, 4, 1, 10,
       brflag::spotty,
       DNGN_ENTER_ORC, DNGN_EXIT_ORC, NUM_FEATURES,
       "Orcish Mines", "the Orcish Mines", "Orc",
