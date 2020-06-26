@@ -2510,53 +2510,6 @@ spret_type cast_spellforged_servitor(int pow, god_type god, bool fail)
     return SPRET_SUCCESS;
 }
 
-static int _abjuration(int pow, monster *mon)
-{
-    // Scale power into something comparable to summon lifetime.
-    const int abjdur = pow * 12;
-
-    // XXX: make this a prompt
-    if (mon->wont_attack())
-        return false;
-
-    int duration;
-    if (mon->is_summoned(&duration))
-    {
-        int sockage = max(fuzz_value(abjdur, 60, 30), 40);
-        dprf("%s abj: dur: %d, abj: %d",
-             mon->name(DESC_PLAIN).c_str(), duration, sockage);
-
-        bool shielded = false;
-        // TSO and Trog's abjuration protection.
-        if (mons_is_god_gift(*mon, GOD_SHINING_ONE))
-        {
-            sockage = sockage * (30 - mon->get_hit_dice()) / 45;
-            if (sockage < duration)
-            {
-                simple_god_message(" protects a fellow warrior from your evil magic!",
-                                   GOD_SHINING_ONE);
-                shielded = true;
-            }
-        }
-        else if (mons_is_god_gift(*mon, GOD_TROG))
-        {
-            sockage = sockage * 8 / 15;
-            if (sockage < duration)
-            {
-                simple_god_message(" shields an ally from your puny magic!",
-                                   GOD_TROG);
-                shielded = true;
-            }
-        }
-
-        mon_enchant abj = mon->get_ench(ENCH_ABJ);
-        if (!mon->lose_ench_duration(abj, sockage) && !shielded)
-            simple_monster_message(*mon, " shudders.");
-    }
-
-    return true;
-}
-
 monster* find_battlesphere(const actor* agent)
 {
     if (agent->props.exists("battlesphere"))
