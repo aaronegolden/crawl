@@ -3874,19 +3874,8 @@ static void _builder_items()
     int items_levels = env.absdepth0;
     int items_wanted = _num_items_wanted(items_levels);
 
-    if (player_in_branch(BRANCH_VAULTS))
-    {
-        items_levels *= 15;
-        items_levels /= 10;
-    }
-    else if (player_in_branch(BRANCH_ORC))
-    {
-        specif_type = OBJ_GOLD;  // Lots of gold in the orcish mines.
-        items_levels *= 2;       // Four levels' worth, in fact.
-    } else {
-        items_wanted *= 3;
-        items_levels *= 9;
-    }
+    items_wanted *= 4;
+    items_levels = 50;
 
     for (i = 0; i < items_wanted; i++)
     {
