@@ -2306,9 +2306,9 @@ int exper_value(const monster& mon, bool real)
 
     // In quick crawl we need to gain XP faster to offset the fact that
     // there are fewer monsters to kill, etc. Treat all monsters as if they
-    // are roughly 6x more powerful than they really are, but we still max
+    // are roughly 8x more powerful than they really are, but we still max
     // out at OOF level.
-    int hd                = min(mon.get_experience_level() * 6, 30);
+    int hd                = min(mon.get_experience_level() * 8, 30);
 
     int maxhp             = mon.max_hit_points;
 
