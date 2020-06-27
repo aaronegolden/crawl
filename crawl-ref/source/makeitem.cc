@@ -1444,8 +1444,8 @@ static void _generate_scroll_item(item_def& item, int force_type,
             //                  828  otherwise
             //                 -122  in sprint
             item.sub_type = random_choose_weighted(
-                200, SCR_IDENTIFY,
-                112, SCR_REMOVE_CURSE,
+                0, SCR_IDENTIFY,
+                0, SCR_REMOVE_CURSE,
                  // [Cha] don't generate teleportation scrolls if in sprint
                 100, (crawl_state.game_is_sprint() ? NUM_SCROLLS
                                                    : SCR_TELEPORTATION),
@@ -1459,7 +1459,7 @@ static void _generate_scroll_item(item_def& item, int force_type,
                  32, SCR_IMMOLATION,
                  // [Cha] don't generate noise scrolls if in sprint
                  22, (crawl_state.game_is_sprint() ? NUM_SCROLLS : SCR_NOISE),
-                 22, SCR_RANDOM_USELESSNESS,
+                 0, SCR_RANDOM_USELESSNESS,
                  // Higher-level scrolls.
                  27, (depth_mod < 4 ? NUM_SCROLLS : SCR_VULNERABILITY),
                  17, (depth_mod < 4 ? NUM_SCROLLS : SCR_SUMMONING),

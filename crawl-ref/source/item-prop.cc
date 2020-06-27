@@ -895,6 +895,9 @@ void auto_id_inventory()
 
 void do_curse_item(item_def &item, bool quiet)
 {
+    // I agree with hellmonk.
+    return;
+
     // Already cursed?
     if (item.flags & ISFLAG_CURSED)
         return;
@@ -1033,7 +1036,7 @@ static bool _is_affordable(const item_def &item)
 //
 bool item_ident(const item_def &item, iflags_t flags)
 {
-    return (item.flags & flags) == flags;
+    return true; // hellmonk is right on this one too.
 }
 
 void set_ident_flags(item_def &item, iflags_t flags)
