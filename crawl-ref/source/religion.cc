@@ -2273,7 +2273,7 @@ void dock_piety(int piety_loss, int penance)
 // Scales a piety number, applying modifiers (faith).
 int piety_scale(int piety)
 {
-    return piety + (you.faith() * div_rand_round(piety, 4));
+    return piety + div_rand_round(piety, 2) + (you.faith() * div_rand_round(piety, 4));
 }
 
 /** Gain or lose piety to reach a certain value.
@@ -2481,10 +2481,6 @@ bool gain_piety(int original_gain, int denominator, bool should_scale_piety)
     {
         return false;
     }
-
-    // Need to gain piety faster in a quick game, except not for Oka's tactical piety.
-    if (!you_worship(GOD_USKAYAW))
-        original_gain *= 2;
 
     int pgn = should_scale_piety ? piety_scale(original_gain) : original_gain;
 
