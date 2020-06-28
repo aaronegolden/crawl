@@ -281,6 +281,7 @@ TILE:    spwpn_sword_of_cerebov
 TILE_EQ: sword_twist
 VALUE:   2000
 BRAND:   SPWPN_FLAMING
+FIRE_SKILL: 6
 BOOL:    evil, nogen
 
 NAME:    staff of Dispater
@@ -640,10 +641,11 @@ BRAND:    SPWPN_SPEED
 
 NAME:     storm bow
 OBJ:      OBJ_WEAPONS/WPN_LONGBOW
-PLUS:     +8
+PLUS:     +7
 COLOUR:   BLUE
 TILE:     urand_storm_bow
 TILE_EQ:  storm_bow
+AIR_SKILL: 3
 BRAND:    SPWPN_ELECTROCUTION
 
 NAME:    large shield of Ignorance
@@ -882,6 +884,7 @@ OBJ:     OBJ_JEWELLERY/AMU_NOTHING
 COLOUR:  ETC_ELECTRICITY
 TILE:    urand_air
 EV:      3
+AIR_SKILL: 3
 BOOL:    fly, rmsl
 
 NAME:    ring of Shadows
@@ -905,8 +908,8 @@ NAME:    amulet of the Four Winds
 OBJ:     OBJ_JEWELLERY/AMU_NOTHING
 COLOUR:  ETC_POISON
 TILE:    urand_four_winds
-LIFE:    1
 MAGIC:   3
+AIR_SKILL: 4
 BOOL:    clarity
 
 NAME:    necklace of Bloodlust
@@ -1009,6 +1012,7 @@ TILE_EQ:  shillelagh
 PLUS:     +6
 BASE_DAM: +3
 BOOL:     special
+EARTH_SKILL: 4
 # hrm, nothing fitting, shouldn't be elemental but should be marked
 COLOUR:   WHITE
 
@@ -1220,6 +1224,7 @@ COLOUR:  ETC_ICE
 TILE:    urand_frostbite
 TILE_EQ: frostbite
 BRAND:   SPWPN_FREEZING
+ICE_SKILL: 6
 BOOL:    skip_ego, fly, noises
 
 # TAG_MAJOR_VERSION == 34
