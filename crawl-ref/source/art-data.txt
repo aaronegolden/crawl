@@ -181,7 +181,7 @@ COLOUR:  ETC_BLOOD
 TILE:    spwpn_wrath_of_trog
 TILE_EQ: axe_trog
 VALUE:   1000
-ANGRY:   50
+ANGRY:   100
 BRAND:   SPWPN_ANTIMAGIC
 
 NAME:    mace of Variability

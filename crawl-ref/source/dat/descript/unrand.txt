@@ -15,8 +15,7 @@ Screaming Sword
 Wrath of Trog
 
 A bloodstained axe that was the favourite weapon of the old god Trog, before it
-was lost. It induces a bloodthirsty berserker rage in warriors who use it in
-battle.
+was lost. It induces a bloodthirsty berserker rage in it user with every attack.
 %%%%
 mace of Variability
 
@@ -75,7 +74,8 @@ presence are reanimated by its power and forced to fight on.
 sword of Cerebov
 
 A twisted blade, covered in eerie flames. Its demonic power burns away some of
-the fire resistance of those it strikes.
+the fire resistance of those it strikes and it greatly increases the user's
+skill with fire magic.
 %%%%
 staff of Dispater
 
@@ -199,7 +199,7 @@ A beautiful mithril axe, probably lost by some dwarven hero.
 Elemental Staff
 
 A powerful staff which used to belong to the leader of the Guild of Five
-Elements. In addition to the protection it provides, those skilled in
+Elements. In addition to the skills it provides, those skilled in
 Evocations may discharge powerful blasts of elemental energy when striking with
 it.
 %%%%
