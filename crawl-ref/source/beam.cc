@@ -1610,6 +1610,13 @@ int mons_adjust_flavoured(monster* mons, bolt &pbolt, int hurted,
 
         break;
     }
+    
+    case BEAM_CURARE:
+    {
+        hurted = 0;
+        curare_actor(pbolt.agent(), mons, 2, pbolt.name, pbolt.get_source_name());
+        break;
+    }
 
     case BEAM_POISON_ARROW:
         hurted = resist_adjust_damage(mons, pbolt.flavour, hurted);
@@ -3095,9 +3102,8 @@ bool bolt::is_harmless(const monster* mon) const
         return mon->res_elec() >= 3;
 
     case BEAM_POISON:
-        return mon->res_poison() >= 3;
-        
     case BEAM_VENOM:
+    case BEAM_CURARE:
         return mon->res_poison() >= 3;    
 
     case BEAM_ACID:
@@ -3150,6 +3156,7 @@ bool bolt::harmless_to_player() const
 
     case BEAM_POISON:
     case BEAM_VENOM:
+    case BEAM_CURARE:
         return player_res_poison(false) >= 3
                || is_big_cloud() && player_res_poison(false) > 0;
 
@@ -3933,6 +3940,9 @@ void bolt::affect_player()
 	
     if (flavour == BEAM_MIASMA && hurted > 0)
         was_affected = miasma_player(agent(), name);
+    
+    if (flavour == BEAM_CURARE)
+        was_affected = curare_actor(agent(), (actor*) &you, 2, name, source_name);
 
     if (flavour == BEAM_DEVASTATION) // DISINTEGRATION already handled
         blood_spray(you.pos(), MONS_PLAYER, hurted / 5);
@@ -6422,6 +6432,7 @@ static string _beam_type_name(beam_type type)
     case BEAM_MEPHITIC:              return "noxious fumes";
     case BEAM_POISON:                return "poison";
     case BEAM_VENOM:                 return "venom";
+    case BEAM_CURARE:                return "curare";
     case BEAM_NEG:                   return "negative energy";
     case BEAM_ACID:                  return "acid";
     case BEAM_MIASMA:                return "miasma";

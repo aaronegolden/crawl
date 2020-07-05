@@ -1281,6 +1281,7 @@ bolt mons_spell_beam(const monster* mons, spell_type spell_cast, int power,
     case SPELL_TELEPORT_OTHER:
     case SPELL_SHOOT_ARROW:
     case SPELL_THROW_BOULDER:
+    case SPELL_CURARE_DART:
         zappy(spell_to_zap(real_spell), power, true, beam);
         break;
 
@@ -7947,6 +7948,7 @@ static bool _ms_waste_of_time(monster* mon, mon_spell_slot slot)
     case SPELL_THROW_BARBS:
     case SPELL_THROW_BOULDER:
     case SPELL_SHOOT_ARROW:
+    case SPELL_CURARE_DART:
     {
         bool master_archer = mons_class_flag(mon->type, M_ARCHER) && mons_class_flag(mon->type, M_DONT_MELEE);
         // Don't fire in melee range, unless we are a master archer.

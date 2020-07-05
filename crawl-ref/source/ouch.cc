@@ -208,6 +208,12 @@ int check_your_resists(int hurted, beam_type flavour, string source,
 
         break;
     }
+    
+    case BEAM_CURARE:
+    {
+        hurted = 0;
+        break;
+    }
 
     case BEAM_POISON_ARROW:
         if (doEffects)

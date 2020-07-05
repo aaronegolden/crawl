@@ -157,6 +157,10 @@ Spit Venom cast
 
 @The_monster@ spits venom at @target@.
 %%%%
+Curare Dart cast
+
+@The_monster@ throws a curare-tipped dart at @target@.
+%%%%
 Holy Flames cast
 
 @The_monster@ calls forth blessed flames!

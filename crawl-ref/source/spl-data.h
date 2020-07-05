@@ -4090,6 +4090,17 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+    SPELL_CURARE_DART, "Curare Dart",
+    SPTYP_HEXES,
+    SPFLAG_DIR_OR_TARGET | SPFLAG_NEEDS_TRACER | SPFLAG_MONSTER,
+    5,
+    200,
+    LOS_RADIUS, LOS_RADIUS,
+    3, 0,
+    TILEG_ERROR,
+},
+
+{
     SPELL_FOXFIRE, "Foxfire",
     SPTYP_FIRE,
     SPFLAG_SELFENCH,

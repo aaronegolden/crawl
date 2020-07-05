@@ -452,6 +452,7 @@ static bool is_boolean_resist(beam_type flavour)
     case BEAM_POISON:
     case BEAM_VENOM:
     case BEAM_POISON_ARROW:
+    case BEAM_CURARE:
         return true;
     default:
         return false;
@@ -511,6 +512,7 @@ static int _beam_to_resist(const actor* defender, beam_type flavour)
         case BEAM_POISON:
         case BEAM_VENOM:
         case BEAM_POISON_ARROW:
+        case BEAM_CURARE:
             return defender->res_poison();
         case BEAM_HOLY:
             return defender->res_holy_energy();
@@ -560,6 +562,7 @@ int resist_adjust_damage(const actor* defender, beam_type flavour, int rawdamage
                                      || flavour == BEAM_HOLY
                                      || flavour == BEAM_POISON
                                      || flavour == BEAM_VENOM
+                                     || flavour == BEAM_CURARE
                                      // just the resistible part
                                      || flavour == BEAM_POISON_ARROW;
 

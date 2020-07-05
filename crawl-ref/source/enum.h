@@ -716,6 +716,7 @@ enum beam_type                  // bolt::flavour
     BEAM_CHAOS,
     BEAM_UNRAVELLED_MAGIC,
     BEAM_VENOM,                   // poison/paralyse venom spit
+    BEAM_CURARE,
 
     // Enchantments
     BEAM_SLOW,
@@ -4993,6 +4994,7 @@ enum spell_type : int
     SPELL_GHOSTLY_LEGION,
     SPELL_ESSENCE_SPRAY,
     SPELL_PHASE_BUG,
+    SPELL_CURARE_DART,
     NUM_SPELLS
 };
 
@@ -5175,6 +5177,7 @@ enum zap_type
     ZAP_SHOOT_ARROW,
     ZAP_THROW_BOULDER,
     ZAP_FOXFIRE,
+    ZAP_CURARE_DART,
     NUM_ZAPS
 };
 

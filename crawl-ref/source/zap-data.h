@@ -1304,6 +1304,24 @@ _mon_hex_zap(ZAP_DRAIN_MAGIC, BEAM_DRAIN_MAGIC),
     3
 },
 
+{
+    ZAP_CURARE_DART,
+    "curare dart",
+    50,
+    nullptr,
+    nullptr,
+    new calcdice_calculator<1, 1, 0, 1>,
+    new tohit_calculator<8, 1, 12>,
+    BROWN,
+    false,
+    BEAM_CURARE,
+    DCHAR_FIRED_MISSILE,
+    true,
+    false,
+    false,
+    3
+},
+
 
 {
     ZAP_FOXFIRE,
