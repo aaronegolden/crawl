@@ -119,6 +119,11 @@ bool you_foodless(bool temp)
     return true;
 }
 
+bool you_drinkless()
+{
+    return (you.undead_state() == US_UNDEAD || you.undead_state() == US_SEMI_UNDEAD) && you.species != SP_VAMPIRE;
+}
+
 bool prompt_eat_item(int slot)
 {
     item_def* item = nullptr;
