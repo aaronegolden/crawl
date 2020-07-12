@@ -227,7 +227,7 @@ ifeq ($(uname_S),Darwin)
 	BUILD_SQLITE = YesPlease
 	BUILD_ZLIB = YesPlease
 	ifdef TILES
-		EXTRA_LIBS += -framework AppKit -framework AudioUnit -framework CoreAudio -framework ForceFeedback -framework Carbon -framework IOKit -framework OpenGL contrib/install/$(ARCH)/lib/libSDL2main.a
+		EXTRA_LIBS += -framework AppKit -framework AudioUnit -framework CoreAudio -framework ForceFeedback -framework Carbon -framework IOKit -framework OpenGL -framework AudioToolbox -framework CoreVideo contrib/install/$(ARCH)/lib/libSDL2main.a
 		BUILD_FREETYPE = YesPlease
 		BUILD_SDL2 = YesPlease
 		BUILD_SDL2IMAGE = YesPlease
@@ -405,70 +405,7 @@ endif
 
 INCLUDES_L += -Iutil -I.
 
-ifdef APPLE_GCC
-
-MARCH := $(uname_M)
-
-
-ifndef NO_AUTO_SDK
-
-# The SDK locations were moved in 10.8; this snippet tries to find them
-# there first, then reverts to the original location.
-XCODE_SDK_SUFFIX := Platforms/MacOSX.platform/Developer
-# Try to use xcode-select -p to find the current user-configured Xcode.app.
-XCODE_SELECT_PATH := $(shell xcode-select -p 2>/dev/null | sed 's/\/$$//')
-ifeq ($(shell test -e "$(XCODE_SELECT_PATH)/$(XCODE_SDK_SUFFIX)" || echo NOPE),)
-DEVELOPER_PATH := $(XCODE_SELECT_PATH)/$(XCODE_SDK_SUFFIX)
-else
-# Otherwise, try /Applications/Xcode.app.
-XCODE_DEFAULT_PATH := /Applications/Xcode.app/Contents/Developer
-ifeq ($(shell test -e "$(XCODE_DEFAULT_PATH)/$(XCODE_SDK_SUFFIX)" || echo NOPE),)
-DEVELOPER_PATH := $(XCODE_DEFAULT_PATH)/$(XCODE_SDK_SUFFIX)
-else
-# If all else fails, maybe it's in /Developer.
-DEVELOPER_PATH := /Developer
-endif
-endif
-
-# Find the oldest SDK available, in attempt to make this build as
-# backward-compatible as we possibly can.
-SDK_VER := $(shell command ls $(DEVELOPER_PATH)/SDKs | grep -v "MacOSX.sdk" | sort -n | head -1 | perl -pe 's/^MacOSX//g;s/.sdk$$//g')
-
-ifeq ($(SDK_VER),10.4u)
-SDK_VER := 10.4
-endif
-
-ifndef SDK_VER
-$(error You do not seem to have any Mac OS X SDKs installed! This build is doomed to fail)
-endif
-
-endif
-
-ifndef SDK_VER
-ifeq ($(MARCH),ppc)
-SDK_VER := 10.4
-endif
-ifeq ($(MARCH),i386)
-SDK_VER := 10.4
-endif
-ifeq ($(MARCH),x86_64)
-ifdef TILES
-SDK_VER := 10.6
-else
-SDK_VER := 10.5
-endif
-endif
-endif
-
-# Mac OS X 10.4 adds a 'u' on the end of the SDK name. Everything
-# else is much easier to predict the name of.
-ifeq ($(SDK_VER),10.4)
-GCC_VER := 4.0
-SDKROOT := $(DEVELOPER_PATH)/SDKs/MacOSX$(SDK_VER)u.sdk
-else
-SDKROOT := $(DEVELOPER_PATH)/SDKs/MacOSX$(SDK_VER).sdk
-endif
-
+ifdef APPLE_PLATFORM
 ifneq ($(shell test -d $(SDKROOT) || echo NOPE),)
 $(error The Mac OS X $(SDK_VER) SDK seems missing)
 endif
@@ -479,13 +416,14 @@ CFLAGS_ARCH := -arch i386 -arch ppc -faltivec
 CFLAGS_DEPCC_ARCH := -arch i386
 NO_INLINE_DEPGEN := YesPlease
 else
-CFLAGS_ARCH := -arch $(MARCH)
+CFLAGS_ARCH := -arch $(uname_M)
 endif
 
-CC = $(GCC) $(CFLAGS_ARCH) -isysroot $(SDKROOT) -mmacosx-version-min=$(SDK_VER)
-CXX = $(GXX) $(CFLAGS_ARCH) -isysroot $(SDKROOT) -mmacosx-version-min=$(SDK_VER)
-DEPCC = $(GCC) $(or $(CFLAGS_DEPCC_ARCH),$(CFLAGS_ARCH)) -isysroot $(SDKROOT) -mmacosx-version-min=$(SDK_VER)
-DEPCXX = $(GXX) $(or $(CFLAGS_DEPCC_ARCH),$(CFLAGS_ARCH)) -isysroot $(SDKROOT) -mmacosx-version-min=$(SDK_VER)
+MACOSX_MIN_VERSION=10.7
+CC = $(GCC) $(CFLAGS_ARCH) -mmacosx-version-min=$(MACOSX_MIN_VERSION)
+CXX = $(GXX) $(CFLAGS_ARCH) -stdlib=libc++ -mmacosx-version-min=$(MACOSX_MIN_VERSION)
+DEPCC = $(GCC) $(or $(CFLAGS_DEPCC_ARCH),$(CFLAGS_ARCH)) -mmacosx-version-min=$(MACOSX_MIN_VERSION)
+DEPCXX = $(GXX) $(or $(CFLAGS_DEPCC_ARCH),$(CFLAGS_ARCH)) -stdlib=libc++ -mmacosx-version-min=$(MACOSX_MIN_VERSION)
 
 ifdef USE_ICC
 CC += -gcc-name=gcc-$(GCC_VER) -gxx-name=g++-$(GCC_VER)
