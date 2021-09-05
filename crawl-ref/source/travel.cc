@@ -3306,9 +3306,12 @@ level_id level_id::parse_level_id(const string &s)
     }
 
     // Branch:$ uses static data -- it never comes from the current game.
-    const int dep = (brlev.empty() ? 1 :
+    int dep = (brlev.empty() ? 1 :
                      brlev == "$"  ? branches[br].numlevels
                                    : atoi(brlev.c_str()));
+    if (dep > branches[br].numlevels) {
+      dep = branches[br].numlevels;
+    }
 
     // The branch might have been longer when the save has been created.
     if (dep < 0 || dep > brdepth[br] && dep > branches[br].numlevels)

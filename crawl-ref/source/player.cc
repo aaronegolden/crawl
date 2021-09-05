@@ -2424,7 +2424,9 @@ unsigned int gain_exp(unsigned int exp_gained)
 
 void apply_exp()
 {
-    const unsigned int exp_gained = you.experience_pool;
+    // In quick crawl we need to gain XP faster to offset the fact that
+    // there are fewer monsters to kill, etc.
+    const unsigned int exp_gained = you.experience_pool * 5;
     if (exp_gained == 0)
         return;
 

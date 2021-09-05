@@ -2616,6 +2616,10 @@ bool gain_piety(int original_gain, int denominator, bool should_scale_piety)
         return false;
     }
 
+    // Need to gain piety faster in a quick game, except not for Oka's tactical piety.
+    if (!you_worship(GOD_USKAYAW))
+        original_gain *= 4;
+
     int pgn = should_scale_piety ? piety_scale(original_gain) : original_gain;
 
     if (crawl_state.game_is_sprint() && should_scale_piety)
@@ -3501,9 +3505,9 @@ static void _apply_monk_bonus()
         you.props[ASHENZARI_CURSE_PROGRESS_KEY] = 19;
     }
     else if (you_worship(GOD_USKAYAW))  // Gaining piety past this point does nothing
-        gain_piety(15, 1, false); // of value with this god and looks weird.
+        gain_piety(3, 1, false); // of value with this god and looks weird.
     else
-        gain_piety(35, 1, false);
+        gain_piety(8, 1, false);
 }
 
 /// Transfer some piety from an old good god to a new one, if applicable.
@@ -3637,6 +3641,7 @@ static void _set_initial_god_piety()
             int delay = 50;
             if (crawl_state.game_is_sprint())
                 delay /= SPRINT_MULTIPLIER;
+            delay /= 5;
             you.props[RU_SACRIFICE_DELAY_KEY] = delay;
         }
         you.props[RU_SACRIFICE_PENALTY_KEY] = 0;

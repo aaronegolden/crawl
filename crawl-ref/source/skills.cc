@@ -1062,6 +1062,8 @@ static void _train_skills(int exp, const int cost, const bool simu)
     if (crawl_state.game_is_sprint())
         magic_gain = sprint_modify_exp_inverse(magic_gain);
 
+    // Avoid double-rewarding spell practice in quick-crawl by inflated XP
+    magic_gain = div_rand_round(magic_gain, 4);
     if (magic_gain && !simu)
         did_god_conduct(DID_SPELL_PRACTISE, div_rand_round(magic_gain, 10));
 }
