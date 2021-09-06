@@ -16,7 +16,7 @@ const Branch branches[NUM_BRANCHES] =
     //  travel shortcut, runes, ambient noise level, mon_die_size
 
     { BRANCH_DUNGEON, NUM_BRANCHES, 0, 0, 3, 0,
-      brflag::none,
+      brflag::no_shafts,
       NUM_FEATURES, DNGN_EXIT_DUNGEON, NUM_FEATURES,
       "Dungeon", "the Dungeon", "D",
       nullptr,
