@@ -460,7 +460,8 @@ ENDMAP
 ##############################################################################
 
 NAME:     tomb_1
-PLACE:    Tomb:1
+PLACE:    Tomb:100
+WEIGHT:   0
 ORIENT:   encompass
 TAGS:     no_dump
 SUBVAULT: A : tomb_1_centre
@@ -815,7 +816,8 @@ ENDMAP
 
 # Main map of Tomb:2.
 NAME:     tomb_2
-PLACE:    Tomb:2
+PLACE:    Tomb:100
+WEIGHT:   0
 # Can be rotated!
 ORIENT:   encompass
 TAGS:     no_dump no_trap_gen
@@ -1036,7 +1038,7 @@ ENDMAP
 ##############################################################################
 
 NAME:     tomb_3
-PLACE:    Tomb:3
+PLACE:    Tomb:1
 ORIENT:   encompass
 TAGS:     no_rotate no_dump no_trap_gen
 SUBVAULT: A : tomb_3_rune

@@ -539,7 +539,7 @@ BRANCH_ENTRANCE(DNGN_ENTER_ELF, "staircase to the Elven Halls", "enter_elven_hal
 BRANCH_EXIT(DNGN_EXIT_ELF, "staircase back to the Mines", "exit_elven_halls"),
 
 BRANCH_ENTRANCE(DNGN_ENTER_TOMB, "staircase to the Tomb", "enter_tomb"),
-BRANCH_EXIT(DNGN_EXIT_TOMB, "staircase back to the Crypt", "exit_tomb"),
+BRANCH_EXIT(DNGN_EXIT_TOMB, "staircase back to the Vaults", "exit_tomb"),
 
 BRANCH_ENTRANCE(DNGN_ENTER_SWAMP, "staircase to the Swamp", "enter_swamp"),
 BRANCH_EXIT(DNGN_EXIT_SWAMP, "staircase back to the Lair", "exit_swamp"),
